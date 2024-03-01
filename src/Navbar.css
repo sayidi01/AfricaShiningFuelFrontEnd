@@ -1,0 +1,10 @@
+@media screen and (max-with : 767px) {
+  
+}
+.bold-text {
+    font-weight: bold;
+  }
+
+  .hover-professionnel:hover{
+    color:  #659a9a !important;
+  }
