@@ -3,14 +3,17 @@ import React from "react";
 import Divider from "@mui/material/Divider";
 import { Input } from "antd";
 import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import Logo from "../src/LOGO_AFRICA_SHINING-removebg-preview.png";
 
 const { TextArea } = Input;
 
-function Footer() {
+function Footer({marginTop}) {
+  const navigate = useNavigate()
   return (
     <div>
-      <Stack
-        style={{ backgroundColor: " rgba(235, 235, 235, 0.5)", paddingY: 10 }}
+      <Stack 
+        style={{ backgroundColor: " rgba(235, 235, 235, 0.5)", paddingY: 10 , marginTop: marginTop }}
       >
         <Container maxWidth={"lg"}>
           <div
@@ -199,7 +202,7 @@ function Footer() {
           <Grid container justifyContent={"space-between"} flexWrap={"wrap"}>
             <Grid item xs={12} md={3} textAlign={"center"} paddingY={5}  style={{ marginBottom: '-50px' }}>
               <img
-                src="../src/LOGO_AFRICA_SHINING-removebg-preview.png"
+                src={Logo}
                 alt="logo"
                 width={250}
               />
@@ -211,18 +214,18 @@ function Footer() {
                 rowGap={1}
                 // direction={{ xs: "column", sm: "row" }}
               >
-                <Grid item xs={12} md={4} lg={3}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                <Grid  item xs={12} md={4} lg={3}>
+                    <Typography onClick={() => navigate('/gazoil')} style={{ fontFamily: "Montserrat-sans serif" }}>
                       Gazoil
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                    <Typography  onClick={() => navigate("/BornesRecharge")} style={{ fontFamily: "Montserrat-sans serif" }}>
                       Bornes de Recharge
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                    <Typography onClick={() => navigate("/Fuel2")} style={{ fontFamily: "Montserrat-sans serif" }}>
                       Fuel 2
                     </Typography>
                 </Grid>

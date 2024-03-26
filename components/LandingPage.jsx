@@ -8,7 +8,7 @@ import DepartureBoardIcon from "@mui/icons-material/DepartureBoard";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import NosServices from "../src/images/services.jpeg";
 import Carousel from "../components/Carousel";
-
+import SliderLandingPage from "./SliderLandingPage";
 import Footer from "./Footer";
 import Divider from "@mui/material/Divider";
 
@@ -21,14 +21,15 @@ function LandingPage() {
           style={{
             backgroundImage: `url(${BackgroundImagee})`,
             width: "100%",
-            padding: "10rem 0",
+            padding: "0rem 0",
             backgroundSize: "cover",
             backgroundPosition: "center",
             maxWidth: "none",
           }}
         >
+         <SliderLandingPage/>
           <Box>
-            <Box>
+          <Box sx={{marginTop: {xs: '1rem', sm: '1rem'}}}>
               <Typography
                 style={{
                   fontFamily: "Montserrat",
@@ -38,7 +39,7 @@ function LandingPage() {
                 variant="h4"
               >
                 <span style={{ color: "#659a9a" }}>PERFORMANCE</span>{" "}
-                ÈNERGÉTIQUE,
+                ÉNERGÉTIQUE,
               </Typography>
               <Typography
                 style={{
@@ -83,7 +84,7 @@ function LandingPage() {
                   backgroundColor: "black",
                   display: "block",
                   margin: "0 auto",
-                  marginTop: "2rem",
+                  marginTop: "5rem",
                   marginBottom: "7rem",
                 }}
               >
@@ -149,6 +150,7 @@ function LandingPage() {
                     width: "150px",
                     height: "50px",
                     textTransform: "capitalize",
+                    marginBottom: 40
                   }}
                 >
                   {" "}

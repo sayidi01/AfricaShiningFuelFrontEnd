@@ -1,0 +1,68 @@
+.slider-gazoil {
+    background-image: url(../src/images/slider-gazoil-canva.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 150px;
+    opacity: 0.9;
+
+
+}
+
+
+
+.slider-fuel {
+    background-image: url(../src/images/slider-fuel-1.png);
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+
+
+
+
+}
+
+.slider-hydrogene-vert {
+    background-image: url(../src/images/descHYDROGENEVERT1.jpeg);
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+
+
+}
+
+.slider-parent {
+    height: 200px;
+    border: black sol 1px;
+
+
+    @media (min-width: 768px) {
+        height: 400px;
+
+
+    }
+}
+
+
+@media screen and (min-width: 600px) {
+    .slider-gazoil {
+        height: 320px;
+
+    }
+}
+
+
+@media screen and (min-width: 600px) {
+    .slider-fuel {
+        height: 320px;
+
+    }
+}
+
+
+@media screen and (min-width: 600px) {
+    .slider-hydrogene-vert {
+        height: 320px;
+
+    }
+}

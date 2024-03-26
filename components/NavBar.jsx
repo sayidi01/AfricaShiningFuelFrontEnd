@@ -24,7 +24,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 
 function NavBar() {
@@ -104,20 +104,22 @@ function NavBar() {
   const handlePopoverCloseProducts = () => {
     setAnchorElProducts(null);
   };
-  
-  
 
   const openProducts = Boolean(anchorElProducts);
-  
-  const navigate = useNavigate()
-  
+
+  const navigate = useNavigate();
 
   return (
     <>
       <AppBar position="sticky" sx={{ backgroundColor: "white" }}>
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
-            <img src={Logo} alt="logo" width={180} onClick={() => navigate('/landing')} />
+            <img
+              src={Logo}
+              alt="logo"
+              width={180}
+              onClick={() => navigate("/landing")}
+            />
           </div>
           <Stack
             sx={{ flexGrow: 1, display: { xs: "none", lg: "flex" } }}
@@ -162,23 +164,24 @@ function NavBar() {
                 onClose={handlePopoverCloseProducts}
                 disableRestoreFocus
               >
-                <Paper sx={{ p: 2 }} >
+                <Paper sx={{ p: 2 }}>
                   <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                  <NavLink to={'/gazoil'} style={{ textDecoration: 'none' }}>
-                  <Typography role="button"
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                      cursor: "pointer"
-                    }}
-                  >
-                    Gazoil
-                  </Typography>
+                  <NavLink to={"/gazoil"} style={{ textDecoration: "none" }}>
+                    <Typography
+                      role="button"
+                      sx={{
+                        p: 1,
+                        color: "gray",
+                        fontFamily: "initial",
+                        fontWeight: "bolder",
+                        fontSize: 18,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Gazoil
+                    </Typography>
                   </NavLink>
-                 
+
                   <Typography
                     sx={{
                       p: 1,
@@ -547,7 +550,18 @@ function NavBar() {
                 </Typography>
               </Popover>
             </div>
-            <Typography  className="hover-professionnel" style={{color: 'black', fontFamily: "Montserrat-sans serif", fontSize: '19px', fontWeight: 500,"&:hover": {color: 'green'}}}>Professionnel</Typography>
+            <Typography
+              className="hover-professionnel"
+              style={{
+                color: "black",
+                fontFamily: "Montserrat-sans serif",
+                fontSize: "19px",
+                fontWeight: 500,
+                "&:hover": { color: "green" },
+              }}
+            >
+              Professionnel
+            </Typography>
           </Stack>
 
           <Box
@@ -559,7 +573,10 @@ function NavBar() {
               justifyContent: "space-between",
             }}
           >
-            <PersonIcon onClick={() => navigate('/compte')} style={{ color: "black", marginRight: 15 }} />
+            <PersonIcon
+              onClick={() => navigate("/compte")}
+              style={{ color: "black", marginRight: 15 }}
+            />
             <SearchIcon style={{ color: "black", marginRight: 15 }} />
 
             <MenuIcon
@@ -580,19 +597,33 @@ function NavBar() {
         open={openn}
         onClose={toggleDrawer(false)}
       >
-        
         <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper", textAlign: "center" }}
+          sx={{
+            width: "100%",
+            maxWidth: 360,
+            bgcolor: "background.paper",
+            textAlign: "center",
+          }}
           component="nav"
           aria-labelledby="nested-list-subheader"
           subheader={
-            <ListSubheader component="div" id="nested-list-subheader"sx={{fontFamily: 'Montserrat, sans serif', fontWeight: 'bolder', fontSize: 20 }}>
+            <ListSubheader
+              component="div"
+              id="nested-list-subheader"
+              sx={{
+                fontFamily: "Montserrat, sans serif",
+                fontWeight: "bolder",
+                fontSize: 20,
+              }}
+            >
               Menu
-              <IconButton onClick={toggleDrawer(false)} style={{ marginLeft: 'auto' }}>
-             <CloseIcon />
-            </IconButton>
+              <IconButton
+                onClick={toggleDrawer(false)}
+                style={{ marginLeft: "auto" }}
+              >
+                <CloseIcon />
+              </IconButton>
             </ListSubheader>
-            
           }
         >
           <ListItemButton onClick={() => handleClick("mobileproduits")}>
@@ -606,31 +637,35 @@ function NavBar() {
             {open.mobileproduits ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={open.mobileproduits} timeout="auto" unmountOnExit>
-            <List  sx={{borderLeft: '4px solid #659a9a', marginLeft: '8px'}} component="div" disablePadding>
-              <ListItemButton  sx={{ pl: 4 , color: 'grey'}} >
-                <NavLink to={'/gazoil'}> 
-                <ListItemText primary="Gazoil" />
+            <List
+              sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+              component="div"
+              disablePadding
+            >
+              <ListItemButton sx={{ pl: 4, color: "grey" }}>
+                <NavLink to={"/gazoil"}>
+                  <ListItemText primary="Gazoil" />
                 </NavLink>
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4, color: 'grey' }}>
+              <ListItemButton sx={{ pl: 4, color: "grey" }}>
                 <ListItemText primary="Fuel 2" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4, color: 'grey' }}>
+              <ListItemButton sx={{ pl: 4, color: "grey" }}>
                 <ListItemText primary="Lubrifiants" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 , color: 'grey'}}>
+              <ListItemButton sx={{ pl: 4, color: "grey" }}>
                 <ListItemText primary="AD Blue" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 , color: 'grey'}}>
+              <ListItemButton sx={{ pl: 4, color: "grey" }}>
                 <ListItemText primary="Citerne" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4, color: 'grey' }}>
+              <ListItemButton sx={{ pl: 4, color: "grey" }}>
                 <ListItemText primary="Borne De Recharge" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 , color: 'grey'}}>
+              <ListItemButton sx={{ pl: 4, color: "grey" }}>
                 <ListItemText primary="Produits De Nettoyage" />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 , color: 'grey',  fontWeight: 'bold'}}>
+              <ListItemButton sx={{ pl: 4, color: "grey", fontWeight: "bold" }}>
                 <ListItemText primary="Bois De Chauffage" />
               </ListItemButton>
             </List>
@@ -649,7 +684,11 @@ function NavBar() {
               {open.mobileServices ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={open.mobileServices} timeout="auto" unmountOnExit>
-              <List sx={{borderLeft: '4px solid #659a9a', marginLeft: '8px'}} component="div" disablePadding>
+              <List
+                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+                component="div"
+                disablePadding
+              >
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="Livraison" />
                 </ListItemButton>
@@ -669,11 +708,18 @@ function NavBar() {
           >
             <ListItemButton onClick={() => handleClick("mobileServicesPlus")}>
               <ListItemIcon></ListItemIcon>
-              <ListItemText   sx={{ color: open.mobileServicesPlus ? " #659a9a" : "black" }} primary="Services Plus" />
+              <ListItemText
+                sx={{ color: open.mobileServicesPlus ? " #659a9a" : "black" }}
+                primary="Services Plus"
+              />
               {open.mobileServicesPlus ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={open.mobileServicesPlus} timeout="auto" unmountOnExit>
-              <List sx={{borderLeft: '4px solid #659a9a', marginLeft: '8px'}} component="div" disablePadding>
+              <List
+                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+                component="div"
+                disablePadding
+              >
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="Nettoyage A Domicile" />
                 </ListItemButton>
@@ -698,7 +744,12 @@ function NavBar() {
               onClick={() => handleClick("mobileEvolutionsMarche")}
             >
               <ListItemIcon></ListItemIcon>
-              <ListItemText   sx={{ color: open.mobileEvolutionsMarche ? " #659a9a" : "black" }} primary="Evolution Marché" />
+              <ListItemText
+                sx={{
+                  color: open.mobileEvolutionsMarche ? " #659a9a" : "black",
+                }}
+                primary="Evolution Marché"
+              />
               {open.mobileEvolutionsMarche ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse
@@ -706,9 +757,13 @@ function NavBar() {
               timeout="auto"
               unmountOnExit
             >
-              <List sx={{borderLeft: '4px solid #659a9a', marginLeft: '8px'}} component="div" disablePadding>
+              <List
+                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+                component="div"
+                disablePadding
+              >
                 <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText  primary="Actualité ASF" />
+                  <ListItemText primary="Actualité ASF" />
                 </ListItemButton>
               </List>
             </Collapse>
@@ -722,7 +777,12 @@ function NavBar() {
               onClick={() => handleClick("mobilePourquoiChoisirASF")}
             >
               <ListItemIcon></ListItemIcon>
-              <ListItemText   sx={{ color: open.mobilePourquoiChoisirASF ? " #659a9a" : "black" }} primary="Pourquoi Choisir ASF" />
+              <ListItemText
+                sx={{
+                  color: open.mobilePourquoiChoisirASF ? " #659a9a" : "black",
+                }}
+                primary="Pourquoi Choisir ASF"
+              />
               {open.mobilePourquoiChoisirASF ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse
@@ -730,7 +790,11 @@ function NavBar() {
               timeout="auto"
               unmountOnExit
             >
-              <List sx={{borderLeft: '4px solid #659a9a', marginLeft: '8px'}} component="div" disablePadding>
+              <List
+                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+                component="div"
+                disablePadding
+              >
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="Presentation Du Groupe" />
                 </ListItemButton>
@@ -744,27 +808,28 @@ function NavBar() {
                   <ListItemText primary="Des Equipes Dediées" />
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText primary="Notre Politique RH" sx={{ fontFamily:  'inherit !important' }} />
+                  <ListItemText
+                    primary="Notre Politique RH"
+                    sx={{ fontFamily: "inherit !important" }}
+                  />
                 </ListItemButton>
               </List>
             </Collapse>
           </List>
         </List>
         <Typography
-        sx={{
-         textAlign: 'center',
-          pt: 2,
-           "&:hover": {
-           color: "#659a9a",
-             },
-             fontFamily: 'inherit',
-             fontWeight: 'bolder',
-  }}
->
-  PROFESSIONNEL
-</Typography>
-
-
+          sx={{
+            textAlign: "center",
+            pt: 2,
+            "&:hover": {
+              color: "#659a9a",
+            },
+            fontFamily: "inherit",
+            fontWeight: "bolder",
+          }}
+        >
+          PROFESSIONNEL
+        </Typography>
       </Drawer>
     </>
   );

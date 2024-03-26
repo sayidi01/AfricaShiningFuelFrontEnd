@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {PublicRoutes} from '../components/Routes.jsx'
-function App() {
+import UserContext from '../context/userContext.js';
+import { PrimeReactProvider } from "primereact/api";
+import { Toaster } from 'react-hot-toast';
 
+function App({ Component }) {
+  const [data,setData] = useState({})
+  const [isConnected, setisConnected] = useState(false);
   return (
-    <>
+    <PrimeReactProvider value={{ Component}}>
+      <UserContext.Provider value={{ setData, setisConnected }}>
     <BrowserRouter>
     <Routes>
           {PublicRoutes.map(({ id, path, element }) => (
@@ -12,8 +18,9 @@ function App() {
           ))}
         </Routes>
     </BrowserRouter>
-    
-    </>
+    <Toaster/>
+    </UserContext.Provider>
+    </PrimeReactProvider>
     
   )
 }
