@@ -131,7 +131,7 @@ export const PublicRoutes = [
     },
     {
         id: 21,
-        path: 'politiqueRH',
+        path: '/politiqueRH',
         element: <PolitiqueRH/>
 
     },

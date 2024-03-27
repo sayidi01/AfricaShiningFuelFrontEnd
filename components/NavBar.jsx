@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -26,6 +26,10 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
+
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 function NavBar() {
   const [open, setOpen] = useState({
@@ -136,7 +140,6 @@ function NavBar() {
                 aria-owns={open ? "mouse-over-popover" : undefined}
                 aria-haspopup="true"
                 onMouseEnter={handlePopoverOpenProducts}
-                onMouseLeave={handlePopoverCloseProducts}
                 style={{
                   color: openProducts ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
@@ -146,43 +149,18 @@ function NavBar() {
               >
                 Nos Produits
               </Typography>
-              <Popover
+              <Menu
                 id="mouse-over-popover"
-                sx={{
-                  pointerEvents: "none",
-                }}
-                open={openProducts}
                 anchorEl={anchorElProducts}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
+                open={openProducts}
                 onClose={handlePopoverCloseProducts}
-                disableRestoreFocus
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
               >
-                <Paper sx={{ p: 2 }}>
-                  <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                  <NavLink to={"/gazoil"} style={{ textDecoration: "none" }}>
-                    <Typography
-                      role="button"
-                      sx={{
-                        p: 1,
-                        color: "gray",
-                        fontFamily: "initial",
-                        fontWeight: "bolder",
-                        fontSize: 18,
-                        cursor: "pointer",
-                      }}
-                    >
-                      Gazoil
-                    </Typography>
-                  </NavLink>
-
-                  <Typography
+                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Link to={"/gazoil"} style={{ textDecoration: "none" }}>
+                  <MenuItem
                     sx={{
                       p: 1,
                       color: "gray",
@@ -190,10 +168,13 @@ function NavBar() {
                       fontWeight: "bolder",
                       fontSize: 18,
                     }}
+                    onClick={handlePopoverCloseProducts}
                   >
-                    Fuel 2
-                  </Typography>
-                  <Typography
+                    Gazoil
+                  </MenuItem>
+                </Link>
+                <Link to={"/Fuel2"} style={{ textDecoration: "none" }}>
+                  <MenuItem
                     sx={{
                       p: 1,
                       color: "gray",
@@ -201,10 +182,27 @@ function NavBar() {
                       fontWeight: "bolder",
                       fontSize: 18,
                     }}
+                    onClick={handlePopoverCloseProducts}
+                  >
+                    Fuel2
+                  </MenuItem>
+                </Link>
+                <Link to={"/Lubrifiants"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseProducts}
                   >
                     Lubrifiants
-                  </Typography>
-                  <Typography
+                  </MenuItem>
+                </Link>
+                <Link to={"/hydrogenevert"} style={{ textDecoration: "none" }}>
+                  <MenuItem
                     sx={{
                       p: 1,
                       color: "gray",
@@ -212,10 +210,13 @@ function NavBar() {
                       fontWeight: "bolder",
                       fontSize: 18,
                     }}
+                    onClick={handlePopoverCloseProducts}
                   >
-                    AD Blue
-                  </Typography>
-                  <Typography
+                    Hydrogéne vert
+                  </MenuItem>
+                </Link>
+                <Link to={"/Citerne"} style={{ textDecoration: "none" }}>
+                  <MenuItem
                     sx={{
                       p: 1,
                       color: "gray",
@@ -223,10 +224,13 @@ function NavBar() {
                       fontWeight: "bolder",
                       fontSize: 18,
                     }}
+                    onClick={handlePopoverCloseProducts}
                   >
                     Citerne
-                  </Typography>
-                  <Typography
+                  </MenuItem>
+                </Link>
+                <Link to={"/BornesRecharge"} style={{ textDecoration: "none" }}>
+                  <MenuItem
                     sx={{
                       p: 1,
                       color: "gray",
@@ -234,10 +238,16 @@ function NavBar() {
                       fontWeight: "bolder",
                       fontSize: 18,
                     }}
+                    onClick={handlePopoverCloseProducts}
                   >
                     Borne De Recharge
-                  </Typography>
-                  <Typography
+                  </MenuItem>
+                </Link>
+                <Link
+                  to={"/produitnettoyage"}
+                  style={{ textDecoration: "none" }}
+                >
+                  <MenuItem
                     sx={{
                       p: 1,
                       color: "gray",
@@ -245,29 +255,29 @@ function NavBar() {
                       fontWeight: "bolder",
                       fontSize: 18,
                     }}
+                    onClick={handlePopoverCloseProducts}
                   >
-                    Produits de Nettoyage
-                  </Typography>
-                  <Typography
-                    sx={{
+                    Produit De Nettoyage
+                  </MenuItem>
+                </Link>
+                <Link to={'/boischauffage'}  style={{ textDecoration: "none" }} >
+                <MenuItem   sx={{
                       p: 1,
                       color: "gray",
                       fontFamily: "initial",
                       fontWeight: "bolder",
                       fontSize: 18,
-                    }}
-                  >
-                    Bois De Chauffage
-                  </Typography>
-                </Paper>
-              </Popover>
+                    }} onClick={handlePopoverCloseProducts}>
+                  Bois De Chauffage
+                </MenuItem>
+                </Link>
+              </Menu>
             </div>
             <div>
               <Typography
                 aria-owns={open ? "mouse-over-popover-1" : undefined}
                 aria-haspopup="true"
                 onMouseEnter={handlePopoverOpenServices}
-                onMouseLeave={handlePopoverCloseServices}
                 className="hoservices"
                 style={{
                   color: openServices ? " #659a9a" : "black",
@@ -278,66 +288,67 @@ function NavBar() {
               >
                 Nos Services
               </Typography>
-              <Popover
+              <Menu
                 id="mouse-over-popover-1"
-                sx={{
-                  pointerEvents: "none",
-                }}
-                open={openServices}
                 anchorEl={services}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
+                open={openServices}
                 onClose={handlePopoverCloseServices}
-                disableRestoreFocus
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
               >
-                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Livraison
-                </Typography>
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Carte Carburant Toute Marque
-                </Typography>
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Abonnement Telebadge
-                </Typography>
-              </Popover>
+                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Link to={"/livraison"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseServices}
+                  >
+                    Livrasion
+                  </MenuItem>
+                </Link>
+                <Link to={"/cartecarburant"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseServices}
+                  >
+                    Carte Carburant Toute Marque
+                  </MenuItem>
+                </Link>
+                <Link to={"/"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseServices}
+                  >
+                    Abonnement Telebadge
+                  </MenuItem>
+                </Link>
+                
+              </Menu>
             </div>
             <div>
               <Typography
                 aria-owns={open ? "mouse-over-popover-2" : undefined}
                 aria-haspopup="true"
                 onMouseEnter={handlePopoverOpenServicesPlus}
-                onMouseLeave={handlePopoverCloseServicesPlus}
+               
                 style={{
                   color: openServicesPlus ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
@@ -347,77 +358,80 @@ function NavBar() {
               >
                 Services Plus
               </Typography>
-              <Popover
+              <Menu
                 id="mouse-over-popover-2"
-                sx={{
-                  pointerEvents: "none",
-                }}
-                open={openServicesPlus}
                 anchorEl={servicesPlus}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
+                open={openServicesPlus}
                 onClose={handlePopoverCloseServicesPlus}
-                disableRestoreFocus
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
               >
-                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Nettoyage A Domicile
-                </Typography>
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Collecte Lubrifiant
-                </Typography>
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Nettoyage Cuve
-                </Typography>
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Jauge Connecte
-                </Typography>
-              </Popover>
+                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Link to={"/nettoyagedomicile"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseServicesPlus}
+                  >
+                   Nettoyage A Domicile
+                  </MenuItem>
+                </Link>
+                <Link to={"/collectelubrifiant"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseServicesPlus}
+                  >
+                    Collecte Lubrifiant
+                  </MenuItem>
+                </Link>
+                <Link to={"/nettoyagecuve"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseServicesPlus}
+                  >
+                   Nettoyage Cuve
+                  </MenuItem>
+                </Link>
+                <Link to={"/jaugeconnecte"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseServicesPlus}
+                  >
+                   Jauge Connecte
+                  </MenuItem>
+                </Link>
+                
+              </Menu>
             </div>
             <div>
               <Typography
                 aria-owns={open ? "mouse-over-popover-3" : undefined}
                 aria-haspopup="true"
                 onMouseEnter={handlePopoverOpenEvaluationMarche}
-                onMouseLeave={handlePopoverCloseEvaluationMarche}
                 style={{
                   color: openEvaluationMarche ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
@@ -427,44 +441,38 @@ function NavBar() {
               >
                 Evolution marché
               </Typography>
-              <Popover
+              <Menu
                 id="mouse-over-popover-3"
-                sx={{
-                  pointerEvents: "none",
-                }}
-                open={openEvaluationMarche}
                 anchorEl={EvaluationMarche}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
+                open={openEvaluationMarche}
                 onClose={handlePopoverCloseEvaluationMarche}
-                disableRestoreFocus
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
               >
-                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Actualité ASF
-                </Typography>
-              </Popover>
+                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Link to={"/"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseEvaluationMarche}
+                  >
+                   Actutalité ASF
+                  </MenuItem>
+                </Link>
+               
+              </Menu>
             </div>
             <div>
               <Typography
                 aria-owns={open ? "mouse-over-popover-4" : undefined}
                 aria-haspopup="true"
                 onMouseEnter={handlePopoverOpenprqChoisirASF}
-                onMouseLeave={handlePopoverCloseprqChoisirASF}
                 style={{
                   color: openprqChoisirASF ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
@@ -474,81 +482,88 @@ function NavBar() {
               >
                 Pourquoi Choisir ASF
               </Typography>
-              <Popover
+              <Menu
                 id="mouse-over-popover-4"
-                sx={{
-                  pointerEvents: "none",
-                }}
-                open={openprqChoisirASF}
                 anchorEl={prqChoisirASF}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
+                open={openprqChoisirASF}
                 onClose={handlePopoverCloseprqChoisirASF}
-                disableRestoreFocus
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
               >
-                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Presentation Du groupe
-                </Typography>
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Nos Engagement RSE
-                </Typography>
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
+                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Link to={"/presentationgroupe"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseprqChoisirASF}
+                  >
+                  Presentation Du Groupe
+                  </MenuItem>
+                </Link>
+                <Link to={"/engagementrse"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseprqChoisirASF}
+                  >
+                   Notre Engagement RSE
+                  </MenuItem>
+                </Link>
+                <Link to={"/offrecompetitive"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseprqChoisirASF}
+                  >
                   Des Offres Competitives
-                </Typography>
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
+                  </MenuItem>
+                </Link>
+                <Link to={"/equipedediees"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseprqChoisirASF}
+                  >
                   Des Equipes Dediées
-                </Typography>
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: "gray",
-                    fontFamily: "initial",
-                    fontWeight: "bolder",
-                    fontSize: 18,
-                  }}
-                >
-                  Notre Politique RH
-                </Typography>
-              </Popover>
+                  </MenuItem>
+                </Link>
+                <Link to={"/politiqueRH"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseprqChoisirASF}
+                  >
+                 Notre Politique RH
+                  </MenuItem>
+                </Link>
+                
+              </Menu>
             </div>
             <Typography
               className="hover-professionnel"
@@ -643,30 +658,44 @@ function NavBar() {
               disablePadding
             >
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
-                <NavLink to={"/gazoil"}>
+                <NavLink to={"/gazoil"} style={{textDecoration: 'none', color: 'gray'}}>
                   <ListItemText primary="Gazoil" />
                 </NavLink>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
+                <Link to={'/Fuel2'} style={{textDecoration: 'none', color: 'gray'}}>
                 <ListItemText primary="Fuel 2" />
+                </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
+                <Link to={'/Lubrifiants'}  style={{textDecoration: 'none', color: 'gray'}} >
                 <ListItemText primary="Lubrifiants" />
+                </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
-                <ListItemText primary="AD Blue" />
+                <Link to={'/hydrogenevert'} style={{textDecoration: 'none', color: 'gray'}}>
+                <ListItemText primary="Hydrogéne vert" />
+                </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
+                <Link to={'/Citerne'}  style={{textDecoration: 'none', color: 'gray'}}>
                 <ListItemText primary="Citerne" />
+                </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
+                <Link to={'/BornesRecharge'}  style={{textDecoration: 'none', color: 'gray'}}>
                 <ListItemText primary="Borne De Recharge" />
+                </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
+                <Link to={'/produitnettoyage'}  style={{textDecoration: 'none', color: 'gray'}}>
                 <ListItemText primary="Produits De Nettoyage" />
+                </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey", fontWeight: "bold" }}>
+                <Link to={'/boischauffage'} style={{textDecoration: 'none', color: 'gray'}}>
                 <ListItemText primary="Bois De Chauffage" />
+                </Link>
               </ListItemButton>
             </List>
           </Collapse>
@@ -690,13 +719,19 @@ function NavBar() {
                 disablePadding
               >
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/livraison'} style={{textDecoration: 'none', color: 'gray'}} >
                   <ListItemText primary="Livraison" />
+                  </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/cartecarburant'}  style={{textDecoration: 'none', color: 'gray'}}>
                   <ListItemText primary="Carte Carburant Toute Marque" />
+                  </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/'}  style={{textDecoration: 'none', color: 'gray'}}>
                   <ListItemText primary="Abonnement Telebadge" />
+                  </Link>
                 </ListItemButton>
               </List>
             </Collapse>
@@ -721,16 +756,24 @@ function NavBar() {
                 disablePadding
               >
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/nettoyagedomicile'}  style={{textDecoration: 'none', color: 'gray'}}>
                   <ListItemText primary="Nettoyage A Domicile" />
+                  </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/collectelubrifiant'} style={{textDecoration: 'none', color: 'gray'}} >
                   <ListItemText primary="Collecte Lubrifiant" />
+                  </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/nettoyagecuve'}  style={{textDecoration: 'none', color: 'gray'}}>
                   <ListItemText primary="Nettoyage cuve" />
+                  </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/jaugeconnecte'}  style={{textDecoration: 'none', color: 'gray'}}>
                   <ListItemText primary="Jauge Connecte" />
+                  </Link>
                 </ListItemButton>
               </List>
             </Collapse>
@@ -763,7 +806,9 @@ function NavBar() {
                 disablePadding
               >
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/'}   style={{textDecoration: 'none', color: 'gray'}}>
                   <ListItemText primary="Actualité ASF" />
+                  </Link>
                 </ListItemButton>
               </List>
             </Collapse>
@@ -796,22 +841,32 @@ function NavBar() {
                 disablePadding
               >
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/presentationgroupe'}  style={{textDecoration: 'none', color: 'gray'}}>
                   <ListItemText primary="Presentation Du Groupe" />
+                  </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/engagementrse'}  style={{textDecoration: 'none', color: 'gray'}} >
                   <ListItemText primary="Nos Engagement RSE" />
+                  </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/offrecompetitive'}  style={{textDecoration: 'none', color: 'gray'}} >
                   <ListItemText primary="Des Offres Competitives" />
+                  </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/equipedediees'}  style={{textDecoration: 'none', color: 'gray'}}  >
                   <ListItemText primary="Des Equipes Dediées" />
+                  </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/politiqueRH'} style={{textDecoration: 'none', color: 'gray'}}  >
                   <ListItemText
                     primary="Notre Politique RH"
                     sx={{ fontFamily: "inherit !important" }}
                   />
+                  </Link>
                 </ListItemButton>
               </List>
             </Collapse>
