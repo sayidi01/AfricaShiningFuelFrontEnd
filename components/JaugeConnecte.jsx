@@ -1,6 +1,8 @@
 import React from "react";
 import NavBar from "./NavBar";
 import { Box, Grid, Typography } from "@mui/material";
+import descJaugeConnecte1 from"../src/images/descJAUGECONNECTE1.png"
+import descJaugeConnecte2 from"../src/images/descJAUGECONNECTE2.png"
 import Footer from "./Footer";
 function JaugeConnecte() {
   return (
@@ -53,7 +55,7 @@ function JaugeConnecte() {
             }}
           >
             <img
-              src="../src/images/descJAUGECONNECTE1.png"
+              src={descJaugeConnecte1}
               alt="jauge connecte"
               width={550}
             />
@@ -67,7 +69,7 @@ function JaugeConnecte() {
             }}
           >
             <img
-              src="../src/images/descJAUGECONNECTE2.png"
+              src={descJaugeConnecte2}
               alt="jauge connecte"
               width={550}
             />

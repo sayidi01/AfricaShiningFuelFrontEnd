@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar";
-import BackgroundImagee from "../src/david.jpeg";
+import BackgroundImagee from "../src/images/david.jpeg";
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import Button from "@material-ui/core/Button";
 import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
@@ -11,8 +11,14 @@ import Carousel from "../components/Carousel";
 import SliderLandingPage from "./SliderLandingPage";
 import Footer from "./Footer";
 import Divider from "@mui/material/Divider";
+import station from "../src/images/station gaz.jpeg"
+import { useNavigate } from "react-router-dom";
+import globeTerestre from"../src/images/globe terrestre.png"
+import stations2 from"../src/images/globe terrestre.png"
+import maps from"../src/images/maps.png"
 
 function LandingPage() {
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -232,7 +238,7 @@ function LandingPage() {
             >
               <img
                 style={{ borderRadius: 10, width: 300, height: 520 }}
-                src="../src/images/station gaz.jpeg"
+                src={station}
                 alt="station"
               />
             </div>
@@ -355,7 +361,8 @@ function LandingPage() {
           gap={4}
           marginTop={5}
         >
-          <Button
+         
+          <Button onClick={() => navigate('/livraison')}
             style={{
               backgroundColor: "#659a9a",
               color: "white ",
@@ -367,7 +374,7 @@ function LandingPage() {
           >
             Livraison
           </Button>
-          <Button
+          <Button onClick={() => navigate('/cartecarburant')}
             style={{
               backgroundColor: "black",
               color: "white ",
@@ -404,7 +411,7 @@ function LandingPage() {
           >
             <div style={{ alignItems: "center" }}>
               <img
-                src="../src/images/globe terrestre.png"
+                src={globeTerestre}
                 alt="globe terrestre"
                 width={90}
               />
@@ -424,7 +431,7 @@ function LandingPage() {
               </div>
             </div>
             <div style={{ alignItems: "center" }}>
-              <img src="../src/images/stations2.png" width={90} />
+              <img src={stations2} width={90} />
               <div style={{ marginLeft: "1rem" }}>
                 <Typography
                   style={{
@@ -439,7 +446,7 @@ function LandingPage() {
               </div>
             </div>
             <div style={{ alignItems: "center" }}>
-              <img src="../src/images/maps.png" width={90} />
+              <img src={maps} width={90} />
               <div style={{ marginLeft: "2rem" }}>
                 <Typography
                   style={{

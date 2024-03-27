@@ -6,6 +6,9 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import descHydrogeneVert1 from"../src/images/descHYDROGENEVERT1.jpeg"
+import descHydrogeneVert2 from"../src/images/descHYDROGENEVERT2.png"
+import descHydrogeneVert3 from"../src/images/decHYDROGENEVERT3.png"
 import { Input } from "antd";
 const { TextArea } = Input;
 function HydrogeneVert() {
@@ -20,7 +23,7 @@ function HydrogeneVert() {
               marginLeft: { xs: "0rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/descHYDROGENEVERT1.jpeg" width={550} />
+            <img src={descHydrogeneVert1} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -58,7 +61,7 @@ function HydrogeneVert() {
               marginLeft: { xs: "0rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/descHYDROGENEVERT2.png" width={550} />
+            <img src={descHydrogeneVert2} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -94,7 +97,7 @@ function HydrogeneVert() {
               marginLeft: { xs: "0rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/decHYDROGENEVERT3.png" width={550} />
+            <img src={descHydrogeneVert3} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

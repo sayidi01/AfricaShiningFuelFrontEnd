@@ -4,8 +4,13 @@ import Divider from "@mui/material/Divider";
 import { Input } from "antd";
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Logo from "../src/LOGO_AFRICA_SHINING-removebg-preview.png";
-
+import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
+import facebook from"../src/images/facebook.png"
+import Linkedin from"../src/images/linkdin.png"
+import X from"../src/images/X.png"
+import telephone from"../src/images/telephone.png"
+import Adresse from "../src/images/office-push-pin.png"
+import Email from"../src/images/email.png"
 const { TextArea } = Input;
 
 function Footer({marginTop}) {
@@ -124,7 +129,7 @@ function Footer({marginTop}) {
                   alignItems: "center",
                 }}
               >
-                <img src="../src/images/telephone.png" width={30} />
+                <img src={telephone} width={30} />
               </div>
               <div  style={{ marginLeft: 15 }}>
                 <Typography style={{ fontFamily: "Montserrat", fontSize: 12 }}>
@@ -150,7 +155,7 @@ function Footer({marginTop}) {
                   alignItems: "center",
                 }}
               >
-                <img src="../src/images/office-push-pin.png" width={30} />
+                <img src={Adresse} width={30} />
               </div>
               <div style={{ marginLeft: 10 }}>
                 <Typography style={{ fontFamily: "Montserrat", fontSize: 12 }}>
@@ -173,7 +178,7 @@ function Footer({marginTop}) {
                   alignItems: "center",
                 }}
               >
-                <img src="../src/images/email.png" width={30} />
+                <img src={Email} width={30} />
               </div>
               <div style={{ marginLeft: 10 }}>
                 <Typography style={{ fontFamily: "Montserrat", fontSize: 12 }}>
@@ -265,17 +270,17 @@ function Footer({marginTop}) {
           <Box display={'flex'} justifyContent={'space-between'} marginTop={3}>
             <a href="https://www.facebook.com/profile.php?id=61556572472998">
             <div>
-                <img style={{width: 40}} src="../src/images/facebook.png"/>
+                <img style={{width: 40}} src={facebook}/>
             </div>
             </a>
             <a href="https://www.linkedin.com/company/101880850/admin/feed/posts/">
             <div>
-                <img style={{width: 40}} src="../src/images/linkdin.png"/>
+                <img style={{width: 40}} src={Linkedin}/>
             </div>
             </a>
             <a href="https://twitter.com/Africashiningfu">
             <div>
-                <img style={{width: 40}} src="../src/images/X.png"/>
+                <img style={{width: 40}} src={X}/>
             </div>
             </a>
           </Box>

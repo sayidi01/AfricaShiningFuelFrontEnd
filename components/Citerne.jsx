@@ -5,6 +5,8 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import descCiterne1 from"../src/images/descCITERNE1.png"
+import descCiterne2 from"../src/images/descCITERNE2.png"
 import { Input } from "antd";
 const { TextArea } = Input;
 
@@ -22,7 +24,7 @@ function Citerne() {
               marginTop: { xs: "0rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/descCITERNE1.png" width={550} />
+            <img src={descCiterne1} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -59,7 +61,7 @@ function Citerne() {
               marginTop: { xs: "1rem", sm: "8rem" },
             }}
           >
-            <img src="../src/images/descCITERNE2.png" width={550} />
+            <img src={descCiterne2} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

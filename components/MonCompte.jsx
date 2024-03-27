@@ -8,6 +8,8 @@ import { toast } from "react-hot-toast";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
+import iconsperson1 from"../src/images/icons8-personne-homme-64.png"
+import iconsperson2 from"../src/images/new user.png"
 
 import { UserOutlined } from "@ant-design/icons";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
@@ -121,7 +123,7 @@ function MonCompte() {
             <div style={{ marginRight: "10px" }}>
               <img
                 width={50}
-                src="../src/images/icons8-personne-homme-64.png"
+                src={iconsperson1}
               />
             </div>
             <Typography
@@ -307,7 +309,7 @@ function MonCompte() {
             sx={{ marginTop: { xs: "2rem", sm: "0" }, textAlign: "center" }}
           >
             <div>
-              <img src="../src/images/new user.png" width={50} />
+              <img src={iconsperson2} width={50} />
             </div>
             <Typography
               style={{

@@ -6,6 +6,9 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import descFuel1 from"../src/images/descFUEL2(1).png"
+import descFuel2 from"../src/images/descFUEL2(2).png"
+import descFuel3 from"../src/images/descFuel2(3).png"
 import { Input } from "antd";
 const { TextArea } = Input;
 
@@ -33,7 +36,7 @@ function Fuel2() {
               marginTop: { xs: "1rem", sm: "2rem" },
             }}
           >
-            <img src="../src/images/descFUEL2(1).png" alt="Fuel2" width={550} />
+            <img src={descFuel1} alt="Fuel2" width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -86,7 +89,7 @@ function Fuel2() {
               marginTop: { xs: "2rem", sm: "4rem" },
             }}
           >
-            <img src="../src/images/descFUEL2(2).png" alt="Fuel" width={550} />
+            <img src={descFuel2} alt="Fuel" width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -135,7 +138,7 @@ function Fuel2() {
               marginTop: { xs: "2rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/descFuel2(3).png" alt="Fuel" width={550} />
+            <img src={descFuel3} alt="Fuel" width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

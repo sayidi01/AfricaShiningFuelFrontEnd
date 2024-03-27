@@ -2,6 +2,8 @@ import React from "react";
 import NavBar from "./NavBar";
 import { Grid, Box, Typography } from "@mui/material";
 import Footer from "./Footer";
+import descCollecteLubrifiant1 from"../src/images/descCOLLECTELUBRIFIANT1.png"
+import descCollecteLubrifiant2 from"../src/images/descCOLLECTELUBRIFIANT2.png"
 function CollecteLubrifiant() {
   return (
     <div>
@@ -15,7 +17,7 @@ function CollecteLubrifiant() {
             }}
           >
             <img
-              src="../src/images/descCOLLECTELUBRIFIANT1.png"
+              src={descCollecteLubrifiant1}
               alt="collectelubrifiant"
               width={550}
             />
@@ -70,7 +72,7 @@ function CollecteLubrifiant() {
             }}
           >
             <img
-              src="../src/images/descCOLLECTELUBRIFIANT2.png"
+              src={descCollecteLubrifiant2}
               alt="collectelubrifiant"
               width={550}
             />

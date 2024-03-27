@@ -7,13 +7,13 @@ import Toolbar from "@mui/material/Toolbar";
 import { Stack, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
-import Logo from "../src/LOGO_AFRICA_SHINING-removebg-preview.png";
+import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
 import Drawer from "@mui/material/Drawer";
 import SearchIcon from "@mui/icons-material/Search";
-import Popover from "@mui/material/Popover";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import Divider from "@mui/material/Divider";
-import Paper from "@mui/material/Paper";
+
 import "../src/Navbar.css";
 
 import ListSubheader from "@mui/material/ListSubheader";
@@ -27,7 +27,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 
-import Button from "@mui/material/Button";
+
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
@@ -118,12 +118,13 @@ function NavBar() {
       <AppBar position="sticky" sx={{ backgroundColor: "white" }}>
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
+            <a href="/landing">
             <img
               src={Logo}
               alt="logo"
               width={180}
-              onClick={() => navigate("/landing")}
             />
+            </a>
           </div>
           <Stack
             sx={{ flexGrow: 1, display: { xs: "none", lg: "flex" } }}
@@ -159,7 +160,7 @@ function NavBar() {
                 }}
               >
                  <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Link to={"/gazoil"} style={{ textDecoration: "none" }}>
+                <a href="./gazoil" style={{ textDecoration: "none" }}>
                   <MenuItem
                     sx={{
                       p: 1,
@@ -172,7 +173,7 @@ function NavBar() {
                   >
                     Gazoil
                   </MenuItem>
-                </Link>
+                </a>
                 <Link to={"/Fuel2"} style={{ textDecoration: "none" }}>
                   <MenuItem
                     sx={{

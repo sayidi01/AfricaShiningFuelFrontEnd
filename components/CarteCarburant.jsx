@@ -1,6 +1,8 @@
 import React from "react";
 import NavBar from "./NavBar";
 import { Box, Grid, Typography } from "@mui/material";
+import CarteCarburant1 from"../src/images/cartecarburant1.png"
+import CarteCarburant2 from"../src/images/descCARTECARBURANT2.png"
 
 import Footer from "./Footer";
 function CarteCarburant() {
@@ -15,7 +17,7 @@ function CarteCarburant() {
           sx={{ marginTop: { xs: "0rem", sm: "6rem" } }}
         >
           <Box sx={{ marginLeft: { xs: "0rem", sm: "6rem" } }}>
-            <img src="../src/images/cartecarburant1.png" width={550} />
+            <img src={CarteCarburant1} width={550} />
           </Box>
         </Grid>
         <Grid
@@ -62,7 +64,7 @@ function CarteCarburant() {
           }}
         >
           <Box>
-            <img src="../src/images/descCARTECARBURANT2.png" width={550} />
+            <img src={CarteCarburant2} width={550} />
           </Box>
         </Grid>
         <Grid

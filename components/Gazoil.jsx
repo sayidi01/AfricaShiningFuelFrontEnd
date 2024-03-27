@@ -8,6 +8,9 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import descGazoil1 from"../src/images/descGAZOIL.jpeg"
+import descGazoil2 from"../src/images/descGazoil2.png"
+import descGazoil3 from"../src/images/descGAZOIL3.png"
 import { Input } from "antd";
 const { TextArea } = Input;
 function Gazoil() {
@@ -36,7 +39,7 @@ function Gazoil() {
             textAlign: { xs: "left", sm: "center" },
           }}
         >
-          <img src="../src/images/descGAZOIL.jpeg" width={550} />
+          <img src={descGazoil1} width={550} />
         </Grid>
         <Grid item xs={12} sm={5} marginTop={{ xs: "0rem", sm: "7rem" }}>
           <Typography
@@ -92,7 +95,7 @@ function Gazoil() {
             textAlign: { xs: "left", sm: "center" },
           }}
         >
-          <img src="../src/images/descGazoil2.png" width={550} />
+          <img src={descGazoil2} width={550} />
         </Grid>
         <Grid item xs={12} sm={5} marginTop={{ xs: "0rem", sm: "10rem" }}>
           <Typography
@@ -129,7 +132,7 @@ function Gazoil() {
             textAlign: { xs: "left", sm: "center" },
           }}
         >
-          <img src="../src/images/descGAZOIL3.png" width={550} />
+          <img src={descGazoil3} width={550} />
         </Grid>
         <Grid item xs={12} sm={6} marginTop={{ xs: "2rem", sm: "10rem" }}>
           <Typography

@@ -7,6 +7,9 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import descBoisChauffage1 from"../src/images/descBOISCHAUFFAGE1.png"
+import descBoisChauffage2 from"../src/images/descBOISCHAUFFAGE2.png"
+import descBoisChauffage3 from"../src/images/descBOISCHAUFFAGE3.png"
 import { Input } from "antd";
 const { TextArea } = Input;
 function BoisDeChauffage() {
@@ -21,7 +24,7 @@ function BoisDeChauffage() {
               marginLeft: { xs: "0rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/descBOISCHAUFFAGE1.png" width={550} />
+            <img src={descBoisChauffage1} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -57,7 +60,7 @@ function BoisDeChauffage() {
               marginLeft: { xs: "0rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/descBOISCHAUFFAGE2.png" width={550} />
+            <img src={descBoisChauffage2} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -111,7 +114,7 @@ function BoisDeChauffage() {
               marginLeft: { xs: "0rem", sm: "7rem" },
             }}
           >
-            <img src="../src/images/descBOISCHAUFFAGE3.png" width={550} />
+            <img src={descBoisChauffage3} width={550} />
           </Box>
         </Grid>
         <Typography

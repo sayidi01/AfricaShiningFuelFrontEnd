@@ -1,6 +1,9 @@
 import React from "react";
 import NavBar from "./NavBar";
 import { Grid, Box, Typography } from "@mui/material";
+import descNettoyageCuve1 from"../src/images/descNETTOYAGECUVE1.png"
+import descNettoyageCuve2 from"../src/images/descNETTOYAGECUVE2.png"
+import descNettoyageCuve3 from "../src/images/descNETTOYAGECUVE3.png"
 import Footer from "./Footer";
 function NettoyageCuve() {
   return (
@@ -14,7 +17,7 @@ function NettoyageCuve() {
               marginTop: { xs: "0rem", sm: "6rem" },
             }}
           >
-            <img src="../src/images/descNETTOYAGECUVE1.png" alt="Nettoyage de cuve" width={550} />
+            <img src={descNettoyageCuve1} alt="Nettoyage de cuve" width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -70,7 +73,7 @@ function NettoyageCuve() {
               marginLeft: { xs: "0rem", sm: "7rem" },
             }}
           >
-            <img src="../src/images/descNETTOYAGECUVE2.png" alt="Nettoyage de cuve" width={450} />
+            <img src={descNettoyageCuve2} alt="Nettoyage de cuve" width={450} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={5}>
@@ -80,7 +83,7 @@ function NettoyageCuve() {
               marginLeft: { xs: "0rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/descNETTOYAGECUVE3.png" alt="Nettoyage de cuve" width={450} />
+            <img src={descNettoyageCuve3} alt="Nettoyage de cuve" width={450} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={7}>

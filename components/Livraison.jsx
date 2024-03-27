@@ -2,6 +2,9 @@ import React from "react";
 import NavBar from "./NavBar";
 import { Box, Grid, Typography } from "@mui/material";
 import Footer from "./Footer";
+import descLivraison1 from"../src/images/descLIVRASION1.png"
+import descLivraison2 from"../src/images/descLIVRAISON2.png"
+import descLivraison3 from"../src/images/descLIVRAISON3.png"
 function Livraison() {
   return (
     <div>
@@ -14,7 +17,7 @@ function Livraison() {
               marginLeft: { xs: "0rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/descLIVRASION1.png" width={550} />
+            <img src={descLivraison1} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -72,7 +75,7 @@ function Livraison() {
               marginLeft: { xs: "0rem", sm: "5rem" },
             }}
           >
-            <img src="../src/images/descLIVRAISON2.png" width={550} />
+            <img src={descLivraison2} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -82,7 +85,7 @@ function Livraison() {
               marginTop: { xs: "3rem", sm: "7rem" },
             }}
           >
-            <img src="../src/images/descLIVRAISON3.png" width={550} />
+            <img src={descLivraison3} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

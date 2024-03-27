@@ -5,6 +5,8 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import descProduitNettoyage1 from"../src/images/descNETTOYAGE1.png"
+import descProduitNettoyage2 from"../src/images/descNETTOYAGE2.png"
 import { Input } from "antd";
 const { TextArea } = Input;
 
@@ -22,7 +24,7 @@ function ProduitNettoyage() {
               marginTop: { xs: "1rem", sm: "2rem" },
             }}
           >
-            <img src="../src/images/descNETTOYAGE1.png" alt="produitnettoyage" width={350} />
+            <img src={descProduitNettoyage1} alt="produitnettoyage" width={350} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -69,7 +71,7 @@ function ProduitNettoyage() {
           sx={{ marginTop: { xs: "2rem", sm: "9rem" } }}
         >
           <Box sx={{ marginLeft: { xs: "0rem", sm: "9rem" } }}>
-            <img src="../src/images/descNETTOYAGE2.png" width={350} />
+            <img src={descProduitNettoyage2} width={350} />
           </Box>
         </Grid>
         <Grid

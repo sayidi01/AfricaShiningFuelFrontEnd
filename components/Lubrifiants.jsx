@@ -5,6 +5,9 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import descLubrifiant1 from"../src/images/descLUBRIFIANT1.png"
+import descLubrifiant2 from"../src/images/descLUBRIFIANT2.png"
+import descLubrifiant3 from"../src/images/descLUBRIFIANT3.jpeg"
 import { Input } from "antd";
 const { TextArea } = Input;
 
@@ -23,7 +26,7 @@ function Lubrifiants() {
             }}
           >
             <img
-              src="../src/images/descLUBRIFIANT1.png"
+              src={descLubrifiant1}
               alt="lubrifiants"
               width={550}
             />
@@ -84,7 +87,7 @@ function Lubrifiants() {
             }}
           >
             <img
-              src="../src/images/descLUBRIFIANT2.png"
+              src={descLubrifiant2}
               alt="Lubrifiant"
               width={550}
             />
@@ -102,7 +105,7 @@ function Lubrifiants() {
               marginLeft: { xs: "0rem", sm: "8rem" },
             }}
           >
-            <img src="../src/images/descLUBRIFIANT3.jpeg" width={550} />
+            <img src={descLubrifiant3} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

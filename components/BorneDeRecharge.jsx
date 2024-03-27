@@ -7,6 +7,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { Input } from "antd";
+import BorneRecharge1 from"../src/images/descBORNERECHARGE1.jpeg"
+import BorneRecharge2 from"../src/images/descBORNERECHARGE2.png"
 const { TextArea } = Input;
 function BorneDeRecharge() {
   return (
@@ -15,7 +17,7 @@ function BorneDeRecharge() {
       <Grid container>
         <Grid item xs={12} sm={6}>
           <Box sx={{ marginTop: { xs: "2rem", sm: "6rem" } }}>
-            <img src="../src/images/descBORNERECHARGE1.jpeg" width={550} />
+            <img src={BorneRecharge1} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -60,7 +62,7 @@ function BorneDeRecharge() {
               marginLeft: { xs: "0rem", sm: "6rem" },
             }}
           >
-            <img src="../src/images/descBORNERECHARGE2.png" width={550} />
+            <img src={BorneRecharge2} width={550} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

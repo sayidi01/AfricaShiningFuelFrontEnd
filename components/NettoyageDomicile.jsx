@@ -1,6 +1,9 @@
 import React from "react";
 import NavBar from "./NavBar";
 import { Grid, Box, Typography } from "@mui/material";
+import descNettoyageAdomicile1 from"../src/images/descNETTOYAGEDOMICILE1.png"
+import descNettoyageAdomicile2 from"../src/images/descNETTOYAGEDOMICILE2.png"
+import descNettoyageAdomicile3 from"../src/images/descNETTOYAGEDOMICILE3.png"
 import Footer from "./Footer";
 function NettoyageDomicile() {
   return (
@@ -15,7 +18,7 @@ function NettoyageDomicile() {
             }}
           >
             <img
-              src="../src/images/descNETTOYAGEDOMICILE1.png"
+              src={descNettoyageAdomicile1}
               alt="nettoyagedomicile"
               width={550}
             />
@@ -85,7 +88,7 @@ function NettoyageDomicile() {
             }}
           >
             <img
-              src="../src/images/descNETTOYAGEDOMICILE2.png"
+              src={descNettoyageAdomicile2}
               alt="nettoyagedomicile"
               width={550}
             />
@@ -99,7 +102,7 @@ function NettoyageDomicile() {
             }}
           >
             <img
-              src="../src/images/descNETTOYAGEDOMICILE3.png"
+              src={descNettoyageAdomicile3}
               alt="nettoyagedomicile"
               width={400}
             />
