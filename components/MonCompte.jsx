@@ -57,7 +57,7 @@ function MonCompte() {
         console.log(data);
         setData(data);
         setisConnected(true)
-        toast.success(data.message ?? "connected successfully");
+        toast.success(data.message ?? "your compte create successfully");
       })
 
       .catch((err) => {
