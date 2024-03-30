@@ -4,7 +4,8 @@ import Divider from "@mui/material/Divider";
 import { Input } from "antd";
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
+import Logo from'../src/images/LOGO_AFRICA_SHINING-removebg-preview copy.png'
+
 import facebook from"../src/images/facebook.png"
 import Linkedin from"../src/images/linkdin.png"
 import X from"../src/images/X.png"
