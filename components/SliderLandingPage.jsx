@@ -64,7 +64,7 @@ function SliderLandingPage() {
               fontWeight: "bold",
             }}
           >
-            en savoir plus
+            En savoir plus
           </Button>
         </div>
         <Link to={'/Fuel2'}>
