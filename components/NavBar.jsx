@@ -126,8 +126,8 @@ function NavBar() {
             />
             </a>
           </div>
-          <Stack
-            sx={{ flexGrow: 1, display: { xs: "none", lg: "flex" } }}
+          <Stack 
+            sx={{ flexGrow: 1, display: { xs: "none", lg: "flex"  } }}
             direction={"row"}
             spacing={5}
             style={{
@@ -227,7 +227,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseProducts}
                   >
-                    Citerne
+                    Citernes
                   </MenuItem>
                 </Link>
                 <Link to={"/BornesRecharge"} style={{ textDecoration: "none" }}>
@@ -241,7 +241,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseProducts}
                   >
-                    Borne De Recharge
+                    Bornes de Recharge
                   </MenuItem>
                 </Link>
                 <Link
@@ -258,7 +258,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseProducts}
                   >
-                    Produit De Nettoyage
+                    Produits de Nettoyage
                   </MenuItem>
                 </Link>
                 <Link to={'/boischauffage'}  style={{ textDecoration: "none" }} >
@@ -310,7 +310,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseServices}
                   >
-                    Livrasion
+                    Livraisons
                   </MenuItem>
                 </Link>
                 <Link to={"/cartecarburant"} style={{ textDecoration: "none" }}>
@@ -324,7 +324,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseServices}
                   >
-                    Carte Carburant Toute Marque
+                    Carte Carburant Toutes Marques
                   </MenuItem>
                 </Link>
                 <Link to={"/"} style={{ textDecoration: "none" }}>
@@ -338,7 +338,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseServices}
                   >
-                    Abonnement Telebadge
+                    Abonnement Télépéage
                   </MenuItem>
                 </Link>
                 
@@ -380,7 +380,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseServicesPlus}
                   >
-                   Nettoyage A Domicile
+                   Nettoyage à Domicile
                   </MenuItem>
                 </Link>
                 <Link to={"/collectelubrifiant"} style={{ textDecoration: "none" }}>
@@ -463,7 +463,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseEvaluationMarche}
                   >
-                   Actutalité ASF
+                   Actutalités ASF
                   </MenuItem>
                 </Link>
                

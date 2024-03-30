@@ -197,7 +197,7 @@ function Fuel2() {
               fontWeight: "bolder",
             }}
           >
-            Devis Fuel 2
+            Devis Fuel oil n° 2
           </Typography>
         </Grid>
         <Grid item xs={12} sm={8}>

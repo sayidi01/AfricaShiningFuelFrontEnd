@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../src/Caroussel.css";
+import { Link } from "react-router-dom";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -104,7 +105,9 @@ function Carousel() {
                 display: "flex",
               }}
             >
-              Gazoil
+              <Link to={'/gazoil'} style={{ textDecoration: "none", color: "inherit" }}>
+              Gasoil
+              </Link>
             </div>
           </div>
           <div className="Fuel2">
@@ -118,7 +121,9 @@ function Carousel() {
                 display: "flex",
               }}
             >
-              Fuel 2
+              <Link to={'/Fuel2'}  style={{ textDecoration: "none", color: "inherit" }}>
+              Fuel oil
+              </Link>
             </div>
           </div>
           <div className="Lubrifiant">
@@ -132,7 +137,9 @@ function Carousel() {
                 display: "flex",
               }}
             >
-              Lubrifiant
+              <Link to={'/Lubrifiants'}  style={{ textDecoration: "none", color: "inherit" }}>
+              Lubrifiants
+              </Link>
             </div>
           </div>
           <div className="Citerne">
@@ -146,7 +153,9 @@ function Carousel() {
                 display: "flex",
               }}
             >
-              Citerne
+              <Link to={'/Citerne'}  style={{ textDecoration: "none", color: "inherit" }}>
+              Citernes
+              </Link>
             </div>
           </div>
           <div className="bElectrique">
@@ -160,7 +169,9 @@ function Carousel() {
                 display: "flex",
               }}
             >
-              Borne Electrique
+              <Link to={'/BornesRecharge'}  style={{ textDecoration: "none", color: "inherit" }}>
+              Bornes Electrique
+              </Link>
             </div>
           </div>
           <div className="CarteMM">
@@ -174,9 +185,12 @@ function Carousel() {
                 display: "flex",
               }}
             >
-              Carte MM
+              <Link to={'/cartecarburant'}  style={{ textDecoration: "none", color: "inherit" }}>
+              Carte ASF multi.M
+              </Link>
             </div>
           </div>
+          <Link to={'/produitnettoyage'}  style={{ textDecoration: "none", color: "inherit" }} >
           <div className="prdHygiene">
             <div
               className="text-prdHygiene"
@@ -188,9 +202,12 @@ function Carousel() {
                 display: "flex",
               }}
             >
+             
               Produit Hygiene
+             
             </div>
           </div>
+          </Link>
         </Slider>
       </div>
     </div>

@@ -245,7 +245,7 @@ function PolitiqueRH() {
                     marginLeft: { xs: "1rem", sm: "5rem" },
                   }}
                 >
-                  Upload file
+                Charger Votre CV
                   <VisuallyHiddenInput type="file" />
                 </Button>
               </Box>

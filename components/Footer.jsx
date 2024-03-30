@@ -3,7 +3,7 @@ import React from "react";
 import Divider from "@mui/material/Divider";
 import { Input } from "antd";
 import { Grid } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
 import facebook from"../src/images/facebook.png"
 import Linkedin from"../src/images/linkdin.png"
@@ -221,7 +221,7 @@ function Footer({marginTop}) {
               >
                 <Grid  item xs={12} md={4} lg={3}>
                     <Typography onClick={() => navigate('/gazoil')} style={{ fontFamily: "Montserrat-sans serif" }}>
-                      Gazoil
+                      Gasoil
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
@@ -231,7 +231,7 @@ function Footer({marginTop}) {
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
                     <Typography onClick={() => navigate("/Fuel2")} style={{ fontFamily: "Montserrat-sans serif" }}>
-                      Fuel 2
+                      Fuel oil n° 2
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
@@ -246,18 +246,22 @@ function Footer({marginTop}) {
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
                     <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
-                      Politique de confientialité
+                      Politique de confidentialité
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                  <Link to={'/engagementrse'} style={{textDecoration: "none", color: "inherit"}}>
+                    <Typography style={{ fontFamily: "Montserrat-sans serif",  }} >
                       Environnement
                     </Typography>
+                  </Link>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                  <Link to={'/engagementrse'} style={{textDecoration: "none", color: "inherit"}}>
+                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}  >
                       Qui Sommes-nous ?
                     </Typography>
+                  </Link>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
                     <Typography style={{ fontFamily: "Montserrat-sans serif" }}>

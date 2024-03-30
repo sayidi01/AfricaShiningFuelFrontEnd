@@ -87,7 +87,7 @@ function ProduitNettoyage() {
               marginLeft: { xs: "1rem", sm: "0rem" },
             }}
           >
-            <span style={{ color: "#FFA447" }}> Chez Africa Shining Fuel</span>,
+            Chez <span style={{ color: "#FFA447" }}> Africa Shining Fuel</span>,
             nous nous engageons à fournir à nos clients <br/> des solutions de
             nettoyage industrielles de premier ordre, soutenues par  <br/> notre{" "}
             <span style={{ fontWeight: "bold" }}>

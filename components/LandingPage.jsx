@@ -72,7 +72,7 @@ function LandingPage() {
                   }}
                 >
                   Découvrez une gamme compléte de carburants , lubrifiants et
-                  service sur messure. Chez ASF , nous façonnons a l'avenir de
+                  service sur messure. Chez <span style={{fontWeight: "bold"}}>ASF</span>, nous façonnons a l'avenir de
                   l'energie avec engagement, compétitivité et responsabilité
                   sociale.
                 </Typography>
@@ -102,7 +102,7 @@ function LandingPage() {
                 justifyContent="center"
                 style={{ textTransform: "capitalize" }}
               >
-                <Button
+                <Button onClick={()=> navigate('/gazoil')}
                   startIcon={<LocalGasStationIcon />}
                   style={{
                     backgroundColor: "#659a9a",
@@ -119,7 +119,7 @@ function LandingPage() {
                 >
                   Carburant Gasoil{" "}
                 </Button>
-                <Button
+                <Button onClick={() => navigate('/cartecarburant')}
                   startIcon={<AddCardIcon />}
                   style={{
                     backgroundColor: "#659a9a",
@@ -144,7 +144,7 @@ function LandingPage() {
                   justifyContent: "center",
                 }}
               >
-                <Button
+                <Button onClick={() => navigate('/livraison')}
                   startIcon={<DepartureBoardIcon />}
                   style={{
                     backgroundColor: "#659a9a",
@@ -255,16 +255,16 @@ function LandingPage() {
             </Typography>
 
             <Typography  style={{ marginTop: "1rem" }} color={"gray"}>
-              Avec une expérience inwi,
-              <br />
-              AFRICASHININGFUEL s'est établie comme un <br />
+              Avec une expérience inwi,la societé  AFRICA SHINING FUEL<br/>
+             
+              Témoigne de notre excellence et durabilité  s'est établie comme un <br />
               leader incontesté dans le domaine des carburants
               <br /> au Maroc. Notre engagement envers la qualité et
               <br /> la fidélité de notre clientèle témoigne de notre
               <br /> excellence durable.
             </Typography>
             <div style={{ marginTop: "2rem" }}>
-              <Button
+              <Button onClick={() => navigate('/presentationgroupe')}
                 style={{
                   backgroundColor: "black",
                   color: "white ",
@@ -383,7 +383,7 @@ function LandingPage() {
               padding: "10px 80px",
             }}
           >
-            Carte Carburant Toute Marque
+            Carte Carburant toute marque ASF
           </Button>
           <Button
             style={{
