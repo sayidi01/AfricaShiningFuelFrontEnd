@@ -160,7 +160,7 @@ function NavBar() {
                 }}
               >
                  <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <a href="./gazoil" style={{ textDecoration: "none" }}>
+                <Link to={'/gazoil'} style={{ textDecoration: "none" }}>
                   <MenuItem
                     sx={{
                       p: 1,
@@ -173,7 +173,7 @@ function NavBar() {
                   >
                     Gazoil
                   </MenuItem>
-                </a>
+                </Link>
                 <Link to={"/Fuel2"} style={{ textDecoration: "none" }}>
                   <MenuItem
                     sx={{
