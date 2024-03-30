@@ -185,7 +185,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseProducts}
                   >
-                    Fuel2
+                    Fuel oil n° 2
                   </MenuItem>
                 </Link>
                 <Link to={"/Lubrifiants"} style={{ textDecoration: "none" }}>
