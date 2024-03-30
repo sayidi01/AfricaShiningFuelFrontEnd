@@ -3,7 +3,7 @@ import React from "react";
 import Divider from "@mui/material/Divider";
 import { Input } from "antd";
 import { Grid } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
 import facebook from"../src/images/facebook.png"
 import Linkedin from"../src/images/linkdin.png"
@@ -11,6 +11,7 @@ import X from"../src/images/X.png"
 import telephone from"../src/images/telephone.png"
 import Adresse from "../src/images/office-push-pin.png"
 import Email from"../src/images/email.png"
+
 const { TextArea } = Input;
 
 function Footer({marginTop}) {

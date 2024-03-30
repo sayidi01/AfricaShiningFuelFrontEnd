@@ -35,7 +35,7 @@ export const PublicRoutes = [
     },
     {
         id: 2,
-        path: '/',
+        path: '/landing',
         element: <LandingPage />
     },
     {
