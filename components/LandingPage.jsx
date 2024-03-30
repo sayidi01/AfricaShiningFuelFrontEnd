@@ -5,7 +5,7 @@ import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
 import DepartureBoardIcon from "@mui/icons-material/DepartureBoard";
 import AddCardIcon from "@mui/icons-material/AddCard";
-import NosServices from "../src/images/services.jpeg";
+import NosServices from "../src/images/descLIVRAISON3.png";
 import Carousel from "../components/Carousel";
 import SliderLandingPage from "./SliderLandingPage";
 import Footer from "./Footer";
