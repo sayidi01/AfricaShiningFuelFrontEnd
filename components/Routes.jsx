@@ -1,6 +1,5 @@
 
 import Gazoil from "./Gazoil.jsx"
-import LandingPage from "./LandingPage.jsx"
 
 import MonCompte from "./MonCompte.jsx"
 import MotDepasseOublier from "./MotDepasseOublier.jsx"
@@ -23,6 +22,7 @@ import EngagementRSE from "./EngagementRSE.jsx"
 import PolitiqueRH from "./PolitiqueRH.jsx"
 import OffreCompetitive from "./OffreCompetitive.jsx"
 import EquipeDediees from "./EquipeDediees.jsx"
+import LandingPage from "./LandingPage.jsx"
 
 
 
@@ -35,8 +35,8 @@ export const PublicRoutes = [
     },
     {
         id: 2,
-        path: '/landing',
-        element: <LandingPage/>
+        path: '/',
+        element: <LandingPage />
     },
     {
         id: 3,
