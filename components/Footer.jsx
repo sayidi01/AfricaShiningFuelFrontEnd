@@ -3,7 +3,7 @@ import React from "react";
 import Divider from "@mui/material/Divider";
 import { Input } from "antd";
 import { Grid } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
 import facebook from"../src/images/facebook.png"
 import Linkedin from"../src/images/linkdin.png"

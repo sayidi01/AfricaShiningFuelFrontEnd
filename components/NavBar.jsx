@@ -7,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { Stack, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
-import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
+import Logo from'../src/images/LOGO_AFRICA_SHINING-removebg-preview copy.png'
 import Drawer from "@mui/material/Drawer";
 import SearchIcon from "@mui/icons-material/Search";
 

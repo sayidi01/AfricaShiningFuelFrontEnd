@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBar from './NavBar'
 import { Grid, Box } from '@mui/material'
-
+import Logo from'../src/images/LOGO_AFRICA_SHINING-removebg-preview.png'
 function PourquoiChoisirASF() {
   return (
     <div>
