@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import '../src/sliderLIVRAISON.css';
 import { Box } from '@mui/material';
 import { Link, NavLink } from 'react-router-dom';
+import { Typography } from 'antd';
 
 function SliderNosServices() {
  
@@ -25,7 +26,7 @@ function SliderNosServices() {
         <Slider {...settings}>
             <Link to={'/livraison'}>
           <div className='livraison'>
-            <h3></h3>
+            <Typography> The TFC card enables you to refuel economically at up to 4,600 petrol stations. Our network covers 18 European countries and continues to expand.  </Typography>
           </div>
             </Link>
            <NavLink to={'/cartecarburant'}>

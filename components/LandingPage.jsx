@@ -293,19 +293,26 @@ function LandingPage() {
             </div>
           </Grid>
         </Grid>
-        <Box sx={{ position: "relative", width: "80%",    marginTop: {xs: '1rem', sm: '0rem'} }} >
+        <Box
+          sx={{
+            position: "relative",
+            width: "80%",
+            marginTop: { xs: "1rem", sm: "0rem" },
+          }}
+        >
           <Typography
             sx={{
-              fontWeight: "inherit",
-              fontFamily: "Motserrat sans-serif",
+              fontWeight: "bold",
+              fontFamily: "Motserrat",
               fontSize: 32,
               position: "absolute",
               bottom: 0,
-             top: {xs: 20, sm: 70},
+              top: { xs: 20, sm: 70 },
               right: 0,
             }}
           >
-            <span style={{ textDecoration: 'underline' }}>NOS SER</span>VICES<span style={{ textDecoration: 'underline'}}></span>
+            <span style={{ textDecoration: "underline" }}>NOS SER</span>VICES
+            <span style={{ textDecoration: "underline" }}></span>
           </Typography>
         </Box>
         <SliderNosServices />
@@ -326,7 +333,17 @@ function LandingPage() {
               borderRadius: 25,
               fontSize: "15px",
               padding: "10px 80px",
+              transition: "background-color 0.3s ease",
             }}
+            onMouseEnter={() => {
+              document.getElementById(" Livraison").style.backgroundColor =
+                "black";
+            }}
+            onMouseLeave={() => {
+              document.getElementById(" Livraison").style.backgroundColor =
+                "#659a9a";
+            }}
+            id=" Livraison"
           >
             Livraison
           </Button>
@@ -338,8 +355,18 @@ function LandingPage() {
               textTransform: "capitalize",
               borderRadius: 25,
               fontSize: "15px",
-              padding: "10px 80px"
+              padding: "10px 50px",
+              transition: "background-color 0.3s ease",
             }}
+            onMouseEnter={() => {
+              document.getElementById("Carte Carburant toute marque ASF").style.backgroundColor =
+                "#659a9a";
+            }}
+            onMouseLeave={() => {
+              document.getElementById("Carte Carburant toute marque ASF").style.backgroundColor =
+                "black";
+            }}
+            id="Carte Carburant toute marque ASF"
           >
             Carte Carburant toute marque ASF
           </Button>
@@ -351,7 +378,17 @@ function LandingPage() {
               borderRadius: 25,
               fontSize: "15px",
               padding: "10px 80px",
+              transition: "background-color 0.3s ease",
             }}
+            onMouseEnter={() => {
+              document.getElementById("abonnement telebadge").style.backgroundColor =
+                "#659a9a";
+            }}
+            onMouseLeave={() => {
+              document.getElementById("abonnement telebadge").style.backgroundColor =
+                "black";
+            }}
+            id="abonnement telebadge"
           >
             Abonnement Télébadge
           </Button>

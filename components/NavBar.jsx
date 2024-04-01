@@ -214,7 +214,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseProducts}
                   >
-                    Hydrogéne vert
+                    Hydrogène vert
                   </MenuItem>
                 </Link>
                 <Link to={"/Citerne"} style={{ textDecoration: "none" }}>
@@ -604,10 +604,13 @@ function NavBar() {
               justifyContent: "space-between",
             }}
           >
+
+
             <PersonIcon
               onClick={() => navigate("/compte")}
               style={{ color: "black", marginRight: 15 }}
             />
+
             <SearchIcon style={{ color: "black", marginRight: 15 }} />
 
             <MenuIcon

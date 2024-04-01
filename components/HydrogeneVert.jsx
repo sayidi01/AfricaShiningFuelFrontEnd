@@ -7,8 +7,9 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import descHydrogeneVert1 from "../src/images/descHYDROGENEVERT1.jpeg";
-import descHydrogeneVert2 from "../src/images/descHYDROGENEVERT2.png";
 import descHydrogeneVert3 from "../src/images/decHYDROGENEVERT3.png";
+import descHYDROGENEVERT22 from "../src/images/descHydrogeneVert22.png";
+
 import { Input } from "antd";
 
 const { TextArea } = Input;
@@ -17,116 +18,204 @@ function HydrogeneVert() {
   return (
     <div>
       <NavBar />
-      <Container sx={{ my: 10 }} maxWidth={"lg"}>
-        <Grid container>
-          <Grid item md={12} lg={6}>
+      <Container sx={{ my: 10 }} maxWidth={"lg"} style={{ padding: "none" }}>
+        <Grid
+          container
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingBottom: 120,
+          }}
+        >
+          <Grid item xs={12} md={12} lg={6}>
             <Stack
               height={"100%"}
               alignItems={"center"}
               justifyContent={"center"}
             >
-              <img src={descHydrogeneVert1} width={550} />
+              <img
+                src={descHydrogeneVert1}
+                width={700}
+                height={500}
+                style={{ borderRadius: "1.875rem", border: "1px solid #dbeefe" }}
+              />
             </Stack>
           </Grid>
-          <Grid item md={12} lg={6}>
+
+          <Grid
+            item
+            md={12}
+            lg={3}
+            style={{
+              borderRadius: "1.875rem",
+              border: "1px solid  #fab823",
+              padding: 20,
+              paddingTop: 50,
+              height: 500,
+              width: 400,
+            }}
+          >
             <Typography
               sx={{
-                fontSize: { xs: 18, sm: 22 },
+                fontSize: { xs: 18, sm: 15 },
+                fontFamily: "Space Grotesk",
               }}
             >
-              <span style={{ color: "#65B741" }}> L'hydrogène vert </span>
+              <span style={{ color: "#65B741", fontWeight: "bold" }}>
+                {" "}
+                L'hydrogène vert{" "}
+              </span>
               représente bien plus qu'une simple alternative aux combustibles
               fossiles ; c'est une révolution énergétique qui ouvre la voie à
-              <span style={{ fontWeight: "bold" }}>un avenir plus propre </span>
-              et <span style={{ fontWeight: "bold" }}> plus durable </span>.
+              <span style={{ fontWeight: "bold" }}>
+                {" "}
+                un avenir plus propre{" "}
+              </span>
+              et <span style={{ fontWeight: "bold" }}> plus durable.</span>
               <br />
               <br />
-              <span style={{ color: "#FFA447" }}>
-                Chez Africa Shining Fuel
+              Chez{" "}
+              <span style={{ color: "#FFA447", fontWeight: "bold" }}>
+                {" "}
+                Africa Shining Fuel{" "}
               </span>
               , nous sommes fermement engagés dans cette transition vers une
               économie de l'hydrogène vert. En exploitant des sources d'énergie
-              renouvelables telles que le soleil, le vent et l'eau, nous
-              pouvons produire de l'hydrogène sans émettre
-              de gaz à effet de serre, offrant ainsi une solution
-              prometteuse pour réduire notre empreinte carbone et lutter
-              contre le changement climatique.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Box
-              sx={{
-                marginTop: { xs: "1rem", sm: "10rem" },
-                marginLeft: { xs: "0rem", sm: "5rem" },
-              }}
-            >
-              <img src={descHydrogeneVert2} width={550} />
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              sx={{
-                marginTop: { xs: "1rem", sm: "10rem" },
-                marginLeft: { xs: "1rem", sm: "0rem" },
-                fontSize: { xs: 18, sm: 22 },
-              }}
-            >
-              Ce que{" "}
-              <span style={{ color: "#65B741" }}> l'hydrogène vert </span>{" "}
-              offre, c'est une polyvalence inégalée. <br /> En plus de servir de
-              carburant pour les véhicules à pile à combustible,
-              <br />
-              il peut être utilisé pour stocker l'énergie excédentaire produite
-              par les <br />
-              énergies renouvelables, permettant ainsi une intégration plus
-              efficace
-              <br /> des sources d'énergie intermittentes dans nos réseaux
-              électriques.
-              <br /> De plus, il peut être utilisé comme matière première dans
-              l'industrie
-              <br /> chimique pour produire des produits tels que l'ammoniac ou
-              le méthanol, contribuant ainsi à décarboner d'autres secteurs de
-              notre économie.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Box
-              sx={{
-                marginTop: { xs: "1rem", sm: "8rem" },
-                marginLeft: { xs: "0rem", sm: "5rem" },
-              }}
-            >
-              <img src={descHydrogeneVert3} width={550} />
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              sx={{
-                fontSize: { xs: 18, sm: 22 },
-                marginTop: { xs: "1rem", sm: "9rem" },
-                marginLeft: { xs: "1rem", sm: "0rem" },
-              }}
-            >
-              Chez{" "}
-              <span style={{ color: "#FFA447" }}> Africa Shining Fuel </span> ,
-              nous croyons en un avenir alimenté par <br />
-              <span style={{ color: "#65B741" }}> l'hydrogène vert </span>. Nous
-              sommes déterminés à jouer un rôle de <br /> leader dans cette
-              transition, en collaborant avec des partenaires <br />{" "}
-              stratégiques et en investissant dans des projets innovants.
-              Actuellement, <br />
-              nous sommes en discussion avec{" "}
-              <span style={{ fontWeight: "bold" }}> Lhyfe </span> et{" "}
-              <span style={{ fontWeight: "bold" }}> McPhy Energy </span>
-              pour explorer
-              <br /> de nouvelles opportunités et avancer dans cette direction.
-              Ensemble, nous pouvons transformer notre système énergétique et
-              construire un avenir où l'hydrogène vert est au cœur de notre
-              approvisionnement énergétique, garantissant ainsi un avenir plus
-              sûr, plus propre et plus prospère pour tous.
+              renouvelables telles que le soleil, le vent et l'eau, nous pouvons
+              produire de l'hydrogène sans émettre de gaz à effet de serre,
+              offrant ainsi une solution prometteuse pour réduire notre
+              empreinte carbone et lutter contre le changement climatique.
             </Typography>
           </Grid>
         </Grid>
+
+        <Grid
+          container
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingBottom: 120,
+          }}
+        >
+          <Grid
+            item
+            md={12}
+            lg={3}
+            style={{
+              borderRadius: "1.875rem",
+              border: "1px solid  #fab823",
+              padding: 20,
+              paddingTop: 50,
+              height: 500,
+              width: 400,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: { xs: 18, sm: 15 },
+                fontFamily: "Space Grotesk",
+              }}
+            >
+              Ce que{" "}
+              <span style={{ color: "#65B741", fontWeight: "bold" }}>
+                {" "}
+                l'hydrogène vert{" "}
+              </span>{" "}
+              offre, c'est une polyvalence inégalée. En plus de servir de
+              carburant pour les véhicules à pile à combustible, il peut être
+              utilisé pour stocker l'énergie excédentaire produite par les
+              énergies renouvelables, permettant ainsi une intégration plus
+              efficace des sources d'énergie intermittentes dans nos réseaux
+              électriques. De plus, il peut être utilisé comme matière première
+              dans l'industrie chimique pour produire des produits tels que
+              l'ammoniac ou le méthanol, contribuant ainsi à décarboner d'autres
+              secteurs de notre économie.
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} md={12} lg={6}>
+            <Stack
+              height={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <img
+                src={descHYDROGENEVERT22}
+                width={700}
+                height={500}
+                style={{ borderRadius: "1.875rem", border: "1px solid  #dbeefe" }}
+              />
+            </Stack>
+          </Grid>
+        </Grid>
+
+        <Grid
+          container
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingBottom: 80,
+          }}
+        >
+          <Grid item xs={12} md={12} lg={6}>
+            <Stack
+              height={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <img
+                src={descHydrogeneVert3}
+                width={700}
+                height={500}
+                style={{ borderRadius: "1.875rem", border: "1px solid  #dbeefe" }}
+              />
+            </Stack>
+          </Grid>
+
+          <Grid
+            item
+            md={12}
+            lg={3}
+            style={{
+              borderRadius: "1.875rem",
+              border: "1px solid #fab823",
+              padding: 20,
+              paddingTop: 50,
+              height: 500,
+              width: 400,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: { xs: 18, sm: 15 },
+                fontFamily: "Space Grotesk",
+              }}
+            >
+              Chez{" "}
+              <span style={{ color: "#FFA447", fontWeight: "bold" }}>
+                {" "}
+                Africa Shining Fuel{" "}
+              </span>
+              , nous croyons en un avenir alimenté par
+              <span style={{ color: "#65B741", fontWeight: "bold" }}>
+                {" "}
+                l'hydrogène vert{" "}
+              </span>
+              . Nous sommes déterminés à jouer un rôle de leader dans cette
+              transition, en collaborant avec des partenaires stratégiques et en
+              investissant dans des projets innovants. Actuellement, nous sommes
+              en discussion avec{" "}
+              <span style={{ fontWeight: "bold" }}> Lhyfe </span> et
+              <span style={{ fontWeight: "bold" }}> McPhy Energy </span> pour
+              explorer de nouvelles opportunités et avancer dans cette
+              direction. Ensemble, nous pouvons transformer notre système
+              énergétique et construire un avenir où l'hydrogène vert est au
+              cœur de notre approvisionnement énergétique, garantissant ainsi un
+              avenir plus sûr, plus propre et plus prospère pour tous.
+            </Typography>
+          </Grid>
+        </Grid>
+
         <Box width="50%" margin="auto">
           <Typography
             style={{ borderBottom: "1px solid #FFA447" }}
