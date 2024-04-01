@@ -26,6 +26,7 @@ function SliderLandingPage() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
     ref: sliderRef,
     beforeChange: (current, next) => setCurrentSlide(next),
   };

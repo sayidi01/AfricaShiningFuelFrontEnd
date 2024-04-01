@@ -1,0 +1,44 @@
+.livraison {
+    background-image: url(../src/images/descLIVRAISON3.png);
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}
+
+.carte-carburant-toute-marque-ASF {
+    background-image: url(../src/images/cartecarburant1.png);
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}
+
+.abonnement-telepage {
+    background-image: url(../src/images/descTELEBADGE1.png);
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.slider-wrapper {
+    width: 60%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+    .slider-wrapper {
+        width: 100%;
+    }
+}

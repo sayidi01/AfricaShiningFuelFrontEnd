@@ -112,6 +112,7 @@ function NavBar() {
   const openProducts = Boolean(anchorElProducts);
 
   const navigate = useNavigate();
+  
 
   return (
     <>
@@ -127,7 +128,7 @@ function NavBar() {
             </a>
           </div>
           <Stack 
-         sx={{ flexGrow: 1, display: { xs: "none", md: "flex", lg: "flex" } }}
+         sx={{ flexGrow: 1, display: { xs: "none", sm: "none", md: "none", lg: "flex" }  }} 
             direction={"row"}
             spacing={5}
             style={{
@@ -452,6 +453,20 @@ function NavBar() {
                 }}
               >
                  <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                 <Link to={"/"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
+                      p: 1,
+                      color: "gray",
+                      fontFamily: "initial",
+                      fontWeight: "bolder",
+                      fontSize: 18,
+                    }}
+                    onClick={handlePopoverCloseEvaluationMarche}
+                  >
+                  Investiseurs
+                  </MenuItem>
+                </Link>
                 <Link to={"/"} style={{ textDecoration: "none" }}>
                   <MenuItem
                     sx={{
@@ -731,7 +746,7 @@ function NavBar() {
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
                   <Link to={'/'}  style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Abonnement Telebadge" />
+                  <ListItemText primary="Abonnement Télépage" />
                   </Link>
                 </ListItemButton>
               </List>
@@ -801,6 +816,17 @@ function NavBar() {
               timeout="auto"
               unmountOnExit
             >
+               <List
+                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+                component="div"
+                disablePadding
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Link to={'/'}   style={{textDecoration: 'none', color: 'gray'}}>
+                  <ListItemText primary="Investisseurs" />
+                  </Link>
+                </ListItemButton>
+              </List>
               <List
                 sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
                 component="div"

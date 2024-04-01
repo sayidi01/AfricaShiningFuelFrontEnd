@@ -10,14 +10,15 @@ import Carousel from "../components/Carousel";
 import SliderLandingPage from "./SliderLandingPage";
 import Footer from "./Footer";
 import Divider from "@mui/material/Divider";
-import station from "../src/images/station gaz.jpeg"
+import station from "../src/images/station gaz.jpeg";
 import { useNavigate } from "react-router-dom";
-import globeTerestre from"../src/images/globe terrestre.png"
-import stations2 from"../src/images/globe terrestre.png"
-import maps from"../src/images/maps.png"
+import globeTerestre from "../src/images/globe terrestre.png";
+import stations2 from "../src/images/globe terrestre.png";
+import maps from "../src/images/maps.png";
+import SliderNosServices from "./SliderNosServices";
 
 function LandingPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <div>
@@ -32,9 +33,9 @@ function LandingPage() {
             maxWidth: "none",
           }}
         >
-         <SliderLandingPage/>
+          <SliderLandingPage />
           <Box>
-          <Box sx={{marginTop: {xs: '1rem', sm: '1rem'}}}>
+            <Box sx={{ marginTop: { xs: "1rem", sm: "1rem" } }}>
               <Typography
                 style={{
                   fontFamily: "Montserrat",
@@ -72,9 +73,10 @@ function LandingPage() {
                   }}
                 >
                   Découvrez une gamme compléte de carburants , lubrifiants et
-                  service sur messure. Chez <span style={{fontWeight: "bold"}}>ASF</span>, nous façonnons a l'avenir de
-                  l'energie avec engagement, compétitivité et responsabilité
-                  sociale.
+                  service sur messure. Chez{" "}
+                  <span style={{ fontWeight: "bold" }}>ASF</span>, nous
+                  façonnons a l'avenir de l'energie avec engagement,
+                  compétitivité et responsabilité sociale.
                 </Typography>
               </div>
               <Button
@@ -102,7 +104,8 @@ function LandingPage() {
                 justifyContent="center"
                 style={{ textTransform: "capitalize" }}
               >
-                <Button onClick={()=> navigate('/gazoil')}
+                <Button
+                  onClick={() => navigate("/gazoil")}
                   startIcon={<LocalGasStationIcon />}
                   style={{
                     backgroundColor: "#659a9a",
@@ -119,7 +122,8 @@ function LandingPage() {
                 >
                   Carburant Gasoil{" "}
                 </Button>
-                <Button onClick={() => navigate('/cartecarburant')}
+                <Button
+                  onClick={() => navigate("/cartecarburant")}
                   startIcon={<AddCardIcon />}
                   style={{
                     backgroundColor: "#659a9a",
@@ -144,7 +148,8 @@ function LandingPage() {
                   justifyContent: "center",
                 }}
               >
-                <Button onClick={() => navigate('/livraison')}
+                <Button
+                  onClick={() => navigate("/livraison")}
                   startIcon={<DepartureBoardIcon />}
                   style={{
                     backgroundColor: "#659a9a",
@@ -155,7 +160,7 @@ function LandingPage() {
                     width: "150px",
                     height: "50px",
                     textTransform: "capitalize",
-                    marginBottom: 40
+                    marginBottom: 40,
                   }}
                 >
                   {" "}
@@ -212,7 +217,7 @@ function LandingPage() {
         <Grid
           container
           spacing={2}
-          marginTop={{ xs: -3, md: 10 }} 
+          marginTop={{ xs: -3, md: 10 }}
           sx={{
             justifyContent: "center",
           }}
@@ -242,8 +247,15 @@ function LandingPage() {
               />
             </div>
           </Grid>
-          <Grid  item sx={{ marginTop: { xs: 0, md: 12 },textAlign: { xs: 'center', md: 'left' } }} md={6}  >
-            <Typography  
+          <Grid
+            item
+            sx={{
+              marginTop: { xs: 0, md: 12 },
+              textAlign: { xs: "center", md: "left" },
+            }}
+            md={6}
+          >
+            <Typography
               style={{
                 fontWeight: "inherit",
                 fontFamily: "serif",
@@ -254,17 +266,19 @@ function LandingPage() {
               NOUS ?
             </Typography>
 
-            <Typography  style={{ marginTop: "1rem" }} color={"gray"}>
-              Avec une expérience inwi,la societé  AFRICA SHINING FUEL<br/>
-             
-              Témoigne de notre excellence et durabilité  s'est établie comme un <br />
+            <Typography style={{ marginTop: "1rem" }} color={"gray"}>
+              Avec une expérience inwi,la societé AFRICA SHINING FUEL
+              <br />
+              Témoigne de notre excellence et durabilité s'est établie comme un{" "}
+              <br />
               leader incontesté dans le domaine des carburants
               <br /> au Maroc. Notre engagement envers la qualité et
               <br /> la fidélité de notre clientèle témoigne de notre
               <br /> excellence durable.
             </Typography>
             <div style={{ marginTop: "2rem" }}>
-              <Button onClick={() => navigate('/presentationgroupe')}
+              <Button
+                onClick={() => navigate("/presentationgroupe")}
                 style={{
                   backgroundColor: "black",
                   color: "white ",
@@ -279,89 +293,32 @@ function LandingPage() {
             </div>
           </Grid>
         </Grid>
-        <div style={{ position: "relative" }}>
-          {" "}
-          <div
-            style={{
+        <Box sx={{ position: "relative", width: "80%",    marginTop: {xs: '1rem', sm: '0rem'} }} >
+          <Typography
+            sx={{
+              fontWeight: "inherit",
+              fontFamily: "Motserrat sans-serif",
+              fontSize: 32,
               position: "absolute",
-              top: 140,
-              left: "50%",
-              transform: "translateX(120%)",
+              bottom: 0,
+             top: {xs: 20, sm: 70},
+              right: 0,
             }}
           >
-            {" "}
-            <Typography
-              style={{
-                fontFamily: "sans-serif",
-                fontWeight: "bold",
-                fontSize: 30,
-              }}
-            >
-              {" "}
-              <span>NOS</span>{" "}
-              <span style={{ borderBottom: "4px solid" }}>SERVICES</span>{" "}
-            </Typography>{" "}
-          </div>{" "}
-        </div>{" "}
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          height={300}
-          marginTop={25}
-        >
-          <div
-            style={{
-              backgroundImage: `url(${NosServices})`,
-              width: 1000,
-              height: 293,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              opacity: 1,
-              backgroundColor: "rgba(0, 0, 0, .3)",
-              backgroundBlendMode: "multiply",
-              border: "2px solid black",
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center"
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "serif",
-                fontWeight: "bold",
-                fontSize: 24,
-                textAlign: "end",
-                color: "white",
-                paddingRight: 10
-              }}
-            >
-              <span>the </span>
-              <span style={{ color: "#659a9a" }}> TFC card </span>
-              <span>
-                enables you to refuel <br />{" "}
-              </span>
-              <span>
-                economically at up to 4,600 petrol stations <br />
-              </span>
-              <span>Our network covers</span>
-              <span style={{ color: "#659a9a" }}>
-                18 European countries <br />
-              </span>
-              <span> and continues o expand .</span>
-            </div>
-          </div>
+            <span style={{ textDecoration: 'underline' }}>NOS SER</span>VICES<span style={{ textDecoration: 'underline'}}></span>
+          </Typography>
         </Box>
+        <SliderNosServices />
         <Stack
           direction={"row"}
           flexWrap={"wrap"}
           justifyContent="center"
           alignItems="center"
           gap={4}
-          marginTop={5}
+          marginTop={8}
         >
-         
-          <Button onClick={() => navigate('/livraison')}
+          <Button
+            onClick={() => navigate("/livraison")}
             style={{
               backgroundColor: "#659a9a",
               color: "white ",
@@ -373,14 +330,15 @@ function LandingPage() {
           >
             Livraison
           </Button>
-          <Button onClick={() => navigate('/cartecarburant')}
+          <Button
+            onClick={() => navigate("/cartecarburant")}
             style={{
               backgroundColor: "black",
               color: "white ",
               textTransform: "capitalize",
               borderRadius: 25,
               fontSize: "15px",
-              padding: "10px 80px",
+              padding: "10px 80px"
             }}
           >
             Carte Carburant toute marque ASF
@@ -409,11 +367,7 @@ function LandingPage() {
             flexWrap={"wrap"}
           >
             <div style={{ alignItems: "center" }}>
-              <img
-                src={globeTerestre}
-                alt="globe terrestre"
-                width={90}
-              />
+              <img src={globeTerestre} alt="globe terrestre" width={90} />
               <div style={{ marginLeft: "1rem" }}>
                 <Typography
                   style={{
@@ -424,7 +378,9 @@ function LandingPage() {
                 >
                   18 +
                 </Typography>
-                <Typography style={{ fontFamily: "Montserrat", width: "max-content" }}>
+                <Typography
+                  style={{ fontFamily: "Montserrat", width: "max-content" }}
+                >
                   Villes au Maroc
                 </Typography>
               </div>
@@ -441,7 +397,11 @@ function LandingPage() {
                 >
                   60 +
                 </Typography>
-                <Typography style={{ fontFamily: "Montserrat", width: "max-content" }}>B2B Affiliées</Typography>
+                <Typography
+                  style={{ fontFamily: "Montserrat", width: "max-content" }}
+                >
+                  B2B Affiliées
+                </Typography>
               </div>
             </div>
             <div style={{ alignItems: "center" }}>
@@ -456,7 +416,9 @@ function LandingPage() {
                 >
                   3
                 </Typography>
-                <Typography style={{ fontFamily: "Montserrat", width: "max-content" }}>
+                <Typography
+                  style={{ fontFamily: "Montserrat", width: "max-content" }}
+                >
                   Bureaux au Maroc
                 </Typography>
               </div>
