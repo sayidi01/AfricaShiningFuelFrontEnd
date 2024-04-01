@@ -119,7 +119,7 @@ function NavBar() {
       <AppBar position="sticky" sx={{ backgroundColor: "white" }}>
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
-            <a href="/landing">
+            <a href="/">
             <img
               src={Logo}
               alt="logo"
