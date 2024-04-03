@@ -7,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { Stack, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
-import Logo from'../src/images/LOGO_AFRICA_SHINING-removebg-preview.png'
+import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
 import Drawer from "@mui/material/Drawer";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -26,7 +26,6 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
-
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -112,7 +111,6 @@ function NavBar() {
   const openProducts = Boolean(anchorElProducts);
 
   const navigate = useNavigate();
-  
 
   return (
     <>
@@ -120,21 +118,19 @@ function NavBar() {
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
             <a href="/">
-            <img
-              src={Logo}
-              alt="logo"
-              width={180}
-            />
+              <img src={Logo} alt="logo" width={180} />
             </a>
           </div>
-          <Stack 
-         sx={{ flexGrow: 1, display: { xs: "none", sm: "none", md: "none", lg: "flex" }  }} 
+          <Stack
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", xl: "flex" },
+            }}
             direction={"row"}
             spacing={5}
             style={{
               justifyContent: "center",
               alignItems: "center",
-              paddingTop: 18,
             }}
           >
             <div>
@@ -160,8 +156,9 @@ function NavBar() {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Link to={'/gazoil'} style={{ textDecoration: "none" }}>
+                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Box onMouseLeave={handlePopoverCloseProducts}>
+                <Link to={"/gazoil"} style={{ textDecoration: "none" }}>
                   <MenuItem
                     sx={{
                       p: 1,
@@ -262,17 +259,21 @@ function NavBar() {
                     Produits de Nettoyage
                   </MenuItem>
                 </Link>
-                <Link to={'/boischauffage'}  style={{ textDecoration: "none" }} >
-                <MenuItem   sx={{
+                <Link to={"/boischauffage"} style={{ textDecoration: "none" }}>
+                  <MenuItem
+                    sx={{
                       p: 1,
                       color: "gray",
                       fontFamily: "initial",
                       fontWeight: "bolder",
                       fontSize: 18,
-                    }} onClick={handlePopoverCloseProducts}>
-                  Bois De Chauffage
-                </MenuItem>
+                    }}
+                    onClick={handlePopoverCloseProducts}
+                  >
+                    Bois De Chauffage
+                  </MenuItem>
                 </Link>
+                </Box>
               </Menu>
             </div>
             <div>
@@ -299,50 +300,54 @@ function NavBar() {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Link to={"/livraison"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseServices}
+                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Box onMouseLeave={handlePopoverCloseServices}>
+                  <Link to={"/livraison"} style={{ textDecoration: "none" }}>
+                    <MenuItem
+                      sx={{
+                        p: 1,
+                        color: "gray",
+                        fontFamily: "initial",
+                        fontWeight: "bolder",
+                        fontSize: 18,
+                      }}
+                      onClick={handlePopoverCloseServices}
+                    >
+                      Livraisons
+                    </MenuItem>
+                  </Link>
+                  <Link
+                    to={"/cartecarburant"}
+                    style={{ textDecoration: "none" }}
                   >
-                    Livraisons
-                  </MenuItem>
-                </Link>
-                <Link to={"/cartecarburant"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseServices}
-                  >
-                    Carte Carburant Toutes Marques
-                  </MenuItem>
-                </Link>
-                <Link to={"/"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseServices}
-                  >
-                    Abonnement Télépéage
-                  </MenuItem>
-                </Link>
-                
+                    <MenuItem
+                      sx={{
+                        p: 1,
+                        color: "gray",
+                        fontFamily: "initial",
+                        fontWeight: "bolder",
+                        fontSize: 18,
+                      }}
+                      onClick={handlePopoverCloseServices}
+                    >
+                      Carte Carburant Toutes Marques
+                    </MenuItem>
+                  </Link>
+                  <Link to={"/abonnementtelepage"} style={{ textDecoration: "none" }}>
+                    <MenuItem
+                      sx={{
+                        p: 1,
+                        color: "gray",
+                        fontFamily: "initial",
+                        fontWeight: "bolder",
+                        fontSize: 18,
+                      }}
+                      onClick={handlePopoverCloseServices}
+                    >
+                      Abonnement Télépéage
+                    </MenuItem>
+                  </Link>
+                </Box>
               </Menu>
             </div>
             <div>
@@ -350,7 +355,6 @@ function NavBar() {
                 aria-owns={open ? "mouse-over-popover-2" : undefined}
                 aria-haspopup="true"
                 onMouseEnter={handlePopoverOpenServicesPlus}
-               
                 style={{
                   color: openServicesPlus ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
@@ -369,8 +373,12 @@ function NavBar() {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Link to={"/nettoyagedomicile"} style={{ textDecoration: "none" }}>
+                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Box onMouseLeave={handlePopoverCloseServicesPlus}>
+                <Link
+                  to={"/nettoyagedomicile"}
+                  style={{ textDecoration: "none" }}
+                >
                   <MenuItem
                     sx={{
                       p: 1,
@@ -381,10 +389,13 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseServicesPlus}
                   >
-                   Nettoyage à Domicile
+                    Nettoyage à Domicile
                   </MenuItem>
                 </Link>
-                <Link to={"/collectelubrifiant"} style={{ textDecoration: "none" }}>
+                <Link
+                  to={"/collectelubrifiant"}
+                  style={{ textDecoration: "none" }}
+                >
                   <MenuItem
                     sx={{
                       p: 1,
@@ -409,7 +420,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseServicesPlus}
                   >
-                   Nettoyage Cuve
+                    Nettoyage Cuve
                   </MenuItem>
                 </Link>
                 <Link to={"/jaugeconnecte"} style={{ textDecoration: "none" }}>
@@ -423,10 +434,10 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseServicesPlus}
                   >
-                   Jauge Connecte
+                    Jauge Connecte
                   </MenuItem>
                 </Link>
-                
+                </Box>
               </Menu>
             </div>
             <div>
@@ -452,8 +463,9 @@ function NavBar() {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                 <Link to={"/"} style={{ textDecoration: "none" }}>
+                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Box onMouseLeave={handlePopoverCloseEvaluationMarche}>
+                <Link to={"/"} style={{ textDecoration: "none" }}>
                   <MenuItem
                     sx={{
                       p: 1,
@@ -464,7 +476,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseEvaluationMarche}
                   >
-                  Investiseurs
+                    Investiseurs
                   </MenuItem>
                 </Link>
                 <Link to={"/"} style={{ textDecoration: "none" }}>
@@ -478,10 +490,10 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseEvaluationMarche}
                   >
-                   Actutalités ASF
+                    Actutalités ASF
                   </MenuItem>
                 </Link>
-               
+                </Box>
               </Menu>
             </div>
             <div>
@@ -507,8 +519,12 @@ function NavBar() {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Link to={"/presentationgroupe"} style={{ textDecoration: "none" }}>
+                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
+                <Box onMouseLeave={handlePopoverCloseprqChoisirASF}>
+                <Link
+                  to={"/presentationgroupe"}
+                  style={{ textDecoration: "none" }}
+                >
                   <MenuItem
                     sx={{
                       p: 1,
@@ -519,7 +535,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseprqChoisirASF}
                   >
-                  Presentation Du Groupe
+                    Presentation Du Groupe
                   </MenuItem>
                 </Link>
                 <Link to={"/engagementrse"} style={{ textDecoration: "none" }}>
@@ -533,10 +549,13 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseprqChoisirASF}
                   >
-                   Notre Engagement RSE
+                    Notre Engagement RSE
                   </MenuItem>
                 </Link>
-                <Link to={"/offrecompetitive"} style={{ textDecoration: "none" }}>
+                <Link
+                  to={"/offrecompetitive"}
+                  style={{ textDecoration: "none" }}
+                >
                   <MenuItem
                     sx={{
                       p: 1,
@@ -547,7 +566,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseprqChoisirASF}
                   >
-                  Des Offres Competitives
+                    Des Offres Competitives
                   </MenuItem>
                 </Link>
                 <Link to={"/equipedediees"} style={{ textDecoration: "none" }}>
@@ -561,7 +580,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseprqChoisirASF}
                   >
-                  Des Equipes Dediées
+                    Des Equipes Dediées
                   </MenuItem>
                 </Link>
                 <Link to={"/politiqueRH"} style={{ textDecoration: "none" }}>
@@ -575,10 +594,10 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseprqChoisirASF}
                   >
-                 Notre Politique RH
+                    Notre Politique RH
                   </MenuItem>
                 </Link>
-                
+                </Box>
               </Menu>
             </div>
             <Typography
@@ -597,15 +616,12 @@ function NavBar() {
 
           <Box
             style={{
-              paddingTop: 18,
               width: 150,
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
             }}
           >
-
-
             <PersonIcon
               onClick={() => navigate("/compte")}
               style={{ color: "black", marginRight: 15 }}
@@ -627,14 +643,15 @@ function NavBar() {
         </Toolbar>
       </AppBar>
       <Drawer
-        sx={{ display: { lg: "none" } }}
+        sx={{ display: { lg: "none" }, width: "100%" }}
         open={openn}
         onClose={toggleDrawer(false)}
+        PaperProps={{ sx: { width: "100%" } }}
+        anchor="right"
       >
         <List
           sx={{
-            width: "100%",
-            maxWidth: 360,
+            width: "100% !important",
             bgcolor: "background.paper",
             textAlign: "center",
           }}
@@ -650,10 +667,10 @@ function NavBar() {
                 fontSize: 20,
               }}
             >
-              Menu
+              <Typography sx={{fontWeight: 'bold', fontSize: 25, marginTop: '3rem'}}>Menu</Typography>
               <IconButton
                 onClick={toggleDrawer(false)}
-                style={{ marginLeft: "auto" }}
+                sx={{ marginLeft: "auto", display: "block", my: 3 }}
               >
                 <CloseIcon />
               </IconButton>
@@ -661,155 +678,245 @@ function NavBar() {
           }
         >
           <ListItemButton onClick={() => handleClick("mobileproduits")}>
-            <ListItemIcon></ListItemIcon>
             <ListItemText
               sx={{
                 color: open.mobileproduits ? " #659a9a" : "black",
               }}
+              primaryTypographyProps={{ sx: { fontSize: 20 ,   fontWeight: 'bold'} }}
               primary="Nos produits"
             />
             {open.mobileproduits ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={open.mobileproduits} timeout="auto" unmountOnExit>
             <List
-              sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+              sx={{ borderLeft: "4px solid #659a9a" }}
               component="div"
               disablePadding
             >
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
-                <NavLink to={"/gazoil"} style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Gazoil" />
+                <NavLink
+                  to={"/gazoil"}
+                  style={{ textDecoration: "none", color: "gray" }}
+                >
+                  <ListItemText
+                    primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                    primary="Gazoil"
+                  />
                 </NavLink>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
-                <Link to={'/Fuel2'} style={{textDecoration: 'none', color: 'gray'}}>
-                <ListItemText primary="Fuel 2" />
+                <Link
+                  to={"/Fuel2"}
+                  style={{ textDecoration: "none", color: "gray" }}
+                >
+                  <ListItemText
+                    primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                    primary="Fuel 2"
+                  />
                 </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
-                <Link to={'/Lubrifiants'}  style={{textDecoration: 'none', color: 'gray'}} >
-                <ListItemText primary="Lubrifiants" />
+                <Link
+                  to={"/Lubrifiants"}
+                  style={{ textDecoration: "none", color: "gray" }}
+                >
+                  <ListItemText
+                    primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                    primary="Lubrifiants"
+                  />
                 </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
-                <Link to={'/hydrogenevert'} style={{textDecoration: 'none', color: 'gray'}}>
-                <ListItemText primary="Hydrogéne vert" />
+                <Link
+                  to={"/hydrogenevert"}
+                  style={{ textDecoration: "none", color: "gray" }}
+                >
+                  <ListItemText
+                    primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                    primary="Hydrogéne vert"
+                  />
                 </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
-                <Link to={'/Citerne'}  style={{textDecoration: 'none', color: 'gray'}}>
-                <ListItemText primary="Citerne" />
+                <Link
+                  to={"/Citerne"}
+                  style={{ textDecoration: "none", color: "gray" }}
+                >
+                  <ListItemText
+                    primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                    primary="Citerne"
+                  />
                 </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
-                <Link to={'/BornesRecharge'}  style={{textDecoration: 'none', color: 'gray'}}>
-                <ListItemText primary="Borne De Recharge" />
+                <Link
+                  to={"/BornesRecharge"}
+                  style={{ textDecoration: "none", color: "gray" }}
+                >
+                  <ListItemText
+                    primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                    primary="Borne De Recharge"
+                  />
                 </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
-                <Link to={'/produitnettoyage'}  style={{textDecoration: 'none', color: 'gray'}}>
-                <ListItemText primary="Produits De Nettoyage" />
+                <Link
+                  to={"/produitnettoyage"}
+                  style={{ textDecoration: "none", color: "gray" }}
+                >
+                  <ListItemText
+                    primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                    primary="Produits De Nettoyage"
+                  />
                 </Link>
               </ListItemButton>
               <ListItemButton sx={{ pl: 4, color: "grey", fontWeight: "bold" }}>
-                <Link to={'/boischauffage'} style={{textDecoration: 'none', color: 'gray'}}>
-                <ListItemText primary="Bois De Chauffage" />
+                <Link
+                  to={"/boischauffage"}
+                  style={{ textDecoration: "none", color: "gray" }}
+                >
+                  <ListItemText
+                    primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                    primary="Bois De Chauffage"
+                  />
                 </Link>
               </ListItemButton>
             </List>
           </Collapse>
           <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            sx={{ width: "100%", bgcolor: "background.paper" }}
             component="nav"
             aria-labelledby="nested-list-subheader"
           >
             <ListItemButton onClick={() => handleClick("mobileServices")}>
-              <ListItemIcon></ListItemIcon>
               <ListItemText
                 sx={{ color: open.mobileServices ? " #659a9a" : "black" }}
+                primaryTypographyProps={{ sx: { fontSize: 20 , fontWeight: 'bold'} }}
                 primary="Nos Services"
               />
               {open.mobileServices ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={open.mobileServices} timeout="auto" unmountOnExit>
               <List
-                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+                sx={{ borderLeft: "4px solid #659a9a" }}
                 component="div"
                 disablePadding
               >
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/livraison'} style={{textDecoration: 'none', color: 'gray'}} >
-                  <ListItemText primary="Livraison" />
+                  <Link
+                    to={"/livraison"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Livraison"
+                    />
                   </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/cartecarburant'}  style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Carte Carburant Toute Marque" />
+                  <Link
+                    to={"/cartecarburant"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Carte Carburant Toute Marque"
+                    />
                   </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/'}  style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Abonnement Télépage" />
+                  <Link
+                    to={"/abonnementtelepage"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Abonnement Télépage"
+                    />
                   </Link>
                 </ListItemButton>
               </List>
             </Collapse>
           </List>
           <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            sx={{ width: "100%", bgcolor: "background.paper" }}
             component="nav"
             aria-labelledby="nested-list-subheader"
           >
             <ListItemButton onClick={() => handleClick("mobileServicesPlus")}>
-              <ListItemIcon></ListItemIcon>
               <ListItemText
                 sx={{ color: open.mobileServicesPlus ? " #659a9a" : "black" }}
+                primaryTypographyProps={{ sx: { fontSize: 20 , fontWeight: 'bold'} }}
                 primary="Services Plus"
               />
               {open.mobileServicesPlus ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={open.mobileServicesPlus} timeout="auto" unmountOnExit>
               <List
-                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+                sx={{ borderLeft: "4px solid #659a9a" }}
                 component="div"
                 disablePadding
               >
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/nettoyagedomicile'}  style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Nettoyage A Domicile" />
+                  <Link
+                    to={"/nettoyagedomicile"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Nettoyage A Domicile"
+                    />
                   </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/collectelubrifiant'} style={{textDecoration: 'none', color: 'gray'}} >
-                  <ListItemText primary="Collecte Lubrifiant" />
+                  <Link
+                    to={"/collectelubrifiant"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Collecte Lubrifiant"
+                    />
                   </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/nettoyagecuve'}  style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Nettoyage cuve" />
+                  <Link
+                    to={"/nettoyagecuve"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Nettoyage cuve"
+                    />
                   </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/jaugeconnecte'}  style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Jauge Connecte" />
+                  <Link
+                    to={"/jaugeconnecte"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Jauge Connecte"
+                    />
                   </Link>
                 </ListItemButton>
               </List>
             </Collapse>
           </List>
           <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            sx={{ width: "100%", bgcolor: "background.paper" }}
             component="nav"
             aria-labelledby="nested-list-subheader"
           >
             <ListItemButton
               onClick={() => handleClick("mobileEvolutionsMarche")}
             >
-              <ListItemIcon></ListItemIcon>
               <ListItemText
                 sx={{
                   color: open.mobileEvolutionsMarche ? " #659a9a" : "black",
                 }}
+                primaryTypographyProps={{ sx: { fontSize: 20 , fontWeight: 'bold'} }}
                 primary="Evolution Marché"
               />
               {open.mobileEvolutionsMarche ? <ExpandLess /> : <ExpandMore />}
@@ -819,43 +926,55 @@ function NavBar() {
               timeout="auto"
               unmountOnExit
             >
-               <List
-                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+              <List
+                sx={{ borderLeft: "4px solid #659a9a" }}
                 component="div"
                 disablePadding
               >
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/'}   style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Investisseurs" />
+                  <Link
+                    to={"/"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Investisseurs"
+                    />
                   </Link>
                 </ListItemButton>
               </List>
               <List
-                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+                sx={{ borderLeft: "4px solid #659a9a" }}
                 component="div"
                 disablePadding
               >
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/'}   style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Actualité ASF" />
+                  <Link
+                    to={"/"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Actualité ASF"
+                    />
                   </Link>
                 </ListItemButton>
               </List>
             </Collapse>
           </List>
           <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            sx={{ width: "100%", bgcolor: "background.paper" }}
             component="nav"
             aria-labelledby="nested-list-subheader"
           >
             <ListItemButton
               onClick={() => handleClick("mobilePourquoiChoisirASF")}
             >
-              <ListItemIcon></ListItemIcon>
               <ListItemText
                 sx={{
                   color: open.mobilePourquoiChoisirASF ? " #659a9a" : "black",
                 }}
+                primaryTypographyProps={{ sx: { fontSize: 20, fontWeight: 'bold' } }}
                 primary="Pourquoi Choisir ASF"
               />
               {open.mobilePourquoiChoisirASF ? <ExpandLess /> : <ExpandMore />}
@@ -866,36 +985,64 @@ function NavBar() {
               unmountOnExit
             >
               <List
-                sx={{ borderLeft: "4px solid #659a9a", marginLeft: "8px" }}
+                sx={{ borderLeft: "4px solid #659a9a" }}
                 component="div"
                 disablePadding
               >
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/presentationgroupe'}  style={{textDecoration: 'none', color: 'gray'}}>
-                  <ListItemText primary="Presentation Du Groupe" />
+                  <Link
+                    to={"/presentationgroupe"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Presentation Du Groupe"
+                    />
                   </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/engagementrse'}  style={{textDecoration: 'none', color: 'gray'}} >
-                  <ListItemText primary="Nos Engagement RSE" />
+                  <Link
+                    to={"/engagementrse"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Nos Engagement RSE"
+                    />
                   </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/offrecompetitive'}  style={{textDecoration: 'none', color: 'gray'}} >
-                  <ListItemText primary="Des Offres Competitives" />
+                  <Link
+                    to={"/offrecompetitive"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Des Offres Competitives"
+                    />
                   </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/equipedediees'}  style={{textDecoration: 'none', color: 'gray'}}  >
-                  <ListItemText primary="Des Equipes Dediées" />
+                  <Link
+                    to={"/equipedediees"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Des Equipes Dediées"
+                    />
                   </Link>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <Link to={'/politiqueRH'} style={{textDecoration: 'none', color: 'gray'}}  >
-                  <ListItemText
-                    primary="Notre Politique RH"
-                    sx={{ fontFamily: "inherit !important" }}
-                  />
+                  <Link
+                    to={"/politiqueRH"}
+                    style={{ textDecoration: "none", color: "gray" }}
+                  >
+                    <ListItemText
+                      primaryTypographyProps={{ sx: { fontSize: 16 } }}
+                      primary="Notre Politique RH"
+                      sx={{ fontFamily: "inherit !important" }}
+                    />
                   </Link>
                 </ListItemButton>
               </List>

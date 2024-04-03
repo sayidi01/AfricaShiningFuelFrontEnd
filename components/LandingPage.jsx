@@ -5,7 +5,6 @@ import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
 import DepartureBoardIcon from "@mui/icons-material/DepartureBoard";
 import AddCardIcon from "@mui/icons-material/AddCard";
-import NosServices from "../src/images/descLIVRAISON3.png";
 import Carousel from "../components/Carousel";
 import SliderLandingPage from "./SliderLandingPage";
 import Footer from "./Footer";
@@ -16,6 +15,7 @@ import globeTerestre from "../src/images/globe terrestre.png";
 import stations2 from "../src/images/globe terrestre.png";
 import maps from "../src/images/maps.png";
 import SliderNosServices from "./SliderNosServices";
+
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -31,6 +31,7 @@ function LandingPage() {
             backgroundSize: "cover",
             backgroundPosition: "center",
             maxWidth: "none",
+            backgroundAttachment: 'fixed'
           }}
         >
           <SliderLandingPage />

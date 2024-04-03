@@ -26,33 +26,35 @@ function HydrogeneVert() {
             justifyContent: "space-around",
             paddingBottom: 120,
           }}
+          gap={2}
+          sx={{
+            flexWrap: {
+              md: "nowrap",
+            },
+          }}
         >
-          <Grid item xs={12} md={12} lg={6}>
-            <Stack
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-            >
-              <img
-                src={descHydrogeneVert1}
-                width={700}
-                height={500}
-                style={{ borderRadius: "1.875rem", border: "1px solid #dbeefe" }}
-              />
-            </Stack>
+          <Grid item xs={12} md={7}>
+            <img
+              src={descHydrogeneVert1}
+              width={"100%"}
+              style={{
+                borderRadius: "1.875rem",
+                border: "1px solid #dbeefe",
+              }}
+            />
           </Grid>
 
           <Grid
             item
-            md={12}
-            lg={3}
-            style={{
+            xs={12}
+            md={5}
+            sx={{
               borderRadius: "1.875rem",
               border: "1px solid  #fab823",
-              padding: 20,
-              paddingTop: 50,
-              height: 500,
               width: 400,
+              p: 3,
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <Typography
@@ -88,7 +90,6 @@ function HydrogeneVert() {
             </Typography>
           </Grid>
         </Grid>
-
         <Grid
           container
           style={{
@@ -96,18 +97,24 @@ function HydrogeneVert() {
             justifyContent: "space-around",
             paddingBottom: 120,
           }}
+          gap={2}
+          sx={{
+            flexWrap: {
+              md: "nowrap",
+            },
+          }}
         >
           <Grid
             item
-            md={12}
-            lg={3}
-            style={{
+            xs={12}
+            md={5}
+            sx={{
               borderRadius: "1.875rem",
               border: "1px solid  #fab823",
-              padding: 20,
-              paddingTop: 50,
-              height: 500,
               width: 400,
+              p: 3,
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <Typography
@@ -133,56 +140,53 @@ function HydrogeneVert() {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} md={12} lg={6}>
-            <Stack
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-            >
-              <img
-                src={descHYDROGENEVERT22}
-                width={700}
-                height={500}
-                style={{ borderRadius: "1.875rem", border: "1px solid  #dbeefe" }}
-              />
-            </Stack>
+          <Grid item xs={12} md={7}>
+            <img
+              src={descHYDROGENEVERT22}
+              width={"100%"}
+              style={{
+                borderRadius: "1.875rem",
+                border: "1px solid #dbeefe",
+              }}
+            />
           </Grid>
         </Grid>
-
         <Grid
           container
           style={{
             display: "flex",
             justifyContent: "space-around",
-            paddingBottom: 80,
+            paddingBottom: 120,
+          }}
+          gap={2}
+          sx={{
+            flexWrap: {
+              md: "nowrap",
+            },
           }}
         >
-          <Grid item xs={12} md={12} lg={6}>
-            <Stack
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-            >
-              <img
-                src={descHydrogeneVert3}
-                width={700}
-                height={500}
-                style={{ borderRadius: "1.875rem", border: "1px solid  #dbeefe" }}
-              />
-            </Stack>
+          <Grid item xs={12} md={7}>
+            <img
+              src={descHydrogeneVert3}
+              width={"100%"}
+              style={{
+                borderRadius: "1.875rem",
+                border: "1px solid #dbeefe",
+              }}
+            />
           </Grid>
 
           <Grid
             item
-            md={12}
-            lg={3}
-            style={{
+            xs={12}
+            md={5}
+            sx={{
               borderRadius: "1.875rem",
-              border: "1px solid #fab823",
-              padding: 20,
-              paddingTop: 50,
-              height: 500,
+              border: "1px solid  #fab823",
               width: 400,
+              p: 3,
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <Typography
@@ -205,9 +209,9 @@ function HydrogeneVert() {
               transition, en collaborant avec des partenaires stratégiques et en
               investissant dans des projets innovants. Actuellement, nous sommes
               en discussion avec{" "}
-              <span style={{ fontWeight: "bold" }}> Lhyfe </span> et
-              <span style={{ fontWeight: "bold" }}> McPhy Energy </span> pour
-              explorer de nouvelles opportunités et avancer dans cette
+              <span style={{ fontWeight: "bold" }}> Lhyfe </span> et{" "}
+              <span style={{ fontWeight: "bold" }}> McPhy Energy </span>
+              pour explorer de nouvelles opportunités et avancer dans cette
               direction. Ensemble, nous pouvons transformer notre système
               énergétique et construire un avenir où l'hydrogène vert est au
               cœur de notre approvisionnement énergétique, garantissant ainsi un
@@ -215,282 +219,282 @@ function HydrogeneVert() {
             </Typography>
           </Grid>
         </Grid>
-
-        <Box width="50%" margin="auto">
+      </Container>
+      <Box width="50%" margin="auto">
+        <Typography
+          style={{ borderBottom: "1px solid #FFA447" }}
+          sx={{
+            marginTop: { xs: "2rem", sm: "5rem" },
+          }}
+        ></Typography>
+      </Box>
+      <Grid container>
+        <Grid container justifyContent="center" alignItems="center">
           <Typography
-            style={{ borderBottom: "1px solid #FFA447" }}
             sx={{
-              marginTop: { xs: "2rem", sm: "5rem" },
+              fontSize: { xs: 20, sm: 30 },
+              fontFamily: "inherit",
+              marginTop: { xs: "4rem", sm: "6rem" },
+              fontWeight: "bolder",
             }}
-          ></Typography>
-        </Box>
-        <Grid container>
-          <Grid container justifyContent="center" alignItems="center">
+          >
+            Devis Hydrogène vert
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={8}>
+          <Box
+            display={"flex"}
+            gap={6}
+            alignItems={"center"}
+            marginTop={{ xs: "2rem", sm: "1rem" }}
+          >
             <Typography
               sx={{
-                fontSize: { xs: 20, sm: 30 },
-                marginTop: { xs: "4rem", sm: "6rem" },
-                fontWeight: "bolder",
+                fontFamily: "inherit",
+                fontSize: { xs: 20, sm: 23 },
+                marginLeft: { xs: "1rem", sm: "8rem" },
               }}
             >
-              Devis Hydrogéne vert
+              Civilité *
             </Typography>
-          </Grid>
-          <Grid item xs={12} sm={8}>
-            <Box
-              display={"flex"}
-              gap={6}
-              alignItems={"center"}
-              marginTop={{ xs: "2rem", sm: "1rem" }}
-            >
-              <Typography
-                sx={{
-                  fontSize: { xs: 20, sm: 23 },
-                  marginLeft: { xs: "1rem", sm: "8rem" },
-                }}
+            <FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
               >
-                Civilité *
-              </Typography>
-              <FormControl>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
-                >
-                  <FormControlLabel
-                    value="female"
-                    control={<Radio />}
-                    label="Mme"
-                  />
-                  <FormControlLabel
-                    value="male"
-                    control={<Radio />}
-                    label="Mr"
-                  />
-                </RadioGroup>
-              </FormControl>
-            </Box>
-            <Box
-              display={{ xs: "block", sm: "flex" }}
-              alignItems="center"
-              sx={{ gap: "6rem" }}
-            >
-              <Typography
-                style={{ color: "gray", fontFamily: "Delicatessen Script" }}
-                sx={{
-                  marginLeft: { xs: "2rem", sm: "8rem" },
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
-                  fontSize: { xs: "19px", sm: "20px" },
-                }}
-              >
-                Nom *
-              </Typography>
-              <Input
-                style={{
-                  width: "350px",
-                  height: "30px",
-                  marginLeft: "2rem",
-                }}
-                className="input-email-mobile"
-              />
-            </Box>
-            <Box
-              display={{ xs: "block", sm: "flex" }}
-              alignItems="center"
-              sx={{ gap: "6rem" }}
-            >
-              <Typography
-                style={{ color: "gray", fontFamily: "Delicatessen Script" }}
-                sx={{
-                  marginLeft: { xs: "2rem", sm: "8rem" },
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
-                  fontSize: { xs: "19px", sm: "20px" },
-                }}
-              >
-                Prenom *
-              </Typography>
-              <Input
-                style={{
-                  width: "350px",
-                  height: "30px",
-                  marginLeft: "1rem",
-                }}
-                className="input-email-mobile"
-              />
-            </Box>
-            <Box
-              display={{ xs: "block", sm: "flex" }}
-              alignItems="center"
-              sx={{ gap: "2rem" }}
-            >
-              <Typography
-                style={{ color: "gray", fontFamily: "Delicatessen Script" }}
-                sx={{
-                  marginLeft: { xs: "2rem", sm: "8rem" },
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
-                  fontSize: { xs: "19px", sm: "20px" },
-                }}
-              >
-                Socité (facultatif)
-              </Typography>
-              <Input
-                style={{
-                  width: "350px",
-                  height: "30px",
-                  marginLeft: "1rem",
-                }}
-                className="input-email-mobile"
-              />
-            </Box>
-            <Box
-              display={{ xs: "block", sm: "flex" }}
-              alignItems="center"
-              sx={{ gap: "5rem" }}
-            >
-              <Typography
-                style={{ color: "gray", fontFamily: "Delicatessen Script" }}
-                sx={{
-                  marginLeft: { xs: "2rem", sm: "8rem" },
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
-                  fontSize: { xs: "19px", sm: "20px" },
-                }}
-              >
-                Telephone *
-              </Typography>
-              <Input
-                style={{
-                  width: "350px",
-                  height: "30px",
-                  marginLeft: "1rem",
-                }}
-                className="input-email-mobile"
-              />
-            </Box>
-            <Box
-              display={{ xs: "block", sm: "flex" }}
-              alignItems="center"
-              sx={{ gap: "2rem" }}
-            >
-              <Typography
-                style={{ color: "gray", fontFamily: "Delicatessen Script" }}
-                sx={{
-                  marginLeft: { xs: "2rem", sm: "8rem" },
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
-                  fontSize: { xs: "19px", sm: "20px" },
-                }}
-              >
-                Volume Gazole *
-              </Typography>
-              <Input
-                style={{
-                  width: "350px",
-                  height: "30px",
-                  marginLeft: "1rem",
-                }}
-                className="input-email-mobile"
-              />
-            </Box>
-            <Box
-              display={{ xs: "block", sm: "flex" }}
-              alignItems="center"
-              sx={{ gap: "3rem" }}
-            >
-              <Typography
-                style={{ color: "gray", fontFamily: "Delicatessen Script" }}
-                sx={{
-                  marginLeft: { xs: "2rem", sm: "8rem" },
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
-                  fontSize: { xs: "19px", sm: "20px" },
-                }}
-              >
-                informations
-                <br /> Complémentaires
-              </Typography>
-              <TextArea
-                style={{
-                  marginTop: "3rem",
-                  width: "350px",
-                  marginLeft: window.innerWidth < 600 ? "2rem" : "0",
-                }}
-                rows={4}
-              />
-            </Box>
-            <div
-              style={{
-                justifyContent: "center",
-                display: "flex",
-                marginTop: "2rem",
+                <FormControlLabel
+                  value="female"
+                  control={<Radio />}
+                  label="Mme"
+                />
+                <FormControlLabel value="male" control={<Radio />} label="Mr" />
+              </RadioGroup>
+            </FormControl>
+          </Box>
+          <Box
+            display={{ xs: "block", sm: "flex" }}
+            alignItems="center"
+            sx={{ gap: "6rem" }}
+          >
+            <Typography
+              style={{ color: "gray", fontFamily: "Delicatessen Script" }}
+              sx={{
+                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginTop: { xs: "3rem", sm: "3.5rem" },
+                fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              <Button
-                type="primary"
-                style={{
-                  backgroundColor: "#333",
-                  color: "#fff",
-                  borderRadius: "0",
-                  width: 150,
-                  height: 50,
-                  fontSize: 18,
-                  fontFamily: "Montserrat",
-                  textTransform: "none",
-                }}
-              >
-                Envoyer
-              </Button>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Box
+              Nom *
+            </Typography>
+            <Input
               style={{
-                boxShadow:
-                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-                marginTop: "2rem",
                 width: "350px",
-                marginLeft: "auto",
-                marginRight: "auto",
+                height: "30px",
+                marginLeft: "2rem",
+              }}
+              className="input-email-mobile"
+            />
+          </Box>
+          <Box
+            display={{ xs: "block", sm: "flex" }}
+            alignItems="center"
+            sx={{ gap: "6rem" }}
+          >
+            <Typography
+              style={{ color: "gray", fontFamily: "Delicatessen Script" }}
+              sx={{
+                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginTop: { xs: "3rem", sm: "3.5rem" },
+                fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              <Typography
-                sx={{
-                  fontFamily: "Delicatessen Script",
-                  fontSize: 23,
-                  marginLeft: "2rem",
-                }}
-              >
-                SAS Fécourt
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: 20,
-                  marginLeft: "2rem",
-                  color: "gray",
-                }}
-              >
-                CFC Anfa, Casablanca
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: 20,
-                  marginLeft: "2rem",
-                  color: "gray",
-                }}
-              >
-                Tel : (+212)0 700 738 084 <br /> J.M. Senhaji
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: 20,
-                  marginLeft: "2rem",
-                  color: "gray",
-                }}
-              >
-                contact@AfricaShiningFuel.ma
-              </Typography>
-            </Box>
-          </Grid>
+              Prenom *
+            </Typography>
+            <Input
+              style={{
+                width: "350px",
+                height: "30px",
+                marginLeft: "1rem",
+              }}
+              className="input-email-mobile"
+            />
+          </Box>
+          <Box
+            display={{ xs: "block", sm: "flex" }}
+            alignItems="center"
+            sx={{ gap: "2rem" }}
+          >
+            <Typography
+              style={{ color: "gray", fontFamily: "Delicatessen Script" }}
+              sx={{
+                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginTop: { xs: "3rem", sm: "3.5rem" },
+                fontSize: { xs: "19px", sm: "20px" },
+              }}
+            >
+              Socité (facultatif)
+            </Typography>
+            <Input
+              style={{
+                width: "350px",
+                height: "30px",
+                marginLeft: "1rem",
+              }}
+              className="input-email-mobile"
+            />
+          </Box>
+          <Box
+            display={{ xs: "block", sm: "flex" }}
+            alignItems="center"
+            sx={{ gap: "5rem" }}
+          >
+            <Typography
+              style={{ color: "gray", fontFamily: "Delicatessen Script" }}
+              sx={{
+                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginTop: { xs: "3rem", sm: "3.5rem" },
+                fontSize: { xs: "19px", sm: "20px" },
+              }}
+            >
+              Telephone *
+            </Typography>
+            <Input
+              style={{
+                width: "350px",
+                height: "30px",
+                marginLeft: "1rem",
+              }}
+              className="input-email-mobile"
+            />
+          </Box>
+          <Box
+            display={{ xs: "block", sm: "flex" }}
+            alignItems="center"
+            sx={{ gap: "2rem" }}
+          >
+            <Typography
+              style={{ color: "gray", fontFamily: "Delicatessen Script" }}
+              sx={{
+                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginTop: { xs: "3rem", sm: "3.5rem" },
+                fontSize: { xs: "19px", sm: "20px" },
+              }}
+            >
+              Volume Gazole *
+            </Typography>
+            <Input
+              style={{
+                width: "350px",
+                height: "30px",
+                marginLeft: "1rem",
+              }}
+              className="input-email-mobile"
+            />
+          </Box>
+          <Box
+            display={{ xs: "block", sm: "flex" }}
+            alignItems="center"
+            sx={{ gap: "3rem" }}
+          >
+            <Typography
+              style={{ color: "gray", fontFamily: "Delicatessen Script" }}
+              sx={{
+                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginTop: { xs: "3rem", sm: "3.5rem" },
+                fontSize: { xs: "19px", sm: "20px" },
+              }}
+            >
+              informations
+              <br /> Complémentaires
+            </Typography>
+            <TextArea
+              style={{
+                marginTop: "3rem",
+                width: "350px",
+                marginLeft: window.innerWidth < 600 ? "2rem" : "0",
+              }}
+              rows={4}
+            />
+          </Box>
+          <div
+            style={{
+              justifyContent: "center",
+              display: "flex",
+              marginTop: "2rem",
+            }}
+          >
+            <Button
+              type="primary"
+              style={{
+                backgroundColor: "#333",
+                color: "#fff",
+                borderRadius: "0",
+                width: 150,
+                height: 50,
+                fontSize: 18,
+                fontFamily: "Montserrat",
+                textTransform: 'none',
+              }}
+            >
+              Envoyer
+            </Button>
+          </div>
         </Grid>
-      </Container>
-      <Footer marginTop={"9rem"} />
+        <Grid item xs={12} sm={4}>
+          <Box
+            style={{
+              boxShadow:
+                "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+              marginTop: "2rem",
+              width: '350px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          >
+            <Typography
+              sx={{
+                fontFamily: "Delicatessen Script",
+                fontSize: 23,
+                marginLeft: "2rem",
+              }}
+            >
+              SAS Fécourt
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "inherit",
+                fontSize: 20,
+                marginLeft: "2rem",
+                color: "gray",
+              }}
+            >
+              CFC Anfa, Casablanca
+            </Typography>
+            <Typography
+            sx={{
+              fontFamily: "inherit",
+              fontSize: 20,
+              marginLeft: "2rem",
+              color: "gray",
+            }}
+
+            >Tel : (+212)0 700 738 084 <br/> J.M. Senhaji</Typography>
+            <Typography 
+            sx={{
+              fontFamily: "inherit",
+              fontSize: 20,
+              marginLeft: "2rem",
+              color: "gray",
+            }}
+
+            >
+              contact@AfricaShiningFuel.ma
+            </Typography>
+          </Box>
+        </Grid>
+      </Grid>
+      <Footer marginTop={"5rem"} />
     </div>
   );
 }

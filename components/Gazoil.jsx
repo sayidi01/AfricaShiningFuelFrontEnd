@@ -1,16 +1,16 @@
-import { Typography, Grid, Box , Button} from "@mui/material";
+import { Typography, Grid, Box, Button, Container } from "@mui/material";
 import React from "react";
 import NavBar from "./NavBar";
 import { useTheme } from "@mui/material/styles";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import descGazoil1 from"../src/images/descGAZOIL.jpeg"
-import descGazoil2 from"../src/images/descGazoil2.png"
-import descGazoil3 from"../src/images/descGAZOIL3.png"
+import descGazoil1 from "../src/images/descGAZOIL.jpeg";
+import descGazoil2 from "../src/images/descGazoil2.png";
+import descGazoil3 from "../src/images/descGAZOIL3.png";
 import { Input } from "antd";
 const { TextArea } = Input;
 function Gazoil() {
@@ -29,148 +29,203 @@ function Gazoil() {
         Gasoil Excellence et Services de Qualité par Africa Shining Fuel :
       </Typography>
 
-      <Grid container>
+      <Container sx={{ my: 10 }} maxWidth={"lg"} style={{ padding: "none" }}>
         <Grid
-          item
-          xs={6}
-          sm={7}
+          container
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingBottom: 120,
+          }}
+          gap={2}
           sx={{
-            marginTop: { xs: "3rem", sm: "4rem" },
-            textAlign: { xs: "left", sm: "center" },
+            flexWrap: {
+              md: "nowrap",
+            },
           }}
         >
-          <img src={descGazoil1} width={550} />
-        </Grid>
-        <Grid item xs={12} sm={5} marginTop={{ xs: "0rem", sm: "7rem" }}>
-          <Typography
-            sx={{
-              fontSize: { xs: 18, sm: 20 },
-              fontFamily: "inherit",
-              textAlign: { xs: "center", sm: "left" },
-            }}
-          >
-            Explorez l'excellence énergétique
-            <br /> avec <span style={{ fontWeight: "bold" }}>Gasoil</span>{" "}
-            Excellence, une véritable
-            <br /> quintessence de{" "}
-            <span style={{ fontWeight: "bold" }}>qualité</span> , et plongez{" "}
-            <br />
-            dans un univers où la
-            <span style={{ fontWeight: "bold" }}> fiabilité</span> , <br />{" "}
-            <span style={{ fontWeight: "bold" }}>le sérieux</span> et{" "}
-            <span style={{ fontWeight: "bold" }}>l'engagement</span> définissent
-            <br /> notre mission. Chez{" "}
-            <span style={{ color: "#FFA447" }}>Africa Shining Fuel</span>,<br />{" "}
-            la qualité transcende chaque aspect de
-            <br />
-            notre offre, du carburant que nous <br /> fournissons à la
-            prestation de nos services.
-          </Typography>
-        </Grid>
-      </Grid>
-      <Typography
-        sx={{
-          fontFamily: "inherit",
-          fontSize: { xs: 19, sm: 20 },
-          marginTop: { xs: "3rem", sm: "3rem" },
-          textAlign: { xs: "center", sm: "left" },
-          marginLeft: { xs: "0rem", sm: "8.5rem" },
-        }}
-      >
-        Notre Gasoil Excellence incarne la norme d'or de{" "}
-        <span style={{ fontWeight: "bold" }}>qualité</span> dans le secteur des
-        carburants. Chaque <br /> goutte résulte d'un processus de raffinage
-        rigoureux, garantissant une pureté inégalée, préservant la <br />
-        performance de vos moteurs et vous offrant une tranquillité d'esprit
-        inébranlable. Opter pour notre <br /> gasoil, c'est choisir la fiabilité
-        à chaque ravitaillement.
-      </Typography>
-      <Grid container>
-        <Grid
-          item
-          xs={6}
-          sm={7}
-          sx={{
-            marginTop: { xs: "3rem", sm: "4rem" },
-            textAlign: { xs: "left", sm: "center" },
-          }}
-        >
-          <img src={descGazoil2} width={550} />
-        </Grid>
-        <Grid item xs={12} sm={5} marginTop={{ xs: "0rem", sm: "10rem" }}>
-          <Typography
-            sx={{
-              fontSize: { xs: 18, sm: 20 },
-              fontFamily: "inherit",
-              textAlign: { xs: "center", sm: "left" },
-              marginTop: "2rem",
-            }}
-          >
-            En plus de la qualité exceptionnelle de notre carburant, <br />{" "}
-            notre engagement envers la{" "}
-            <span style={{ fontWeight: "bold" }}> qualité de service</span> est
-            tout <br /> aussi intransigeant. Notre équipe dédiée s'engage à{" "}
-            <br />
-            fournir des services irréprochables, alliant expertise <br /> et
-            dévouement pour répondre à vos besoins énergétiques spécifiques.{" "}
-            <br /> La <span style={{ fontWeight: "bold" }}>
-              ponctualité
-            </span>{" "}
-            est notre promesse ; chaque livraison est orchestrée avec <br />
-            précision pour respecter vos échéances.
-          </Typography>
-        </Grid>
-      </Grid>
+          <Grid item xs={12} md={7}>
+            <img
+              src={descGazoil1}
+              width={"100%"}
+              style={{
+                borderRadius: "1.875rem",
+                border: "1px solid #dbeefe",
+              }}
+            />
+          </Grid>
 
-      <Grid container>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          sx={{
-            marginTop: { xs: "3rem", sm: "4rem" },
-            textAlign: { xs: "left", sm: "center" },
-          }}
-        >
-          <img src={descGazoil3} width={550} />
-        </Grid>
-        <Grid item xs={12} sm={6} marginTop={{ xs: "2rem", sm: "10rem" }}>
-          <Typography
+          <Grid
+            item
+            xs={12}
+            md={5}
             sx={{
-              fontSize: { xs: 18, sm: 20 },
-              fontFamily: "inherit",
-              textAlign: { xs: "center", sm: "left" },
-              marginTop: { xs: "2rem", sm: "10rem" },
+              borderRadius: "1.875rem",
+              border: "1px solid  #fab823",
+              width: 400,
+              p: 3,
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            Notre sérieux et notre engagement ne se limitent pas à la qualité{" "}
-            {window.innerWidth < 600 ? null : <br />} du produit, mais
-            définissent également notre approche de service.{" "}
-            {window.innerWidth < 600 ? null : <br />} Nous sommes plus qu'un
-            fournisseur de carburant ; nous sommes un{" "}
-            <span style={{ fontWeight: "bold" }}>partenaire engagé</span> dans
-            votre succès. Chez{" "}
-            <span style={{ color: "#FFA447" }}>Africa Shining Fuel</span>, nous{" "}
-            considérons chaque interaction comme une occasion
-          </Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: 18, sm: 15 },
+                fontFamily: "Space Grotesk",
+              }}
+            >
+              Explorez l'excellence énergétique avec{" "}
+              <span style={{ fontWeight: "bold" }}> Gasoil </span> Excellence,
+              une véritable quintessence de{" "}
+              <span style={{ fontWeight: "bold" }}> qualité </span>, et plongez
+              dans un univers où la
+              <span style={{ fontWeight: "bold" }}> fiabilité </span>, le{" "}
+              <span style={{ fontWeight: "bold" }}> sérieux </span> et{" "}
+              <span style={{ fontWeight: "bold" }}> l'engagement </span>{" "}
+              définissent notre mission. Chez{" "}
+              <span style={{ color: "#FFA447", fontWeight: "bold" }}>
+                {" "}
+                Africa Shining Fuel{" "}
+              </span>
+              , la <span style={{ fontWeight: "bold" }}> qualité </span>{" "}
+              transcende chaque aspect de notre offre, du carburant que nous
+              fournissons à la prestation de nos services. Notre Gasoil
+              Excellence incarne la norme d'or de la qualité dans le secteur des
+              carburants. Chaque goutte résulte d'un processus de raffinage
+              rigoureux, garantissant une pureté inégalée, préservant la
+              performance de vos moteurs et vous offrant une tranquillité
+              d'esprit inébranlable. Opter pour notre gasoil, c'est choisir la
+              fiabilité à chaque ravitaillement.
+            </Typography>
+          </Grid>
         </Grid>
-      </Grid>
-      <Typography
-        sx={{
-          fontSize: { xs: 18, sm: 18 },
-          fontFamily: "inherit",
-          textAlign: { xs: "center", sm: "left" },
-          marginTop: "2rem",
-          marginLeft: { xs: "0rem", sm: "8rem" },
-        }}
-      >
-        de démontrer notre dévouement envers la qualité, la ponctualité et le
-        sérieux, établissant ainsi une relation de confiance à long terme avec
-        nos clients.
-        <br /> Optez pour l'excellence totale avec Gasoil Excellence et Services
-        de Qualité par Africa Shining Fuel, et découvrez une énergie qui
-        transcende les attentes
-      </Typography>
+        <Grid
+          container
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingBottom: 120,
+          }}
+          gap={2}
+          sx={{
+            flexWrap: {
+              md: "nowrap",
+            },
+          }}
+        >
+          <Grid
+            item
+            xs={12}
+            md={5}
+            sx={{
+              borderRadius: "1.875rem",
+              border: "1px solid  #fab823",
+              width: 400,
+              p: 3,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: { xs: 18, sm: 15 },
+                fontFamily: "Space Grotesk",
+              }}
+            >
+              En plus de la qualité exceptionnelle de notre carburant, notre
+              engagement envers la{" "}
+              <span style={{ fontWeight: "bold" }}> qualité de service </span>{" "}
+              est tout aussi intransigeant. Notre équipe dédiée s'engage à
+              fournir des services irréprochables, alliant expertise et
+              dévouement pour répondre à vos besoins énergétiques spécifiques.
+              La <span style={{ fontWeight: "bold" }}> ponctualité </span>
+              est notre promesse ; chaque livraison est orchestrée avec
+              précision pour respecter vos échéances.
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} md={7}>
+            <img
+              src={descGazoil2}
+              width={"100%"}
+              style={{
+                borderRadius: "1.875rem",
+                border: "1px solid #dbeefe",
+              }}
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingBottom: 120,
+          }}
+          gap={2}
+          sx={{
+            flexWrap: {
+              md: "nowrap",
+            },
+          }}
+        >
+          <Grid item xs={12} md={7}>
+            <img
+              src={descGazoil3}
+              width={"100%"}
+              style={{
+                borderRadius: "1.875rem",
+                border: "1px solid #dbeefe",
+              }}
+            />
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            md={5}
+            sx={{
+              borderRadius: "1.875rem",
+              border: "1px solid  #fab823",
+              width: 400,
+              p: 3,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: { xs: 18, sm: 15 },
+                fontFamily: "Space Grotesk",
+              }}
+            >
+              Notre sérieux et notre engagement ne se limitent pas à la qualité
+              du produit, mais définissent également notre approche de service.
+              Nous sommes plus qu'un fournisseur de carburant ; nous sommes un{" "}
+              <span style={{ fontWeight: "bold" }}> partenaire engagé </span>{" "}
+              dans votre succès. Chez{" "}
+              <span style={{ color: "#FFA447", fontWeight: "bold" }}>
+                {" "}
+                Africa Shining Fuel
+              </span>
+              , nous considérons chaque interaction comme une occasion de
+              démontrer notre dévouement envers la qualité, la ponctualité et le
+              sérieux, établissant ainsi une{" "}
+              <span style={{ fontWeight: "bold" }}>
+                {" "}
+                relation de confiance{" "}
+              </span>{" "}
+              à long terme avec nos clients. Optez pour l'excellence totale avec
+              Gasoil Excellence et Services de Qualité par{" "}
+              <span style={{ color: "#FFA447", fontWeight: "bold" }}>
+                {" "}
+                Africa Shining Fuel{" "}
+              </span>
+              , et découvrez une énergie qui transcende les attentes.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Container>
       <Box width="50%" margin="auto">
         <Typography
           style={{ borderBottom: "1px solid #FFA447" }}
@@ -386,7 +441,7 @@ function Gazoil() {
                 height: 50,
                 fontSize: 18,
                 fontFamily: "Montserrat",
-                textTransform: 'none',
+                textTransform: "none",
               }}
             >
               Envoyer
@@ -399,9 +454,9 @@ function Gazoil() {
               boxShadow:
                 "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
               marginTop: "2rem",
-              width: '350px',
-              marginLeft: 'auto',
-              marginRight: 'auto',
+              width: "350px",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
             <Typography
@@ -424,22 +479,22 @@ function Gazoil() {
               CFC Anfa, Casablanca
             </Typography>
             <Typography
-            sx={{
-              fontFamily: "inherit",
-              fontSize: 20,
-              marginLeft: "2rem",
-              color: "gray",
-            }}
-
-            >Tel : (+212)0 700 738 084 <br/> J.M. Senhaji</Typography>
-            <Typography 
-            sx={{
-              fontFamily: "inherit",
-              fontSize: 20,
-              marginLeft: "2rem",
-              color: "gray",
-            }}
-
+              sx={{
+                fontFamily: "inherit",
+                fontSize: 20,
+                marginLeft: "2rem",
+                color: "gray",
+              }}
+            >
+              Tel : (+212)0 700 738 084 <br /> J.M. Senhaji
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "inherit",
+                fontSize: 20,
+                marginLeft: "2rem",
+                color: "gray",
+              }}
             >
               contact@AfricaShiningFuel.ma
             </Typography>

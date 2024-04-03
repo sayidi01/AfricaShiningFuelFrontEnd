@@ -1,10 +1,10 @@
 import React from "react";
 import NavBar from "./NavBar";
-import { Container, Grid, Typography } from "@mui/material";
-import descJaugeConnecte1 from "../src/images/descJAUGECONNECTE1.png";
-import descJaugeConnecte2 from "../src/images/descJAUGECONNECTE2.png";
+import { Grid, Typography, Container } from "@mui/material";
+import telepage1 from "../src/images/descTELEBADGE1.png";
+import telepage2 from "../src/images/descTELEBAGDE2.png";
 import Footer from "./Footer";
-function JaugeConnecte() {
+function AbonnementTelepage() {
   return (
     <div>
       <NavBar />
@@ -25,7 +25,7 @@ function JaugeConnecte() {
         >
           <Grid item xs={12} md={7}>
             <img
-              src={descJaugeConnecte1}
+              src={telepage1}
               width={"100%"}
               style={{
                 borderRadius: "1.875rem",
@@ -53,24 +53,25 @@ function JaugeConnecte() {
                 fontFamily: "Space Grotesk",
               }}
             >
-              Ouvrez la porte à la tranquillité d'esprit avec la jauge connectée
-              d'
+              Explorez les avantages de notre service d'abonnement Télébadge
+              chez{" "}
               <span style={{ color: "#FFA447", fontWeight: "bold" }}>
                 {" "}
                 Africa Shining Fuel{" "}
               </span>
-              . Une solution de pointe pour surveiller vos stocks de carburant
-              en temps réel. Grâce à notre technologie innovante, vous pouvez
-              désormais garder un œil sur le niveau de carburant de vos
-              réservoirs où que vous soyez, depuis n'importe quel appareil
-              connecté. Notre service de{" "}
-              <span style={{ fontWeight: "bold" }}> jauge connectée </span> vous
-              offre une visibilité complète sur vos réserves de carburant, vous
-              permettant ainsi de gérer efficacement vos approvisionnements et
-              de prévenir les ruptures de stock. Recevez des alertes en temps
-              réel en cas de niveaux bas ou anormaux, et planifiez vos
-              livraisons de manière proactive pour maintenir un fonctionnement
-              fluide de vos activités.
+              , conçu sur mesure pour répondre aux besoins spécifiques de votre
+              flotte B to B. Avec Télébadge, offrez à vos camions et véhicules
+              de service un{" "}
+              <span style={{ fontWeight: "bold" }}>
+                {" "}
+                accès pratique{" "}
+              </span> et{" "}
+              <span style={{ fontWeight: "bold" }}>
+                {" "}
+                sécurisé aux stations-service{" "}
+              </span>{" "}
+              , garantissant ainsi des ravitaillements en carburant fluides et
+              sans tracas.
             </Typography>
           </Grid>
         </Grid>
@@ -107,23 +108,29 @@ function JaugeConnecte() {
                 fontFamily: "Space Grotesk",
               }}
             >
-              Avec{" "}
+              Grâce à notre solution Télébadge, vous bénéficiez d'un contrôle
+              total sur les dépenses de carburant de votre flotte, avec des
+              outils de surveillance en temps réel et des rapports détaillés sur
+              l'utilisation du carburant. Personnalisable selon vos exigences,
+              notre solution Télébadge vous permet de maximiser l'efficacité
+              opérationnelle de votre flotte, tout en réduisant les coûts et en
+              optimisant la productivité. Faites confiance à
               <span style={{ color: "#FFA447", fontWeight: "bold" }}>
                 {" "}
                 Africa Shining Fuel{" "}
-              </span>
-              , bénéficiez d'une surveillance continue et précise de vos stocks
-              de carburant, et optimisez vos opérations de ravitaillement pour
-              une gestion plus efficace de vos ressources énergétiques. Faites
-              confiance à notre service de jauge connectée pour vous offrir une
-              tranquillité d'esprit totale quant à la disponibilité et à la
-              gestion de vos ressources énergétiques.
+              </span>{" "}
+              pour vous fournir un service d'abonnement Télébadge fiable et
+              performant, soutenu par notre engagement envers{" "}
+              <span style={{ fontWeight: "bold" }}> l'excellence </span> et la
+              <span style={{ fontWeight: "bold" }}> satisfaction client </span>.
+              Simplifiez la gestion de votre flotte B to B et découvrez de
+              nouveaux niveaux d'efficacité avec Télébadge.
             </Typography>
           </Grid>
 
           <Grid item xs={12} md={7}>
             <img
-              src={descJaugeConnecte2}
+              src={telepage2}
               width={"100%"}
               style={{
                 borderRadius: "1.875rem",
@@ -133,9 +140,9 @@ function JaugeConnecte() {
           </Grid>
         </Grid>
       </Container>
-      <Footer marginTop={"6rem"} />
+      <Footer marginTop={'3rem'}/>
     </div>
   );
 }
 
-export default JaugeConnecte;
+export default AbonnementTelepage;

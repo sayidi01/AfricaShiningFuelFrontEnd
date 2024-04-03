@@ -23,7 +23,7 @@ import PolitiqueRH from "./PolitiqueRH.jsx"
 import OffreCompetitive from "./OffreCompetitive.jsx"
 import EquipeDediees from "./EquipeDediees.jsx"
 import LandingPage from "./LandingPage.jsx"
-
+import AbonnementTelepage from "./AbonnementTelepage.jsx"
 
 
 export const PublicRoutes = [
@@ -145,6 +145,11 @@ export const PublicRoutes = [
         path: '/equipedediees',
         element: <EquipeDediees/>
 
+    },
+    {
+        id: 24,
+        path: 'abonnementtelepage',
+        element: <AbonnementTelepage/>
     }
 ]
 

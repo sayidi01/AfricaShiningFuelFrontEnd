@@ -1,12 +1,12 @@
 import React from "react";
 import NavBar from "./NavBar";
-import { Box, Grid, Typography , Button} from "@mui/material";
+import { Box, Grid, Typography, Button, Container } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import descCiterne1 from"../src/images/descCITERNE1.png"
-import descCiterne2 from"../src/images/descCITERNE2.png"
+import descCiterne1 from "../src/images/descCITERNE1.png";
+import descCiterne2 from "../src/images/descCITERNE2.png";
 import { Input } from "antd";
 const { TextArea } = Input;
 
@@ -16,75 +16,139 @@ function Citerne() {
   return (
     <div>
       <NavBar />
-      <Grid container>
-        <Grid item xs={12} sm={6}>
-          <Box
+      <Container sx={{ my: 10 }} maxWidth={"lg"} style={{ padding: "none" }}>
+        <Grid
+          container
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingBottom: 120,
+          }}
+          gap={2}
+          sx={{
+            flexWrap: {
+              md: "nowrap",
+            },
+          }}
+        >
+          <Grid item xs={12} md={7}>
+            <img
+              src={descCiterne1}
+              width={"100%"}
+              style={{
+                borderRadius: "1.875rem",
+                border: "1px solid #dbeefe",
+              }}
+            />
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            md={5}
             sx={{
-              marginLeft: { xs: "0rem", sm: "7rem" },
-              marginTop: { xs: "0rem", sm: "5rem" },
+              borderRadius: "1.875rem",
+              border: "1px solid  #fab823",
+              width: 400,
+              p: 3,
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            <img src={descCiterne1} width={550} />
-          </Box>
+            <Typography
+              sx={{
+                fontSize: { xs: 18, sm: 15 },
+                fontFamily: "Space Grotesk",
+              }}
+            >
+              Explorez la <span style={{ fontWeight: "bold" }}> qualité </span>{" "}
+              exceptionnelle de nos solutions de stockage de carburant grâce aux
+              citernes spécialisées d'
+              <span style={{ color: "#FFA447", fontWeight: "bold" }}>
+                {" "}
+                Africa Shining Fuel{" "}
+              </span>{" "}
+              . Intégrant une ingénierie de pointe et une minutie inégalée dans
+              chaque détail, nos citernes se positionnent comme une solution
+              fiable et sécurisée pour répondre à une gamme variée de besoins en
+              matière de stockage de carburant. Chez{" "}
+              <span style={{ color: "#FFA447", fontWeight: "bold" }}>
+                {" "}
+                Africa Shining Fuel{" "}
+              </span>{" "}
+              , notre engagement envers la qualité supérieure est palpable à
+              travers des citernes qui surpassent les normes les plus strictes
+              de l'industrie, offrant une performance optimale et une durabilité
+              exceptionnelle, que ce soit pour des projets à grande échelle ou
+              des exigences spécifiques.
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography
+        <Grid
+          container
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingBottom: 120,
+          }}
+          gap={2}
+          sx={{
+            flexWrap: {
+              md: "nowrap",
+            },
+          }}
+        >
+          <Grid
+            item
+            xs={12}
+            md={5}
             sx={{
-              fontFamily: "inherit",
-              fontSize: { xs: 18, sm: 21 },
-              marginTop: { xs: "2rem", sm: "8rem" },
-              marginLeft: { xs: "1rem", sm: "0rem" },
+              borderRadius: "1.875rem",
+              border: "1px solid  #fab823",
+              width: 400,
+              p: 3,
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            Explorez la <span style={{ fontWeight: "bold" }}> qualité </span>{" "}
-            exceptionnelle de nos solutions de stockage de carburant grâce aux
-            citernes spécialisées{" "}
-            <span style={{ color: "#FFA447" }}> d'Africa Shining Fuel </span>.
-            Intégrant une ingénierie de pointe et une minutie inégalée dans
-            chaque détail, nos citernes se positionnent comme une solution
-            fiable et sécurisée pour répondre à une gamme variée de besoins en
-            matière de stockage de carburant. Chez{" "}
-            <span style={{ color: "#FFA447" }}>Africa Shining Fuel</span> ,
-            notre engagement envers la qualité supérieure est palpable à travers
-            des citernes qui surpassent les normes les plus strictes de
-            l'industrie, offrant une performance optimale et une durabilité
-            exceptionnelle, que ce soit pour des projets à grande échelle ou des
-            exigences spécifiques.
-          </Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: 18, sm: 15 },
+                fontFamily: "Space Grotesk",
+              }}
+            >
+              Adapté aux exigences diverses des moteurs haut de gamme et des
+              opérations industrielles complexes, notre{" "}
+              <span style={{ fontWeight: "bold" }}> fuel </span> offre une
+              réponse personnalisée à vos besoins énergétiques les plus
+              sophistiqués. Chaque ravitaillement devient une célébration de
+              l'efficacité, une rencontre avec une énergie adaptée à vos
+              attentes les plus raffinées. Au-delà de la performance mécanique,
+              nous nous engageons envers des pratiques environnementales
+              responsables. En choisissant notre{" "}
+              <span style={{ fontWeight: "bold" }}> fuel </span>, vous optez
+              pour une énergie qui respecte non seulement vos moteurs mais
+              contribue également à la
+              <span style={{ fontWeight: "bold" }}>
+                {" "}
+                préservation de notre planète{" "}
+              </span>
+              .
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} md={7}>
+            <img
+              src={descCiterne2}
+              width={"100%"}
+              style={{
+                borderRadius: "1.875rem",
+                border: "1px solid #dbeefe",
+              }}
+            />
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs={12} sm={6}>
-          <Box
-            sx={{
-              marginLeft: { xs: "0rem", sm: "7rem" },
-              marginTop: { xs: "1rem", sm: "8rem" },
-            }}
-          >
-            <img src={descCiterne2} width={550} />
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography
-            sx={{
-              marginTop: { xs: "3rem", sm: "13rem" },
-              fontFamily: "inherit",
-              fontSize: { xs: 18, sm: 21 },
-              marginLeft: {xs: '1rem', sm: '7rem'}
-            }}
-          >
-            La qualité inégalée de nos citernes est renforcée <br/> par notre
-            engagement ferme envers la <span style={{fontWeight: 'bold'}}> sécurité  <br/> </span>  et <span style={{fontWeight: 'bold'}}> l'efficacité opérationnelle </span> .
-            Chaque citerne  <br/> est soumise à des contrôles de qualité rigoureux, <br/>
-            garantissant une fiabilité constante et une protection  <br/> maximale.
-            Opter pour nos citernes de carburant chez  <br/> <span style={{ color: "#FFA447" }}>  Africa Shining Fuel  </span> offre
-            bien plus qu'une simple  <br/>solution de stockage ; c'est choisir une
-            tranquillité  <br/> d'esprit inégalée, avec des solutions qui répondent  <br/> non
-            seulement, mais surpassent vos normes élevées <br/> en matière de <span  style={{fontWeight: 'bold'}}>  qualité </span>,
-            de <span  style={{fontWeight: 'bold'}} > sécurité </span>  et de <span  style={{fontWeight: 'bold'}}> performance </span>.
-          </Typography>
-        </Grid>
-      </Grid>
+      </Container>
       <Box width="50%" margin="auto">
         <Typography
           style={{ borderBottom: "1px solid #FFA447" }}
@@ -299,7 +363,7 @@ function Citerne() {
                 height: 50,
                 fontSize: 18,
                 fontFamily: "Montserrat",
-                textTransform: 'none',
+                textTransform: "none",
               }}
             >
               Envoyer
@@ -312,9 +376,9 @@ function Citerne() {
               boxShadow:
                 "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
               marginTop: "2rem",
-              width: '350px',
-              marginLeft: 'auto',
-              marginRight: 'auto',
+              width: "350px",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
             <Typography
@@ -337,29 +401,29 @@ function Citerne() {
               CFC Anfa, Casablanca
             </Typography>
             <Typography
-            sx={{
-              fontFamily: "inherit",
-              fontSize: 20,
-              marginLeft: "2rem",
-              color: "gray",
-            }}
-
-            >Tel : (+212)0 700 738 084 <br/> J.M. Senhaji</Typography>
-            <Typography 
-            sx={{
-              fontFamily: "inherit",
-              fontSize: 20,
-              marginLeft: "2rem",
-              color: "gray",
-            }}
-
+              sx={{
+                fontFamily: "inherit",
+                fontSize: 20,
+                marginLeft: "2rem",
+                color: "gray",
+              }}
+            >
+              Tel : (+212)0 700 738 084 <br /> J.M. Senhaji
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "inherit",
+                fontSize: 20,
+                marginLeft: "2rem",
+                color: "gray",
+              }}
             >
               contact@AfricaShiningFuel.ma
             </Typography>
           </Box>
         </Grid>
       </Grid>
-      <Footer marginTop={'60px'}/>
+      <Footer marginTop={"60px"} />
     </div>
   );
 }

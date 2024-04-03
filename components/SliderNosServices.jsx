@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
 import Slider from "react-slick";
-import '../src/sliderLIVRAISON.css';
-import { Box } from '@mui/material';
-import { Link, NavLink } from 'react-router-dom';
-import { Typography } from 'antd';
+import "../src/sliderLIVRAISON.css";
+import { Box } from "@mui/material";
+import { Link, NavLink } from "react-router-dom";
+import { Typography } from "antd";
 
 function SliderNosServices() {
- 
   const settings = {
     dots: false,
     infinite: true,
@@ -14,27 +13,54 @@ function SliderNosServices() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
-    arrows: false
+    autoplaySpeed: 3000,
+    arrows: false,
   };
 
- 
-
   return (
-    <Box className="slider-wrapper" sx={{marginTop: {xs: '5rem', sm: '8rem'}}}>
-      <div className="slider-container" >
+    <Box
+      className="slider-wrapper"
+      sx={{ marginTop: { xs: "5rem", sm: "8rem" } }}
+    >
+      <div className="slider-container">
         <Slider {...settings}>
-            <Link to={'/livraison'}>
-          <div className='livraison'>
-            <Typography> The TFC card enables you to refuel economically at up to 4,600 petrol stations. Our network covers 18 European countries and continues to expand.  </Typography>
-          </div>
-            </Link>
-           <NavLink to={'/cartecarburant'}>
-          <div className='carte-carburant-toute-marque-ASF'>
-            <h3></h3>
-          </div>
-           </NavLink>
-          <div className='abonnement-telepage'>
+          <Link className="no-underline-link" to={"/livraison"}>
+            <Box
+              className="livraison"
+              sx={{ position: "relative" }}
+            >
+              <Typography 
+                style={{
+                  fontFamily: "Montserrat",
+                  fontWeight: "bold",
+                  color: "white",
+                  position: "absolute",
+                  bottom: 80,
+                  right: 0,
+                }}
+
+              >
+                The{" "}
+                <span style={{ fontWeight: "bold", color: "#659a9a" }}>
+                  TFC card
+                </span>{" "}
+                enables you to refuel
+                <br /> economically at up to 4,600 petrol stations.
+                <br /> Our network covers{" "}
+                <span style={{ fontWeight: "bold", color: "#659a9a" }}>
+                  {" "}
+                  18 European countries{" "}
+                </span>
+                <br /> and continues to expand.
+              </Typography>
+            </Box>
+          </Link>
+          <NavLink to={"/cartecarburant"}>
+            <div className="carte-carburant-toute-marque-ASF">
+              <h3></h3>
+            </div>
+          </NavLink>
+          <div className="abonnement-telepage">
             <h3></h3>
           </div>
         </Slider>

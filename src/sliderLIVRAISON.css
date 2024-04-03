@@ -3,6 +3,7 @@
     background-size: cover;
     background-position: center;
     height: 250px;
+    opacity: 2;
 }
 
 .carte-carburant-toute-marque-ASF {
@@ -19,6 +20,9 @@
     height: 250px;
 }
 
+.no-underline-link {
+    text-decoration: none !important;
+}
 
 
 
