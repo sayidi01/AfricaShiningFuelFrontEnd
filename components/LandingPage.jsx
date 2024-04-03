@@ -269,13 +269,13 @@ function LandingPage() {
 
             <Typography style={{ marginTop: "1rem" }} color={"gray"}>
               Avec une expérience inwi,la societé AFRICA SHINING FUEL
-              <br />
+            
               Témoigne de notre excellence et durabilité s'est établie comme un{" "}
-              <br />
+             
               leader incontesté dans le domaine des carburants
-              <br /> au Maroc. Notre engagement envers la qualité et
-              <br /> la fidélité de notre clientèle témoigne de notre
-              <br /> excellence durable.
+              au Maroc. Notre engagement envers la qualité et
+              la fidélité de notre clientèle témoigne de notre
+              excellence durable.
             </Typography>
             <div style={{ marginTop: "2rem" }}>
               <Button
