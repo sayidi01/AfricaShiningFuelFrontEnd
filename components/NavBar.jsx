@@ -124,13 +124,14 @@ function NavBar() {
           <Stack
             sx={{
               flexGrow: 1,
-              display: { xs: "none", xl: "flex" },
+              display: { xs: "none", xl: 'flex', lg: 'flex' },
             }}
             direction={"row"}
             spacing={5}
             style={{
               justifyContent: "center",
               alignItems: "center",
+              marginBottom: '-20px'
             }}
           >
             <div>
