@@ -321,7 +321,7 @@ function BorneDeRecharge() {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Volume Gazole *
+              Rèference Bornes Recharges *
             </Typography>
             <Input
               style={{

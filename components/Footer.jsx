@@ -4,7 +4,7 @@ import Divider from "@mui/material/Divider";
 import { Input } from "antd";
 import { Grid } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
-import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
+import Logo from "../src/images/LOGO_AFRICA_SHINING.png";
 import facebook from"../src/images/facebook.png"
 import Linkedin from"../src/images/linkdin.png"
 import X from"../src/images/X.png"
@@ -48,7 +48,7 @@ function Footer({marginTop}) {
             >
               Soyez toujours informé des dernières actualités, offres exclusives
               et événements. Inscrivez-vous pour rester connecté avec notre
-              univers passionnant et recevoir en primeur toutes les nouveautés.
+              univers passionnant et recevoir en amont toutes les nouveautés.
             </Typography>
           </div>
           <Box
@@ -89,7 +89,9 @@ function Footer({marginTop}) {
             </Button>
           </Box>
           <div>
+          
             <Typography
+           onClick={() => navigate("/conatcteznous")}
               style={{
                 fontWeight: "bolder",
                 fontFamily: "Montserrat",
@@ -97,8 +99,9 @@ function Footer({marginTop}) {
                 textAlign: "center",
               }}
             >
-              Contactez-nous
+              Contactez-nous 
             </Typography>
+           
             <Divider
               variant="middle"
               sx={{

@@ -24,6 +24,11 @@ import OffreCompetitive from "./OffreCompetitive.jsx"
 import EquipeDediees from "./EquipeDediees.jsx"
 import LandingPage from "./LandingPage.jsx"
 import AbonnementTelepage from "./AbonnementTelepage.jsx"
+import QuisSommesNous from "./QuisSommesNous.jsx"
+import RelationsInvestiseurs from "./RelationsInvestiseurs.jsx"
+import ActualitéASF from "./ActualitéASF.jsx"
+import ContactezNous from "./ContactezNous.jsx"
+
 
 
 export const PublicRoutes = [
@@ -148,8 +153,29 @@ export const PublicRoutes = [
     },
     {
         id: 24,
-        path: 'abonnementtelepage',
+        path: '/abonnementtelepage',
         element: <AbonnementTelepage/>
+    },
+    {
+        id: 25,
+        path:'/quisommesnous',
+        element: <QuisSommesNous/>
+    },
+    {
+        id: 26,
+        path: '/relationsinvestiseurs',
+        element: <RelationsInvestiseurs/>
+    },
+    {
+        id: 27,
+        path: '/ActualiteASF',
+        element: <ActualitéASF/>
+    },
+    {
+        id: 28,
+        path: '/conatcteznous',
+        element: <ContactezNous/>
+        
     }
 ]
 

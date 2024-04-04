@@ -398,7 +398,7 @@ function Fuel2() {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Volume Gazole *
+             Réference Fuel oil n° 2
             </Typography>
             <Input
               style={{

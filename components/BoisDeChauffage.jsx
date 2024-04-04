@@ -370,13 +370,13 @@ function BoisDeChauffage() {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Volume Gazole *
+              Réference chauffage
             </Typography>
             <Input
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "1rem",
+                marginLeft: "0rem",
               }}
               className="input-email-mobile"
             />

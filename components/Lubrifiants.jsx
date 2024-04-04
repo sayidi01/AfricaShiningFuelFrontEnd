@@ -375,7 +375,7 @@ function Lubrifiants() {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Volume Gazole *
+             Réference Lubrifiants
             </Typography>
             <Input
               style={{

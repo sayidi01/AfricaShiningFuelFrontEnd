@@ -7,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { Stack, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
-import Logo from "../src/images/LOGO_AFRICA_SHINING-removebg-preview.png";
+import Logo from "../src/images/LOGO_AFRICA_SHINING.png";
 import Drawer from "@mui/material/Drawer";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -170,7 +170,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseProducts}
                   >
-                    Gazoil
+                    Gasoil
                   </MenuItem>
                 </Link>
                 <Link to={"/Fuel2"} style={{ textDecoration: "none" }}>
@@ -390,7 +390,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseServicesPlus}
                   >
-                    Nettoyage à Domicile
+                    Nettoyage Sans Eau
                   </MenuItem>
                 </Link>
                 <Link
@@ -466,7 +466,7 @@ function NavBar() {
               >
                 <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
                 <Box onMouseLeave={handlePopoverCloseEvaluationMarche}>
-                <Link to={"/"} style={{ textDecoration: "none" }}>
+                <Link to={"/relationsInvestiseurs"} style={{ textDecoration: "none" }}>
                   <MenuItem
                     sx={{
                       p: 1,
@@ -477,10 +477,10 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseEvaluationMarche}
                   >
-                    Investiseurs
+                    Relations Investiseurs
                   </MenuItem>
                 </Link>
-                <Link to={"/"} style={{ textDecoration: "none" }}>
+                <Link to={"/ActualiteASF"} style={{ textDecoration: "none" }}>
                   <MenuItem
                     sx={{
                       p: 1,
@@ -696,7 +696,7 @@ function NavBar() {
             >
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
                 <NavLink
-                  to={"/gazoil"}
+                  to={"/gasoil"}
                   style={{ textDecoration: "none", color: "gray" }}
                 >
                   <ListItemText
@@ -865,7 +865,7 @@ function NavBar() {
                   >
                     <ListItemText
                       primaryTypographyProps={{ sx: { fontSize: 16 } }}
-                      primary="Nettoyage A Domicile"
+                      primary="Nettoyage Sans Eau"
                     />
                   </Link>
                 </ListItemButton>
@@ -876,7 +876,7 @@ function NavBar() {
                   >
                     <ListItemText
                       primaryTypographyProps={{ sx: { fontSize: 16 } }}
-                      primary="Collecte Lubrifiant"
+                      primary="Collecte Lubrifiants"
                     />
                   </Link>
                 </ListItemButton>
@@ -934,12 +934,12 @@ function NavBar() {
               >
                 <ListItemButton sx={{ pl: 4 }}>
                   <Link
-                    to={"/"}
+                    to={"/relationsinvestiseurs"} 
                     style={{ textDecoration: "none", color: "gray" }}
                   >
                     <ListItemText
                       primaryTypographyProps={{ sx: { fontSize: 16 } }}
-                      primary="Investisseurs"
+                      primary=" Relations Investisseurs"
                     />
                   </Link>
                 </ListItemButton>
@@ -951,7 +951,7 @@ function NavBar() {
               >
                 <ListItemButton sx={{ pl: 4 }}>
                   <Link
-                    to={"/"}
+                    to={"/ActualiteASF"}
                     style={{ textDecoration: "none", color: "gray" }}
                   >
                     <ListItemText

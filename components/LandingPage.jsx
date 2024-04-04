@@ -16,7 +16,6 @@ import stations2 from "../src/images/globe terrestre.png";
 import maps from "../src/images/maps.png";
 import SliderNosServices from "./SliderNosServices";
 
-
 function LandingPage() {
   const navigate = useNavigate();
   return (
@@ -31,7 +30,7 @@ function LandingPage() {
             backgroundSize: "cover",
             backgroundPosition: "center",
             maxWidth: "none",
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: "fixed",
           }}
         >
           <SliderLandingPage />
@@ -232,7 +231,7 @@ function LandingPage() {
             }}
             item
             xs={0}
-            md={6}
+            md={5}
           >
             <div
               style={{
@@ -254,7 +253,7 @@ function LandingPage() {
               marginTop: { xs: 0, md: 12 },
               textAlign: { xs: "center", md: "left" },
             }}
-            md={6}
+            md={5}
           >
             <Typography
               style={{
@@ -268,18 +267,16 @@ function LandingPage() {
             </Typography>
 
             <Typography style={{ marginTop: "1rem" }} color={"gray"}>
-              Avec une expérience inwi,la societé AFRICA SHINING FUEL
-            
-              Témoigne de notre excellence et durabilité s'est établie comme un{" "}
-             
-              leader incontesté dans le domaine des carburants
-              au Maroc. Notre engagement envers la qualité et
-              la fidélité de notre clientèle témoigne de notre
-              excellence durable.
+              Chez <span style={{fontWeight: 'bold'}}> Africa Shining Fuel </span>, notre histoire est celle d'une
+              entreprise familiale née de la passion pour l'innovation
+              énergétique et le service client de qualité. Fondée en 2019, notre
+              entreprise s'est rapidement affirmée comme un acteur majeur du
+              secteur de la distribution de carburants, en offrant des solutions
+              énergétiques fiables et responsables à nos clients.
             </Typography>
             <div style={{ marginTop: "2rem" }}>
               <Button
-                onClick={() => navigate("/presentationgroupe")}
+                onClick={() => navigate("/quisommesnous")}
                 style={{
                   backgroundColor: "black",
                   color: "white ",
@@ -360,12 +357,14 @@ function LandingPage() {
               transition: "background-color 0.3s ease",
             }}
             onMouseEnter={() => {
-              document.getElementById("Carte Carburant toute marque ASF").style.backgroundColor =
-                "#659a9a";
+              document.getElementById(
+                "Carte Carburant toute marque ASF"
+              ).style.backgroundColor = "#659a9a";
             }}
             onMouseLeave={() => {
-              document.getElementById("Carte Carburant toute marque ASF").style.backgroundColor =
-                "black";
+              document.getElementById(
+                "Carte Carburant toute marque ASF"
+              ).style.backgroundColor = "black";
             }}
             id="Carte Carburant toute marque ASF"
           >
@@ -382,12 +381,14 @@ function LandingPage() {
               transition: "background-color 0.3s ease",
             }}
             onMouseEnter={() => {
-              document.getElementById("abonnement telebadge").style.backgroundColor =
-                "#659a9a";
+              document.getElementById(
+                "abonnement telebadge"
+              ).style.backgroundColor = "#659a9a";
             }}
             onMouseLeave={() => {
-              document.getElementById("abonnement telebadge").style.backgroundColor =
-                "black";
+              document.getElementById(
+                "abonnement telebadge"
+              ).style.backgroundColor = "black";
             }}
             id="abonnement telebadge"
           >
