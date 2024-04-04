@@ -124,7 +124,7 @@ function NavBar() {
           <Stack
             sx={{
               flexGrow: 1,
-              display: { xs: "none", xl: 'flex', lg: 'flex' },
+              display: { xs: "none", md: 'flex' },
             }}
             direction={"row"}
             spacing={5}
