@@ -712,7 +712,7 @@ function NavBar() {
                 >
                   <ListItemText
                     primaryTypographyProps={{ sx: { fontSize: 16 } }}
-                    primary="Fuel 2"
+                    primary="Fuel oil n° 2"
                   />
                 </Link>
               </ListItemButton>
