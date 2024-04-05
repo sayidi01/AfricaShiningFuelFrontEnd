@@ -112,7 +112,7 @@ function Lubrifiants() {
                 fontFamily: "Space Grotesk",
               }}
             >
-              La <sapn style={{ fontWeight: "bold" }}> qualité </sapn>{" "}
+              La <span style={{ fontWeight: "bold" }}> qualité </span>{" "}
               exceptionnelle de nos lubrifiants se traduit par une protection
               accrue et des performances optimales pour vos moteurs, assurant
               une durabilité et une efficacité maximales. Chez{" "}
