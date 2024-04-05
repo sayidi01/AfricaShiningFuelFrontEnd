@@ -696,12 +696,12 @@ function NavBar() {
             >
               <ListItemButton sx={{ pl: 4, color: "grey" }}>
                 <NavLink
-                  to={"/gasoil"}
+                  to={"/gazoil"}
                   style={{ textDecoration: "none", color: "gray" }}
                 >
                   <ListItemText
                     primaryTypographyProps={{ sx: { fontSize: 16 } }}
-                    primary="Gazoil"
+                    primary="Gasoil"
                   />
                 </NavLink>
               </ListItemButton>

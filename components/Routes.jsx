@@ -34,7 +34,7 @@ import ContactezNous from "./ContactezNous.jsx"
 export const PublicRoutes = [
     {
         id: 1,
-        path: '/gasoil',
+        path: '/gazoil',
         element: <Gazoil/>
 
     },
