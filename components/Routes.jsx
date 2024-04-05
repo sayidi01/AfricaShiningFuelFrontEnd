@@ -173,7 +173,7 @@ export const PublicRoutes = [
     },
     {
         id: 28,
-        path: '/conatcteznous',
+        path: '/contacteznous',
         element: <ContactezNous/>
         
     }

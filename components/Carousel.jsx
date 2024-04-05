@@ -104,8 +104,12 @@ function Carousel() {
                 alignItems: "center",
                 display: "flex",
               }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+              
             >
-              <Link to={'/gazoil'} style={{ textDecoration: "none", color: "inherit" }}>
+              <Link to={'/gazoil'} style={{ textDecoration: "none", color: "inherit" }} >
               Gasoil
               </Link>
             </div>
@@ -119,6 +123,9 @@ function Carousel() {
                 justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
+              }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
               }}
             >
               <Link to={'/Fuel2'}  style={{ textDecoration: "none", color: "inherit" }}>
@@ -136,6 +143,9 @@ function Carousel() {
                 alignItems: "center",
                 display: "flex",
               }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
             >
               <Link to={'/Lubrifiants'}  style={{ textDecoration: "none", color: "inherit" }}>
               Lubrifiants
@@ -151,6 +161,9 @@ function Carousel() {
                 justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
+              }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
               }}
             >
               <Link to={'/Citerne'}  style={{ textDecoration: "none", color: "inherit" }}>
@@ -168,6 +181,9 @@ function Carousel() {
                 alignItems: "center",
                 display: "flex",
               }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
             >
               <Link to={'/BornesRecharge'}  style={{ textDecoration: "none", color: "inherit" }}>
               Bornes Electrique
@@ -183,6 +199,9 @@ function Carousel() {
                 justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
+              }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
               }}
             >
               <Link to={'/cartecarburant'}  style={{ textDecoration: "none", color: "inherit" }}>
@@ -200,6 +219,9 @@ function Carousel() {
                 justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
+              }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
               }}
             >
              

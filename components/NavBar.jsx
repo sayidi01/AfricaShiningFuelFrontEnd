@@ -39,12 +39,12 @@ function NavBar() {
     mobilePourquoiChoisirASF: false,
   });
 
-  const handleClick = (listName) => {
-    setOpen((prevState) => ({
-      ...prevState,
-      [listName]: !prevState[listName],
-    }));
-  };
+  // const handleClick = (listName) => {
+  //   setOpen((prevState) => ({
+  //     ...prevState,
+  //     [listName]: !prevState[listName],
+  //   }));
+  // };
 
   const [openn, setOpenn] = useState(false);
 
@@ -111,6 +111,17 @@ function NavBar() {
   const openProducts = Boolean(anchorElProducts);
 
   const navigate = useNavigate();
+
+  const handleClick = (listName) => {
+    setOpen((prevState) => {
+      const updatedOpenState = {};
+      // Close all categories except the one being clicked
+      Object.keys(prevState).forEach((key) => {
+        updatedOpenState[key] = key === listName ? !prevState[key] : false;
+      });
+      return updatedOpenState;
+    });
+  };
 
   return (
     <>

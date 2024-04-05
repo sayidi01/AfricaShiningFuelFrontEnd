@@ -5,21 +5,25 @@ import { Input } from "antd";
 import { Grid } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../src/images/LOGO_AFRICA_SHINING.png";
-import facebook from"../src/images/facebook.png"
-import Linkedin from"../src/images/linkdin.png"
-import X from"../src/images/X.png"
-import telephone from"../src/images/telephone.png"
-import Adresse from "../src/images/office-push-pin.png"
-import Email from"../src/images/email.png"
+import facebook from "../src/images/facebook.png";
+import Linkedin from "../src/images/linkdin.png";
+import X from "../src/images/X.png";
+import telephone from "../src/images/telephone.png";
+import Adresse from "../src/images/office-push-pin.png";
+import Email from "../src/images/email.png";
 
 const { TextArea } = Input;
 
-function Footer({marginTop}) {
-  const navigate = useNavigate()
+function Footer({ marginTop }) {
+  const navigate = useNavigate();
   return (
     <div>
-      <Stack 
-        style={{ backgroundColor: " rgba(235, 235, 235, 0.5)", paddingY: 10 , marginTop: marginTop }}
+      <Stack
+        style={{
+          backgroundColor: " rgba(235, 235, 235, 0.5)",
+          paddingY: 10,
+          marginTop: marginTop,
+        }}
       >
         <Container maxWidth={"lg"}>
           <div
@@ -89,9 +93,11 @@ function Footer({marginTop}) {
             </Button>
           </Box>
           <div>
-          
             <Typography
-           onClick={() => navigate("/conatcteznous")}
+              onClick={() => {
+                navigate("/contacteznous");
+                window.scrollTo({ top: 0, behavior: "instant" });
+              }}
               style={{
                 fontWeight: "bolder",
                 fontFamily: "Montserrat",
@@ -99,9 +105,8 @@ function Footer({marginTop}) {
                 textAlign: "center",
               }}
             >
-              Contactez-nous 
+              Contactez-nous
             </Typography>
-           
             <Divider
               variant="middle"
               sx={{
@@ -135,7 +140,7 @@ function Footer({marginTop}) {
               >
                 <img src={telephone} width={30} />
               </div>
-              <div  style={{ marginLeft: 15 }}>
+              <div style={{ marginLeft: 15 }}>
                 <Typography style={{ fontFamily: "Montserrat", fontSize: 12 }}>
                   TÉLÉPHONE
                 </Typography>
@@ -209,87 +214,110 @@ function Footer({marginTop}) {
           />
 
           <Grid container justifyContent={"space-between"} flexWrap={"wrap"}>
-            <Grid item xs={12} md={3} textAlign={"center"} paddingY={5}  style={{ marginBottom: '-50px' }}>
-              <img
-                src={Logo}
-                alt="logo"
-                width={250}
-              />
+            <Grid
+              item
+              xs={12}
+              md={3}
+              textAlign={"center"}
+              paddingY={5}
+              style={{ marginBottom: "-50px" }}
+            >
+              <img src={Logo} alt="logo" width={250} />
             </Grid>
-            <Grid item xs={12} md={9} sx={{ textAlign: 'center', marginTop: 8 }}>
+            <Grid
+              item
+              xs={12}
+              md={9}
+              sx={{ textAlign: "center", marginTop: 8 }}
+            >
               <Grid
                 container
                 flexWrap={"wrap"}
                 rowGap={1}
                 // direction={{ xs: "column", sm: "row" }}
               >
-                <Grid  item xs={12} md={4} lg={3}>
-                    <Typography onClick={() => navigate('/gazoil')} style={{ fontFamily: "Montserrat-sans serif" }}>
-                      Gasoil
-                    </Typography>
+                <Grid item xs={12} md={4} lg={3}>
+                  <Typography
+                    onClick={() => navigate("/gazoil")}
+                    style={{ fontFamily: "Montserrat-sans serif" }}
+                  >
+                    Gasoil
+                  </Typography>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
-                    <Typography  onClick={() => navigate("/BornesRecharge")} style={{ fontFamily: "Montserrat-sans serif" }}>
-                      Bornes de Recharge
-                    </Typography>
+                  <Typography
+                    onClick={() => navigate("/BornesRecharge")}
+                    style={{ fontFamily: "Montserrat-sans serif" }}
+                  >
+                    Bornes de Recharge
+                  </Typography>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
-                    <Typography onClick={() => navigate("/Fuel2")} style={{ fontFamily: "Montserrat-sans serif" }}>
-                      Fuel oil n° 2
-                    </Typography>
+                  <Typography
+                    onClick={() => navigate("/Fuel2")}
+                    style={{ fontFamily: "Montserrat-sans serif" }}
+                  >
+                    Fuel oil n° 2
+                  </Typography>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
+                  <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                    Mentions légales / CGU
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={4} lg={3}>
+                  <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                    Condition générales de vente
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={4} lg={3}>
+                  <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                    Politique de confidentialité
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={4} lg={3}>
+                  <Link
+                    to={"/engagementrse"}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
                     <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
-                      Mentions légales / CGU
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4} lg={3}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
-                      Condition générales de vente
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4} lg={3}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
-                      Politique de confidentialité
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4} lg={3}>
-                  <Link to={'/engagementrse'} style={{textDecoration: "none", color: "inherit"}}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif",  }} >
                       Environnement
                     </Typography>
                   </Link>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
-                  <Link to={'/engagementrse'} style={{textDecoration: "none", color: "inherit"}}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}  >
+                  <Link
+                    to={"/engagementrse"}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
                       Qui Sommes-nous ?
                     </Typography>
                   </Link>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
-                      FAQ
-                    </Typography>
+                  <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                    FAQ
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-          <Box display={'flex'} justifyContent={'space-between'} marginTop={3}>
+          <Box display={"flex"} justifyContent={"space-between"} marginTop={3}>
             <a href="https://www.facebook.com/profile.php?id=61556572472998">
-            <div>
-                <img style={{width: 40}} src={facebook}/>
-            </div>
+              <div>
+                <img style={{ width: 40 }} src={facebook} />
+              </div>
             </a>
             <a href="https://www.linkedin.com/company/101880850/admin/feed/posts/">
-            <div>
-                <img style={{width: 40}} src={Linkedin}/>
-            </div>
+              <div>
+                <img style={{ width: 40 }} src={Linkedin} />
+              </div>
             </a>
             <a href="https://twitter.com/Africashiningfu">
-            <div>
-                <img style={{width: 40}} src={X}/>
-            </div>
+              <div>
+                <img style={{ width: 40 }} src={X} />
+              </div>
             </a>
           </Box>
         </Container>
