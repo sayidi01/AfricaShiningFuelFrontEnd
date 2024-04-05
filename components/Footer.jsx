@@ -224,7 +224,7 @@ function Footer({marginTop}) {
                 // direction={{ xs: "column", sm: "row" }}
               >
                 <Grid  item xs={12} md={4} lg={3}>
-                    <Typography onClick={() => navigate('/gazoil')} style={{ fontFamily: "Montserrat-sans serif" }}>
+                    <Typography onClick={() => navigate('/gasoil')} style={{ fontFamily: "Montserrat-sans serif" }}>
                       Gasoil
                     </Typography>
                 </Grid>
