@@ -11,7 +11,7 @@ import X from "../src/images/X.png";
 import telephone from "../src/images/telephone.png";
 import Adresse from "../src/images/office-push-pin.png";
 import Email from "../src/images/email.png";
-
+import { FastForwardOutlined } from "@ant-design/icons";
 const { TextArea } = Input;
 
 function Footer({ marginTop }) {
@@ -93,6 +93,7 @@ function Footer({ marginTop }) {
             </Button>
           </Box>
           <div>
+           
             <Typography
               onClick={() => {
                 navigate("/contacteznous");
