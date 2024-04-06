@@ -293,12 +293,12 @@ function BoisDeChauffage() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "7.5rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Prenom *
+              Prénom *
             </Typography>
             <Input
               style={{
@@ -317,12 +317,12 @@ function BoisDeChauffage() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "6.8rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Socité (facultatif)
+              Société (facultatif)
             </Typography>
             <Input
               style={{
@@ -341,12 +341,12 @@ function BoisDeChauffage() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "7.5rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Telephone *
+              Téléphone *
             </Typography>
             <Input
               style={{
@@ -365,12 +365,12 @@ function BoisDeChauffage() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "2.3rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Réference chauffage
+              Bois Chauffage (NB de Stére)
             </Typography>
             <Input
               style={{
@@ -448,7 +448,7 @@ function BoisDeChauffage() {
                 marginLeft: "2rem",
               }}
             >
-              SAS Fécourt
+              SARL AFRICA SHINING FUEL
             </Typography>
             <Typography
               sx={{

@@ -304,12 +304,12 @@ function HydrogeneVert() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "7.5rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Prenom *
+              Prénom *
             </Typography>
             <Input
               style={{
@@ -328,12 +328,12 @@ function HydrogeneVert() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "5.8rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Socité (facultatif)
+              Société (facultatif) *
             </Typography>
             <Input
               style={{
@@ -352,12 +352,12 @@ function HydrogeneVert() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "7.4rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Telephone *
+              Téléphone *
             </Typography>
             <Input
               style={{
@@ -381,13 +381,13 @@ function HydrogeneVert() {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-             Réference Hydrogène Vert
+            Volume HV
             </Typography>
             <Input
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "1rem",
+                marginLeft: "4rem",
               }}
               className="input-email-mobile"
             />
@@ -459,7 +459,7 @@ function HydrogeneVert() {
                 marginLeft: "2rem",
               }}
             >
-              SAS Fécourt
+              SARL AFRICA SHINING FUEL
             </Typography>
             <Typography
               sx={{

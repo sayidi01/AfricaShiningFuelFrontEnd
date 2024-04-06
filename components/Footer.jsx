@@ -11,7 +11,7 @@ import X from "../src/images/X.png";
 import telephone from "../src/images/telephone.png";
 import Adresse from "../src/images/office-push-pin.png";
 import Email from "../src/images/email.png";
-import { FastForwardOutlined } from "@ant-design/icons";
+import '../src/index.css'
 const { TextArea } = Input;
 
 function Footer({ marginTop }) {
@@ -89,12 +89,13 @@ function Footer({ marginTop }) {
                 fontWeight: "bolder",
               }}
             >
-              Enter
+              Entrer
             </Button>
           </Box>
           <div>
            
             <Typography
+            className="button"
               onClick={() => {
                 navigate("/contacteznous");
                 window.scrollTo({ top: 0, behavior: "instant" });
@@ -304,7 +305,18 @@ function Footer({ marginTop }) {
               </Grid>
             </Grid>
           </Grid>
-          <Box display={"flex"} justifyContent={"space-between"} marginTop={3}>
+          <Typography
+              style={{
+                fontWeight: "bolder",
+                fontFamily: "Montserrat",
+                fontSize: 25,
+                textAlign: "center",
+                marginTop: '2rem'
+              }}
+            >
+              Suivez-nous
+            </Typography>
+          <Box display={"flex"} justifyContent={"space-between"} marginTop={5}>
             <a href="https://www.facebook.com/profile.php?id=61556572472998">
               <div>
                 <img style={{ width: 40 }} src={facebook} />

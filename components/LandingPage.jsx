@@ -75,7 +75,7 @@ function LandingPage() {
                   Découvrez une gamme compléte de carburants , lubrifiants et
                   service sur messure. Chez{" "}
                   <span style={{ fontWeight: "bold" }}>ASF</span>, nous
-                  façonnons a l'avenir de l'energie avec engagement,
+                  façonnons  l'avenir de l'energie avec engagement,
                   compétitivité et responsabilité sociale.
                 </Typography>
               </div>
@@ -262,8 +262,7 @@ function LandingPage() {
                 fontSize: 32,
               }}
             >
-              <span style={{ borderBottom: "4px solid" }}> QUI SOMME</span>S
-              NOUS ?
+                QUI SOMMES-NOUS ?
             </Typography>
 
             <Typography style={{ marginTop: "1rem" }} color={"gray"}>
@@ -309,8 +308,7 @@ function LandingPage() {
               right: 0,
             }}
           >
-            <span style={{ textDecoration: "underline" }}>NOS SER</span>VICES
-            <span style={{ textDecoration: "underline" }}></span>
+            NOS SERVICES
           </Typography>
         </Box>
         <SliderNosServices />

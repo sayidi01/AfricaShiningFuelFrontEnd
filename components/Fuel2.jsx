@@ -321,12 +321,12 @@ function Fuel2() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "7.5rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Prenom *
+              Prénom *
             </Typography>
             <Input
               style={{
@@ -345,12 +345,12 @@ function Fuel2() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "6.8rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Socité (facultatif)
+              Société (facultatif)
             </Typography>
             <Input
               style={{
@@ -369,12 +369,12 @@ function Fuel2() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "7.8rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Telephone *
+              Téléphone *
             </Typography>
             <Input
               style={{
@@ -393,12 +393,12 @@ function Fuel2() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "7rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-             Réference Fuel oil n° 2
+             Volume Fuel oil n° 2
             </Typography>
             <Input
               style={{
@@ -476,7 +476,7 @@ function Fuel2() {
                 marginLeft: "2rem",
               }}
             >
-              SAS Fécourt
+              SARL AFRCIA SHINING FUEL
             </Typography>
             <Typography
               sx={{

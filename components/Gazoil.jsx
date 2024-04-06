@@ -312,11 +312,11 @@ function Gazoil() {
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
                 marginLeft: { xs: "2rem", sm: "8rem" },
-                marginTop: { xs: "3rem", sm: "3.5rem" },
+                marginTop: { xs: "3rem", sm: "3rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Prenom *
+              Prénom *
             </Typography>
             <Input
               style={{
@@ -335,12 +335,12 @@ function Gazoil() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "6rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Socité (facultatif)
+              Société (Obligatoire)
             </Typography>
             <Input
               style={{
@@ -364,7 +364,7 @@ function Gazoil() {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Telephone *
+             Téléphone *
             </Typography>
             <Input
               style={{
@@ -383,12 +383,12 @@ function Gazoil() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "9rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Volume Gazole *
+              Volume Gasoil *
             </Typography>
             <Input
               style={{
@@ -466,7 +466,7 @@ function Gazoil() {
                 marginLeft: "2rem",
               }}
             >
-              SAS Fécourt
+              SARL AFRICA SHINING FUEL
             </Typography>
             <Typography
               sx={{

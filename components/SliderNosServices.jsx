@@ -40,18 +40,18 @@ function SliderNosServices() {
                 }}
 
               >
-                The{" "}
+                La{" "}
                 <span style={{ fontWeight: "bold", color: "#659a9a" }}>
-                  TFC card
+                carte ASF
                 </span>{" "}
-                enables you to refuel
-                <br /> economically at up to 4,600 petrol stations.
-                <br /> Our network covers{" "}
+                vous permet de faire le plein
+                <br />de manière économique dans 4 600 stations-service
+                <br /> Notre réseau couvre{" "}
                 <span style={{ fontWeight: "bold", color: "#659a9a" }}>
                   {" "}
-                  18 European countries{" "}
+                  18 ville marocaine{" "}
                 </span>
-                <br /> and continues to expand.
+                <br />  et continue de s'étendre.
               </Typography>
             </Box>
           </Link>

@@ -238,13 +238,13 @@ function Citerne() {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Prenom *
+              Prénom *
             </Typography>
             <Input
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "1rem",
+                marginLeft: "0.5rem",
               }}
               className="input-email-mobile"
             />
@@ -257,18 +257,18 @@ function Citerne() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "7.5rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Socité (facultatif)
+              Société (facultatif)
             </Typography>
             <Input
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "1rem",
+                marginLeft: "0.2rem",
               }}
               className="input-email-mobile"
             />
@@ -281,12 +281,12 @@ function Citerne() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "7.3rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-              Telephone *
+              Téléphone *
             </Typography>
             <Input
               style={{
@@ -305,18 +305,18 @@ function Citerne() {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+                marginLeft: { xs: "2rem", sm: "6rem" },
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-             Réference Citerne
+            Taille Du Citerne
             </Typography>
             <Input
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "1rem",
+                marginLeft: "3rem",
               }}
               className="input-email-mobile"
             />
@@ -388,7 +388,7 @@ function Citerne() {
                 marginLeft: "2rem",
               }}
             >
-              SAS Fécourt
+              SARL AFRICA SHINING FUEL
             </Typography>
             <Typography
               sx={{

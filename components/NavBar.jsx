@@ -154,7 +154,7 @@ function NavBar() {
                   color: openProducts ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
                   fontSize: "19px",
-                  fontWeight: "500",
+                  fontWeight: "bold",
                 }}
               >
                 Nos Produits
@@ -181,7 +181,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseProducts}
                   >
-                    Gasoil
+                    Gasoils
                   </MenuItem>
                 </Link>
                 <Link to={"/Fuel2"} style={{ textDecoration: "none" }}>
@@ -298,7 +298,7 @@ function NavBar() {
                   color: openServices ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
                   fontSize: "19px",
-                  fontWeight: "500",
+                  fontWeight: "bolder",
                 }}
               >
                 Nos Services
@@ -371,7 +371,7 @@ function NavBar() {
                   color: openServicesPlus ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
                   fontSize: "19px",
-                  fontWeight: "500",
+                  fontWeight: "bolder",
                 }}
               >
                 Services Plus
@@ -446,7 +446,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseServicesPlus}
                   >
-                    Jauge Connecte
+                    Jauge Connectée
                   </MenuItem>
                 </Link>
                 </Box>
@@ -461,7 +461,7 @@ function NavBar() {
                   color: openEvaluationMarche ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
                   fontSize: "19px",
-                  fontWeight: "500",
+                  fontWeight: "bolder",
                 }}
               >
                 Evolution marché
@@ -488,7 +488,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseEvaluationMarche}
                   >
-                    Relations Investiseurs
+                    Relations Investisseurs
                   </MenuItem>
                 </Link>
                 <Link to={"/ActualiteASF"} style={{ textDecoration: "none" }}>
@@ -502,7 +502,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseEvaluationMarche}
                   >
-                    Actutalités ASF
+                    Actualités ASF
                   </MenuItem>
                 </Link>
                 </Box>
@@ -517,7 +517,8 @@ function NavBar() {
                   color: openprqChoisirASF ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",
                   fontSize: "19px",
-                  fontWeight: "500",
+                  fontWeight: 'bolder'
+                 
                 }}
               >
                 Pourquoi Choisir ASF
@@ -618,7 +619,7 @@ function NavBar() {
                 color: "black",
                 fontFamily: "Montserrat-sans serif",
                 fontSize: "19px",
-                fontWeight: 500,
+                fontWeight: 'bolder',
                 "&:hover": { color: "green" },
               }}
             >
@@ -648,7 +649,7 @@ function NavBar() {
                 color: "black",
                 marginRight: 15,
                 alignItems: "center",
-                paddingTop: 8,
+               
               }}
             />
           </Box>
