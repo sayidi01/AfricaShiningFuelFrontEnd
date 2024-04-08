@@ -40,6 +40,21 @@ function MonCompte() {
   });
   console.log(customer)
 
+  const [client, setClient] = useState({
+    referenceClient: "",
+    numeroPCEouPDL: "",
+    email: ""
+  })
+  console.log(client)
+
+  const handleInputChangeClient = (e) => {
+    const {name, value} = e.target
+    setClient((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCustomer((prev) => ({
@@ -50,20 +65,36 @@ function MonCompte() {
 
   const handleSubmit = useCallback(() => {
     console.log(customer)
-    ;
+    
     axiosInstance
       .post("/customer", {...customer, customerType:selectedOption })
       .then((data) => {
         console.log(data);
         setData(data);
         setisConnected(true)
-        toast.success(data.message ?? "your compte create successfully");
+        toast.success(data.message ?? "votre compte se crée avec succès");
       })
 
       .catch((err) => {
         console.log(err);
       });
   }, [customer, selectedOption]);
+
+  const handleSubmitClient = useCallback(() => {
+    if (!client.referenceClient || !client.numeroPCEouPDL || !client.email) {
+      alert("Tous les champs sont obligatoires");
+      return;
+    }
+    console.log(client)
+    axiosInstance
+    .post("/customer", {...client})
+    .then((data) => {
+      console.log(data)
+      setData(data)
+      setisConnected(true)
+      toast.success(data.message ?? "your compte create successfully");
+    })
+  },[client])
 
   ;
 
@@ -236,7 +267,7 @@ function MonCompte() {
             >
               <Typography
                 sx={{
-                  marginLeft: { xs: "2.5rem", sm: "11.5rem" },
+                  marginLeft: { xs: "2.5rem", sm: "10.5rem" },
                   fontFamily: "Delicatessen Script",
                   fontSize: { xs: "19px", sm: "20px" },
                   color: "gray",
@@ -248,7 +279,7 @@ function MonCompte() {
                 direction="vertical"
                 className="input-password-mobile"
                 style={{
-                  marginLeft: window.innerWidth < 576 ? "2.5rem" : 0,
+                  marginLeft: window.innerWidth < 576 ? "1.5rem" : 0,
                   width: "250px",
                 }}
               >
@@ -645,6 +676,8 @@ function MonCompte() {
                       Reference Client *
                     </Typography>
                     <Input
+                    onChange={handleInputChangeClient}
+                    name="referenceClient"
                       placeholder="Reference"
                       style={{
                         width: "250px",
@@ -673,11 +706,13 @@ function MonCompte() {
                       N° PCE ou PDL *
                     </Typography>
                     <Input
+                     onChange={handleInputChangeClient}
                       placeholder=" N° PCE ou PDL"
+                      name="numeroPCEouPDL"
                       style={{
                         width: "250px",
                         height: "30px",
-                        marginLeft: "4rem",
+                        marginLeft: "5.5rem",
                         marginTop: window.innerWidth < 600 ? "1rem" : "3.8rem",
                       }}
                     />
@@ -701,11 +736,13 @@ function MonCompte() {
                       Email *
                     </Typography>
                     <Input
+                     onChange={handleInputChangeClient}
                       placeholder="Entrer votre Email"
+                      name="email"
                       style={{
                         width: "250px",
                         height: "30px",
-                        marginLeft: "4rem",
+                        marginLeft: "5.2rem",
                         marginTop: window.innerWidth < 600 ? "1rem" : "3.8rem",
                       }}
                     />
@@ -757,6 +794,7 @@ function MonCompte() {
                     }}
                   >
                     <Button
+                    onClick={handleSubmitClient}
                       type="primary"
                       style={{
                         backgroundColor: "#333",

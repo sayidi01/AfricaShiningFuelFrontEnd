@@ -181,7 +181,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseProducts}
                   >
-                    Gasoils
+                    Gasoil
                   </MenuItem>
                 </Link>
                 <Link to={"/Fuel2"} style={{ textDecoration: "none" }}>
@@ -548,7 +548,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseprqChoisirASF}
                   >
-                    Presentation Du Groupe
+                    Présentation Du Groupe
                   </MenuItem>
                 </Link>
                 <Link to={"/engagementrse"} style={{ textDecoration: "none" }}>
@@ -579,7 +579,7 @@ function NavBar() {
                     }}
                     onClick={handlePopoverCloseprqChoisirASF}
                   >
-                    Des Offres Competitives
+                    Des Offres Compétitives
                   </MenuItem>
                 </Link>
                 <Link to={"/equipedediees"} style={{ textDecoration: "none" }}>

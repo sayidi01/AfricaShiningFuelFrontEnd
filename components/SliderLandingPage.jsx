@@ -47,7 +47,7 @@ function SliderLandingPage() {
               marginLeft: { xs: "1rem", sm: "3rem" },
             }}
           >
-            La qualité supérieure du gazoil assure
+            La qualité supérieure du gasoil assure
             <br /> une performance optimale
           </Typography>
           <Button

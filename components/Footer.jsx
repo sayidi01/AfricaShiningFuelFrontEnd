@@ -314,7 +314,7 @@ function Footer({ marginTop }) {
                 marginTop: '2rem'
               }}
             >
-              Suivez-nous
+              SUIVEZ-NOUS
             </Typography>
           <Box display={"flex"} justifyContent={"space-between"} marginTop={5}>
             <a href="https://www.facebook.com/profile.php?id=61556572472998">
