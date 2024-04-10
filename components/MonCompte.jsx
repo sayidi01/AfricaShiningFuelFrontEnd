@@ -29,45 +29,62 @@ function MonCompte() {
   const handleChangeSelectOption = (event) => {
     setSelectedOption(event.target.value);
   };
-  
 
-  const [customer, setCustomer] = useState({
+  const [customerGranulesDeBois, setcustomerGranulesDeBois] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    confirmer_mot_de_passe: "",
+  })
+  console.log(customerGranulesDeBois)
+
+  const handleInputChangeClientGranulesDeBois = (e) => {
+    const { name, value } = e.target;
+    setcustomerGranulesDeBois((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const [customerClientFioul, setCustomerClientFioul] = useState({
     first_name: "",
     last_name: "",
     email: "",
     password: "",
     confirmer_mot_de_passe: "",
   });
-  console.log(customer)
+  console.log(customerClientFioul)
 
-  const [client, setClient] = useState({
+  const [clientGazElectrecite, setClientGazElectrecite] = useState({
     referenceClient: "",
     numeroPCEouPDL: "",
-    email: ""
+    email: "",
+    customerType: selectedOption,
   })
-  console.log(client)
+  console.log(clientGazElectrecite)
 
-  const handleInputChangeClient = (e) => {
+  const handleInputChangeClientGazElectrecite = (e) => {
     const {name, value} = e.target
-    setClient((prev) => ({
+    setClientGazElectrecite((prev) => ({
       ...prev,
       [name]: value
     }))
   }
 
-  const handleInputChange = (e) => {
+  const handleInputChangeClientFioul = (e) => {
     const { name, value } = e.target;
-    setCustomer((prev) => ({
+    setCustomerClientFioul((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmit = useCallback(() => {
-    console.log(customer)
+  const handleSubmitClientFioul = useCallback(() => {
+    console.log(customerClientFioul)
     
     axiosInstance
-      .post("/customer", {...customer, customerType:selectedOption })
+      .post("/customer", {...customerClientFioul, customerType:selectedOption })
       .then((data) => {
         console.log(data);
         setData(data);
@@ -78,23 +95,41 @@ function MonCompte() {
       .catch((err) => {
         console.log(err);
       });
-  }, [customer, selectedOption]);
+  }, [customerClientFioul, selectedOption]);
 
-  const handleSubmitClient = useCallback(() => {
-    if (!client.referenceClient || !client.numeroPCEouPDL || !client.email) {
-      alert("Tous les champs sont obligatoires");
-      return;
-    }
-    console.log(client)
+    const handleSubmitClientGranulesDeBois = useCallback(() => {
+      console.log(customerGranulesDeBois)
+      axiosInstance
+      .post("/customer/clientgranulesdebois", {...customerGranulesDeBois, customerType: selectedOption})
+      .then((data) => {
+        console.log(data)
+        setData(data)
+        setisConnected(true)
+        toast.success(data.message ?? "votre compte se crée avec succès");
+
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    },[customerGranulesDeBois, selectedOption])
+
+
+  const handleSubmitClientGazElectrecite = useCallback(() => {
+   
+    console.log(clientGazElectrecite)
     axiosInstance
-    .post("/customer", {...client})
-    .then((data) => {
-      console.log(data)
-      setData(data)
+    .post("/customer/clientgazelectrecite", {...clientGazElectrecite, customerType:selectedOption})
+    .then((response) => {
+      console.log(response.data)
+      setData(response.data)
       setisConnected(true)
-      toast.success(data.message ?? "your compte create successfully");
+      toast.success(response.data.message ?? "Votre compte a été créé avec succès");
     })
-  },[client])
+    .catch((error) => {
+      console.error("Erreur lors de la création du client Gaz Electrecite :", error);
+      toast.error("Une erreur s'est produite lors de la création du client Gaz Electrecite");
+    });
+  },[clientGazElectrecite, selectedOption])
 
   ;
 
@@ -413,8 +448,7 @@ function MonCompte() {
                 marginTop: "1rem",
               }}
             >
-              {(selectedOption === "ClientFioul" ||
-                selectedOption === "ClientGranulésDeBois") && (
+              {(selectedOption === "ClientFioul") && (
                 <Box>
                   <Box
                     display={{ xs: "block", sm: "flex" }}
@@ -435,7 +469,7 @@ function MonCompte() {
                       Prénom *
                     </Typography>
                     <Input
-                      onChange={handleInputChange}
+                      onChange={handleInputChangeClientFioul}
                       placeholder="Entrer votre Prenom"
                       name="first_name"
                       style={{
@@ -465,7 +499,7 @@ function MonCompte() {
                       Nom *
                     </Typography>
                     <Input
-                      onChange={handleInputChange}
+                      onChange={handleInputChangeClientFioul}
                       placeholder="Entrer votre Nom"
                       name="last_name"
                       style={{
@@ -496,7 +530,7 @@ function MonCompte() {
                       Email *
                     </Typography>
                     <Input
-                      onChange={handleInputChange}
+                      onChange={handleInputChangeClientFioul}
                       placeholder="Entrer votre Email"
                       name="email"
                       style={{
@@ -536,7 +570,7 @@ function MonCompte() {
                       }}
                     >
                       <Input.Password
-                        onChange={handleInputChange}
+                        onChange={handleInputChangeClientFioul}
                         name="password"
                         placeholder="Entrer votre Mot de passe"
                         iconRender={(visible) =>
@@ -573,7 +607,7 @@ function MonCompte() {
                       }}
                     >
                       <Input.Password
-                        onChange={handleInputChange}
+                        onChange={handleInputChangeClientFioul}
                         name="confirmer_mot_de_passe"
                         placeholder="Confirmer le mot de passe"
                         iconRender={(visible) =>
@@ -592,7 +626,7 @@ function MonCompte() {
                     <Checkbox
                       {...label}
                       defaultChecked
-                      onChange={handleInputChange}
+                      onChange={handleInputChangeClientFioul}
                     />
                     <Typography
                       style={{
@@ -616,7 +650,7 @@ function MonCompte() {
                     <Checkbox
                       {...label}
                       defaultChecked
-                      onChange={handleInputChange}
+                      onChange={handleInputChangeClientFioul}
                     />
                     <Typography
                       style={{
@@ -637,7 +671,7 @@ function MonCompte() {
                     }}
                   >
                     <Button
-                      onClick={handleSubmit}
+                      onClick={handleSubmitClientFioul}
                       type="primary"
                       style={{
                         backgroundColor: "#333",
@@ -653,6 +687,247 @@ function MonCompte() {
                     </Button>
                   </div>
                 </Box>
+              )}
+
+              {( selectedOption === "ClientGranulésDeBois") && (
+                 <Box>
+                 <Box
+                   display={{ xs: "block", sm: "flex" }}
+                   alignItems="center"
+                   sx={{ gap: "6rem" }}
+                 >
+                   <Typography
+                     style={{
+                       color: "gray",
+                       fontFamily: "Delicatessen Script",
+                     }}
+                     sx={{
+                       marginLeft: { xs: "4rem", sm: "2.5rem" },
+                       marginTop: { xs: "3rem", sm: "3.5rem" },
+                       fontSize: { xs: "19px", sm: "20px" },
+                     }}
+                   >
+                     Prénom *
+                   </Typography>
+                   <Input
+                     onChange={handleInputChangeClientGranulesDeBois}
+                     placeholder="Entrer votre Prenom"
+                     name="first_name"
+                     style={{
+                       width: "250px",
+                       height: "30px",
+                       marginLeft: "4rem",
+                     }}
+                     className="input-email-mobile"
+                   />
+                 </Box>
+                 <Box
+                   display={{ xs: "block", sm: "flex" }}
+                   alignItems="center"
+                   sx={{ gap: "6rem" }}
+                 >
+                   <Typography
+                     style={{
+                       color: "gray",
+                       fontFamily: "Delicatessen Script",
+                     }}
+                     sx={{
+                       marginLeft: { xs: "4rem", sm: "2.5rem" },
+                       marginTop: { xs: "3rem", sm: "1.5rem" },
+                       fontSize: { xs: "19px", sm: "20px" },
+                     }}
+                   >
+                     Nom *
+                   </Typography>
+                   <Input
+                     onChange={handleInputChangeClientGranulesDeBois}
+                     placeholder="Entrer votre Nom"
+                     name="last_name"
+                     style={{
+                       width: "250px",
+                       height: "30px",
+                       marginLeft:
+                         window.innerWidth < 600 ? "3.9rem" : "5.6rem",
+                       marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
+                     }}
+                   />
+                 </Box>
+                 <Box
+                   display={{ xs: "block", sm: "flex" }}
+                   alignItems="center"
+                   sx={{ gap: "6rem" }}
+                 >
+                   <Typography
+                     style={{
+                       color: "gray",
+                       fontFamily: "Delicatessen Script",
+                     }}
+                     sx={{
+                       marginLeft: { xs: "4rem", sm: "2.5rem" },
+                       marginTop: { xs: "3rem", sm: "1.5rem" },
+                       fontSize: { xs: "19px", sm: "20px" },
+                     }}
+                   >
+                     Email *
+                   </Typography>
+                   <Input
+                     onChange={handleInputChangeClientGranulesDeBois}
+                     placeholder="Entrer votre Email"
+                     name="email"
+                     style={{
+                       width: "250px",
+                       height: "30px",
+                       marginLeft:
+                         window.innerWidth < 600 ? "3.9rem" : "5.3rem",
+                       marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
+                     }}
+                   />
+                 </Box>
+                 <Box
+                   display={{ xs: "block", sm: "flex" }}
+                   alignItems="center"
+                   sx={{ gap: "5.5rem" }}
+                 >
+                   <Typography
+                     style={{
+                       color: "gray",
+                       fontFamily: "Delicatessen Script",
+                     }}
+                     sx={{
+                       marginLeft: { xs: "4rem", sm: "2.5rem" },
+                       marginTop: { xs: "3rem", sm: "1.5rem" },
+                       fontSize: { xs: "19px", sm: "20px" },
+                     }}
+                   >
+                     Mot de Passe *
+                   </Typography>
+                   <Space
+                     direction="vertical"
+                     style={{
+                       width: "250px",
+                       height: "30px",
+                       marginLeft: window.innerWidth < 600 ? "3.9rem" : "2rem",
+                       marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
+                     }}
+                   >
+                     <Input.Password
+                       onChange={handleInputChangeClientGranulesDeBois}
+                       name="password"
+                       placeholder="Entrer votre Mot de passe"
+                       iconRender={(visible) =>
+                         visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                       }
+                     />
+                   </Space>
+                 </Box>
+                 <Box
+                   display={{ xs: "block", sm: "flex" }}
+                   alignItems="center"
+                   sx={{ gap: "1rem" }}
+                 >
+                   <Typography
+                     style={{
+                       color: "gray",
+                       fontFamily: "Delicatessen Script",
+                     }}
+                     sx={{
+                       marginLeft: { xs: "4rem", sm: "2.5rem" },
+                       marginTop: { xs: "3rem", sm: "3rem" },
+                       fontSize: { xs: "19px", sm: "20px" },
+                     }}
+                   >
+                     Confirmer le Mot de Passe *
+                   </Typography>
+                   <Space
+                     direction="vertical"
+                     style={{
+                       width: "250px",
+                       height: "30px",
+                       marginLeft: window.innerWidth < 600 ? "3.9rem" : "0",
+                       marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
+                     }}
+                   >
+                     <Input.Password
+                       onChange={handleInputChangeClientGranulesDeBois}
+                       name="confirmer_mot_de_passe"
+                       placeholder="Confirmer le mot de passe"
+                       iconRender={(visible) =>
+                         visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                       }
+                     />
+                   </Space>
+                 </Box>
+                 <Box
+                   display={"flex"}
+                   alignItems="center"
+                   marginTop={"2rem"}
+                   marginLeft={"2rem"}
+                   sx={{ gap: "1rem" }}
+                 >
+                   <Checkbox
+                     {...label}
+                     defaultChecked
+                     onChange={handleInputChangeClientGranulesDeBois}
+                   />
+                   <Typography
+                     style={{
+                       fontSize: window.innerWidth < 600 ? "13px" : "16px",
+                       color: theme.palette.grey[700],
+                       fontFamily: "Delicatessen Script",
+                     }}
+                   >
+                     Déclare avoir lu les conditions générales de vente, les
+                     conditions générales <br /> d'utilisation et la politique
+                     de confidentialité de ASF.
+                   </Typography>
+                 </Box>
+                 <Box
+                   display={"flex"}
+                   alignItems="center"
+                   marginTop={"2rem"}
+                   marginLeft={"2rem"}
+                   sx={{ gap: "1rem" }}
+                 >
+                   <Checkbox
+                     {...label}
+                     defaultChecked
+                     onChange={handleInputChangeClientGranulesDeBois}
+                   />
+                   <Typography
+                     style={{
+                       fontSize: window.innerWidth < 600 ? "13px" : "16px",
+                       color: theme.palette.grey[700],
+                       fontFamily: "Delicatessen Script",
+                     }}
+                   >
+                     Accepte de recevoir les promotions sur les produits et
+                     services proposés par ASF.
+                   </Typography>
+                 </Box>
+                 <div
+                   style={{
+                     justifyContent: "center",
+                     display: "flex",
+                     marginTop: "2rem",
+                   }}
+                 >
+                   <Button
+                     onClick={handleSubmitClientGranulesDeBois}
+                     type="primary"
+                     style={{
+                       backgroundColor: "#333",
+                       color: "#fff",
+                       borderRadius: "0",
+                       width: 200,
+                       height: 50,
+                       fontSize: 20,
+                       fontFamily: "Montserrat",
+                     }}
+                   >
+                     S'INCRIRE
+                   </Button>
+                 </div>
+               </Box>
               )}
 
               {selectedOption === "ClientGaz&Èlectrecité" && (
@@ -676,7 +951,7 @@ function MonCompte() {
                       Reference Client *
                     </Typography>
                     <Input
-                    onChange={handleInputChangeClient}
+                    onChange={handleInputChangeClientGazElectrecite}
                     name="referenceClient"
                       placeholder="Reference"
                       style={{
@@ -706,7 +981,7 @@ function MonCompte() {
                       N° PCE ou PDL *
                     </Typography>
                     <Input
-                     onChange={handleInputChangeClient}
+                     onChange={handleInputChangeClientGazElectrecite}
                       placeholder=" N° PCE ou PDL"
                       name="numeroPCEouPDL"
                       style={{
@@ -736,7 +1011,7 @@ function MonCompte() {
                       Email *
                     </Typography>
                     <Input
-                     onChange={handleInputChangeClient}
+                     onChange={handleInputChangeClientGazElectrecite}
                       placeholder="Entrer votre Email"
                       name="email"
                       style={{
@@ -794,7 +1069,7 @@ function MonCompte() {
                     }}
                   >
                     <Button
-                    onClick={handleSubmitClient}
+                    onClick={handleSubmitClientGazElectrecite}
                       type="primary"
                       style={{
                         backgroundColor: "#333",

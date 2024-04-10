@@ -1,5 +1,5 @@
-import React from 'react'
-import { Typography, Grid, Box, Button} from "@mui/material";
+import React from "react";
+import { Typography, Grid, Box, Button, Container } from "@mui/material";
 
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -7,10 +7,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { Input } from "antd";
 const { TextArea } = Input;
-function Devis({title, Volume, Société}) {
+function Devis({ title, Volume, Société }) {
+
+  
   return (
     <div>
-        <Grid container>
+       <Container sx={{ my: 10 }} maxWidth={"lg"} style={{ padding: "none" }}>
+      <Grid container>
         <Grid container justifyContent="center" alignItems="center">
           <Typography
             sx={{
@@ -20,7 +23,7 @@ function Devis({title, Volume, Société}) {
               fontWeight: "bolder",
             }}
           >
-           {title}
+            {title}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={8}>
@@ -115,7 +118,7 @@ function Devis({title, Volume, Société}) {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-             {Société}
+              {Société}
             </Typography>
             <Input
               style={{
@@ -139,7 +142,7 @@ function Devis({title, Volume, Société}) {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-             Téléphone *
+              Téléphone *
             </Typography>
             <Input
               style={{
@@ -163,7 +166,7 @@ function Devis({title, Volume, Société}) {
                 fontSize: { xs: "19px", sm: "20px" },
               }}
             >
-             {Volume}
+              {Volume}
             </Typography>
             <Input
               style={{
@@ -276,9 +279,9 @@ function Devis({title, Volume, Société}) {
           </Box>
         </Grid>
       </Grid>
-      
+      </Container>
     </div>
-  )
+  );
 }
 
-export default Devis
+export default Devis;
