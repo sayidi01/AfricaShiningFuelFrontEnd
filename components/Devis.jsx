@@ -37,7 +37,7 @@ function Devis({ title, Volume, Société }) {
               sx={{
                 fontFamily: "inherit",
                 fontSize: { xs: 20, sm: 23 },
-                marginLeft: { xs: "1rem", sm: "8rem" },
+               
               }}
             >
               Civilité *
@@ -60,12 +60,12 @@ function Devis({ title, Volume, Société }) {
           <Box
             display={{ xs: "block", sm: "flex" }}
             alignItems="center"
-            sx={{ gap: "6rem" }}
+            sx={{ gap: "8rem" }}
           >
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+             
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
@@ -76,7 +76,7 @@ function Devis({ title, Volume, Société }) {
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "2rem",
+               
               }}
               className="input-email-mobile"
             />
@@ -84,12 +84,12 @@ function Devis({ title, Volume, Société }) {
           <Box
             display={{ xs: "block", sm: "flex" }}
             alignItems="center"
-            sx={{ gap: "6rem" }}
+            sx={{ gap: "6.5rem" }}
           >
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+               
                 marginTop: { xs: "3rem", sm: "3rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
@@ -100,7 +100,7 @@ function Devis({ title, Volume, Société }) {
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "1rem",
+               
               }}
               className="input-email-mobile"
             />
@@ -108,12 +108,12 @@ function Devis({ title, Volume, Société }) {
           <Box
             display={{ xs: "block", sm: "flex" }}
             alignItems="center"
-            sx={{ gap: "2rem" }}
+            sx={{ gap: "0rem" }}
           >
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "6rem" },
+               
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
@@ -124,7 +124,7 @@ function Devis({ title, Volume, Société }) {
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "1rem",
+               
               }}
               className="input-email-mobile"
             />
@@ -132,12 +132,12 @@ function Devis({ title, Volume, Société }) {
           <Box
             display={{ xs: "block", sm: "flex" }}
             alignItems="center"
-            sx={{ gap: "5rem" }}
+            sx={{ gap: "5.4rem" }}
           >
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+             
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
@@ -148,7 +148,7 @@ function Devis({ title, Volume, Société }) {
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "1rem",
+              
               }}
               className="input-email-mobile"
             />
@@ -156,12 +156,12 @@ function Devis({ title, Volume, Société }) {
           <Box
             display={{ xs: "block", sm: "flex" }}
             alignItems="center"
-            sx={{ gap: "2rem" }}
+            sx={{ gap: "3.6rem" }}
           >
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "9rem" },
+               
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
@@ -172,7 +172,7 @@ function Devis({ title, Volume, Société }) {
               style={{
                 width: "350px",
                 height: "30px",
-                marginLeft: "1rem",
+              
               }}
               className="input-email-mobile"
             />
@@ -185,7 +185,7 @@ function Devis({ title, Volume, Société }) {
             <Typography
               style={{ color: "gray", fontFamily: "Delicatessen Script" }}
               sx={{
-                marginLeft: { xs: "2rem", sm: "8rem" },
+              
                 marginTop: { xs: "3rem", sm: "3.5rem" },
                 fontSize: { xs: "19px", sm: "20px" },
               }}
@@ -197,7 +197,7 @@ function Devis({ title, Volume, Société }) {
               style={{
                 marginTop: "3rem",
                 width: "350px",
-                marginLeft: window.innerWidth < 600 ? "2rem" : "0",
+               
               }}
               rows={4}
             />

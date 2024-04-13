@@ -30,6 +30,19 @@ function MonCompte() {
     setSelectedOption(event.target.value);
   };
 
+  const [loginCustomer, setLoginCustomer] = useState({
+    email: "",
+    password: ""
+  })
+
+  const handleInputChangeLoginCustomer = (e) => {
+    const {name, value} = e.target;
+    setLoginCustomer((prev) =>( {
+      ...prev,
+      [name]: value
+    }))
+  }
+
   const [customerGranulesDeBois, setcustomerGranulesDeBois] = useState({
     first_name: "",
     last_name: "",
@@ -132,6 +145,22 @@ function MonCompte() {
   },[clientGazElectrecite, selectedOption])
 
   ;
+
+
+  const handleSubmitLoginCustomer = useCallback(() => {
+    axiosInstance
+    .post("/customer/login",{...loginCustomer,customerType:selectedOption } )
+    .then((res) => {
+      console.log(res.data)
+      setData(res.data)
+      setisConnected(true)
+      toast.success(res.data.message ?? "Vous êtes connecté");
+    })
+    .catch((err) => {
+      console.log("erreur connexion", err)
+      toast.error("Une erreur s'est produite lors de la connexion du customer");
+    })
+  },[loginCustomer, setSelectedOption])
 
   return (
     <div>
@@ -287,7 +316,9 @@ function MonCompte() {
                 Email *
               </Typography>
               <Input
+              onChange={handleInputChangeLoginCustomer}
                 placeholder="Enter your Email"
+                name="email"
                 prefix={<UserOutlined />}
                 style={{
                   width: "250px",
@@ -302,7 +333,7 @@ function MonCompte() {
             >
               <Typography
                 sx={{
-                  marginLeft: { xs: "2.5rem", sm: "10.5rem" },
+                  marginLeft: { xs: "2.5rem", sm: "10.4rem" },
                   fontFamily: "Delicatessen Script",
                   fontSize: { xs: "19px", sm: "20px" },
                   color: "gray",
@@ -311,10 +342,12 @@ function MonCompte() {
                 Mot de passe *
               </Typography>
               <Space
+              onChange={handleInputChangeLoginCustomer}
                 direction="vertical"
+                name="password"
                 className="input-password-mobile"
                 style={{
-                  marginLeft: window.innerWidth < 576 ? "1.5rem" : 0,
+                  marginLeft: window.innerWidth < 576 ? "2.5rem" : 0,
                   width: "250px",
                 }}
               >
@@ -352,6 +385,7 @@ function MonCompte() {
             }}
           >
             <Button
+            onClick={handleSubmitLoginCustomer}
               type="primary"
               style={{
                 backgroundColor: "#333",
@@ -987,8 +1021,8 @@ function MonCompte() {
                       style={{
                         width: "250px",
                         height: "30px",
-                        marginLeft: "5.5rem",
-                        marginTop: window.innerWidth < 600 ? "1rem" : "3.8rem",
+                        marginLeft:  window.innerWidth < 600 ? "4rem" : "5.2rem",
+                        marginTop: window.innerWidth < 600 ? "1rem" : "4.8rem",
                       }}
                     />
                   </Box>
@@ -1017,7 +1051,7 @@ function MonCompte() {
                       style={{
                         width: "250px",
                         height: "30px",
-                        marginLeft: "5.2rem",
+                        marginLeft:window.innerWidth < 600 ? "4.2rem" : "4.8rem",
                         marginTop: window.innerWidth < 600 ? "1rem" : "3.8rem",
                       }}
                     />
