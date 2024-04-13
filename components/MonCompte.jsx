@@ -342,17 +342,17 @@ function MonCompte() {
                 Mot de passe *
               </Typography>
               <Space
-              onChange={handleInputChangeLoginCustomer}
                 direction="vertical"
-                name="password"
-                className="input-password-mobile"
                 style={{
                   marginLeft: window.innerWidth < 576 ? "2.5rem" : 0,
                   width: "250px",
                 }}
-              >
+                >
                 <Input.Password
+                  name="password"
+                  className="input-password-mobile"
                   placeholder="input password"
+                  onChange={handleInputChangeLoginCustomer}
                   iconRender={(visible) =>
                     visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                   }
