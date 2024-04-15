@@ -24,13 +24,8 @@ function Devis({ title, Volume, Société }) {
               {title}
             </Typography>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Box
-              display={"flex"}
-              gap={4}
-              alignItems={"center"}
-              width={"100%"}
-            >
+          <Grid item xs={12} md={6} >
+            <Box display={"flex"} gap={4} alignItems={"center"} width={"100%"}  marginBottom="3rem" >
               <Typography
                 sx={{
                   fontFamily: "inherit",
@@ -63,6 +58,7 @@ function Devis({ title, Volume, Société }) {
               alignItems="center"
               gap={2}
               justifyContent={"space-between"}
+              marginBottom="3rem" 
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
@@ -75,42 +71,42 @@ function Devis({ title, Volume, Société }) {
               <Input
                 style={{
                   width: "350px",
-                  marginTop: 0
+                  marginTop: 0,
                 }}
-                className="input-email-mobile"
               />
             </Box>
             <Box
               display={{ xs: "block", sm: "flex" }}
               alignItems="center"
-              sx={{ gap: "6.5rem" }}
+              gap={2}
+              justifyContent={"space-between"}
+              marginBottom="3rem" 
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
                 sx={{
-                  marginTop: { xs: "3rem", sm: "3rem" },
                   fontSize: { xs: "19px", sm: "20px" },
                 }}
               >
-                Prénom *
+                Prenom *
               </Typography>
               <Input
                 style={{
                   width: "350px",
-                  height: "30px",
+                  marginTop: 0,
                 }}
-                className="input-email-mobile"
               />
             </Box>
             <Box
               display={{ xs: "block", sm: "flex" }}
               alignItems="center"
-              sx={{ gap: "0rem" }}
+              gap={2}
+              justifyContent={"space-between"}
+              marginBottom="3rem" 
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
                 sx={{
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
                   fontSize: { xs: "19px", sm: "20px" },
                 }}
               >
@@ -119,42 +115,42 @@ function Devis({ title, Volume, Société }) {
               <Input
                 style={{
                   width: "350px",
-                  height: "30px",
+                  marginTop: 0,
                 }}
-                className="input-email-mobile"
               />
             </Box>
             <Box
               display={{ xs: "block", sm: "flex" }}
               alignItems="center"
-              sx={{ gap: "5.4rem" }}
+              gap={2}
+              justifyContent={"space-between"}
+              marginBottom="3rem" 
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
                 sx={{
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
                   fontSize: { xs: "19px", sm: "20px" },
                 }}
               >
-                Téléphone *
+                Télephone *
               </Typography>
               <Input
                 style={{
                   width: "350px",
-                  height: "30px",
+                  marginTop: 0,
                 }}
-                className="input-email-mobile"
               />
             </Box>
             <Box
               display={{ xs: "block", sm: "flex" }}
               alignItems="center"
-              sx={{ gap: "3.6rem" }}
+              gap={2}
+              justifyContent={"space-between"}
+              marginBottom="3rem" 
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
                 sx={{
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
                   fontSize: { xs: "19px", sm: "20px" },
                 }}
               >
@@ -163,29 +159,28 @@ function Devis({ title, Volume, Société }) {
               <Input
                 style={{
                   width: "350px",
-                  height: "30px",
+                  marginTop: 0,
                 }}
-                className="input-email-mobile"
               />
             </Box>
             <Box
               display={{ xs: "block", sm: "flex" }}
               alignItems="center"
-              sx={{ gap: "3rem" }}
+              gap={2}
+              justifyContent={"space-between"}
+              marginBottom="3rem" 
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
                 sx={{
-                  marginTop: { xs: "3rem", sm: "3.5rem" },
                   fontSize: { xs: "19px", sm: "20px" },
                 }}
               >
-                informations
-                <br /> Complémentaires
+                informations Complémentaires
               </Typography>
               <TextArea
                 style={{
-                  marginTop: "3rem",
+                  marginTop: 0,
                   width: "350px",
                 }}
                 rows={4}
