@@ -6,6 +6,7 @@ import { Input, Select, Radio, Button, ConfigProvider, Space } from "antd";
 import { TinyColor } from "@ctrl/tinycolor";
 import iconsCamion from "./src/images/icons-camion-c1.png";
 import iconsFioul from "./src/images/icons-fioul-v.png";
+import "./src/index.css"
 const colors3 = ["#40e495", "#659a9a", "#2bb673"];
 const getHoverColors = (colors) =>
   colors.map((color) => new TinyColor(color).lighten(5).toString());
@@ -79,7 +80,7 @@ function Maquette() {
                   style={{
                     width: "25%",
                   }}
-                  placeholder="Fioul ordinaire"
+                  placeholder="Sélectionnez un produit "
                   optionFilterProp="children"
                   filterOption={(input, option) =>
                     (option?.label ?? "").includes(input)
@@ -92,12 +93,9 @@ function Maquette() {
                   options={[
                     {
                       value: "1",
-                      label: "Fioul ordinaire ",
+                      label: "Fuel oil n° 2 ",
                     },
-                    {
-                      value: "2",
-                      label: "Fioul supérieur",
-                    },
+                   
                   ]}
                 />
               </Box>
@@ -217,6 +215,7 @@ function Maquette() {
                   }}
                 >
                   <Button
+                  className="button-icons"
                     type="primary"
                     style={{
                       width: "300px",

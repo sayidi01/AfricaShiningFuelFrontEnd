@@ -1,13 +1,51 @@
-import React from "react";
+import React, { useCallback, useState , useContext} from "react";
 import { Typography, Grid, Box, Button, Container } from "@mui/material";
-
+import { toast } from "react-hot-toast";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { Input } from "antd";
+import { axiosInstance } from "../src/api";
 const { TextArea } = Input;
 function Devis({ title, Volume, Société }) {
+  const { setData,  setisConnected } = useContext(UserContext);
+  const [devis, setDevis] = useState({
+    civilité: "",
+    nom: "",
+    prenom: "",
+    Société: "",
+    telephone: "",
+    Volume: "",
+    informations_Complémentaires: "",
+  })
+  console.log(devis)
+
+const handleInputChangeDevis = (e) => {
+ const {name, value} = e.target
+ setDevis((prev) => ({
+  ...prev,
+  [name]: value,
+}));
+};
+
+const handleSubmitDevis = useCallback(() => {
+  console.log(devis)
+  axiosInstance
+  .post("/devis", {...devis})
+  .then((data) => {
+    console.log(data)
+    setData(data)
+    setisConnected(true)
+    toast.success(data.message ?? "votre Devis envoyé");
+  })
+  .catch((err) => {
+    console.log(err)
+
+  })
+},[devis])
+
+
   return (
     <div>
       <Container sx={{ my: 10 }} maxWidth={"lg"} style={{ padding: "none" }}>
@@ -69,6 +107,7 @@ function Devis({ title, Volume, Société }) {
                 Nom *
               </Typography>
               <Input
+              onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -91,6 +130,7 @@ function Devis({ title, Volume, Société }) {
                 Prenom *
               </Typography>
               <Input
+              onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -113,6 +153,7 @@ function Devis({ title, Volume, Société }) {
                 {Société}
               </Typography>
               <Input
+              onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -135,6 +176,7 @@ function Devis({ title, Volume, Société }) {
                 Télephone *
               </Typography>
               <Input
+              onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -161,6 +203,7 @@ function Devis({ title, Volume, Société }) {
                   width: "350px",
                   marginTop: 0,
                 }}
+                onChange={handleInputChangeDevis}
               />
             </Box>
             <Box
@@ -179,6 +222,7 @@ function Devis({ title, Volume, Société }) {
                 informations Complémentaires
               </Typography>
               <TextArea
+              onChange={handleInputChangeDevis}
                 style={{
                   marginTop: 0,
                   width: "350px",
@@ -205,6 +249,7 @@ function Devis({ title, Volume, Société }) {
                   fontFamily: "Montserrat",
                   textTransform: "none",
                 }}
+                onClick={handleSubmitDevis}
               >
                 Envoyer
               </Button>
