@@ -7,6 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { Input } from "antd";
 import { axiosInstance } from "../src/api";
+import UserContext from "../context/userContext";
 const { TextArea } = Input;
 function Devis({ title, Volume, Société }) {
   const { setData,  setisConnected } = useContext(UserContext);
@@ -249,7 +250,7 @@ const handleSubmitDevis = useCallback(() => {
                   fontFamily: "Montserrat",
                   textTransform: "none",
                 }}
-                onClick={handleSubmitDevis}
+                
               >
                 Envoyer
               </Button>

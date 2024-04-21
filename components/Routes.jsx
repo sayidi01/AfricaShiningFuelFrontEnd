@@ -29,6 +29,7 @@ import RelationsInvestiseurs from "./RelationsInvestiseurs.jsx"
 import ActualitéASF from "./ActualitéASF.jsx"
 import ContactezNous from "./ContactezNous.jsx"
 import Maquette from "../Maquette.jsx"
+import Shipping from "./Shipping.jsx"
 
 
 
@@ -182,6 +183,11 @@ export const PublicRoutes = [
         id: 29,
         path: '/order',
         element: <Maquette/>
+    },
+    {
+        id: 30,
+        path: "/shipping",
+        element: <Shipping />
     }
 ]
 

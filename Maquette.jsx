@@ -1,18 +1,94 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { Container, Typography, Grid, Box, Stack } from "@mui/material";
 import { Input, Select, Radio, Button, ConfigProvider, Space } from "antd";
 import { TinyColor } from "@ctrl/tinycolor";
 import iconsCamion from "./src/images/icons-camion-c1.png";
-import iconsFioul from "./src/images/icons-fioul-v.png";
-import "./src/index.css"
+
+
+import { useNavigate } from "react-router-dom";
+
+import "./src/index.css";
+import { axiosInstance } from "./src/api";
+
+
 const colors3 = ["#40e495", "#659a9a", "#2bb673"];
 const getHoverColors = (colors) =>
   colors.map((color) => new TinyColor(color).lighten(5).toString());
 const getActiveColors = (colors) =>
   colors.map((color) => new TinyColor(color).darken(5).toString());
+
 function Maquette() {
+ 
+  const navigate = useNavigate();
+  const [cities, setCities] = useState([]); // State to store city data
+  const [selectedCityId, setSelectedCityId] = useState(""); // State to store selected city ID
+  const [selectedCityName, setSelectedCityName] = useState(""); // State to store selected city name
+  const [quantity, setQuantity] = useState(0); // Set quantity to 0 by default
+  const [postalCodeDisabled, setPostalCodeDisabled] = useState(true);
+  const [codePostal, setCodePostal] = useState(""); // State to store code postal value
+  const [selectedProduct, setSelectedProduct] = useState(""); // State to store selected product label
+  const [selectedDelivery, setSelectedDelivery] = useState("standard"); // Set default delivery to standard
+
+  useEffect(() => {
+    // Fetch city data from the backend endpoint
+    axiosInstance
+      .get("/prices")
+      .then((response) => {
+        console.log(response);
+        setCities(response.data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching city data:", error);
+      });
+  }, []);
+
+  // Function to fetch postal code based on selected city
+  const fetchPostalCode = (cityId) => {
+    const selectedCity = cities.find((city) => city.id === cityId);
+    if (selectedCity) {
+      setCodePostal(selectedCity.code_postal);
+    }
+  };
+
+  const handlePostalCodeChange = (e) => {
+    setCodePostal(e.target.value);
+  };
+
+  const handleProductChange = (value, option) => {
+    setSelectedProduct(option.label);
+  };
+
+  const calculatePrice = () => {
+    // Do not calculate price if product is not selected
+    if (!selectedProduct) return 0;
+  
+    let pricePerLitre = 11.05; // Default price per litre
+  
+    if (selectedCityId) {
+      const selectedCity = cities.find((city) => city.id === selectedCityId);
+      if (selectedCity) {
+        pricePerLitre += parseFloat(selectedCity.price); // Add price per city to the default price per litre
+      }
+    }
+  
+    let totalPrice = pricePerLitre * quantity;
+  
+    if (selectedDelivery === "rapide") {
+      totalPrice += 1000;
+    } else if (selectedDelivery === "express") {
+      totalPrice += 2500;
+    }
+  
+    return totalPrice.toFixed(2);
+  };
+  const calculateTotal = () => {
+    const totalPrice = parseFloat(calculatePrice()); // Convert totalPrice to a number
+    return totalPrice.toFixed(2); // Returning total price with 2 decimal places
+  };
+  
+  
   return (
     <div>
       <NavBar />
@@ -35,8 +111,8 @@ function Maquette() {
               sx={{
                 boxShadow: "rgba(100, 100, 111, 0.2) 0px 10px 50px 1px",
                 padding: {
-                  xs: "0 5px", 
-                  md: "0 50px", 
+                  xs: "0 5px",
+                  md: "0 50px",
                 },
               }}
               gap={5}
@@ -55,24 +131,60 @@ function Maquette() {
               <Box
                 display={{ xs: "block", sm: "flex" }}
                 alignItems="center"
-                gap={4}
+                gap={12.5}
               >
-                <Typography variant="body1">Code postal :</Typography>
-                <Input style={{ width: "25%", height: "40px" }} />
+                <Typography variant="body1"> Ville </Typography>
+                <Select
+                  showSearch
+                  style={{ width: "25%" }}
+                  placeholder="Sélectionnez une ville"
+                  optionFilterProp="children"
+                  onChange={(value, option) => {
+                    setSelectedCityId(value);
+                    setSelectedCityName(option.children);
+                    setPostalCodeDisabled(false);
+                    fetchPostalCode(value); // Fetch postal code when city is selected
+                  }}
+                  value={selectedCityId}
+                >
+                  {cities.map((city) => (
+                    <Select.Option key={city.id} value={city.id}>
+                      {city.city_name}
+                    </Select.Option>
+                  ))}
+                </Select>
               </Box>
               <Box
                 display={{ xs: "block", sm: "flex" }}
                 alignItems="center"
-                gap={7.5}
+                gap={4.5}
+              >
+                <Typography variant="body1">Code postal :</Typography>
+                <Input
+                  style={{ width: "25%", height: "40px" }}
+                  disabled={postalCodeDisabled}
+                  value={codePostal}
+                  onChange={handlePostalCodeChange}
+                />
+              </Box>
+              <Box
+                display={{ xs: "block", sm: "flex" }}
+                alignItems="center"
+                gap={8}
               >
                 <Typography variant="body1">Quantité:</Typography>
-                <Input style={{ width: "25%", height: "40px" }} />
+                <Input
+                  type="number"
+                  style={{ width: "25%", height: "40px" }}
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
                 <Typography variant="body1">Litres</Typography>
               </Box>
               <Box
                 display={{ xs: "block", sm: "flex" }}
                 alignItems="center"
-                gap={9.5}
+                gap={9.8}
               >
                 <Typography variant="body1"> produit </Typography>
                 <Select
@@ -93,10 +205,11 @@ function Maquette() {
                   options={[
                     {
                       value: "1",
-                      label: "Fuel oil n° 2 ",
+                      label: "DIESEL EXTRA 10 PPM  ",
+                      solde: "11.05",
                     },
-                   
                   ]}
+                  onChange={handleProductChange}
                 />
               </Box>
               <Box
@@ -121,7 +234,14 @@ function Maquette() {
                     border: "1px solid black",
                   }}
                 >
-                  <Radio style={{ fontSize: 18 }}>Livraison Standard</Radio>
+                  <Radio
+                    style={{ fontSize: 18 }}
+                    value="standard"
+                    checked={selectedDelivery === "standard"}
+                    onChange={(e) => setSelectedDelivery(e.target.value)}
+                  >
+                    Livraison Standard
+                  </Radio>
                   <Typography> Sous 5 jour(s) </Typography>
                   <div style={{ display: { xs: "none", md: "block" } }}>
                     <img src={iconsCamion} alt="camion" width={60} />
@@ -137,7 +257,14 @@ function Maquette() {
                     border: "1px solid black",
                   }}
                 >
-                  <Radio style={{ fontSize: 18 }}>Livraison Rapide</Radio>
+                  <Radio
+                    style={{ fontSize: 18 }}
+                    value="rapide"
+                    checked={selectedDelivery === "rapide"}
+                    onChange={(e) => setSelectedDelivery(e.target.value)}
+                  >
+                    Livraison Rapide
+                  </Radio>
                   <Typography> Sous 3 jour(s) </Typography>
                   <div style={{ display: { xs: "none", md: "block" } }}>
                     <img src={iconsCamion} alt="camion" width={60} />
@@ -153,13 +280,21 @@ function Maquette() {
                     border: "1px solid black",
                   }}
                 >
-                  <Radio style={{ fontSize: 18 }}>Livraison Express</Radio>
+                  <Radio
+                    style={{ fontSize: 18 }}
+                    value="express"
+                    checked={selectedDelivery === "express"}
+                    onChange={(e) => setSelectedDelivery(e.target.value)}
+                  >
+                    Livraison Express
+                  </Radio>
                   <Typography> Sous 1 jour(s) </Typography>
                   <div style={{ display: { xs: "none", md: "block" } }}>
                     <img src={iconsCamion} alt="camion" width={60} />
                   </div>
                 </Box>
               </Stack>
+
               <Box sx={{ backgroundColor: "cornsilk" }}>
                 <Typography>
                   <span style={{ color: "red" }}> ATTENTION </span> : En
@@ -167,7 +302,9 @@ function Maquette() {
                   seront traitées sous 2 jours ouvrés !
                 </Typography>
               </Box>
+              <Typography>*prix à titre indicatif</Typography>
               <Button
+                onClick={() => navigate("/shipping")}
                 type="primary"
                 style={{
                   backgroundColor: "#333",
@@ -190,7 +327,7 @@ function Maquette() {
             <Stack
               sx={{
                 boxShadow:
-                  "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+                  "#659a9a 0px 0px 0px 2px, #659a9a 0px 4px 6px -1px,#659a9a 0px 1px 0px inset",
                 alignItems: "center",
               }}
               gap={4}
@@ -215,7 +352,7 @@ function Maquette() {
                   }}
                 >
                   <Button
-                  className="button-icons"
+                    className="button-icons"
                     type="primary"
                     style={{
                       width: "300px",
@@ -224,16 +361,17 @@ function Maquette() {
                       marginTop: 5,
                     }}
                   >
-                    Fuel oil n° 2
+                    GAZOIL EXTRA 10 PPM
                   </Button>
                 </ConfigProvider>
               </Space>
               <Box display={"flex"} flexDirection="column" gap={5}>
                 <Box display={"flex"} gap={5}>
                   <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                    11000 DH
+                    {calculatePrice()} DH
                   </Typography>
                   <Typography variant="h6">TTC/Litre</Typography>
+                 
                 </Box>
                 <Box
                   sx={{
@@ -246,27 +384,28 @@ function Maquette() {
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     Code postal :{" "}
                   </Typography>
-                  <Typography variant="h6"> 33000 </Typography>
+                  <Typography variant="h6"> {codePostal} </Typography>
+                 
                 </Box>
                 <Box display={"flex"} gap={2} alignItems="center">
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     Quantité :{" "}
                   </Typography>
-                  <Typography variant="h6"> 1000 </Typography>
+                  <Typography variant="h6"> {quantity} </Typography>
                 </Box>
                 <Box display={"flex"} gap={2} alignItems="center">
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     {" "}
                     Produit :{" "}
                   </Typography>
-                  <Typography variant="h6"> Fioul Superieur </Typography>
+                  <Typography variant="h6"> {selectedProduct} </Typography>
                 </Box>
                 <Box display={"flex"} gap={2} alignItems="center">
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     {" "}
                     Livraison :{" "}
                   </Typography>
-                  <Typography variant="h6"> 5jours </Typography>
+                  <Typography variant="h6"> {selectedDelivery}</Typography>
                 </Box>
               </Box>
               <Box
@@ -279,7 +418,9 @@ function Maquette() {
               <Box gap={5}>
                 <Typography variant="h6">TOTAL : </Typography>
                 <div style={{ display: "flex", gap: 5 }}>
-                  <Typography variant="h4" style={{fontWeight: 'bold'}}> 13000 DH </Typography>
+                  <Typography variant="h4" style={{ fontWeight: "bold" }}>
+                    {calculateTotal()} DH
+                  </Typography>
                   <Typography variant="h6">TTC</Typography>
                 </div>
               </Box>
@@ -287,6 +428,7 @@ function Maquette() {
           </Grid>
         </Grid>
       </Container>
+      <Footer marginTop={"3rem"} />
     </div>
   );
 }
