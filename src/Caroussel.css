@@ -1,0 +1,158 @@
+.slick-next:before {
+    opacity: 1;
+    color: black;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: black;
+}
+
+.Gazoil {
+    width: 230px !important;
+    height: 320px;
+    background-image: linear-gradient(to bottom, rgba(16, 15, 15, 0.1), rgb(59, 57, 57)), url('../src/images/gazoil.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-color: black;
+    
+  }
+
+  .text-gazoil {
+    position: absolute;
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    font-size: 24px;
+  }
+
+
+  
+  
+  .Fuel2 {
+    width: 230px !important;
+    height: 320px;
+    background-image:  linear-gradient(to bottom, rgba(34, 33, 33, 0.1), rgb(27, 26, 26)),url('../src/images/fuel2.jpeg');
+    background-size: cover;
+    background-position: center; 
+    position: relative;
+
+  }
+
+  .text-fuel2 {
+    position: absolute;
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    font-size: 24px;
+  }
+
+  .Lubrifiant{
+        width: 230px !important;
+        height: 320px;
+        background-image:   linear-gradient(to bottom, rgba(34, 33, 33, 0.1), rgb(27, 26, 26)), url('../src/images/lubrifiant.jpeg');
+        background-size: cover;
+        background-position: center; 
+        position: relative
+      }
+
+      .text-Lubrifiant {
+        position: absolute;
+        bottom: 20px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 24px;
+      }
+    
+
+    
+
+      .Citerne {
+        width: 230px !important;
+        height: 320px;
+        background-image: linear-gradient(to bottom, rgba(34, 33, 33, 0.1), rgb(27, 26, 26)), url('../src/images/descCITERNE1.png');
+        background-size: cover;
+        background-position: center;
+        position: relative
+      }
+
+      .text-citerne {
+        position: absolute;
+        bottom: 20px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 24px;
+      }
+    
+
+      
+
+      .bElectrique{
+        width: 230px !important;
+        height: 320px;
+        background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgb(66, 63, 63)), url('../src/images/borneElectrique.jpeg');
+        background-size: cover; 
+        background-position: center;
+        position: relative;
+        
+      }
+
+      .text-bElectrique {
+        position: absolute;
+        bottom: 20px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 24px;
+      }
+    
+
+      
+      .CarteMM{
+        width: 230px !important;
+        height: 320px;
+        background-image: linear-gradient(to bottom, rgba(34, 33, 33, 0.1), rgb(27, 26, 26)), url('../src/images/carte_MM.jpeg');
+        background-size: cover; 
+        background-position: center; 
+        position: relative
+      }
+
+      .text-carteMM {
+        position: absolute;
+        bottom: 20px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        font-size: 24px;
+      }
+    
+
+      
+
+      .prdHygiene{
+        width: 230px !important   ;
+        height: 320px;
+        background-image: linear-gradient(to bottom, rgba(34, 33, 33, 0.1), rgb(27, 26, 26)), url('../src/images/descNETTOYAGE1.png');
+        background-size: cover; 
+        background-position: center;
+        position: relative;
+        
+      }
+
+      .text-prdHygiene {
+        position: absolute;
+        bottom: 1px;
+        left: 50%; 
+        transform: translateX(-50%) translateY(-50%);
+        font-size: 24px;
+
+      }
+      
+
+      @media only screen and (max-width: 768px) {
+       .custom-slider{
+        margin-left: 50px;
+       }
+      }      
+      
+      
+      
+  

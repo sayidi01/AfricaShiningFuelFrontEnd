@@ -1,0 +1,23 @@
+@media (max-width: 600px) { /* Taille correspondant à xs */
+    .input-email-mobile {
+      margin-top: 1rem;
+    }
+    .input-password-mobile{
+        margin-top: 1rem;
+    }
+  }
+  .mon-compte-container {
+    margin-top: 3rem;
+  }
+  
+@media only screen and (max-width: 576px) {
+  .input-email-mobile {
+    margin-top: 1;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .input-email-mobile {
+    margin-top: 3rem;
+  }
+}
