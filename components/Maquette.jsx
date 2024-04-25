@@ -6,7 +6,7 @@ import { Input, Select, Radio, Button, ConfigProvider, Space } from "antd";
 import { TinyColor } from "@ctrl/tinycolor";
 import iconsCamion from "../src/images/icons-camion-c1.png";
 import ModalSigninSignup from "./ModalSigninsignUp"
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 import "../src/index.css";
@@ -34,8 +34,18 @@ function Maquette() {
   
   
   const onSignIn = () => {
+    if (
+      !selectedCityId ||
+      !quantity ||
+      !selectedProduct ||
+      !selectedDelivery ||
+      codePostal.length === 0
+    ) {
+      toast.error("Veuillez remplir tous les champs obligatoires !");
+      return;
+    }
+  
     setShowModal(false);
-   
     navigateToShipping();
   };
 
@@ -106,6 +116,7 @@ function Maquette() {
       setShowModal(true);
       return;
     }
+    
 
     const total = calculateTotal();
     const price = calculatePrice();
@@ -169,6 +180,7 @@ function Maquette() {
                   style={{ width: "25%" }}
                   placeholder="Sélectionnez une ville"
                   optionFilterProp="children"
+                  required
                   onChange={(value, option) => {
                     setSelectedCityId(value);
                     setSelectedCityName(option.children);
@@ -206,6 +218,7 @@ function Maquette() {
                 <Typography variant="body1">Quantité:</Typography>
                 <Input
                   type="number"
+                  required
                   style={{ width: "25%", height: "40px" }}
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
@@ -225,6 +238,7 @@ function Maquette() {
                   }}
                   placeholder="Sélectionnez un produit "
                   optionFilterProp="children"
+                  required
                   filterOption={(input, option) =>
                     (option?.label ?? "").includes(input)
                   }
@@ -338,7 +352,7 @@ function Maquette() {
               </Box>
               <Typography>*prix à titre indicatif</Typography>
               <Button
-                onClick={() => setShowModal(true)}
+                onClick={onSignIn}
                 type="primary"
                 style={{
                   backgroundColor: "#333",

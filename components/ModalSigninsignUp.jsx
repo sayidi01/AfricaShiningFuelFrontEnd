@@ -1,4 +1,4 @@
-import React, { useState , useCallback, useContext} from "react";
+import React, { useState, useCallback, useContext } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
@@ -10,9 +10,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../src/api";
 import UserContext from "../context/userContext";
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 function ModalSigninsignUp({ onClose, onSignIn }) {
-  const { setData,  setisConnected } = useContext(UserContext);
-  const navigate = useNavigate()
+  const { setData, setisConnected } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [loginCustomer, setLoginCustomer] = useState({
     email: "",
@@ -23,7 +24,6 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
     last_name: "",
     email: "",
     password: "",
-    
   });
 
   const handleInputChangeClientFioul = (e) => {
@@ -78,7 +78,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
         setData(res.data);
         setisConnected(true);
         toast.success(res.data.message ?? "Vous êtes connecté");
-        navigate("/shipping")
+        navigate("/shipping");
       })
       .catch((err) => {
         console.log("erreur connexion", err);
@@ -89,14 +89,14 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
   }, [loginCustomer]);
 
   const handleSubmitClientFioul = useCallback(() => {
-    console.log(customerClientFioul)
-    
+    console.log(customerClientFioul);
+
     axiosInstance
-      .post("/customer", {...customerClientFioul})
+      .post("/customer", { ...customerClientFioul })
       .then((data) => {
         console.log(data);
         setData(data);
-        setisConnected(true)
+        setisConnected(true);
         toast.success(data.message ?? "votre compte se crée avec succès");
       })
 
@@ -160,7 +160,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
 
                   <Box
                     display={{ xs: "block", sm: "flex" }}
-                    sx={{width: '100%'}}
+                    sx={{ width: "100%" }}
                     alignItems="center"
                     justifyContent={"space-around"}
                     py="2rem"
@@ -177,9 +177,9 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       Prénom *
                     </Typography>
                     <Input
-                    onChange={handleInputChangeClientFioul}
-                    placeholder="Entrer votre Prenom"
-                    name="first_name"
+                      onChange={handleInputChangeClientFioul}
+                      placeholder="Entrer votre Prenom"
+                      name="first_name"
                       style={{
                         width: "350px",
                         marginTop: 0,
@@ -188,7 +188,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                   </Box>
                   <Box
                     display={{ xs: "block", sm: "flex" }}
-                    sx={{width: '100%'}}
+                    sx={{ width: "100%" }}
                     alignItems="center"
                     justifyContent={"space-around"}
                     py="2rem"
@@ -206,9 +206,9 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       Nom *
                     </Typography>
                     <Input
-                     onChange={handleInputChangeClientFioul}
-                     placeholder="Entrer votre Nom"
-                     name="last_name"
+                      onChange={handleInputChangeClientFioul}
+                      placeholder="Entrer votre Nom"
+                      name="last_name"
                       style={{
                         width: "350px",
                         marginTop: 0,
@@ -217,7 +217,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                   </Box>
                   <Box
                     display={{ xs: "block", sm: "flex" }}
-                    sx={{width: '100%'}}
+                    sx={{ width: "100%" }}
                     alignItems="center"
                     justifyContent={"space-around"}
                     py="2rem"
@@ -235,9 +235,9 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       Email *
                     </Typography>
                     <Input
-                     onChange={handleInputChangeClientFioul}
-                     placeholder="Entrer votre Email"
-                     name="email"
+                      onChange={handleInputChangeClientFioul}
+                      placeholder="Entrer votre Email"
+                      name="email"
                       style={{
                         width: "350px",
                         marginTop: 0,
@@ -246,7 +246,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                   </Box>
                   <Box
                     display={{ xs: "block", sm: "flex" }}
-                    sx={{width: '100%'}}
+                    sx={{ width: "100%" }}
                     alignItems="center"
                     justifyContent={"space-around"}
                     py="2rem"
@@ -262,18 +262,25 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                     >
                       Mot de passe *
                     </Typography>
-                    <Input
-                     onChange={handleInputChangeClientFioul}
-                     name="password"
-                     placeholder="Entrer votre Mot de passe"
+                    <Input.Password
+                    onChange={handleInputChangeClientFioul}
+                    name="password"
+                    placeholder="Entrer votre Mot de passe"
+                      iconRender={(visible) =>
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                      }
                       style={{
                         width: "350px",
                         marginTop: 0,
                       }}
                     />
+                   
                   </Box>
-                  
-                  <Button sx={{ backgroundColor: "#659a9a", color: "white" }} onClick={handleSubmitClientFioul}>
+
+                  <Button
+                    sx={{ backgroundColor: "#659a9a", color: "white" }}
+                    onClick={handleSubmitClientFioul}
+                  >
                     Créer un compte
                   </Button>
                 </Grid>
@@ -349,9 +356,13 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                     >
                       Mot de passe *
                     </Typography>
-                    <Input
-                      name="password"
-                      onChange={handleInputChangeLoginCustomer}
+                    <Input.Password
+                     onChange={handleInputChangeLoginCustomer}
+                    name="password"
+                    placeholder="Entrer votre Mot de passe"
+                      iconRender={(visible) =>
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                      }
                       style={{
                         width: "350px",
                         marginTop: 0,
