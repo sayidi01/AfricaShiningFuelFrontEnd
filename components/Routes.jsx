@@ -28,7 +28,7 @@ import QuisSommesNous from "./QuisSommesNous.jsx"
 import RelationsInvestiseurs from "./RelationsInvestiseurs.jsx"
 import ActualitéASF from "./ActualitéASF.jsx"
 import ContactezNous from "./ContactezNous.jsx"
-import Maquette from "../Maquette.jsx"
+import Maquette from "../components/Maquette.jsx"
 import Shipping from "./Shipping.jsx"
 
 

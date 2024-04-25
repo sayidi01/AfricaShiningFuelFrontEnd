@@ -7,12 +7,12 @@ import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [data, setData] = useState({});
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setisConnected] = useState(false);
 
 
   return (
     <PrimeReactProvider>
-      <UserContext.Provider value={{ setData, setIsConnected }}>
+      <UserContext.Provider value={{ setData, setisConnected,isConnected }}>
         <BrowserRouter>
           <Routes>
             {PublicRoutes.map(({ id, path, element }) => (

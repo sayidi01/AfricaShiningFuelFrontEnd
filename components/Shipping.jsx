@@ -1,10 +1,10 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import NavBar from "./NavBar";
 import { Container, Typography, Grid, Box, Stack } from "@mui/material";
 import { Input, Button, ConfigProvider, Space } from "antd";
 import { TinyColor } from "@ctrl/tinycolor";
 import "../src/index.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import Footer from "./Footer";
 const colors3 = ["#40e495", "#659a9a", "#2bb673"];
 const getHoverColors = (colors) =>
@@ -12,10 +12,22 @@ const getHoverColors = (colors) =>
 const getActiveColors = (colors) =>
   colors.map((color) => new TinyColor(color).darken(5).toString());
 
-function Shipping({codePostal}) {
-    const navigate = useNavigate()
+function Shipping() {
+  const navigate = useNavigate()
+  const location = useLocation();
+  const [queryParams, setQueryParams] = useState({});
+ 
 
-    
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const params = {};
+    for (const param of searchParams.entries()) {
+      params[param[0]] = param[1];
+    }
+    console.log("Query Params:", params);
+    setQueryParams(params);
+  }, [location.search]);
+  
   return (
     <div>
       <NavBar />
@@ -238,14 +250,14 @@ function Shipping({codePostal}) {
                       marginTop: 5,
                     }}
                   >
-                    Fuel oil n° 2
+                    GAZOIL EXTRA 10 PPM
                   </Button>
                 </ConfigProvider>
               </Space>
               <Box display={"flex"} flexDirection="column" gap={5}>
                 <Box display={"flex"} gap={5}>
                   <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                    11000 DH
+                   {queryParams.calculatePrice} DH
                   </Typography>
                   <Typography variant="h6">TTC/Litre</Typography>
                 </Box>
@@ -260,27 +272,27 @@ function Shipping({codePostal}) {
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     Code postal :{" "}
                   </Typography>
-                  <Typography variant="h6">{codePostal} </Typography>
+                  <Typography variant="h6">{queryParams.codePostal} </Typography>
                 </Box>
                 <Box display={"flex"} gap={2} alignItems="center">
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     Quantité :{" "}
                   </Typography>
-                  <Typography variant="h6"> 1000 </Typography>
+                  <Typography variant="h6"> {queryParams.quantity} </Typography>
                 </Box>
                 <Box display={"flex"} gap={2} alignItems="center">
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     {" "}
                     Produit :{" "}
                   </Typography>
-                  <Typography variant="h6"> Fuel oil n° 2 </Typography>
+                  <Typography variant="h6">{queryParams.selectedProduct} </Typography>
                 </Box>
                 <Box display={"flex"} gap={2} alignItems="center">
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     {" "}
                     Livraison :{" "}
                   </Typography>
-                  <Typography variant="h6"> 5jours </Typography>
+                  <Typography variant="h6"> {queryParams.selectedDelivery} </Typography>
                 </Box>
               </Box>
               <Box
@@ -295,7 +307,7 @@ function Shipping({codePostal}) {
                 <div style={{ display: "flex", gap: 5 }}>
                   <Typography variant="h4" style={{ fontWeight: "bold" }}>
                     {" "}
-                    13000 DH{" "}
+                    {queryParams.calculateTotal} DH
                   </Typography>
                   <Typography variant="h6">TTC</Typography>
                 </div>

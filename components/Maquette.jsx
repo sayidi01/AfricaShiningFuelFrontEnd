@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+import React, { useState, useEffect, useContext } from "react";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
 import { Container, Typography, Grid, Box, Stack } from "@mui/material";
 import { Input, Select, Radio, Button, ConfigProvider, Space } from "antd";
 import { TinyColor } from "@ctrl/tinycolor";
-import iconsCamion from "./src/images/icons-camion-c1.png";
-
-
+import iconsCamion from "../src/images/icons-camion-c1.png";
+import ModalSigninSignup from "./ModalSigninsignUp"
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-import "./src/index.css";
-import { axiosInstance } from "./src/api";
-
+import "../src/index.css";
+import { axiosInstance } from "../src/api";
+import UserContext from "../context/userContext";
 
 const colors3 = ["#40e495", "#659a9a", "#2bb673"];
 const getHoverColors = (colors) =>
@@ -20,7 +20,8 @@ const getActiveColors = (colors) =>
   colors.map((color) => new TinyColor(color).darken(5).toString());
 
 function Maquette() {
- 
+  const { isConnected } = useContext(UserContext);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const [cities, setCities] = useState([]); // State to store city data
   const [selectedCityId, setSelectedCityId] = useState(""); // State to store selected city ID
@@ -29,7 +30,19 @@ function Maquette() {
   const [postalCodeDisabled, setPostalCodeDisabled] = useState(true);
   const [codePostal, setCodePostal] = useState(""); // State to store code postal value
   const [selectedProduct, setSelectedProduct] = useState(""); // State to store selected product label
-  const [selectedDelivery, setSelectedDelivery] = useState("standard"); // Set default delivery to standard
+  const [selectedDelivery, setSelectedDelivery] = useState("standard");
+  
+  
+  const onSignIn = () => {
+    setShowModal(false);
+   
+    navigateToShipping();
+  };
+
+  
+
+  
+  // Set default delivery to standard
 
   useEffect(() => {
     // Fetch city data from the backend endpoint
@@ -87,6 +100,23 @@ function Maquette() {
     const totalPrice = parseFloat(calculatePrice()); // Convert totalPrice to a number
     return totalPrice.toFixed(2); // Returning total price with 2 decimal places
   };
+
+  const navigateToShipping = () => {
+    if(!isConnected) {
+      setShowModal(true);
+      return;
+    }
+
+    const total = calculateTotal();
+    const price = calculatePrice();
+   
+    const url = `/shipping?codePostal=${codePostal}&quantity=${quantity}&selectedProduct=${selectedProduct}&selectedDelivery=${selectedDelivery}&calculateTotal=${total}&calculatePrice=${price}`;
+    ;
+    navigate(url);
+  };
+
+
+
   
   
   return (
@@ -146,6 +176,7 @@ function Maquette() {
                     fetchPostalCode(value); // Fetch postal code when city is selected
                   }}
                   value={selectedCityId}
+                  
                 >
                   {cities.map((city) => (
                     <Select.Option key={city.id} value={city.id}>
@@ -237,6 +268,7 @@ function Maquette() {
                   <Radio
                     style={{ fontSize: 18 }}
                     value="standard"
+                    name="deliveryType"
                     checked={selectedDelivery === "standard"}
                     onChange={(e) => setSelectedDelivery(e.target.value)}
                   >
@@ -260,6 +292,7 @@ function Maquette() {
                   <Radio
                     style={{ fontSize: 18 }}
                     value="rapide"
+                    name="deliveryType"
                     checked={selectedDelivery === "rapide"}
                     onChange={(e) => setSelectedDelivery(e.target.value)}
                   >
@@ -283,6 +316,7 @@ function Maquette() {
                   <Radio
                     style={{ fontSize: 18 }}
                     value="express"
+                    name="deliveryType"
                     checked={selectedDelivery === "express"}
                     onChange={(e) => setSelectedDelivery(e.target.value)}
                   >
@@ -304,7 +338,7 @@ function Maquette() {
               </Box>
               <Typography>*prix à titre indicatif</Typography>
               <Button
-                onClick={() => navigate("/shipping")}
+                onClick={() => setShowModal(true)}
                 type="primary"
                 style={{
                   backgroundColor: "#333",
@@ -429,6 +463,17 @@ function Maquette() {
         </Grid>
       </Container>
       <Footer marginTop={"3rem"} />
+      {showModal &&(
+        <ModalSigninSignup
+        onClose={() => setShowModal(false)}
+        onSignIn={() => {
+          setShowModal(false)
+          navigateToShipping()
+        }}
+        />
+
+      )}
+
     </div>
   );
 }
