@@ -7,13 +7,14 @@ import { Input } from "antd";
 import { toast } from "react-hot-toast";
 import { Container, Grid } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../src/api";
 import UserContext from "../context/userContext";
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 function ModalSigninsignUp({ onClose, onSignIn }) {
   const { setData, setisConnected } = useContext(UserContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [loginCustomer, setLoginCustomer] = useState({
     email: "",
@@ -66,8 +67,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
     transform: "translate(-50%, -50%)",
     bgcolor: "background.paper",
     boxShadow: 24,
-    height: creatingAccount ? "600px" : "400px",
-    width: "600px",
+    maxWidth: "600px",
   };
 
   const handleSubmitLoginCustomer = useCallback(() => {
@@ -78,7 +78,14 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
         setData(res.data);
         setisConnected(true);
         toast.success(res.data.message ?? "Vous êtes connecté");
-        navigate("/shipping");
+
+        console.log(location.search);
+        console.log(location.pathname);
+        // Construct the new URL with existing query parameters
+        const newUrl = `/shipping${location.search}`;
+        console.log(newUrl)
+
+        navigate(newUrl);
       })
       .catch((err) => {
         console.log("erreur connexion", err);
@@ -86,18 +93,23 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
           "Une erreur s'est produite lors de la connexion du customer"
         );
       });
-  }, [loginCustomer]);
+  }, [loginCustomer, location]);
 
   const handleSubmitClientFioul = useCallback(() => {
     console.log(customerClientFioul);
 
     axiosInstance
-      .post("/customer", { ...customerClientFioul })
+      .post("/customer", { ...customerClientFioul, customerType: "ClientFioul" })
       .then((data) => {
         console.log(data);
         setData(data);
         setisConnected(true);
         toast.success(data.message ?? "votre compte se crée avec succès");
+
+        const newUrl = `/shipping${location.search}`;
+        console.log(newUrl)
+
+        navigate(newUrl);
       })
 
       .catch((err) => {
@@ -248,7 +260,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                     display={{ xs: "block", sm: "flex" }}
                     sx={{ width: "100%" }}
                     alignItems="center"
-                    justifyContent={"space-around"}
+                    justifyContent={"space-between"}
                     py="2rem"
                   >
                     <Typography
@@ -258,14 +270,15 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       }}
                       sx={{
                         fontSize: { xs: "19px", sm: "20px" },
+                        minWidth: "10rem"
                       }}
                     >
                       Mot de passe *
                     </Typography>
                     <Input.Password
-                    onChange={handleInputChangeClientFioul}
-                    name="password"
-                    placeholder="Entrer votre Mot de passe"
+                      onChange={handleInputChangeClientFioul}
+                      name="password"
+                      placeholder="Entrer votre Mot de passe"
                       iconRender={(visible) =>
                         visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                       }
@@ -274,7 +287,6 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                         marginTop: 0,
                       }}
                     />
-                   
                   </Box>
 
                   <Button
@@ -357,9 +369,9 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       Mot de passe *
                     </Typography>
                     <Input.Password
-                     onChange={handleInputChangeLoginCustomer}
-                    name="password"
-                    placeholder="Entrer votre Mot de passe"
+                      onChange={handleInputChangeLoginCustomer}
+                      name="password"
+                      placeholder="Entrer votre Mot de passe"
                       iconRender={(visible) =>
                         visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
                       }

@@ -5,9 +5,9 @@ import { Container, Typography, Grid, Box, Stack } from "@mui/material";
 import { Input, Select, Radio, Button, ConfigProvider, Space } from "antd";
 import { TinyColor } from "@ctrl/tinycolor";
 import iconsCamion from "../src/images/icons-camion-c1.png";
-import ModalSigninSignup from "./ModalSigninsignUp"
+import ModalSigninSignup from "./ModalSigninsignUp";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "../src/index.css";
 import { axiosInstance } from "../src/api";
@@ -31,8 +31,37 @@ function Maquette() {
   const [codePostal, setCodePostal] = useState(""); // State to store code postal value
   const [selectedProduct, setSelectedProduct] = useState(""); // State to store selected product label
   const [selectedDelivery, setSelectedDelivery] = useState("standard");
+  const [fuelPrice, setFuelPrice] = useState(6.8);
+
+  const location = useLocation();
+
+console.log(quantity)
+
+  useEffect(() => {
+    const getParamsFromURL = () => {
+      const searchParams = new URLSearchParams(location.search);
+      const queryParams = {};
+      for (const param of searchParams.entries()) {
+        queryParams[param[0]] = param[1];
+      }
+      return queryParams;
+    };
+
+    const existingData = getParamsFromURL();
+    
+    if(Object.keys(existingData).length == 0) return
+
+    console.log(existingData.quantity)
+    if(existingData.codePostal) setCodePostal(existingData.codePostal)
+    if(existingData.quantity) setQuantity(existingData.quantity)
+    if(existingData.selectedProduct) setSelectedProduct(existingData.selectedProduct)
+    if(existingData.selectedDelivery) setSelectedDelivery(existingData.selectedDelivery)
+    if(existingData.city) setSelectedCityId(Number(existingData.city))
+
+    console.log(existingData)
+  }, []);
   
-  
+
   const onSignIn = () => {
     if (
       !selectedCityId ||
@@ -44,14 +73,29 @@ function Maquette() {
       toast.error("Veuillez remplir tous les champs obligatoires !");
       return;
     }
-  
-    setShowModal(false);
+
+    if (!isConnected) {
+      const total = calculateTotal();
+      const price = calculatePrice();
+
+      const url = `/order?codePostal=${codePostal}&quantity=${quantity}&selectedProduct=${selectedProduct}&selectedDelivery=${selectedDelivery}&calculateTotal=${total}&calculatePrice=${price}&city=${selectedCityId}`;
+      navigate(url);
+
+      setShowModal(true);
+      return;
+    }
+
     navigateToShipping();
   };
 
-  
+  const navigateToShipping = () => {
+    const total = calculateTotal();
+    const price = calculatePrice();
 
-  
+    const url = `/shipping?codePostal=${codePostal}&quantity=${quantity}&selectedProduct=${selectedProduct}&selectedDelivery=${selectedDelivery}&calculateTotal=${total}&calculatePrice=${price}&city=${selectedCityId}`;
+    navigate(url);
+  };
+
   // Set default delivery to standard
 
   useEffect(() => {
@@ -81,29 +125,44 @@ function Maquette() {
 
   const handleProductChange = (value, option) => {
     setSelectedProduct(option.label);
+    if (option.label === " Fuel oil n° 2") {
+      setPricePerLitre(fuelPrice);
+    } else {
+      setPricePerLitre(11.05);
+    }
   };
 
   const calculatePrice = () => {
     // Do not calculate price if product is not selected
     if (!selectedProduct) return 0;
-  
+
     let pricePerLitre = 11.05; // Default price per litre
-  
+    let priceFioul = 6.8;
+
     if (selectedCityId) {
       const selectedCity = cities.find((city) => city.id === selectedCityId);
       if (selectedCity) {
+        console.log(selectedCity.price)
         pricePerLitre += parseFloat(selectedCity.price); // Add price per city to the default price per litre
-      }
+        priceFioul += parseFloat(selectedCity.price);
+      } else return "City not found";
     }
-  
-    let totalPrice = pricePerLitre * quantity;
-  
+
+    // if (selectedProduct === " Fuel oil n° 2") {
+    //   pricePerLitre = fuelPrice;
+    // }
+
+    const selectedPrd = selectedProduct.trim().toLowerCase();
+    const isFuel = selectedPrd.includes('fuel');
+
+    let totalPrice = (isFuel ? priceFioul : pricePerLitre) * quantity;
+
     if (selectedDelivery === "rapide") {
       totalPrice += 1000;
     } else if (selectedDelivery === "express") {
       totalPrice += 2500;
     }
-  
+
     return totalPrice.toFixed(2);
   };
   const calculateTotal = () => {
@@ -111,25 +170,6 @@ function Maquette() {
     return totalPrice.toFixed(2); // Returning total price with 2 decimal places
   };
 
-  const navigateToShipping = () => {
-    if(!isConnected) {
-      setShowModal(true);
-      return;
-    }
-    
-
-    const total = calculateTotal();
-    const price = calculatePrice();
-   
-    const url = `/shipping?codePostal=${codePostal}&quantity=${quantity}&selectedProduct=${selectedProduct}&selectedDelivery=${selectedDelivery}&calculateTotal=${total}&calculatePrice=${price}`;
-    ;
-    navigate(url);
-  };
-
-
-
-  
-  
   return (
     <div>
       <NavBar />
@@ -188,7 +228,6 @@ function Maquette() {
                     fetchPostalCode(value); // Fetch postal code when city is selected
                   }}
                   value={selectedCityId}
-                  
                 >
                   {cities.map((city) => (
                     <Select.Option key={city.id} value={city.id}>
@@ -249,12 +288,18 @@ function Maquette() {
                   }
                   options={[
                     {
-                      value: "1",
-                      label: "DIESEL EXTRA 10 PPM  ",
+                      value: "DIESEL EXTRA 10 PPM",
+                      label: "DIESEL EXTRA 10 PPM",
                       solde: "11.05",
+                    },
+                    {
+                      value: "Fuel oil n° 2",
+                      label: "Fuel oil n° 2",
+                      solde: "6.80",
                     },
                   ]}
                   onChange={handleProductChange}
+                  value={selectedProduct}
                 />
               </Box>
               <Box
@@ -409,7 +454,7 @@ function Maquette() {
                       marginTop: 5,
                     }}
                   >
-                    GAZOIL EXTRA 10 PPM
+                    {selectedProduct ? selectedProduct: "Sélectionner un produit"}
                   </Button>
                 </ConfigProvider>
               </Space>
@@ -419,7 +464,6 @@ function Maquette() {
                     {calculatePrice()} DH
                   </Typography>
                   <Typography variant="h6">TTC/Litre</Typography>
-                 
                 </Box>
                 <Box
                   sx={{
@@ -433,7 +477,6 @@ function Maquette() {
                     Code postal :{" "}
                   </Typography>
                   <Typography variant="h6"> {codePostal} </Typography>
-                 
                 </Box>
                 <Box display={"flex"} gap={2} alignItems="center">
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
@@ -477,17 +520,15 @@ function Maquette() {
         </Grid>
       </Container>
       <Footer marginTop={"3rem"} />
-      {showModal &&(
+      {showModal && (
         <ModalSigninSignup
-        onClose={() => setShowModal(false)}
-        onSignIn={() => {
-          setShowModal(false)
-          navigateToShipping()
-        }}
+          onClose={() => setShowModal(false)}
+          onSignIn={() => {
+            setShowModal(false);
+            navigateToShipping();
+          }}
         />
-
       )}
-
     </div>
   );
 }

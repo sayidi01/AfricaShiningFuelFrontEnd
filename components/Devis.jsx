@@ -22,13 +22,15 @@ function Devis({ title, Volume, Société }) {
   })
   console.log(devis)
 
-const handleInputChangeDevis = (e) => {
- const {name, value} = e.target
- setDevis((prev) => ({
-  ...prev,
-  [name]: value,
-}));
-};
+  const handleInputChangeDevis = (e) => {
+    const { name, value } = e.target;
+  
+    setDevis((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  
 
 const handleSubmitDevis = useCallback(() => {
   console.log(devis)
@@ -75,17 +77,18 @@ const handleSubmitDevis = useCallback(() => {
               </Typography>
               <FormControl>
                 <RadioGroup
+                onChange={handleInputChangeDevis}
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
+                  name="civilité"
                 >
                   <FormControlLabel
-                    value="female"
+                    value="Mme"
                     control={<Radio />}
                     label="Mme"
                   />
                   <FormControlLabel
-                    value="male"
+                     value="Mr"
                     control={<Radio />}
                     label="Mr"
                   />
@@ -108,6 +111,7 @@ const handleSubmitDevis = useCallback(() => {
                 Nom *
               </Typography>
               <Input
+              name="nom"
               onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
@@ -131,6 +135,7 @@ const handleSubmitDevis = useCallback(() => {
                 Prenom *
               </Typography>
               <Input
+              name="prenom"
               onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
@@ -154,6 +159,7 @@ const handleSubmitDevis = useCallback(() => {
                 {Société}
               </Typography>
               <Input
+              name="Société"
               onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
@@ -177,6 +183,7 @@ const handleSubmitDevis = useCallback(() => {
                 Télephone *
               </Typography>
               <Input
+              name="telephone"
               onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
@@ -200,6 +207,7 @@ const handleSubmitDevis = useCallback(() => {
                 {Volume}
               </Typography>
               <Input
+              name="Volume"
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -223,6 +231,7 @@ const handleSubmitDevis = useCallback(() => {
                 informations Complémentaires
               </Typography>
               <TextArea
+              name="informations_Complémentaires"
               onChange={handleInputChangeDevis}
                 style={{
                   marginTop: 0,
@@ -239,6 +248,7 @@ const handleSubmitDevis = useCallback(() => {
               }}
             >
               <Button
+              onClick={handleSubmitDevis}
                 type="primary"
                 style={{
                   backgroundColor: "#333",

@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import NavBar from "./NavBar";
 import { Grid, Typography, Box, Container } from "@mui/material";
 import { Input } from "antd";
 import TextField from "@mui/material/TextField";
 import Footer from "./Footer";
-
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Rh from "../src/images/RH1.png";
+import {toast} from "react-hot-toast"
+
+import { axiosInstance } from "../src/api";
+
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -22,6 +25,57 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 function PolitiqueRH() {
+  const [candidatureRH, setCandidatureRH] = useState({
+    prenom: "",
+    nom: "",
+    email: "",
+    lettreMotivation: "",
+    cv: null,
+  });
+
+  const handleInputChangeRH = (e) => {
+    const { name, value } = e.target;
+    setCandidatureRH((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleImageInputChange = useCallback((e) => {
+    const file = e.target.files[0] 
+    if(file.size > 2 * 1024 * 1024) {
+      toast.error("File size exceeds 2MB")
+      return;
+    }
+    console.log(e.target.files[0])
+    setCandidatureRH((prev) => ({ ...prev, cv: e.target.files[0] }));
+  }, []);
+
+  const handleSubmitCandidatureRH = useCallback(() => {
+    const formData = new FormData();
+    formData.append("prenom", candidatureRH.prenom);
+    formData.append("nom", candidatureRH.nom);
+    formData.append("email", candidatureRH.email);
+    formData.append("lettreMotivation", candidatureRH.lettreMotivation);
+    formData.append("cv", candidatureRH.cv);
+
+    console.log(formData)
+    console.log(candidatureRH)
+
+    axiosInstance
+      .post("/candidatureRH", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then(() => {
+        toast.success("votre condi...")
+      }).catch(err => {
+        console.error(err);
+        toast.error("Error", JSON.stringify(err))
+      });
+  }, [candidatureRH]);
+
   return (
     <div>
       <NavBar />
@@ -150,8 +204,10 @@ function PolitiqueRH() {
               Prénom *
             </Typography>
             <TextField
+              onChange={handleInputChangeRH}
               id="filled-multiline-flexible"
               multiline
+              name="prenom"
               maxRows={4}
               variant="filled"
               sx={{
@@ -174,8 +230,10 @@ function PolitiqueRH() {
               Nom *
             </Typography>
             <TextField
+              onChange={handleInputChangeRH}
               id="filled-multiline-flexible"
               multiline
+              name="nom"
               maxRows={4}
               variant="filled"
               sx={{
@@ -198,8 +256,10 @@ function PolitiqueRH() {
               Email *
             </Typography>
             <TextField
+              onChange={handleInputChangeRH}
               id="filled-multiline-flexible"
               multiline
+              name="email"
               maxRows={4}
               variant="filled"
               sx={{
@@ -222,8 +282,10 @@ function PolitiqueRH() {
               Lettre motivation :
             </Typography>
             <TextField
+              onChange={handleInputChangeRH}
               multiline
               rows={6}
+              name="lettreMotivation"
               variant="outlined"
               sx={{
                 width: "450px",
@@ -258,9 +320,17 @@ function PolitiqueRH() {
               }}
             >
               Charger Votre CV
-              <VisuallyHiddenInput type="file" />
+              <VisuallyHiddenInput
+                onChange={handleImageInputChange}
+                type="file"
+                
+              />
             </Button>
+
           </Box>
+            <Button onClick={handleSubmitCandidatureRH}>
+              Submit
+            </Button>
         </Grid>
       </Grid>
       <Footer marginTop={"10rem"} />

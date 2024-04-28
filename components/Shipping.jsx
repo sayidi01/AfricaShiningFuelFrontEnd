@@ -4,7 +4,7 @@ import { Container, Typography, Grid, Box, Stack } from "@mui/material";
 import { Input, Button, ConfigProvider, Space } from "antd";
 import { TinyColor } from "@ctrl/tinycolor";
 import "../src/index.css";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useNavigate, useLocation, useParams} from "react-router-dom";
 import Footer from "./Footer";
 const colors3 = ["#40e495", "#659a9a", "#2bb673"];
 const getHoverColors = (colors) =>
@@ -15,18 +15,28 @@ const getActiveColors = (colors) =>
 function Shipping() {
   const navigate = useNavigate()
   const location = useLocation();
+  const params = useParams();
   const [queryParams, setQueryParams] = useState({});
- 
+
+  const [selectedProduct, setSelectedProduct] = useState('')
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const params = {};
-    for (const param of searchParams.entries()) {
-      params[param[0]] = param[1];
+    const getParamsFromURL = () => {
+      const searchParams = new URLSearchParams(location.search);
+      const queryParams = {};
+      for (const param of searchParams.entries()) {
+        queryParams[param[0]] = param[1];
+      }
+      return queryParams;
+    };
+
+    const params = getParamsFromURL();
+
+    if(params.selectedProduct) {
+      setSelectedProduct(params.selectedProduct)
     }
-    console.log("Query Params:", params);
     setQueryParams(params);
-  }, [location.search]);
+  }, [location.search, params]);
   
   return (
     <div>
@@ -250,7 +260,7 @@ function Shipping() {
                       marginTop: 5,
                     }}
                   >
-                    GAZOIL EXTRA 10 PPM
+                    {selectedProduct ? selectedProduct: "Sélectionner un produit"}
                   </Button>
                 </ConfigProvider>
               </Space>
@@ -333,7 +343,11 @@ function Shipping() {
                 >
                     
                   <Button
-                  onClick={() => navigate("/order")}
+                  onClick={() => {
+                    const newUrl = `/order${location.search}`;
+                  
+                    navigate(newUrl)
+                  }}
                     className="button-icons"
                     type="primary"
                     style={{
