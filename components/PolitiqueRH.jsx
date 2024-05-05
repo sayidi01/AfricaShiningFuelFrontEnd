@@ -8,7 +8,7 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Rh from "../src/images/RH1.png";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast";
 
 import { axiosInstance } from "../src/api";
 
@@ -42,12 +42,12 @@ function PolitiqueRH() {
   };
 
   const handleImageInputChange = useCallback((e) => {
-    const file = e.target.files[0] 
-    if(file.size > 2 * 1024 * 1024) {
-      toast.error("File size exceeds 2MB")
+    const file = e.target.files[0];
+    if (file.size > 2 * 1024 * 1024) {
+      toast.error("File size exceeds 2MB");
       return;
     }
-    console.log(e.target.files[0])
+    console.log(e.target.files[0]);
     setCandidatureRH((prev) => ({ ...prev, cv: e.target.files[0] }));
   }, []);
 
@@ -59,8 +59,8 @@ function PolitiqueRH() {
     formData.append("lettreMotivation", candidatureRH.lettreMotivation);
     formData.append("cv", candidatureRH.cv);
 
-    console.log(formData)
-    console.log(candidatureRH)
+    console.log(formData);
+    console.log(candidatureRH);
 
     axiosInstance
       .post("/candidatureRH", formData, {
@@ -69,10 +69,11 @@ function PolitiqueRH() {
         },
       })
       .then(() => {
-        toast.success("votre condi...")
-      }).catch(err => {
+        toast.success("votre condidature envoyer");
+      })
+      .catch((err) => {
         console.error(err);
-        toast.error("Error", JSON.stringify(err))
+        toast.error("Error", JSON.stringify(err));
       });
   }, [candidatureRH]);
 
@@ -323,14 +324,35 @@ function PolitiqueRH() {
               <VisuallyHiddenInput
                 onChange={handleImageInputChange}
                 type="file"
-                
               />
             </Button>
-
           </Box>
-            <Button onClick={handleSubmitCandidatureRH}>
-              Submit
+          <Box
+            sx={{
+              justifyContent: "center",
+              display: "flex",
+              alignItems: "center",
+              marginTop: 8
+            }}
+          >
+            <Button
+             onClick={handleSubmitCandidatureRH}
+              type="primary"
+              style={{
+                backgroundColor: "#333",
+                color: "#fff",
+                borderRadius: "0",
+                width: 150,
+                height: 50,
+                fontSize: 18,
+                fontFamily: "Montserrat",
+                textTransform: "none",
+              }}
+             
+            >
+              Envoyer
             </Button>
+          </Box>
         </Grid>
       </Grid>
       <Footer marginTop={"10rem"} />

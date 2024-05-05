@@ -1,9 +1,9 @@
 import { Stack, Typography, Button, Box, Container } from "@mui/material";
-import React from "react";
+import React,{useContext, useState, useCallback} from "react";
 import Divider from "@mui/material/Divider";
 import { Input } from "antd";
 import { Grid } from "@mui/material";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import Logo from "../src/images/LOGO_AFRICA_SHINING.png";
 import facebook from "../src/images/facebook.png";
 import Linkedin from "../src/images/linkdin.png";
@@ -11,11 +11,46 @@ import X from "../src/images/X.png";
 import telephone from "../src/images/telephone.png";
 import Adresse from "../src/images/office-push-pin.png";
 import Email from "../src/images/email.png";
+import { toast } from "react-hot-toast";
 import '../src/index.css'
 const { TextArea } = Input;
+import UserContext from "../context/userContext";
+import { axiosInstance } from "../src/api";
 
 function Footer({ marginTop }) {
+  const { setData, setisConnected } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const [NewsLetter, setNewsLetter] = useState({
+    email: ""
+  })
+  console.log(NewsLetter);
+
+  const handleInputChangeNewsLetter = (e) => {
+    const { name, value } = e.target;
+    setNewsLetter((prev) =>({
+      ...prev,
+     [name] : value
+    }))
+  }
+
+  const handleSubmitNewsLetter = useCallback(() => {
+    console.log(NewsLetter);
+    axiosInstance
+    .post("/NewsLetter", {...NewsLetter})
+    .then((data) => {
+      console.log(data)
+      setData(data)
+      setisConnected(true)
+      toast.success(data.message ?? "votre NewsLetter envoyé");
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  },[NewsLetter])
+
+
+
   return (
     <div>
       <Stack
@@ -66,7 +101,9 @@ function Footer({ marginTop }) {
             }}
           >
             <TextArea
-              placeholder="Enter your email"
+            name="email"
+            onChange={handleInputChangeNewsLetter}
+              placeholder="Enter votre email"
               style={{
                 width: 500,
                 height: 40,
@@ -79,6 +116,7 @@ function Footer({ marginTop }) {
             <div style={{ margin: "24px 0" }} />
             <div style={{ margin: "50px 0" }} />
             <Button
+            onClick={handleSubmitNewsLetter}
               style={{
                 backgroundColor: "black",
                 color: "white",
@@ -292,7 +330,7 @@ function Footer({ marginTop }) {
                     to={"/engagementrse"}
                     style={{ textDecoration: "none", color: "inherit" }}
                   >
-                    <Typography style={{ fontFamily: "Montserrat-sans serif" }}>
+                    <Typography  style={{ fontFamily: "Montserrat-sans serif" }}>
                       Qui Sommes-nous ?
                     </Typography>
                   </Link>

@@ -1,11 +1,16 @@
-import React,{useEffect, useState} from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import { Container, Typography, Grid, Box, Stack } from "@mui/material";
 import { Input, Button, ConfigProvider, Space } from "antd";
 import { TinyColor } from "@ctrl/tinycolor";
 import "../src/index.css";
-import { useNavigate, useLocation, useParams} from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import Footer from "./Footer";
+import { toast } from "react-hot-toast";
+import { axiosInstance } from "../src/api";
+import UserContext from "../context/userContext";
+import { AxiosError } from "axios";
+
 const colors3 = ["#40e495", "#659a9a", "#2bb673"];
 const getHoverColors = (colors) =>
   colors.map((color) => new TinyColor(color).lighten(5).toString());
@@ -13,31 +18,83 @@ const getActiveColors = (colors) =>
   colors.map((color) => new TinyColor(color).darken(5).toString());
 
 function Shipping() {
-  const navigate = useNavigate()
+  const { setData, setisConnected } = useContext(UserContext);
+  const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
   const [queryParams, setQueryParams] = useState({});
 
-  const [selectedProduct, setSelectedProduct] = useState('')
+  const [selectedProduct, setSelectedProduct] = useState("");
+
+  const getParamsFromURL = () => {
+    const searchParams = new URLSearchParams(location.search);
+    const queryParams = {};
+    for (const param of searchParams.entries()) {
+      queryParams[param[0]] = param[1];
+    }
+    return queryParams;
+  };
 
   useEffect(() => {
-    const getParamsFromURL = () => {
-      const searchParams = new URLSearchParams(location.search);
-      const queryParams = {};
-      for (const param of searchParams.entries()) {
-        queryParams[param[0]] = param[1];
-      }
-      return queryParams;
-    };
-
     const params = getParamsFromURL();
 
-    if(params.selectedProduct) {
-      setSelectedProduct(params.selectedProduct)
+    if (params.selectedProduct) {
+      setSelectedProduct(params.selectedProduct);
     }
     setQueryParams(params);
   }, [location.search, params]);
-  
+
+  const [order, setOrder] = useState({
+    prenom: "",
+    nom: "",
+    adresse: "",
+    ville: "",
+    telephone: "",
+    codePostal: "",
+  });
+  console.log(order);
+
+  const handleInputChangeOrder = (e) => {
+    const { name, value } = e.target;
+    setOrder((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitOrder = useCallback(() => {
+    console.log(order);
+    const productData = getParamsFromURL();
+    const orderData = {
+      ...productData,
+      ...order,
+      Products: productData.selectedProduct,
+      deliveryType: productData.selectedDelivery,
+      Quantity: productData.quantity,
+      TotalPrice: productData.calculateTotal
+    };
+
+    axiosInstance
+      .post("/orders", orderData)
+      .then((data) => {
+        console.log(data);
+        setData(data);
+        setisConnected(true);
+        toast.success(data.message ?? "votre commande est envoyè");
+      })
+      .catch((err) => {
+        console.log(err);
+        if(err instanceof AxiosError) {
+          const messageFromResponse = err.response.data.message;
+          toast.error(`Server Response error: ` + (messageFromResponse || err.message));
+        } else if(err instanceof Error) {
+          toast.error(`Something went wrong: ` + err.message);
+        } else {
+          toast.error(`Something went wrong: ` + JSON.stringify(err));
+        }
+      });
+  }, [order]);
+
   return (
     <div>
       <NavBar />
@@ -92,6 +149,8 @@ function Shipping() {
                   Prénom *
                 </Typography>
                 <Input
+                  onChange={handleInputChangeOrder}
+                  name="prenom"
                   style={{
                     width: "350px",
                     marginTop: 0,
@@ -113,6 +172,8 @@ function Shipping() {
                   Nom *
                 </Typography>
                 <Input
+                  onChange={handleInputChangeOrder}
+                  name="nom"
                   style={{
                     width: "350px",
                     marginTop: 0,
@@ -134,6 +195,8 @@ function Shipping() {
                   Adresse *
                 </Typography>
                 <Input
+                  name="adresse"
+                  onChange={handleInputChangeOrder}
                   style={{
                     width: "350px",
                     marginTop: 0,
@@ -155,6 +218,8 @@ function Shipping() {
                   Ville *
                 </Typography>
                 <Input
+                  name="ville"
+                  onChange={handleInputChangeOrder}
                   style={{
                     width: "350px",
                     marginTop: 0,
@@ -173,9 +238,11 @@ function Shipping() {
                     fontSize: { xs: "19px", sm: "20px" },
                   }}
                 >
-                  Code Postal *
+                  Code Postal :
                 </Typography>
                 <Input
+                  onChange={handleInputChangeOrder}
+                  name="codePostal"
                   style={{
                     width: "350px",
                     marginTop: 0,
@@ -197,6 +264,8 @@ function Shipping() {
                   Télephone *
                 </Typography>
                 <Input
+                  name="telephone"
+                  onChange={handleInputChangeOrder}
                   style={{
                     width: "350px",
                     marginTop: 0,
@@ -205,6 +274,7 @@ function Shipping() {
               </Box>
 
               <Button
+                onClick={handleSubmitOrder}
                 type="primary"
                 style={{
                   backgroundColor: "#333",
@@ -260,14 +330,16 @@ function Shipping() {
                       marginTop: 5,
                     }}
                   >
-                    {selectedProduct ? selectedProduct: "Sélectionner un produit"}
+                    {selectedProduct
+                      ? selectedProduct
+                      : "Sélectionner un produit"}
                   </Button>
                 </ConfigProvider>
               </Space>
               <Box display={"flex"} flexDirection="column" gap={5}>
                 <Box display={"flex"} gap={5}>
                   <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                   {queryParams.calculatePrice} DH
+                    {queryParams.calculatePrice} DH
                   </Typography>
                   <Typography variant="h6">TTC/Litre</Typography>
                 </Box>
@@ -282,7 +354,9 @@ function Shipping() {
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     Code postal :{" "}
                   </Typography>
-                  <Typography variant="h6">{queryParams.codePostal} </Typography>
+                  <Typography variant="h6">
+                    {queryParams.codePostal}{" "}
+                  </Typography>
                 </Box>
                 <Box display={"flex"} gap={2} alignItems="center">
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
@@ -295,14 +369,19 @@ function Shipping() {
                     {" "}
                     Produit :{" "}
                   </Typography>
-                  <Typography variant="h6">{queryParams.selectedProduct} </Typography>
+                  <Typography variant="h6">
+                    {queryParams.selectedProduct}{" "}
+                  </Typography>
                 </Box>
                 <Box display={"flex"} gap={2} alignItems="center">
                   <Typography variant="h6" sx={{ color: "#659a9a" }}>
                     {" "}
                     Livraison :{" "}
                   </Typography>
-                  <Typography variant="h6"> {queryParams.selectedDelivery} </Typography>
+                  <Typography variant="h6">
+                    {" "}
+                    {queryParams.selectedDelivery}{" "}
+                  </Typography>
                 </Box>
               </Box>
               <Box
@@ -341,13 +420,12 @@ function Shipping() {
                     },
                   }}
                 >
-                    
                   <Button
-                  onClick={() => {
-                    const newUrl = `/order${location.search}`;
-                  
-                    navigate(newUrl)
-                  }}
+                    onClick={() => {
+                      const newUrl = `/order${location.search}`;
+
+                      navigate(newUrl);
+                    }}
                     className="button-icons"
                     type="primary"
                     style={{
@@ -356,20 +434,16 @@ function Shipping() {
                       fontSize: 27,
                       marginBottom: 5,
                     }}
-                 
                   >
-                   Modifier
+                    Modifier
                   </Button>
-                 
-
-                  
                 </ConfigProvider>
               </Space>
             </Stack>
           </Grid>
         </Grid>
       </Container>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

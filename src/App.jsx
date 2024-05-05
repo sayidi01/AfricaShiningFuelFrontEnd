@@ -12,7 +12,7 @@ function App() {
 
   return (
     <PrimeReactProvider>
-      <UserContext.Provider value={{ setData, setisConnected,isConnected }}>
+      <UserContext.Provider value={{ setData, setisConnected,isConnected ,data}}>
         <BrowserRouter>
           <Routes>
             {PublicRoutes.map(({ id, path, element }) => (

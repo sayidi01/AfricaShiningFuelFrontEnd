@@ -1,10 +1,60 @@
-import React from "react";
+import React, { useCallback, useState, useContext } from "react";
 import NavBar from "./NavBar";
-import { Box, Container, Grid, Typography, FormControl , Button} from "@mui/material";
+import { axiosInstance } from "../src/api";
+import { toast } from "react-hot-toast";
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  FormControl,
+  Button,
+} from "@mui/material";
 import { Form, Select, Input } from "antd";
 import Footer from "./Footer";
 
+import UserContext from "../context/userContext";
+
 function ContactezNous() {
+  const { setData, setisConnected } = useContext(UserContext);
+  const [ContactezNous, setContactezNous] = useState({
+    contactType: "",
+    lastName: "",
+    firstName: "",
+    phone: "",
+    email: "",
+    department: "",
+    subject: "",
+    message: "",
+  });
+  console.log(ContactezNous);
+
+  const handleInputChangeContactezNous = (e) => {
+    if (e.target) {
+      const { name, value } = e.target;
+      setContactezNous((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  const handleSubmitContactezNous = useCallback(() => {
+    console.log(ContactezNous);
+    axiosInstance
+      .post("/contactezNous", { ...ContactezNous })
+      .then((data) => {
+        console.log(data);
+        setData(data);
+        setisConnected(true);
+        toast.success(data.message ?? "votre Formulaire envoyé");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error( "erreur implementation");
+      });
+  }, [ContactezNous]);
+
   return (
     <div>
       <NavBar />
@@ -25,10 +75,14 @@ function ContactezNous() {
                   Vous contactez *
                 </Typography>
                 <Form.Item>
-                  <Select style={{ width: 400, paddingTop: 10, height: 50 }}>
-                    <Select.Option value="contact">
-                      Choisir un contact
-                    </Select.Option>
+                  <Select
+                    onChange={(value) =>
+                      handleInputChangeContactezNous({
+                        target: { name: "contactType", value },
+                      })
+                    }
+                    style={{ width: 400, paddingTop: 10, height: 50 }}
+                  >
                     <Select.Option value="investisseurs">
                       Contacts Investisseurs
                     </Select.Option>
@@ -46,7 +100,11 @@ function ContactezNous() {
                 >
                   Votre nom *
                 </Typography>
-                <Input style={{ height: 40 , marginTop: 10}} />
+                <Input
+                  onChange={handleInputChangeContactezNous}
+                  name="lastName"
+                  style={{ height: 40, marginTop: 10 }}
+                />
               </Box>
               <Box>
                 <Typography
@@ -54,7 +112,11 @@ function ContactezNous() {
                 >
                   Votre prenom *
                 </Typography>
-                <Input style={{ height: 40 , marginTop: 10}} />
+                <Input
+                  onChange={handleInputChangeContactezNous}
+                  name="firstName"
+                  style={{ height: 40, marginTop: 10 }}
+                />
               </Box>
               <Box>
                 <Typography
@@ -62,7 +124,11 @@ function ContactezNous() {
                 >
                   Votre telephone *
                 </Typography>
-                <Input style={{ height: 40 , marginTop: 10}} />
+                <Input
+                  onChange={handleInputChangeContactezNous}
+                  name="phone"
+                  style={{ height: 40, marginTop: 10 }}
+                />
               </Box>
               <Box>
                 <Typography
@@ -70,7 +136,11 @@ function ContactezNous() {
                 >
                   Votre email *
                 </Typography>
-                <Input style={{ height: 40 , marginTop: 10}} />
+                <Input
+                  onChange={handleInputChangeContactezNous}
+                  name="email"
+                  style={{ height: 40, marginTop: 10 }}
+                />
               </Box>
               <Box>
                 <Typography
@@ -78,32 +148,46 @@ function ContactezNous() {
                 >
                   Votre Departement *
                 </Typography>
-                <Input style={{ height: 40 , marginTop: 10}} />
+                <Input
+                  onChange={handleInputChangeContactezNous}
+                  name="department"
+                  style={{ height: 40, marginTop: 10 }}
+                />
               </Box>
               <Box>
                 <Typography
                   sx={{ fontSize: { xs: 18, sm: 24 }, paddingTop: 3 }}
                 >
-                 Objet*
+                  Objet*
                 </Typography>
-                <Input style={{ height: 40 , marginTop: 10}} />
+                <Input
+                  onChange={handleInputChangeContactezNous}
+                  name="subject"
+                  style={{ height: 40, marginTop: 10 }}
+                />
               </Box>
               <Box>
                 <Typography
                   sx={{ fontSize: { xs: 18, sm: 24 }, paddingTop: 3 }}
                 >
-                 Votre message*
+                  Votre message*
                 </Typography>
-                <Input.TextArea rows={6} style={{marginTop: 10}} />
+                <Input.TextArea
+                  onChange={handleInputChangeContactezNous}
+                  name="message"
+                  rows={6}
+                  style={{ marginTop: 10 }}
+                />
               </Box>
               <Button
+                onClick={handleSubmitContactezNous}
                 style={{
                   backgroundColor: "#659a99",
                   color: "white ",
                   textTransform: "capitalize",
                   borderRadius: 25,
                   fontSize: "15px",
-                  marginTop: '2rem'
+                  marginTop: "2rem",
                 }}
               >
                 Envoyer
@@ -112,7 +196,7 @@ function ContactezNous() {
           </Grid>
         </Grid>
       </Container>
-      <Footer marginTop={'4rem'}/>
+      <Footer marginTop={"4rem"} />
     </div>
   );
 }

@@ -16,12 +16,13 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Button, Input, Space } from "antd";
 import Footer from "./Footer";
 import Checkbox from "@mui/material/Checkbox";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../context/userContext";
 
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function MonCompte() {
+  const navigate = useNavigate()
   const theme = useTheme();
   const { setData,  setisConnected } = useContext(UserContext);
   const [selectedOption, setSelectedOption] = useState('');
@@ -102,6 +103,7 @@ function MonCompte() {
         console.log(data);
         setData(data);
         setisConnected(true)
+        navigate("/AccountCustomer")
         toast.success(data.message ?? "votre compte se crée avec succès");
       })
 
@@ -118,6 +120,7 @@ function MonCompte() {
         console.log(data)
         setData(data)
         setisConnected(true)
+        navigate("/AccountCustomer")
         toast.success(data.message ?? "votre compte se crée avec succès");
 
       })
@@ -136,6 +139,7 @@ function MonCompte() {
       console.log(response.data)
       setData(response.data)
       setisConnected(true)
+      navigate("/AccountCustomer")
       toast.success(response.data.message ?? "Votre compte a été créé avec succès");
     })
     .catch((error) => {
@@ -154,6 +158,7 @@ function MonCompte() {
       console.log(res.data)
       setData(res.data)
       setisConnected(true)
+      navigate("/AccountCustomer")
       toast.success(res.data.message ?? "Vous êtes connecté");
     })
     .catch((err) => {

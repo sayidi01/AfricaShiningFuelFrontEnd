@@ -115,7 +115,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [customerClientFioul]);
+  }, [customerClientFioul, location]);
 
   return (
     <div>

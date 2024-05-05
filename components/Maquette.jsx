@@ -30,6 +30,7 @@ function Maquette() {
   const [postalCodeDisabled, setPostalCodeDisabled] = useState(true);
   const [codePostal, setCodePostal] = useState(""); // State to store code postal value
   const [selectedProduct, setSelectedProduct] = useState(""); // State to store selected product label
+  const [pricePerLitre, setPricePerLitre] = useState(""); // State to store selected product label
   const [selectedDelivery, setSelectedDelivery] = useState("standard");
   const [fuelPrice, setFuelPrice] = useState(6.8);
 
@@ -57,6 +58,7 @@ console.log(quantity)
     if(existingData.selectedProduct) setSelectedProduct(existingData.selectedProduct)
     if(existingData.selectedDelivery) setSelectedDelivery(existingData.selectedDelivery)
     if(existingData.city) setSelectedCityId(Number(existingData.city))
+    if(existingData.pricePerLitre) setPricePerLitre(Number(existingData.pricePerLitre))
 
     console.log(existingData)
   }, []);
@@ -68,6 +70,7 @@ console.log(quantity)
       !quantity ||
       !selectedProduct ||
       !selectedDelivery ||
+      !pricePerLitre ||
       codePostal.length === 0
     ) {
       toast.error("Veuillez remplir tous les champs obligatoires !");
@@ -78,7 +81,7 @@ console.log(quantity)
       const total = calculateTotal();
       const price = calculatePrice();
 
-      const url = `/order?codePostal=${codePostal}&quantity=${quantity}&selectedProduct=${selectedProduct}&selectedDelivery=${selectedDelivery}&calculateTotal=${total}&calculatePrice=${price}&city=${selectedCityId}`;
+      const url = `/order?codePostal=${codePostal}&quantity=${quantity}&selectedProduct=${selectedProduct}&selectedDelivery=${selectedDelivery}&calculateTotal=${total}&calculatePrice=${price}&city=${selectedCityId}&pricePerLitre=${pricePerLitre}`;
       navigate(url);
 
       setShowModal(true);
@@ -147,11 +150,7 @@ console.log(quantity)
         priceFioul += parseFloat(selectedCity.price);
       } else return "City not found";
     }
-
-    // if (selectedProduct === " Fuel oil n° 2") {
-    //   pricePerLitre = fuelPrice;
-    // }
-
+    
     const selectedPrd = selectedProduct.trim().toLowerCase();
     const isFuel = selectedPrd.includes('fuel');
 

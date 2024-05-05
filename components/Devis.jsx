@@ -1,4 +1,4 @@
-import React, { useCallback, useState , useContext} from "react";
+import React, { useCallback, useState, useContext } from "react";
 import { Typography, Grid, Box, Button, Container } from "@mui/material";
 import { toast } from "react-hot-toast";
 import Radio from "@mui/material/Radio";
@@ -8,9 +8,12 @@ import FormControl from "@mui/material/FormControl";
 import { Input } from "antd";
 import { axiosInstance } from "../src/api";
 import UserContext from "../context/userContext";
+import "../src/index.css";
+import { useNavigate } from "react-router-dom";
 const { TextArea } = Input;
 function Devis({ title, Volume, Société }) {
-  const { setData,  setisConnected } = useContext(UserContext);
+  const navigate = useNavigate();
+  const { setData, setisConnected } = useContext(UserContext);
   const [devis, setDevis] = useState({
     civilité: "",
     nom: "",
@@ -19,35 +22,44 @@ function Devis({ title, Volume, Société }) {
     telephone: "",
     Volume: "",
     informations_Complémentaires: "",
-  })
-  console.log(devis)
+  });
+  console.log(devis);
 
   const handleInputChangeDevis = (e) => {
     const { name, value } = e.target;
-  
+
     setDevis((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
-  
 
-const handleSubmitDevis = useCallback(() => {
-  console.log(devis)
-  axiosInstance
-  .post("/devis", {...devis})
-  .then((data) => {
-    console.log(data)
-    setData(data)
-    setisConnected(true)
-    toast.success(data.message ?? "votre Devis envoyé");
-  })
-  .catch((err) => {
-    console.log(err)
+  const handleSubmitDevis = useCallback(() => {
 
-  })
-},[devis])
-
+    if (
+      !devis.civilité ||
+      !devis.nom ||
+      !devis.prenom ||
+      !devis.telephone ||
+      !devis.Volume ||
+      !devis.informations_Complémentaires
+  ) {
+      toast.error("Veuillez remplir tous les champs obligatoires.");
+      return; 
+  }
+    console.log(devis);
+    axiosInstance
+      .post("/devis", { ...devis })
+      .then((data) => {
+        console.log(data);
+        setData(data);
+        setisConnected(true);
+        toast.success(data.message ?? "votre Devis envoyé");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [devis]);
 
   return (
     <div>
@@ -65,8 +77,14 @@ const handleSubmitDevis = useCallback(() => {
               {title}
             </Typography>
           </Grid>
-          <Grid item xs={12} md={6} >
-            <Box display={"flex"} gap={4} alignItems={"center"} width={"100%"}  marginBottom="3rem" >
+          <Grid item xs={12} md={6}>
+            <Box
+              display={"flex"}
+              gap={4}
+              alignItems={"center"}
+              width={"100%"}
+              marginBottom="3rem"
+            >
               <Typography
                 sx={{
                   fontFamily: "inherit",
@@ -77,7 +95,7 @@ const handleSubmitDevis = useCallback(() => {
               </Typography>
               <FormControl>
                 <RadioGroup
-                onChange={handleInputChangeDevis}
+                  onChange={handleInputChangeDevis}
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="civilité"
@@ -87,11 +105,7 @@ const handleSubmitDevis = useCallback(() => {
                     control={<Radio />}
                     label="Mme"
                   />
-                  <FormControlLabel
-                     value="Mr"
-                    control={<Radio />}
-                    label="Mr"
-                  />
+                  <FormControlLabel value="Mr" control={<Radio />} label="Mr" />
                 </RadioGroup>
               </FormControl>
             </Box>
@@ -100,7 +114,7 @@ const handleSubmitDevis = useCallback(() => {
               alignItems="center"
               gap={2}
               justifyContent={"space-between"}
-              marginBottom="3rem" 
+              marginBottom="3rem"
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
@@ -111,8 +125,8 @@ const handleSubmitDevis = useCallback(() => {
                 Nom *
               </Typography>
               <Input
-              name="nom"
-              onChange={handleInputChangeDevis}
+                name="nom"
+                onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -124,7 +138,7 @@ const handleSubmitDevis = useCallback(() => {
               alignItems="center"
               gap={2}
               justifyContent={"space-between"}
-              marginBottom="3rem" 
+              marginBottom="3rem"
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
@@ -135,8 +149,8 @@ const handleSubmitDevis = useCallback(() => {
                 Prenom *
               </Typography>
               <Input
-              name="prenom"
-              onChange={handleInputChangeDevis}
+                name="prenom"
+                onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -148,7 +162,7 @@ const handleSubmitDevis = useCallback(() => {
               alignItems="center"
               gap={2}
               justifyContent={"space-between"}
-              marginBottom="3rem" 
+              marginBottom="3rem"
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
@@ -159,8 +173,8 @@ const handleSubmitDevis = useCallback(() => {
                 {Société}
               </Typography>
               <Input
-              name="Société"
-              onChange={handleInputChangeDevis}
+                name="Société"
+                onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -172,7 +186,7 @@ const handleSubmitDevis = useCallback(() => {
               alignItems="center"
               gap={2}
               justifyContent={"space-between"}
-              marginBottom="3rem" 
+              marginBottom="3rem"
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
@@ -183,8 +197,8 @@ const handleSubmitDevis = useCallback(() => {
                 Télephone *
               </Typography>
               <Input
-              name="telephone"
-              onChange={handleInputChangeDevis}
+                name="telephone"
+                onChange={handleInputChangeDevis}
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -196,7 +210,7 @@ const handleSubmitDevis = useCallback(() => {
               alignItems="center"
               gap={2}
               justifyContent={"space-between"}
-              marginBottom="3rem" 
+              marginBottom="3rem"
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
@@ -207,7 +221,7 @@ const handleSubmitDevis = useCallback(() => {
                 {Volume}
               </Typography>
               <Input
-              name="Volume"
+                name="Volume"
                 style={{
                   width: "350px",
                   marginTop: 0,
@@ -220,7 +234,7 @@ const handleSubmitDevis = useCallback(() => {
               alignItems="center"
               gap={2}
               justifyContent={"space-between"}
-              marginBottom="3rem" 
+              marginBottom="3rem"
             >
               <Typography
                 style={{ color: "gray", fontFamily: "Delicatessen Script" }}
@@ -231,8 +245,8 @@ const handleSubmitDevis = useCallback(() => {
                 informations Complémentaires
               </Typography>
               <TextArea
-              name="informations_Complémentaires"
-              onChange={handleInputChangeDevis}
+                name="informations_Complémentaires"
+                onChange={handleInputChangeDevis}
                 style={{
                   marginTop: 0,
                   width: "350px",
@@ -248,7 +262,7 @@ const handleSubmitDevis = useCallback(() => {
               }}
             >
               <Button
-              onClick={handleSubmitDevis}
+                onClick={handleSubmitDevis}
                 type="primary"
                 style={{
                   backgroundColor: "#333",
@@ -260,7 +274,6 @@ const handleSubmitDevis = useCallback(() => {
                   fontFamily: "Montserrat",
                   textTransform: "none",
                 }}
-                
               >
                 Envoyer
               </Button>
@@ -316,6 +329,31 @@ const handleSubmitDevis = useCallback(() => {
               >
                 contact@AfricaShiningFuel.ma
               </Typography>
+            </Box>
+            <Box
+              sx={{
+                justifyContent: "center",
+                alignItems: "center",
+                display: "flex",
+                marginTop: 0,
+                mt: 15,
+              }}
+            >
+              <Button
+                onClick={() => navigate("/order")}
+                style={{
+                  fontSize: 22,
+                  backgroundColor: "transparent",
+                  color: "#659a9a", 
+                  fontFamily: "Montserrat",
+                  border: "2px solid #659a9a",
+                  padding: "10px 20px",
+                  borderRadius: "5px",
+              }}
+              
+              >
+                Passez vos commandes
+              </Button>
             </Box>
           </Grid>
         </Grid>

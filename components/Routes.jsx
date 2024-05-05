@@ -30,6 +30,7 @@ import ActualitéASF from "./ActualitéASF.jsx"
 import ContactezNous from "./ContactezNous.jsx"
 import Maquette from "../components/Maquette.jsx"
 import Shipping from "./Shipping.jsx"
+import AccountCustomer from "./AccountCustomer.jsx"
 
 
 
@@ -188,7 +189,13 @@ export const PublicRoutes = [
         id: 30,
         path: "/shipping",
         element: <Shipping />
-    }
+    },
+    {
+        id: 31,
+        path: "/AccountCustomer",
+        element: <AccountCustomer/>
+    },
+   
 ]
 
 
