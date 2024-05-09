@@ -1,6 +1,6 @@
 import { Typography, Grid, Stack, Box, TextField } from "@mui/material";
 import NavBar from "./NavBar";
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import "../src/MonCompte.css";
 import { useTheme } from "@mui/material/styles";
 import { axiosInstance } from "../src/api";
@@ -24,8 +24,18 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function MonCompte() {
   const navigate = useNavigate()
   const theme = useTheme();
-  const { setData,  setisConnected } = useContext(UserContext);
+  const { setData,  setisConnected , isConnected} = useContext(UserContext);
   const [selectedOption, setSelectedOption] = useState('');
+
+  useEffect(() => {
+   
+    if (isConnected) {
+      navigate("/AccountCustomer");
+    }
+  }, [isConnected,]);
+
+  
+  
 
   const handleChangeSelectOption = (event) => {
     setSelectedOption(event.target.value);
@@ -152,6 +162,7 @@ function MonCompte() {
 
 
   const handleSubmitLoginCustomer = useCallback(() => {
+   
     axiosInstance
     .post("/customer/login",{...loginCustomer,customerType:selectedOption } )
     .then((res) => {
@@ -167,6 +178,7 @@ function MonCompte() {
     })
   },[loginCustomer, setSelectedOption])
 
+  
   return (
     <div>
       <NavBar />
@@ -307,12 +319,13 @@ function MonCompte() {
             <Box
               display={{ xs: "block", sm: "flex" }}
               alignItems="center"
-              marginTop={{ xs: "2rem", sm: "3rem" }}
-              sx={{ gap: "6rem" }}
+              justifyContent={"space-around"}
+              paddingTop={4}
+              gap={9}
             >
               <Typography
                 sx={{
-                  marginLeft: { xs: "2.5rem", sm: "11.5rem" },
+                 
                   fontFamily: "Delicatessen Script",
                   fontSize: { xs: "19px", sm: "20px" },
                   color: "gray",
@@ -327,18 +340,18 @@ function MonCompte() {
                 prefix={<UserOutlined />}
                 style={{
                   width: "250px",
-                  marginLeft: "2.5rem",
+                
                 }}
               />
             </Box>
             <Box
               display={{ xs: "block", sm: "flex" }}
-              marginTop={{ xs: "2rem", sm: "3rem" }}
-              sx={{ gap: "5rem" }}
+              paddingTop={6}
+            justifyContent={"space-around"}
             >
               <Typography
                 sx={{
-                  marginLeft: { xs: "2.5rem", sm: "10.4rem" },
+                
                   fontFamily: "Delicatessen Script",
                   fontSize: { xs: "19px", sm: "20px" },
                   color: "gray",
@@ -349,7 +362,6 @@ function MonCompte() {
               <Space
                 direction="vertical"
                 style={{
-                  marginLeft: window.innerWidth < 576 ? "2.5rem" : 0,
                   width: "250px",
                 }}
                 >
@@ -489,10 +501,12 @@ function MonCompte() {
             >
               {(selectedOption === "ClientFioul") && (
                 <Box>
+                  
                   <Box
                     display={{ xs: "block", sm: "flex" }}
                     alignItems="center"
-                    sx={{ gap: "6rem" }}
+                    justifyContent={"space-evenly"}
+                    gap={16}
                   >
                     <Typography
                       style={{
@@ -500,7 +514,7 @@ function MonCompte() {
                         fontFamily: "Delicatessen Script",
                       }}
                       sx={{
-                        marginLeft: { xs: "4rem", sm: "2.5rem" },
+                       
                         marginTop: { xs: "3rem", sm: "3.5rem" },
                         fontSize: { xs: "19px", sm: "20px" },
                       }}
@@ -514,7 +528,7 @@ function MonCompte() {
                       style={{
                         width: "250px",
                         height: "30px",
-                        marginLeft: "4rem",
+                       
                       }}
                       className="input-email-mobile"
                     />
@@ -522,7 +536,8 @@ function MonCompte() {
                   <Box
                     display={{ xs: "block", sm: "flex" }}
                     alignItems="center"
-                    sx={{ gap: "6rem" }}
+                    justifyContent={"space-evenly"}
+                    gap={20}
                   >
                     <Typography
                       style={{
@@ -530,7 +545,7 @@ function MonCompte() {
                         fontFamily: "Delicatessen Script",
                       }}
                       sx={{
-                        marginLeft: { xs: "4rem", sm: "2.5rem" },
+                      
                         marginTop: { xs: "3rem", sm: "1.5rem" },
                         fontSize: { xs: "19px", sm: "20px" },
                       }}
@@ -544,8 +559,7 @@ function MonCompte() {
                       style={{
                         width: "250px",
                         height: "30px",
-                        marginLeft:
-                          window.innerWidth < 600 ? "3.9rem" : "5.6rem",
+                      
                         marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
                       }}
                     />
@@ -553,7 +567,9 @@ function MonCompte() {
                   <Box
                     display={{ xs: "block", sm: "flex" }}
                     alignItems="center"
-                    sx={{ gap: "6rem" }}
+                   justifyContent={"space-evenly"}
+                   gap={21}
+                   
                   >
                     <Typography
                       style={{
@@ -561,7 +577,7 @@ function MonCompte() {
                         fontFamily: "Delicatessen Script",
                       }}
                       sx={{
-                        marginLeft: { xs: "4rem", sm: "2.5rem" },
+                       
                         marginTop: { xs: "3rem", sm: "1.5rem" },
                         fontSize: { xs: "19px", sm: "20px" },
                       }}
@@ -575,8 +591,6 @@ function MonCompte() {
                       style={{
                         width: "250px",
                         height: "30px",
-                        marginLeft:
-                          window.innerWidth < 600 ? "3.9rem" : "5.3rem",
                         marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
                       }}
                     />
@@ -584,7 +598,8 @@ function MonCompte() {
                   <Box
                     display={{ xs: "block", sm: "flex" }}
                     alignItems="center"
-                    sx={{ gap: "5.5rem" }}
+                    justifyContent={"space-evenly"}
+                    gap={13}
                   >
                     <Typography
                       style={{
@@ -592,7 +607,6 @@ function MonCompte() {
                         fontFamily: "Delicatessen Script",
                       }}
                       sx={{
-                        marginLeft: { xs: "4rem", sm: "2.5rem" },
                         marginTop: { xs: "3rem", sm: "1.5rem" },
                         fontSize: { xs: "19px", sm: "20px" },
                       }}
@@ -604,7 +618,7 @@ function MonCompte() {
                       style={{
                         width: "250px",
                         height: "30px",
-                        marginLeft: window.innerWidth < 600 ? "3.9rem" : "2rem",
+                       
                         marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
                       }}
                     >
@@ -621,7 +635,7 @@ function MonCompte() {
                   <Box
                     display={{ xs: "block", sm: "flex" }}
                     alignItems="center"
-                    sx={{ gap: "1rem" }}
+                    justifyContent={"space-evenly"} 
                   >
                     <Typography
                       style={{
@@ -629,7 +643,7 @@ function MonCompte() {
                         fontFamily: "Delicatessen Script",
                       }}
                       sx={{
-                        marginLeft: { xs: "4rem", sm: "2.5rem" },
+                       
                         marginTop: { xs: "3rem", sm: "3rem" },
                         fontSize: { xs: "19px", sm: "20px" },
                       }}
@@ -641,7 +655,7 @@ function MonCompte() {
                       style={{
                         width: "250px",
                         height: "30px",
-                        marginLeft: window.innerWidth < 600 ? "3.9rem" : "0",
+                       
                         marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
                       }}
                     >
@@ -730,6 +744,7 @@ function MonCompte() {
 
               {( selectedOption === "ClientGranulésDeBois") && (
                  <Box>
+                  
                  <Box
                    display={{ xs: "block", sm: "flex" }}
                    alignItems="center"

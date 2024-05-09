@@ -5,27 +5,18 @@ import { axiosInstance } from "../src/api";
 import UserContext from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import Footer from "./Footer";
-import { axiosInstance } from "../src/api";
-import UserContext from "../context/userContext";
-import { toast } from "react-hot-toast";
+import Footer from "../components/Footer";
+
+
 
 function TableauBord({ onEditClick }) {
   const navigate = useNavigate();
     
-  const {setisConnected} = useContext(UserContext)
+  const {setisConnected, data} = useContext(UserContext)
 
-  const updateData = useCallback(() => {
-    axiosInstance
-    .put("/customer/fioul/edit/:id", )
-    .then((data) => {
-      console.log(data)
-
-    })
-  })
-
-
+  
   const Logout = useCallback(() => {
+  
     axiosInstance
     .delete("/customer/logout")
     .then((data) => {
@@ -55,7 +46,7 @@ function TableauBord({ onEditClick }) {
             item
             xs={12}
             md={12}
-            sx={{ justifyContent: "flex-end", display: "flex" }}
+            sx={{ justifyContent: "flex-end", display: "flex",  paddingTop: 3 }}
           >
             <Button
             onClick={Logout}
@@ -90,7 +81,7 @@ function TableauBord({ onEditClick }) {
             <Typography sx={{ color: "grey", paddingTop: 2 }}>
               Vous n'avez pas spécifié d'adresse de livraison.
             </Typography>
-            <Box sx={{ paddingTop: 2 }}>
+            <Box sx={{ paddingY: 2 }}>
               <Button
                 onClick={onEditClick}
                 style={{ color: "white", backgroundColor: "grey" }}
@@ -106,7 +97,7 @@ function TableauBord({ onEditClick }) {
             <Typography sx={{ color: "grey", paddingTop: 2 }}>
               Vous n'avez pas spécifié d'adresse de livraison.
             </Typography>
-            <Box sx={{ paddingTop: 2 }}>
+            <Box sx={{ paddingY: 2 }}>
               <Button
                 onClick={onEditClick}
                 style={{ color: "white", backgroundColor: "grey" }}
@@ -117,7 +108,7 @@ function TableauBord({ onEditClick }) {
           </Grid>
         </Grid>
       </Container>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

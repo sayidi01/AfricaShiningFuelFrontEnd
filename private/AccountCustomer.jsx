@@ -1,17 +1,22 @@
-import React, { useState } from "react";
-import NavBar from "./NavBar";
+import React, { useState, useEffect } from "react";
+import NavBar from "../components/NavBar";
 import { Box, Container, Grid, Typography, Button } from "@mui/material";
 import flameFioul from "../src/images/flame_fioul.png";
 import iconsBois from "../src/images/icons_bois.png";
 import iconsElectrecite from "../src/images/icons_electrecite.png";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import CARNETADRESSE from "../components/CarnetAdresse"
-import TableauBord from "../components/TableauBord"
+import CARNETADRESSE from "./CarnetAdresse"
+import TableauBord from "./TableauBord"
 import MesCommandes from "./MesCommandes";
 import InformationsCompte from "./InformationsCompte";
 
+import UserContext from "../context/userContext";
+import { useContext } from "react";
+import { axiosInstance } from "../src/api";
+
 function AccountCustomer() {
+  const { setData,setisConnected, isConnected } = useContext(UserContext);
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -22,6 +27,7 @@ function AccountCustomer() {
     setValue(newValue);
   };
 
+ 
   
   return (
     <div>

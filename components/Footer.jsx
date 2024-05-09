@@ -17,7 +17,7 @@ const { TextArea } = Input;
 import UserContext from "../context/userContext";
 import { axiosInstance } from "../src/api";
 
-function Footer({ marginTop }) {
+function Footer({ marginTop, width }) {
   const { setData, setisConnected } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -58,6 +58,7 @@ function Footer({ marginTop }) {
           backgroundColor: " rgba(235, 235, 235, 0.5)",
           paddingY: 10,
           marginTop: marginTop,
+          width: width
         }}
       >
         <Container maxWidth={"lg"}>

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Container,
   Grid,
@@ -7,6 +7,7 @@ import {
   Button,
   FormControl
 } from "@mui/material";
+import Footer from "../components/Footer";
 
 import UserContext from "../context/userContext";
 import { useContext } from "react";
@@ -16,12 +17,13 @@ import { toast } from "react-hot-toast";
 function InformationsCompte() {
     const  data = useContext(UserContext);
     console.log(data)
-    const { setData, setisConnected } = useContext(UserContext);
+    
+    const { setData, setisConnected, isConnected } = useContext(UserContext);
   const [showPasswordForm, setShowPasswordForm] = useState(false);
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
-
+  
 
   const handleModifyPasswordClick = () => {
     setShowPasswordForm((prev) => !prev);
@@ -33,13 +35,29 @@ function InformationsCompte() {
     setShowPasswordForm(false); 
   };
 
+  useEffect(() => {
+    if(!isConnected) {
+      axiosInstance
+      .post("/customer/login/token")
+      .then(({data}) => {
+        console.log(data)
+        setisConnected(true)
+        setData(data.data)
+      })
+      .catch((error) => {
+        console.error("Customer not connected",error)
+      })
+    }
+   },[]);
+  
+
   const handleSubmitChangePassword = useCallback(() => {
     if (newPassword !== confirmNewPassword) {
       toast.error("New password and confirm password do not match");
       return
     }
     axiosInstance
-    .put(`/customer/clientFioul/edit/${data.data._id}`, {currentPassword, newPassword})
+    .put(`/customer/clientFioul/edit/${data.data._id}`, {currentPassword, newPassword}, ...data)
     console.log(data.data)
     .then((data) => {
       console.log(data)
@@ -55,7 +73,7 @@ function InformationsCompte() {
     setNewPassword('');
     setConfirmNewPassword('');
     setShowPasswordForm(false);
-  },[currentPassword, newPassword, confirmNewPassword,data.data._id])
+  },[currentPassword, newPassword, confirmNewPassword,data.data._id, setData, setisConnected])
 
 
 
@@ -141,9 +159,11 @@ function InformationsCompte() {
                 </Button>
               </form>
             )}
+            
           </Grid>
         </Grid>
       </Container>
+      <Footer marginTop={"2rem"}/>
     </div>
   );
 }

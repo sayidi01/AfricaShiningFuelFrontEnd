@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { PublicRoutes } from '../components/Routes.jsx';
+import { PublicRoutes , privateRoutes} from '../components/Routes.jsx';
 import UserContext from '../context/userContext.js';
 import { PrimeReactProvider } from "primereact/api";
 import { Toaster } from 'react-hot-toast';
@@ -17,8 +17,13 @@ function App() {
           <Routes>
             {PublicRoutes.map(({ id, path, element }) => (
               <Route key={id} path={path} element={element} />
+              ))}
+             {/* Affiche les routes privées */}
+            {privateRoutes.map(({ id, path, element }) => (
+              <Route key={id} path={path} element={element} />
             ))}
           </Routes>
+          
         </BrowserRouter>
         <Toaster />
       </UserContext.Provider>
