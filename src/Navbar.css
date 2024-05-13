@@ -7,6 +7,7 @@
 
   .hover-professionnel:hover{
     color:  #659a9a !important;
+    text-decoration: none !important;
   }
 .first-menu-item-gazoil {
   background-color: initial !important;

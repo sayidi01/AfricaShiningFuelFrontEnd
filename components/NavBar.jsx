@@ -613,6 +613,7 @@ function NavBar() {
                 </Box>
               </Menu>
             </div>
+           
             <Link to={'/order'}>
             <Typography
               className="hover-professionnel"
@@ -623,10 +624,13 @@ function NavBar() {
                 fontWeight: 'bolder',
                 "&:hover": { color: "green" },
               }}
+              
             >
               Professionnel
             </Typography>
             </Link>
+
+          
           </Stack>
 
           <Box
