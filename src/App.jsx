@@ -1,30 +1,20 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { PublicRoutes , privateRoutes} from '../components/Routes.jsx';
-import UserContext from '../context/userContext.js';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, RouterProvider } from "react-router-dom";
+import { router } from "../components/Routes.jsx";
+import UserContext from "../context/userContext.js";
 import { PrimeReactProvider } from "primereact/api";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [data, setData] = useState({});
   const [isConnected, setisConnected] = useState(false);
 
-
   return (
     <PrimeReactProvider>
-      <UserContext.Provider value={{ setData, setisConnected,isConnected ,data}}>
-        <BrowserRouter>
-          <Routes>
-            {PublicRoutes.map(({ id, path, element }) => (
-              <Route key={id} path={path} element={element} />
-              ))}
-             {/* Affiche les routes privées */}
-            {privateRoutes.map(({ id, path, element }) => (
-              <Route key={id} path={path} element={element} />
-            ))}
-          </Routes>
-          
-        </BrowserRouter>
+      <UserContext.Provider
+        value={{ setData, setisConnected, isConnected, data }}
+      >
+        <RouterProvider router={router} />
         <Toaster />
       </UserContext.Provider>
     </PrimeReactProvider>

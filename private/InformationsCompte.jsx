@@ -5,7 +5,7 @@ import {
   Typography,
   TextField,
   Button,
-  FormControl
+  FormControl,
 } from "@mui/material";
 import Footer from "../components/Footer";
 
@@ -15,15 +15,14 @@ import { axiosInstance } from "../src/api";
 import { toast } from "react-hot-toast";
 
 function InformationsCompte() {
-    const  data = useContext(UserContext);
-    console.log(data)
-    
-    const { setData, setisConnected, isConnected } = useContext(UserContext);
+  const data = useContext(UserContext);
+  console.log(data);
+
+  const { setData, setisConnected, isConnected } = useContext(UserContext);
   const [showPasswordForm, setShowPasswordForm] = useState(false);
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmNewPassword, setConfirmNewPassword] = useState('');
-  
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
   const handleModifyPasswordClick = () => {
     setShowPasswordForm((prev) => !prev);
@@ -31,51 +30,43 @@ function InformationsCompte() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-   
-    setShowPasswordForm(false); 
-  };
 
-  useEffect(() => {
-    if(!isConnected) {
-      axiosInstance
-      .post("/customer/login/token")
-      .then(({data}) => {
-        console.log(data)
-        setisConnected(true)
-        setData(data.data)
-      })
-      .catch((error) => {
-        console.error("Customer not connected",error)
-      })
-    }
-   },[]);
-  
+    setShowPasswordForm(false);
+  };
 
   const handleSubmitChangePassword = useCallback(() => {
     if (newPassword !== confirmNewPassword) {
       toast.error("New password and confirm password do not match");
-      return
+      return;
     }
-    axiosInstance
-    .put(`/customer/clientFioul/edit/${data.data._id}`, {currentPassword, newPassword}, ...data)
-    console.log(data.data)
-    .then((data) => {
-      console.log(data)
-      setData(data)
-      setisConnected(true)
-      toast.success("votre mot de passe est modifier")
-    })
-    .catch((err) => {
-      console.log(err)
-      toast.error("Error updating password")
-    })
-    setCurrentPassword('');
-    setNewPassword('');
-    setConfirmNewPassword('');
+    axiosInstance.put(
+      `/customer/clientFioul/edit/${data.data._id}`,
+      { currentPassword, newPassword },
+      ...data
+    );
+    console
+      .log(data.data)
+      .then((data) => {
+        console.log(data);
+        // setData(data);
+        toast.success("votre mot de passe est modifier");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Error updating password");
+      });
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmNewPassword("");
     setShowPasswordForm(false);
-  },[currentPassword, newPassword, confirmNewPassword,data.data._id, setData, setisConnected])
-
-
+  }, [
+    currentPassword,
+    newPassword,
+    confirmNewPassword,
+    data.data._id,
+    setData,
+    setisConnected,
+  ]);
 
   return (
     <div>
@@ -105,9 +96,11 @@ function InformationsCompte() {
             </Typography>
           </Grid>
           <Grid item xs={12} md={12} sx={{ paddingTop: 3 }}>
-            <Typography sx={{ fontSize: 17 }}>{data.data.first_name } {data.data.last_name}</Typography>
-            <Typography  sx={{ fontSize: 17, paddingTop: 1 }}>
-             {data.data.email}
+            <Typography sx={{ fontSize: 17 }}>
+              {data.data.first_name} {data.data.last_name}
+            </Typography>
+            <Typography sx={{ fontSize: 17, paddingTop: 1 }}>
+              {data.data.email}
             </Typography>
             <Typography
               sx={{
@@ -159,11 +152,10 @@ function InformationsCompte() {
                 </Button>
               </form>
             )}
-            
           </Grid>
         </Grid>
       </Container>
-      <Footer marginTop={"2rem"}/>
+      <Footer marginTop={"2rem"} />
     </div>
   );
 }

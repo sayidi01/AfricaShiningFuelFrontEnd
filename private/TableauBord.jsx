@@ -6,13 +6,13 @@ import UserContext from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Footer from "../components/Footer";
-
+import CarnetAdresse from "../private/CarnetAdresse";
 
 
 function TableauBord({ onEditClick }) {
   const navigate = useNavigate();
     
-  const {setisConnected, data} = useContext(UserContext)
+  const {setisConnected, data, isConnected} = useContext(UserContext)
 
   
   const Logout = useCallback(() => {
@@ -60,7 +60,7 @@ function TableauBord({ onEditClick }) {
               Dèconnexion
             </Button>
           </Grid>
-          <Grid item xs={12} md={12}>
+          {/* <Grid item xs={12} md={12}>
             <Typography
               sx={{
                 fontSize: {
@@ -73,7 +73,11 @@ function TableauBord({ onEditClick }) {
             >
               CARNET D'ADRESSES
             </Typography>
-          </Grid>
+          </Grid> */}
+          {isConnected && data ? (
+            <CarnetAdresse data={data} onEditClick={onEditClick} />
+          ) : (
+            <>
           <Grid item xs={12} md={6}>
             <Typography sx={{ fontSize: { xs: 18, md: 20 }, paddingTop: 3 }}>
               Adresse Livraison
@@ -106,9 +110,11 @@ function TableauBord({ onEditClick }) {
               </Button>
             </Box>
           </Grid>
+          </>
+          )}
         </Grid>
       </Container>
-      <Footer />
+     
     </div>
   );
 }

@@ -7,9 +7,13 @@ import UserContext from "../context/userContext";
 import { toast } from "react-hot-toast";
 
 function CarnetAdresse() {
-  const { setData, setisConnected, data, isConnected } = useContext(UserContext);
+  const { setData, setisConnected, data, isConnected } =
+    useContext(UserContext);
   const [showForm, setShowForm] = useState(true);
   const [savedInfo, setSavedInfo] = useState(null);
+
+  const [isEditMode, setIsEditMode] = useState(false);
+
   const [carnetDadresse, setCarnetDadresse] = useState({
     first_name: "",
     last_name: "",
@@ -21,7 +25,7 @@ function CarnetAdresse() {
   console.log(carnetDadresse);
 
   const handleEdit = () => {
-    setShowForm(true);
+    setIsEditMode(true);
   };
 
   const handleInputChange = (e) => {
@@ -35,14 +39,12 @@ function CarnetAdresse() {
   const updateData = useCallback(() => {
     console.log(carnetDadresse);
     axiosInstance
-      .put("/customer/fioul/edit", { ...carnetDadresse }, )
-      .then((data) => {
+      .put("/customer/fioul/edit", { ...carnetDadresse })
+      .then(({ data }) => {
         console.log(data);
-        setData(data);
-        setisConnected(true);
         toast.success("vos informations sont modifier et sauvgarder");
-        setSavedInfo({ ...carnetDadresse });
-        setShowForm(false);
+        setData(data.data);
+        setIsEditMode(false);
       })
       .catch((err) => {
         console.log(err);
@@ -50,13 +52,10 @@ function CarnetAdresse() {
       });
   }, [carnetDadresse, data]);
 
-  
-  
-
   return (
     <div>
       <Container sx={{ my: 8 }} maxWidth={"lg"} style={{ padding: "none" }}>
-        {showForm && (
+        {isEditMode ? (
           <Grid
             container
             sx={{
@@ -98,7 +97,6 @@ function CarnetAdresse() {
                   onChange={handleInputChange}
                   style={{ width: "60%" }}
                   variant="filled"
-                  
                 />
               </Box>
               <Box
@@ -210,9 +208,7 @@ function CarnetAdresse() {
               </Button>
             </Grid>
           </Grid>
-        )}
-        {!showForm && (
-          
+        ) : (
           <Grid Container>
             <Grid item xs={12} md={12}>
               <Typography
@@ -229,8 +225,14 @@ function CarnetAdresse() {
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography sx={{ fontSize: { xs: 18, md: 22 }, paddingTop: 3 , fontWeight: "bold"}}>
-               ADRESSE DE LIVRASION
+              <Typography
+                sx={{
+                  fontSize: { xs: 18, md: 22 },
+                  paddingTop: 3,
+                  fontWeight: "bold",
+                }}
+              >
+                ADRESSE DE LIVRASION
               </Typography>
               <Box
                 sx={{
@@ -238,43 +240,51 @@ function CarnetAdresse() {
                 }}
               >
                 <Typography sx={{ fontSize: 20 }}>
-                  Prénom : {savedInfo.first_name}
+                  Prénom : {data.first_name}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Nom: {savedInfo.last_name}
-                </Typography>
-                <Typography sx={{ fontSize: 20  , paddingTop: 2}}>
-                  Téléphone: {savedInfo.telephone}
-                </Typography>
-                <Typography sx={{ fontSize: 20,  paddingTop: 2 }}>
-                  Adresse: {savedInfo.adresse}
+                  Nom: {data.last_name}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Ville: {savedInfo.ville}
+                  Téléphone: {data.telephone}
                 </Typography>
-                <Typography sx={{ fontSize: 20 ,  paddingTop: 2}}>
-                  Code Postal: {savedInfo.codePostal}
+                <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
+                  Adresse: {data.adresse}
+                </Typography>
+                <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
+                  Ville: {data.ville}
+                </Typography>
+                <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
+                  Code Postal: {data.codePostal}
                 </Typography>
               </Box>
               <Grid item xs={12} md={12} sx={{ paddingY: 3 }}>
-              <Button
-                onClick={handleEdit}
-                style={{
-                  backgroundColor: "gray",
+                <Button
+                  onClick={handleEdit}
+                  style={{
+                    backgroundColor: "gray",
+                    fontWeight: "bold",
+                    height: 40,
+                    fontSize: 18,
+                    color: "white",
+                  }}
+                >
+                  Èditer
+                </Button>
+              </Grid>
+            </Grid>
+            <Box
+              sx={{ borderBottom: "2px solid #e94d40", paddingTop: 2 }}
+            ></Box>
+            <Grid item xs={12} md={6}>
+              <Typography
+                sx={{
+                  fontSize: { xs: 18, md: 22 },
+                  paddingTop: 3,
                   fontWeight: "bold",
-                  height: 40,
-                  fontSize: 18,
-                  color: "white",
                 }}
               >
-               Èditer 
-              </Button>
-            </Grid>
-            </Grid>
-            <Box sx={{ borderBottom: "2px solid #e94d40",paddingTop: 2}}></Box>
-            <Grid item xs={12} md={6}>
-              <Typography sx={{ fontSize: { xs: 18, md: 22 }, paddingTop: 3 , fontWeight: "bold"}}>
-               ADRESSE DE FACTURATION
+                ADRESSE DE FACTURATION
               </Typography>
               <Box
                 sx={{
@@ -282,22 +292,22 @@ function CarnetAdresse() {
                 }}
               >
                 <Typography sx={{ fontSize: 20 }}>
-                  Prénom : {savedInfo.first_name}
+                  Prénom : {data.first_name}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Nom: {savedInfo.last_name}
-                </Typography>
-                <Typography sx={{ fontSize: 20  , paddingTop: 2}}>
-                  Téléphone: {savedInfo.telephone}
-                </Typography>
-                <Typography sx={{ fontSize: 20,  paddingTop: 2 }}>
-                  Adresse: {savedInfo.adresse}
+                  Nom: {data.last_name}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Ville: {savedInfo.ville}
+                  Téléphone: {data.telephone}
                 </Typography>
-                <Typography sx={{ fontSize: 20 ,  paddingTop: 2}}>
-                  Code Postal: {savedInfo.codePostal}
+                <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
+                  Adresse: {data.adresse}
+                </Typography>
+                <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
+                  Ville: {data.ville}
+                </Typography>
+                <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
+                  Code Postal: {data.codePostal}
                 </Typography>
               </Box>
             </Grid>
@@ -312,12 +322,10 @@ function CarnetAdresse() {
                   color: "white",
                 }}
               >
-               Éditer
+                Éditer
               </Button>
             </Grid>
-
           </Grid>
-          
         )}
         <Footer marginTop={"5rem"} />
       </Container>
