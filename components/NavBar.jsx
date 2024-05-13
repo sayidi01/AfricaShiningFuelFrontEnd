@@ -613,6 +613,7 @@ function NavBar() {
                 </Box>
               </Menu>
             </div>
+            <Link to={'/order'}>
             <Typography
               className="hover-professionnel"
               style={{
@@ -625,6 +626,7 @@ function NavBar() {
             >
               Professionnel
             </Typography>
+            </Link>
           </Stack>
 
           <Box
