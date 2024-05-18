@@ -120,8 +120,12 @@ function NavBar() {
         updatedOpenState[key] = key === listName ? !prevState[key] : false;
       });
       return updatedOpenState;
+      
     });
   };
+
+  
+  
 
   return (
     <>
@@ -150,6 +154,7 @@ function NavBar() {
                 aria-owns={open ? "mouse-over-popover" : undefined}
                 aria-haspopup="true"
                 onMouseEnter={handlePopoverOpenProducts}
+              
                 style={{
                   color: openProducts ? " #659a9a" : "black",
                   fontFamily: "Montserrat-sans serif",

@@ -3,6 +3,6 @@ import axios from 'axios'
 
 
 export const axiosInstance = axios.create({
-    baseURL :  "http://localhost:3000",
+    baseURL :  "https://africa-shining-fuel-server-1.onrender.com",
     withCredentials: true,
 })

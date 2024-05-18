@@ -30,9 +30,10 @@ import ContactezNous from "./ContactezNous.jsx";
 import Maquette from "../components/Maquette.jsx";
 import Shipping from "./Shipping.jsx";
 import AccountCustomer from "../private/AccountCustomer.jsx";
-import CarnetAdresse from "../private/CarnetAdresse.jsx";
+import Dashbord from "../private/Dashbord.jsx";
 import PrivateRoute from "../private/PrivateRoute.jsx";
 import { createBrowserRouter } from "react-router-dom";
+import Orders from "../private/Orders.jsx"
 
 export const PublicRoutes = [
   {
@@ -199,11 +200,19 @@ export const router = createBrowserRouter([
         path: "",
         element: <AccountCustomer />,
       },
-    //   {
-    //     id: ra9m,
-    //     path: "pathdyalo bla slash lawla", exemple: dashboard (7arfiya) ok
-    //     element: <Wa7dAkher />,
-    //   },
     ],
   },
+  {
+    id: 32,
+    path: "/dashbord",
+    element: <PrivateRoute/>,
+    children:[
+      {
+        id: 1,
+        path: "",
+        element: <Dashbord/>
+      },
+     
+    ]
+  }
 ]);

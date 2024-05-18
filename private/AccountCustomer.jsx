@@ -13,10 +13,10 @@ import InformationsCompte from "./InformationsCompte";
 
 import UserContext from "../context/userContext";
 import { useContext } from "react";
-import { axiosInstance } from "../src/api";
+
 
 function AccountCustomer() {
-  const { setData,setisConnected, isConnected } = useContext(UserContext);
+ 
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {

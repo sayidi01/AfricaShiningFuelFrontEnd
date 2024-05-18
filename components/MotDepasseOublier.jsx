@@ -1,15 +1,34 @@
 import { Typography, Grid, Stack, Box } from "@mui/material";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import NavBar from "./NavBar"
 import { Button, Input } from "antd";
 import Footer from "./Footer";
+import { axiosInstance } from "../src/api";
 
-// Wach derti dak lblan dyal import ?
-// dyal les images Yes non 
-// Safi diro daba bach tsift l sayad 
-//walakin fichier navbar makaynch
 
 function MotDepasseOublié() {
+    const [email, setEmail] = useState("")
+
+
+     const handleInputemail = ((e) => {
+        setEmail(e.target.value)
+     }) 
+
+
+     const handleSubmitEmail = useCallback(() => {
+      axiosInstance
+      .post("/customer/forgot-password", {email})
+      .then((data) => {
+        console.log(data)
+        console.log("response api", data)
+      })
+      .catch((err) => {
+        console.log(err,"Erreur lors de la requête")
+      })
+
+     },[email])
+
+
   return (
     <div>
       <NavBar />
@@ -77,6 +96,9 @@ function MotDepasseOublié() {
               Email *
             </Typography>
             <Input
+            onChange={handleInputemail}
+             value={email}
+             name="email"
               style={{
                 width: "350px",
                 height: "30px",
@@ -93,6 +115,7 @@ function MotDepasseOublié() {
             }}
           >
             <Button
+            onClick={handleSubmitEmail}
               type="primary"
               style={{
                 backgroundColor: "#333",

@@ -9,8 +9,7 @@ import { toast } from "react-hot-toast";
 function CarnetAdresse() {
   const { setData, setisConnected, data, isConnected } =
     useContext(UserContext);
-  const [showForm, setShowForm] = useState(true);
-  const [savedInfo, setSavedInfo] = useState(null);
+  
 
   const [isEditMode, setIsEditMode] = useState(false);
 
