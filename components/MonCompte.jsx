@@ -1,6 +1,7 @@
-import { Typography, Grid, Stack, Box, TextField } from "@mui/material";
+/* eslint-disable react/no-unescaped-entities */
+import { Typography, Grid, Stack, Box } from "@mui/material";
 import NavBar from "./NavBar";
-import React, { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import "../src/MonCompte.css";
 import { useTheme } from "@mui/material/styles";
 import { axiosInstance } from "../src/api";
@@ -8,8 +9,8 @@ import { toast } from "react-hot-toast";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
-import iconsperson1 from"../src/images/icons8-personne-homme-64.png"
-import iconsperson2 from"../src/images/new user.png"
+import iconsperson1 from "../src/images/icons8-personne-homme-64.png";
+import iconsperson2 from "../src/images/new user.png";
 
 import { UserOutlined } from "@ant-design/icons";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
@@ -19,17 +20,15 @@ import Checkbox from "@mui/material/Checkbox";
 import { NavLink } from "react-router-dom";
 import UserContext from "../context/userContext";
 
-
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function MonCompte() {
   const theme = useTheme();
-  const { setData,  setisConnected } = useContext(UserContext);
-  const [selectedOption, setSelectedOption] = useState('');
+  const { setData, setisConnected } = useContext(UserContext);
+  const [selectedOption, setSelectedOption] = useState("");
 
   const handleChangeSelectOption = (event) => {
     setSelectedOption(event.target.value);
   };
-  
 
   const [customer, setCustomer] = useState({
     first_name: "",
@@ -38,7 +37,7 @@ function MonCompte() {
     password: "",
     confirmer_mot_de_passe: "",
   });
-  console.log(customer)
+  console.log(customer);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -49,23 +48,20 @@ function MonCompte() {
   };
 
   const handleSubmit = useCallback(() => {
-    console.log(customer)
-    ;
+    console.log(customer);
     axiosInstance
-      .post("/customer", {...customer, customerType:selectedOption })
+      .post("/customer", { ...customer, customerType: selectedOption })
       .then((data) => {
         console.log(data);
         setData(data);
-        setisConnected(true)
+        setisConnected(true);
         toast.success(data.message ?? "your compte create successfully");
       })
 
       .catch((err) => {
         console.log(err);
       });
-  }, [customer, selectedOption]);
-
-  ;
+  }, [customer, selectedOption, setData, setisConnected]);
 
   return (
     <div>
@@ -121,10 +117,7 @@ function MonCompte() {
         >
           <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
             <div style={{ marginRight: "10px" }}>
-              <img
-                width={50}
-                src={iconsperson1}
-              />
+              <img width={50} src={iconsperson1} />
             </div>
             <Typography
               variant="h5"
@@ -286,7 +279,7 @@ function MonCompte() {
             }}
           >
             <Button
-              type="primary"
+              onClick={handleSubmit}
               style={{
                 backgroundColor: "#333",
                 color: "#fff",
@@ -348,7 +341,7 @@ function MonCompte() {
           </Typography>
           <Stack>
             <Box sx={{ marginLeft: { xs: "3.5rem", sm: "2rem" } }}>
-               <FormControl sx={{ maxWidth: "200px", marginTop: "1.5rem" }}>
+              <FormControl sx={{ maxWidth: "200px", marginTop: "1.5rem" }}>
                 <InputLabel
                   variant="standard"
                   htmlFor="uncontrolled-native"
@@ -365,16 +358,15 @@ function MonCompte() {
                     style: { width: "250px" },
                   }}
                 >
-                  <option   value="ClientFioul">Client Fioul</option>
-                  <option  value="ClientGranulésDeBois">
+                  <option value="ClientFioul">Client Fioul</option>
+                  <option value="ClientGranulésDeBois">
                     Client Granulés de bois
                   </option>
-                  <option  value="ClientGaz&Èlectrecité">
+                  <option value="ClientGaz&Èlectrecité">
                     Client Gaz & Èlectrecité
                   </option>
                 </NativeSelect>
-              </FormControl> 
-             
+              </FormControl>
             </Box>
             <Stack
               style={{
