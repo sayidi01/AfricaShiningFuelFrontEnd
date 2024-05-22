@@ -4,7 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
 import Logo from "../src/images/LOGO_AFRICA_SHINING.png";
@@ -12,14 +12,12 @@ import Drawer from "@mui/material/Drawer";
 import SearchIcon from "@mui/icons-material/Search";
 
 import MenuIcon from "@mui/icons-material/Menu";
-import Divider from "@mui/material/Divider";
 
 import "../src/Navbar.css";
 
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
@@ -27,8 +25,8 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import { navItems } from "../src/shared/navbar";
+import NavItem from "./NavItem";
 
 function NavBar() {
   const [open, setOpen] = useState({
@@ -39,76 +37,11 @@ function NavBar() {
     mobilePourquoiChoisirASF: false,
   });
 
-  // const handleClick = (listName) => {
-  //   setOpen((prevState) => ({
-  //     ...prevState,
-  //     [listName]: !prevState[listName],
-  //   }));
-  // };
-
   const [openn, setOpenn] = useState(false);
 
   const toggleDrawer = (newOpen) => () => {
     setOpenn(newOpen);
   };
-  const [anchorElProducts, setAnchorElProducts] = useState(null);
-
-  const [services, setServices] = useState(null);
-
-  const [servicesPlus, setservicesPlus] = useState(null);
-
-  const [EvaluationMarche, setEvaluationMarche] = useState(null);
-
-  const [prqChoisirASF, setPrqChoisirASF] = useState(null);
-
-  const handlePopoverOpenprqChoisirASF = (event) => {
-    setPrqChoisirASF(event.currentTarget);
-  };
-
-  const handlePopoverCloseprqChoisirASF = () => {
-    setPrqChoisirASF(null);
-  };
-
-  const openprqChoisirASF = Boolean(prqChoisirASF);
-
-  const handlePopoverOpenEvaluationMarche = (event) => {
-    setEvaluationMarche(event.currentTarget);
-  };
-  const handlePopoverCloseEvaluationMarche = () => {
-    setEvaluationMarche(null);
-  };
-
-  const openEvaluationMarche = Boolean(EvaluationMarche);
-
-  const handlePopoverOpenServicesPlus = (event) => {
-    setservicesPlus(event.currentTarget);
-  };
-
-  const handlePopoverCloseServicesPlus = () => {
-    setservicesPlus(null);
-  };
-
-  const openServicesPlus = Boolean(servicesPlus);
-
-  const handlePopoverOpenServices = (event) => {
-    setServices(event.currentTarget);
-  };
-
-  const handlePopoverCloseServices = () => {
-    setServices(null);
-  };
-
-  const openServices = Boolean(services);
-
-  const handlePopoverOpenProducts = (event) => {
-    setAnchorElProducts(event.currentTarget);
-  };
-
-  const handlePopoverCloseProducts = () => {
-    setAnchorElProducts(null);
-  };
-
-  const openProducts = Boolean(anchorElProducts);
 
   const navigate = useNavigate();
 
@@ -120,527 +53,68 @@ function NavBar() {
         updatedOpenState[key] = key === listName ? !prevState[key] : false;
       });
       return updatedOpenState;
-      
     });
   };
-
-  
-  
 
   return (
     <>
       <AppBar position="sticky" sx={{ backgroundColor: "white" }}>
-        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>
-            <a href="/">
-              <img src={Logo} alt="logo" width={180} />
-            </a>
-          </div>
+        <Toolbar
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            minHeight: 54
+          }}
+        >
+          <Stack alignItems={"center"}>
+            <Link to={"/"}>
+              <img src={Logo} alt="logo" width={140} />
+            </Link>
+          </Stack>
+
           <Stack
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: 'flex' },
+              display: { xs: "none", lg: "flex" },
             }}
             direction={"row"}
-            spacing={5}
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: '-20px'
-            }}
+            justifyContent={"space-between"}
+            px={5}
           >
-            <div>
-              <Typography
-                aria-owns={open ? "mouse-over-popover" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpenProducts}
-              
-                style={{
-                  color: openProducts ? " #659a9a" : "black",
-                  fontFamily: "Montserrat-sans serif",
-                  fontSize: "19px",
-                  fontWeight: "bold",
-                }}
-              >
-                Nos Produits
-              </Typography>
-              <Menu
-                id="mouse-over-popover"
-                anchorEl={anchorElProducts}
-                open={openProducts}
-                onClose={handlePopoverCloseProducts}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-              >
-                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Box onMouseLeave={handlePopoverCloseProducts}>
-                <Link to={"/gazoil"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseProducts}
-                  >
-                    Gasoil
-                  </MenuItem>
-                </Link>
-                <Link to={"/Fuel2"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseProducts}
-                  >
-                    Fuel oil n° 2
-                  </MenuItem>
-                </Link>
-                <Link to={"/Lubrifiants"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseProducts}
-                  >
-                    Lubrifiants
-                  </MenuItem>
-                </Link>
-                <Link to={"/hydrogenevert"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseProducts}
-                  >
-                    Hydrogène vert
-                  </MenuItem>
-                </Link>
-                <Link to={"/Citerne"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseProducts}
-                  >
-                    Citernes
-                  </MenuItem>
-                </Link>
-                <Link to={"/BornesRecharge"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseProducts}
-                  >
-                    Bornes de Recharge
-                  </MenuItem>
-                </Link>
-                <Link
-                  to={"/produitnettoyage"}
-                  style={{ textDecoration: "none" }}
-                >
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseProducts}
-                  >
-                    Produits de Nettoyage
-                  </MenuItem>
-                </Link>
-                <Link to={"/boischauffage"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseProducts}
-                  >
-                    Bois De Chauffage
-                  </MenuItem>
-                </Link>
-                </Box>
-              </Menu>
-            </div>
-            <div>
-              <Typography
-                aria-owns={open ? "mouse-over-popover-1" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpenServices}
-                className="hoservices"
-                style={{
-                  color: openServices ? " #659a9a" : "black",
-                  fontFamily: "Montserrat-sans serif",
-                  fontSize: "19px",
-                  fontWeight: "bolder",
-                }}
-              >
-                Nos Services
-              </Typography>
-              <Menu
-                id="mouse-over-popover-1"
-                anchorEl={services}
-                open={openServices}
-                onClose={handlePopoverCloseServices}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-              >
-                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Box onMouseLeave={handlePopoverCloseServices}>
-                  <Link to={"/livraison"} style={{ textDecoration: "none" }}>
-                    <MenuItem
-                      sx={{
-                        p: 1,
-                        color: "gray",
-                        fontFamily: "initial",
-                        fontWeight: "bolder",
-                        fontSize: 18,
-                      }}
-                      onClick={handlePopoverCloseServices}
-                    >
-                      Livraisons
-                    </MenuItem>
-                  </Link>
-                  <Link
-                    to={"/cartecarburant"}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <MenuItem
-                      sx={{
-                        p: 1,
-                        color: "gray",
-                        fontFamily: "initial",
-                        fontWeight: "bolder",
-                        fontSize: 18,
-                      }}
-                      onClick={handlePopoverCloseServices}
-                    >
-                      Carte Carburant Toutes Marques
-                    </MenuItem>
-                  </Link>
-                  <Link to={"/abonnementtelepage"} style={{ textDecoration: "none" }}>
-                    <MenuItem
-                      sx={{
-                        p: 1,
-                        color: "gray",
-                        fontFamily: "initial",
-                        fontWeight: "bolder",
-                        fontSize: 18,
-                      }}
-                      onClick={handlePopoverCloseServices}
-                    >
-                      Abonnement Télépéage
-                    </MenuItem>
-                  </Link>
-                </Box>
-              </Menu>
-            </div>
-            <div>
-              <Typography
-                aria-owns={open ? "mouse-over-popover-2" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpenServicesPlus}
-                style={{
-                  color: openServicesPlus ? " #659a9a" : "black",
-                  fontFamily: "Montserrat-sans serif",
-                  fontSize: "19px",
-                  fontWeight: "bolder",
-                }}
-              >
-                Services Plus
-              </Typography>
-              <Menu
-                id="mouse-over-popover-2"
-                anchorEl={servicesPlus}
-                open={openServicesPlus}
-                onClose={handlePopoverCloseServicesPlus}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-              >
-                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Box onMouseLeave={handlePopoverCloseServicesPlus}>
-                <Link
-                  to={"/nettoyagedomicile"}
-                  style={{ textDecoration: "none" }}
-                >
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseServicesPlus}
-                  >
-                    Nettoyage Sans Eau
-                  </MenuItem>
-                </Link>
-                <Link
-                  to={"/collectelubrifiant"}
-                  style={{ textDecoration: "none" }}
-                >
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseServicesPlus}
-                  >
-                    Collecte Lubrifiant
-                  </MenuItem>
-                </Link>
-                <Link to={"/nettoyagecuve"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseServicesPlus}
-                  >
-                    Nettoyage Cuve
-                  </MenuItem>
-                </Link>
-                <Link to={"/jaugeconnecte"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseServicesPlus}
-                  >
-                    Jauge Connectée
-                  </MenuItem>
-                </Link>
-                </Box>
-              </Menu>
-            </div>
-            <div>
-              <Typography
-                aria-owns={open ? "mouse-over-popover-3" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpenEvaluationMarche}
-                style={{
-                  color: openEvaluationMarche ? " #659a9a" : "black",
-                  fontFamily: "Montserrat-sans serif",
-                  fontSize: "19px",
-                  fontWeight: "bolder",
-                }}
-              >
-                Evolution marché
-              </Typography>
-              <Menu
-                id="mouse-over-popover-3"
-                anchorEl={EvaluationMarche}
-                open={openEvaluationMarche}
-                onClose={handlePopoverCloseEvaluationMarche}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-              >
-                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Box onMouseLeave={handlePopoverCloseEvaluationMarche}>
-                <Link to={"/relationsInvestiseurs"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseEvaluationMarche}
-                  >
-                    Relations Investisseurs
-                  </MenuItem>
-                </Link>
-                <Link to={"/ActualiteASF"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseEvaluationMarche}
-                  >
-                    Actualités ASF
-                  </MenuItem>
-                </Link>
-                </Box>
-              </Menu>
-            </div>
-            <div>
-              <Typography
-                aria-owns={open ? "mouse-over-popover-4" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpenprqChoisirASF}
-                style={{
-                  color: openprqChoisirASF ? " #659a9a" : "black",
-                  fontFamily: "Montserrat-sans serif",
-                  fontSize: "19px",
-                  fontWeight: 'bolder'
-                 
-                }}
-              >
-                Pourquoi Choisir ASF
-              </Typography>
-              <Menu
-                id="mouse-over-popover-4"
-                anchorEl={prqChoisirASF}
-                open={openprqChoisirASF}
-                onClose={handlePopoverCloseprqChoisirASF}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-              >
-                <Divider sx={{ mx: 1, border: "  #659a9a 2px solid" }} />
-                <Box onMouseLeave={handlePopoverCloseprqChoisirASF}>
-                <Link
-                  to={"/presentationgroupe"}
-                  style={{ textDecoration: "none" }}
-                >
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseprqChoisirASF}
-                  >
-                    Présentation Du Groupe
-                  </MenuItem>
-                </Link>
-                <Link to={"/engagementrse"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseprqChoisirASF}
-                  >
-                    Notre Engagement RSE
-                  </MenuItem>
-                </Link>
-                <Link
-                  to={"/offrecompetitive"}
-                  style={{ textDecoration: "none" }}
-                >
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseprqChoisirASF}
-                  >
-                    Des Offres Compétitives
-                  </MenuItem>
-                </Link>
-                <Link to={"/equipedediees"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseprqChoisirASF}
-                  >
-                    Des Equipes Dediées
-                  </MenuItem>
-                </Link>
-                <Link to={"/politiqueRH"} style={{ textDecoration: "none" }}>
-                  <MenuItem
-                    sx={{
-                      p: 1,
-                      color: "gray",
-                      fontFamily: "initial",
-                      fontWeight: "bolder",
-                      fontSize: 18,
-                    }}
-                    onClick={handlePopoverCloseprqChoisirASF}
-                  >
-                    Notre Politique RH
-                  </MenuItem>
-                </Link>
-                </Box>
-              </Menu>
-            </div>
-           
-            <Link to={'/order'}>
-            <Typography
-              className="hover-professionnel"
-              style={{
-                color: "black",
-                fontFamily: "Montserrat-sans serif",
-                fontSize: "19px",
-                fontWeight: 'bolder',
-                "&:hover": { color: "green" },
+            <Stack
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", lg: "flex" },
               }}
-              
+              direction={"row"}
+              spacing={3}
+              style={{
+                alignItems: "center",
+                justifyContent: "center"
+              }}
             >
-              Professionnel
-            </Typography>
-            </Link>
+              {navItems.map((navItem) => (
+                <NavItem key={navItem.key} navItem={navItem} />
+              ))}
+            </Stack>
 
-          
+            <Link to={"/order"} style={{ justifySelf: "end" }}>
+              <Button
+                variant="contained"
+                color="success"
+                size="small"
+                style={{
+                  fontFamily: "Montserrat-sans serif",
+                }}
+              >
+                Commandez Maintenant
+              </Button>
+            </Link>
           </Stack>
 
           <Box
             style={{
-              width: 150,
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -650,9 +124,6 @@ function NavBar() {
               onClick={() => navigate("/compte")}
               style={{ color: "black", marginRight: 15 }}
             />
-
-            <SearchIcon style={{ color: "black", marginRight: 15 }} />
-
             <MenuIcon
               sx={{ display: { lg: "none" } }}
               onClick={toggleDrawer(true)}
@@ -660,7 +131,6 @@ function NavBar() {
                 color: "black",
                 marginRight: 15,
                 alignItems: "center",
-               
               }}
             />
           </Box>
@@ -691,7 +161,11 @@ function NavBar() {
                 fontSize: 20,
               }}
             >
-              <Typography sx={{fontWeight: 'bold', fontSize: 25, marginTop: '3rem'}}>Menu</Typography>
+              <Typography
+                sx={{ fontWeight: "bold", fontSize: 25, marginTop: "3rem" }}
+              >
+                Menu
+              </Typography>
               <IconButton
                 onClick={toggleDrawer(false)}
                 sx={{ marginLeft: "auto", display: "block", my: 3 }}
@@ -706,7 +180,9 @@ function NavBar() {
               sx={{
                 color: open.mobileproduits ? " #659a9a" : "black",
               }}
-              primaryTypographyProps={{ sx: { fontSize: 20 ,   fontWeight: 'bold'} }}
+              primaryTypographyProps={{
+                sx: { fontSize: 20, fontWeight: "bold" },
+              }}
               primary="Nos produits"
             />
             {open.mobileproduits ? <ExpandLess /> : <ExpandMore />}
@@ -815,7 +291,9 @@ function NavBar() {
             <ListItemButton onClick={() => handleClick("mobileServices")}>
               <ListItemText
                 sx={{ color: open.mobileServices ? " #659a9a" : "black" }}
-                primaryTypographyProps={{ sx: { fontSize: 20 , fontWeight: 'bold'} }}
+                primaryTypographyProps={{
+                  sx: { fontSize: 20, fontWeight: "bold" },
+                }}
                 primary="Nos Services"
               />
               {open.mobileServices ? <ExpandLess /> : <ExpandMore />}
@@ -870,7 +348,9 @@ function NavBar() {
             <ListItemButton onClick={() => handleClick("mobileServicesPlus")}>
               <ListItemText
                 sx={{ color: open.mobileServicesPlus ? " #659a9a" : "black" }}
-                primaryTypographyProps={{ sx: { fontSize: 20 , fontWeight: 'bold'} }}
+                primaryTypographyProps={{
+                  sx: { fontSize: 20, fontWeight: "bold" },
+                }}
                 primary="Services Plus"
               />
               {open.mobileServicesPlus ? <ExpandLess /> : <ExpandMore />}
@@ -940,7 +420,9 @@ function NavBar() {
                 sx={{
                   color: open.mobileEvolutionsMarche ? " #659a9a" : "black",
                 }}
-                primaryTypographyProps={{ sx: { fontSize: 20 , fontWeight: 'bold'} }}
+                primaryTypographyProps={{
+                  sx: { fontSize: 20, fontWeight: "bold" },
+                }}
                 primary="Evolution Marché"
               />
               {open.mobileEvolutionsMarche ? <ExpandLess /> : <ExpandMore />}
@@ -957,7 +439,7 @@ function NavBar() {
               >
                 <ListItemButton sx={{ pl: 4 }}>
                   <Link
-                    to={"/relationsinvestiseurs"} 
+                    to={"/relationsinvestiseurs"}
                     style={{ textDecoration: "none", color: "gray" }}
                   >
                     <ListItemText
@@ -998,7 +480,9 @@ function NavBar() {
                 sx={{
                   color: open.mobilePourquoiChoisirASF ? " #659a9a" : "black",
                 }}
-                primaryTypographyProps={{ sx: { fontSize: 20, fontWeight: 'bold' } }}
+                primaryTypographyProps={{
+                  sx: { fontSize: 20, fontWeight: "bold" },
+                }}
                 primary="Pourquoi Choisir ASF"
               />
               {open.mobilePourquoiChoisirASF ? <ExpandLess /> : <ExpandMore />}

@@ -1,4 +1,4 @@
-import { Typography, Grid, Stack, Box, TextField } from "@mui/material";
+import { Typography, Grid, Stack, Box, TextField, Button } from "@mui/material";
 import NavBar from "./NavBar";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import "../src/MonCompte.css";
@@ -8,34 +8,29 @@ import { toast } from "react-hot-toast";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
-import iconsperson1 from"../src/images/icons8-personne-homme-64.png"
-import iconsperson2 from"../src/images/new user.png"
+import iconsperson1 from "../src/images/icons8-personne-homme-64.png";
+import iconsperson2 from "../src/images/new user.png";
 
 import { UserOutlined } from "@ant-design/icons";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import { Button, Input, Space } from "antd";
+import { Input, Space } from "antd";
 import Footer from "./Footer";
 import Checkbox from "@mui/material/Checkbox";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../context/userContext";
 
-
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function MonCompte() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const theme = useTheme();
-  const { setData,  setisConnected , isConnected} = useContext(UserContext);
-  const [selectedOption, setSelectedOption] = useState('');
+  const { setData, setisConnected, isConnected } = useContext(UserContext);
+  const [selectedOption, setSelectedOption] = useState("ClientGazoil");
 
   useEffect(() => {
-   
     if (isConnected) {
       navigate("/AccountCustomer");
     }
-  }, [isConnected,]);
-
-  
-  
+  }, [isConnected]);
 
   const handleChangeSelectOption = (event) => {
     setSelectedOption(event.target.value);
@@ -43,146 +38,157 @@ function MonCompte() {
 
   const [loginCustomer, setLoginCustomer] = useState({
     email: "",
-    password: ""
-  })
+    password: "",
+  });
 
   const handleInputChangeLoginCustomer = (e) => {
-    const {name, value} = e.target;
-    setLoginCustomer((prev) =>( {
-      ...prev,
-      [name]: value
-    }))
-  }
-
-  const [customerGranulesDeBois, setcustomerGranulesDeBois] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    password: "",
-    confirmer_mot_de_passe: "",
-  })
-  console.log(customerGranulesDeBois)
-
-  const handleInputChangeClientGranulesDeBois = (e) => {
     const { name, value } = e.target;
-    setcustomerGranulesDeBois((prev) => ({
+    setLoginCustomer((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const [customerClientFioul, setCustomerClientFioul] = useState({
+  const [customerClientFuelOil2, setcustomerClientFuelOil2] = useState({
     first_name: "",
     last_name: "",
     email: "",
     password: "",
     confirmer_mot_de_passe: "",
   });
-  console.log(customerClientFioul)
 
-  const [clientGazElectrecite, setClientGazElectrecite] = useState({
-    referenceClient: "",
-    numeroPCEouPDL: "",
-    email: "",
-    customerType: selectedOption,
-  })
-  console.log(clientGazElectrecite)
-
-  const handleInputChangeClientGazElectrecite = (e) => {
-    const {name, value} = e.target
-    setClientGazElectrecite((prev) => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-
-  const handleInputChangeClientFioul = (e) => {
+  const handleInputChangeClientFuelOil2 = (e) => {
     const { name, value } = e.target;
-    setCustomerClientFioul((prev) => ({
+    setcustomerClientFuelOil2((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmitClientFioul = useCallback(() => {
-    console.log(customerClientFioul)
-    
+  const [customerClientGazoil, setCustomerClientGazoil] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    confirmer_mot_de_passe: "",
+  });
+
+  const [clientBoisChauffage, setClientBoisChauffage] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    confirmer_mot_de_passe: "",
+  });
+
+  const handleInputChangeClientBoisChauffage = (e) => {
+    const { name, value } = e.target;
+    setClientBoisChauffage((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleInputChangeClientGazoil = (e) => {
+    const { name, value } = e.target;
+    setCustomerClientGazoil((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitClientGazoil = useCallback(() => {
+    console.log(customerClientGazoil);
+
     axiosInstance
-      .post("/customer", {...customerClientFioul, customerType:selectedOption })
+      .post("/customer", {
+        ...customerClientGazoil,
+        customerType: selectedOption,
+      })
       .then((data) => {
         console.log(data);
         setData(data);
-        setisConnected(true)
-        navigate("/AccountCustomer")
+        setisConnected(true);
+        navigate("/AccountCustomer");
         toast.success(data.message ?? "votre compte se crée avec succès");
       })
 
       .catch((err) => {
         console.log(err);
       });
-  }, [customerClientFioul, selectedOption]);
+  }, [customerClientGazoil, selectedOption]);
 
-    const handleSubmitClientGranulesDeBois = useCallback(() => {
-      console.log(customerGranulesDeBois)
-      axiosInstance
-      .post("/customer/clientgranulesdebois", {...customerGranulesDeBois, customerType: selectedOption})
+  const handleSubmitClientFuelOil2 = useCallback(() => {
+    console.log(customerClientFuelOil2);
+    axiosInstance
+      .post("/customer/clientFeulOil2", {
+        ...customerClientFuelOil2,
+        customerType: selectedOption,
+      })
       .then((data) => {
-        console.log(data)
-        setData(data)
-        setisConnected(true)
-        navigate("/AccountCustomer")
+        console.log(data);
+        setData(data);
+        setisConnected(true);
+        navigate("/AccountCustomer");
         toast.success(data.message ?? "votre compte se crée avec succès");
-
       })
       .catch((err) => {
-        console.log(err)
-      })
-    },[customerGranulesDeBois, selectedOption])
+        console.log(err);
+      });
+  }, [customerClientFuelOil2, selectedOption]);
 
-
-  const handleSubmitClientGazElectrecite = useCallback(() => {
-   
-    console.log(clientGazElectrecite)
+  const handleSubmitClientBoisChauffage = useCallback(() => {
+    console.log(clientBoisChauffage);
     axiosInstance
-    .post("/customer/clientgazelectrecite", {...clientGazElectrecite, customerType:selectedOption})
-    .then((response) => {
-      console.log(response.data)
-      setData(response.data)
-      setisConnected(true)
-      navigate("/AccountCustomer")
-      toast.success(response.data.message ?? "Votre compte a été créé avec succès");
-    })
-    .catch((error) => {
-      console.error("Erreur lors de la création du client Gaz Electrecite :", error);
-      toast.error("Une erreur s'est produite lors de la création du client Gaz Electrecite");
-    });
-  },[clientGazElectrecite, selectedOption])
-
-  ;
-
+      .post("/customer/clientBoisChauffage", {
+        ...clientBoisChauffage,
+        customerType: selectedOption,
+      })
+      .then((response) => {
+        console.log(response.data);
+        setData(response.data);
+        setisConnected(true);
+        navigate("/AccountCustomer");
+        toast.success(
+          response.data.message ?? "Votre compte a été créé avec succès"
+        );
+      })
+      .catch((error) => {
+        console.error(
+          "Erreur lors de la création du client Bois Chauffage :",
+          error
+        );
+        toast.error(
+          "Une erreur s'est produite lors de la création du client Gaz Electrecite"
+        );
+      });
+  }, [clientBoisChauffage, selectedOption]);
 
   const handleSubmitLoginCustomer = useCallback(() => {
-   
     axiosInstance
-    .post("/customer/login",{...loginCustomer,customerType:selectedOption } )
-    .then((res) => {
-      console.log(res.data)
-      setData(res.data)
-      setisConnected(true)
-      navigate("/AccountCustomer")
-      toast.success(res.data.message ?? "Vous êtes connecté");
-    })
-    .catch((err) => {
-      console.log("erreur connexion", err)
-      toast.error("Une erreur s'est produite lors de la connexion du customer");
-    })
-  },[loginCustomer, setSelectedOption])
+      .post("/customer/login", {
+        ...loginCustomer,
+        customerType: selectedOption,
+      })
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+        setisConnected(true);
+        navigate("/AccountCustomer");
+        toast.success(res.data.message ?? "Vous êtes connecté");
+      })
+      .catch((err) => {
+        console.log("erreur connexion", err);
+        toast.error(
+          "Une erreur s'est produite lors de la connexion du customer"
+        );
+      });
+  }, [loginCustomer, setSelectedOption]);
 
-  
   return (
     <div>
       <NavBar />
-      <Grid container className="mon-compte-container">
+      <Grid py={4} container className="mon-compte-container">
         <Grid
           item
           xs={12}
@@ -218,181 +224,102 @@ function MonCompte() {
       </Grid>
       <Grid
         container
-        style={{
-          backgroundColor: "rgba(235, 235, 235, 0.5)",
+        sx={{
           boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          marginTop: "5rem",
+          marginTop: 4,
+          gap: {
+            md: 0,
+            xs: 2,
+          },
         }}
       >
         <Grid
           item
           xs={12}
-          sm={6}
-          style={{ borderRight: "2px solid gray" }}
-          sx={{ paddingY: 1 }}
+          md={6}
+          style={{
+            borderRight: "2px solid gray",
+            backgroundColor: "rgba(235, 235, 235, 0.5)",
+          }}
+          sx={{ paddingY: 4 }}
         >
           <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
             <div style={{ marginRight: "10px" }}>
-              <img
-                width={50}
-                src={iconsperson1}
-              />
+              <img width={50} src={iconsperson1} />
             </div>
-            <Typography
-              variant="h5"
-              style={{
-                color: "#659a9a",
-                fontFamily: "inherit",
-                fontWeight: "bolder",
-              }}
-              sx={{ marginLeft: { xs: "-5px", fontSize: "1.4rem" } }}
-            >
-              VOUS AVEZ DÉJÀ UN COMPTE ?
-            </Typography>
-          </Box>
-          <Typography
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              display: "flex",
-              fontWeight: "bold",
-              color: "#4F4A45",
-            }}
-          >
-            Connectez-vous
-          </Typography>
-          <Typography
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              display: "flex",
-              color: "gray",
-              fontFamily: "serif",
-              marginTop: 4,
-            }}
-          >
-            à votre espace client{" "}
-          </Typography>
-          <Typography
-            variant="h5"
-            style={{
-              color: theme.palette.grey[700],
-              fontFamily: "Delicatessen Script",
-            }}
-            sx={{
-              marginLeft: { xs: "2.5rem ", sm: "11.5rem" },
-              marginTop: { xs: "3rem", sm: "4.5rem" },
-            }}
-          >
-            Vous êtes ?
-          </Typography>
-          <Box sx={{ marginLeft: { xs: "2.5rem", sm: "11.5rem" } }}>
-            <FormControl sx={{ maxWidth: "200px", marginTop: "1.5rem" }}>
-              <InputLabel
-                variant="standard"
-                htmlFor="uncontrolled-native"
-                sx={{ color: "gray" }}
-              >
-                Sélectionnez votre espace
-              </InputLabel>
-              <NativeSelect
-                defaultValue={30}
-                inputProps={{
-                  name: "age",
-                  id: "uncontrolled-native",
-                  style: { width: "250px" },
+            <Box>
+              <Typography
+                variant="h5"
+                style={{
+                  color: "#659a9a",
+                  fontFamily: "inherit",
+                  fontWeight: "bolder",
                 }}
-                onChange={handleChangeSelectOption}
               >
-                <option value={10}>Client Fioul</option>
-                <option value={20}>Client Granulés de bois</option>
-                <option value={30}>Client Gaz & Èlectrecité</option>
-              </NativeSelect>
-            </FormControl>
+                Vous avez déjà un compte ?
+              </Typography>
+              <Typography
+                variant="caption"
+                style={{
+                  alignItems: "center",
+                  display: "flex",
+                  fontWeight: "bold",
+                  color: "#4F4A45",
+                }}
+              >
+                Connectez-vous à votre espace client{" "}
+              </Typography>
+            </Box>
           </Box>
-          <Stack
-            style={{
-              backgroundColor: "rgba(101, 154, 154, 0.5)",
-              marginTop: theme.breakpoints.down("xs") ? "1rem" : "2rem",
-            }}
-          >
+
+          <Stack px={2} my={4} gap={2}>
             <Box
               display={{ xs: "block", sm: "flex" }}
               alignItems="center"
               justifyContent={"space-around"}
-              paddingTop={4}
               gap={9}
             >
               <Typography
                 sx={{
-                 
                   fontFamily: "Delicatessen Script",
-                  fontSize: { xs: "19px", sm: "20px" },
                   color: "gray",
+                  whiteSpace: "nowrap",
                 }}
+                variant="body1"
               >
                 Email *
               </Typography>
               <Input
-              onChange={handleInputChangeLoginCustomer}
+                onChange={handleInputChangeLoginCustomer}
                 placeholder="Enter your Email"
                 name="email"
                 prefix={<UserOutlined />}
-                style={{
-                  width: "250px",
-                
-                }}
               />
             </Box>
             <Box
               display={{ xs: "block", sm: "flex" }}
-              paddingTop={6}
-            justifyContent={"space-around"}
+              gap={2}
+              alignItems={"center"}
             >
               <Typography
                 sx={{
-                
                   fontFamily: "Delicatessen Script",
-                  fontSize: { xs: "19px", sm: "20px" },
                   color: "gray",
+                  whiteSpace: "nowrap",
                 }}
+                variant="body1"
               >
                 Mot de passe *
               </Typography>
-              <Space
-                direction="vertical"
-                style={{
-                  width: "250px",
-                }}
-                >
-                <Input.Password
-                  name="password"
-                  className="input-password-mobile"
-                  placeholder="input password"
-                  onChange={handleInputChangeLoginCustomer}
-                  iconRender={(visible) =>
-                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                  }
-                />
-              </Space>
+              <Input.Password
+                name="password"
+                placeholder="Enter your password"
+                onChange={handleInputChangeLoginCustomer}
+                iconRender={(visible) =>
+                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                }
+              />
             </Box>
-            <NavLink to={"/motdepasseoublier"}>
-              <Box
-                display={{ xs: "block", sm: "flex" }}
-                marginTop={"2rem"}
-                marginLeft={{ xs: "2.5rem", sm: "11.5rem" }}
-              >
-                <Typography
-                  style={{
-                    color: "gray",
-                    fontFamily: "Delicatessen Script",
-                    textDecoration: "none",
-                  }}
-                >
-                  Vous avez oublié votre mode de passe
-                </Typography>
-              </Box>
-            </NavLink>
           </Stack>
           <div
             style={{
@@ -402,70 +329,73 @@ function MonCompte() {
             }}
           >
             <Button
-            onClick={handleSubmitLoginCustomer}
-              type="primary"
-              style={{
-                backgroundColor: "#333",
-                color: "#fff",
-                borderRadius: "0",
-                width: 200,
-                height: 50,
-                fontSize: 20,
-                fontFamily: "Montserrat",
+              sx={{
+                bgcolor: "rgb(101, 154, 154)",
+                ":hover": { bgcolor: "rgb(101, 174, 174)" },
               }}
+              onClick={handleSubmitLoginCustomer}
+              variant="contained"
             >
               S'INDENTIFIER
             </Button>
           </div>
+          <NavLink to={"/motdepasseoublier"}>
+            <Typography
+              mt={1}
+              style={{
+                color: "gray",
+                fontFamily: "Delicatessen Script",
+                textDecoration: "none",
+                fontStyle: "italic",
+              }}
+              variant="body2"
+              textAlign={"center"}
+            >
+              Vous avez oublié votre mode de passe
+            </Typography>
+          </NavLink>
         </Grid>
-        <Grid item xs={12} sm={6} sx={{ paddingY: 1 }}>
+        <Grid item xs={12} md={6} sx={{ paddingY: 2 }}>
           <Box
             display={"flex"}
-            justifyContent={"center"}
             alignItems={"center"}
-            sx={{ marginTop: { xs: "2rem", sm: "0" }, textAlign: "center" }}
+            justifyContent={"center"}
+            gap={2}
           >
-            <div>
-              <img src={iconsperson2} width={50} />
+            <div style={{ marginRight: "10px" }}>
+              <img width={50} src={iconsperson2} />
             </div>
-            <Typography
-              style={{
-                color: "#659a9a",
-                fontFamily: "inherit",
-                fontWeight: "bolder",
-                fontSize: { xs: "1rem", sm: "1.6rem" },
-              }}
-            >
-              VOUS N'AVEZ PAS ENCORE DE COMPTE ?
-            </Typography>
+            <Box>
+              <Typography
+                variant="h5"
+                sx={{
+                  color: "#659a9a",
+                  fontFamily: "inherit",
+                  fontWeight: "bolder",
+                  maxWidth: {
+                    xs: "17rem",
+                    md: "100%",
+                  },
+                }}
+              >
+                Vous n'avez pas encore de compte ?
+              </Typography>
+              <Typography
+                variant="caption"
+                style={{
+                  alignItems: "center",
+                  display: "flex",
+                  fontWeight: "bold",
+                  color: "#4F4A45",
+                }}
+              >
+                Créer un compte
+              </Typography>
+            </Box>
           </Box>
-          <Typography
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              display: "flex",
-              fontWeight: "bold",
-              color: "#4F4A45",
-            }}
-          >
-            Créer un compte
-          </Typography>
-          <Typography
-            variant="h5"
-            style={{
-              color: theme.palette.grey[700],
-              fontFamily: "Delicatessen Script",
-            }}
-            sx={{
-              marginLeft: { xs: "3.5rem", sm: "2rem" },
-              marginTop: { xs: "3rem", sm: "6.2rem" },
-            }}
-          >
-            Vous êtes ?
-          </Typography>
-          <Stack>
-            <Box sx={{ marginLeft: { xs: "3.5rem", sm: "2rem" } }}>
-               <FormControl sx={{ maxWidth: "200px", marginTop: "1.5rem" }}>
+          <Stack p={3}>
+            <Box mb={2}>
+              <FormControl sx={{ width: "100%" }}>
                 <InputLabel
                   variant="standard"
                   htmlFor="uncontrolled-native"
@@ -479,57 +409,40 @@ function MonCompte() {
                   inputProps={{
                     name: " customerType",
                     id: "uncontrolled-native",
-                    style: { width: "250px" },
                   }}
                 >
-                  <option   value="ClientFioul">Client Fioul</option>
-                  <option  value="ClientGranulésDeBois">
-                    Client Granulés de bois
+                  <option value="ClientGazoil">Client Gasoil</option>
+                  <option value="ClientFuelOil2">
+                    Client Fuel oil n° 2
                   </option>
-                  <option  value="ClientGaz&Èlectrecité">
-                    Client Gaz & Èlectrecité
+                  <option value="ClientBoisChauffage">
+                    Client Bois Chauffage
                   </option>
                 </NativeSelect>
-              </FormControl> 
-             
+              </FormControl>
             </Box>
-            <Stack
-              style={{
-                backgroundColor: "rgba(101, 154, 154, 0.5)",
-                marginTop: "1rem",
-              }}
-            >
-              {(selectedOption === "ClientFioul") && (
-                <Box>
-                  
+            <Box>
+              {selectedOption === "ClientGazoil" && (
+                <Stack gap={2}>
                   <Box
                     display={{ xs: "block", sm: "flex" }}
                     alignItems="center"
                     justifyContent={"space-evenly"}
-                    gap={16}
+                    gap={2}
                   >
                     <Typography
                       style={{
                         color: "gray",
                         fontFamily: "Delicatessen Script",
-                      }}
-                      sx={{
-                       
-                        marginTop: { xs: "3rem", sm: "3.5rem" },
-                        fontSize: { xs: "19px", sm: "20px" },
+                        whiteSpace: "nowrap",
                       }}
                     >
                       Prénom *
                     </Typography>
                     <Input
-                      onChange={handleInputChangeClientFioul}
+                      onChange={handleInputChangeClientGazoil}
                       placeholder="Entrer votre Prenom"
                       name="first_name"
-                      style={{
-                        width: "250px",
-                        height: "30px",
-                       
-                      }}
                       className="input-email-mobile"
                     />
                   </Box>
@@ -537,184 +450,89 @@ function MonCompte() {
                     display={{ xs: "block", sm: "flex" }}
                     alignItems="center"
                     justifyContent={"space-evenly"}
-                    gap={20}
+                    gap={5}
                   >
                     <Typography
                       style={{
                         color: "gray",
                         fontFamily: "Delicatessen Script",
-                      }}
-                      sx={{
-                      
-                        marginTop: { xs: "3rem", sm: "1.5rem" },
-                        fontSize: { xs: "19px", sm: "20px" },
+                        whiteSpace: "nowrap",
                       }}
                     >
                       Nom *
                     </Typography>
                     <Input
-                      onChange={handleInputChangeClientFioul}
+                      onChange={handleInputChangeClientGazoil}
                       placeholder="Entrer votre Nom"
                       name="last_name"
-                      style={{
-                        width: "250px",
-                        height: "30px",
-                      
-                        marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
-                      }}
-                    />
-                  </Box>
-                  <Box
-                    display={{ xs: "block", sm: "flex" }}
-                    alignItems="center"
-                   justifyContent={"space-evenly"}
-                   gap={21}
-                   
-                  >
-                    <Typography
-                      style={{
-                        color: "gray",
-                        fontFamily: "Delicatessen Script",
-                      }}
-                      sx={{
-                       
-                        marginTop: { xs: "3rem", sm: "1.5rem" },
-                        fontSize: { xs: "19px", sm: "20px" },
-                      }}
-                    >
-                      Email *
-                    </Typography>
-                    <Input
-                      onChange={handleInputChangeClientFioul}
-                      placeholder="Entrer votre Email"
-                      name="email"
-                      style={{
-                        width: "250px",
-                        height: "30px",
-                        marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
-                      }}
                     />
                   </Box>
                   <Box
                     display={{ xs: "block", sm: "flex" }}
                     alignItems="center"
                     justifyContent={"space-evenly"}
-                    gap={13}
+                    gap={5}
                   >
                     <Typography
                       style={{
                         color: "gray",
                         fontFamily: "Delicatessen Script",
-                      }}
-                      sx={{
-                        marginTop: { xs: "3rem", sm: "1.5rem" },
-                        fontSize: { xs: "19px", sm: "20px" },
+                        whiteSpace: "nowrap",
                       }}
                     >
-                      Mot de Passe *
+                      Email *
                     </Typography>
-                    <Space
-                      direction="vertical"
-                      style={{
-                        width: "250px",
-                        height: "30px",
-                       
-                        marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
-                      }}
-                    >
-                      <Input.Password
-                        onChange={handleInputChangeClientFioul}
-                        name="password"
-                        placeholder="Entrer votre Mot de passe"
-                        iconRender={(visible) =>
-                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                        }
-                      />
-                    </Space>
+                    <Input
+                      onChange={handleInputChangeClientGazoil}
+                      placeholder="Entrer votre Email"
+                      name="email"
+                    />
                   </Box>
                   <Box
                     display={{ xs: "block", sm: "flex" }}
                     alignItems="center"
-                    justifyContent={"space-evenly"} 
+                    justifyContent={"space-evenly"}
                   >
                     <Typography
                       style={{
                         color: "gray",
                         fontFamily: "Delicatessen Script",
+                        whiteSpace: "nowrap",
                       }}
-                      sx={{
-                       
-                        marginTop: { xs: "3rem", sm: "3rem" },
-                        fontSize: { xs: "19px", sm: "20px" },
+                    >
+                      Mot de Passe *
+                    </Typography>
+                    <Input.Password
+                      onChange={handleInputChangeClientGazoil}
+                      name="password"
+                      placeholder="Entrer votre Mot de passe"
+                      iconRender={(visible) =>
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                      }
+                    />
+                  </Box>
+                  <Box
+                    display={{ xs: "block", sm: "flex" }}
+                    alignItems="center"
+                    justifyContent={"space-evenly"}
+                  >
+                    <Typography
+                      style={{
+                        color: "gray",
+                        fontFamily: "Delicatessen Script",
+                        whiteSpace: "nowrap",
                       }}
                     >
                       Confirmer le Mot de Passe *
                     </Typography>
-                    <Space
-                      direction="vertical"
-                      style={{
-                        width: "250px",
-                        height: "30px",
-                       
-                        marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
-                      }}
-                    >
-                      <Input.Password
-                        onChange={handleInputChangeClientFioul}
-                        name="confirmer_mot_de_passe"
-                        placeholder="Confirmer le mot de passe"
-                        iconRender={(visible) =>
-                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                        }
-                      />
-                    </Space>
-                  </Box>
-                  <Box
-                    display={"flex"}
-                    alignItems="center"
-                    marginTop={"2rem"}
-                    marginLeft={"2rem"}
-                    sx={{ gap: "1rem" }}
-                  >
-                    <Checkbox
-                      {...label}
-                      defaultChecked
-                      onChange={handleInputChangeClientFioul}
+                    <Input.Password
+                     onChange={handleInputChangeClientGazoil}
+                      name="confirmer_mot_de_passe"
+                      placeholder="Confirmer le mot de passe"
+                      iconRender={(visible) =>
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                      }
                     />
-                    <Typography
-                      style={{
-                        fontSize: window.innerWidth < 600 ? "13px" : "16px",
-                        color: theme.palette.grey[700],
-                        fontFamily: "Delicatessen Script",
-                      }}
-                    >
-                      Déclare avoir lu les conditions générales de vente, les
-                      conditions générales <br /> d'utilisation et la politique
-                      de confidentialité de ASF.
-                    </Typography>
-                  </Box>
-                  <Box
-                    display={"flex"}
-                    alignItems="center"
-                    marginTop={"2rem"}
-                    marginLeft={"2rem"}
-                    sx={{ gap: "1rem" }}
-                  >
-                    <Checkbox
-                      {...label}
-                      defaultChecked
-                      onChange={handleInputChangeClientFioul}
-                    />
-                    <Typography
-                      style={{
-                        fontSize: window.innerWidth < 600 ? "13px" : "16px",
-                        color: theme.palette.grey[700],
-                        fontFamily: "Delicatessen Script",
-                      }}
-                    >
-                      Accepte de recevoir les promotions sur les produits et
-                      services proposés par ASF.
-                    </Typography>
                   </Box>
                   <div
                     style={{
@@ -724,239 +542,264 @@ function MonCompte() {
                     }}
                   >
                     <Button
-                      onClick={handleSubmitClientFioul}
-                      type="primary"
-                      style={{
-                        backgroundColor: "#333",
-                        color: "#fff",
-                        borderRadius: "0",
-                        width: 200,
-                        height: 50,
-                        fontSize: 20,
-                        fontFamily: "Montserrat",
+                      sx={{
+                        bgcolor: "rgb(101, 154, 154)",
+                        ":hover": { bgcolor: "rgb(101, 174, 174)" },
                       }}
+                      onClick={handleSubmitClientGazoil}
+                      variant="contained"
                     >
                       S'INCRIRE
                     </Button>
                   </div>
-                </Box>
+                </Stack>
               )}
 
-              {( selectedOption === "ClientGranulésDeBois") && (
-                 <Box>
-                  
+              {selectedOption === "ClientFuelOil2" && (
+               
+                <Stack gap={2}>
+                  <Box
+                    display={{ xs: "block", sm: "flex" }}
+                    alignItems="center"
+                    justifyContent={"space-evenly"}
+                    gap={2}
+                  >
+                    <Typography
+                      style={{
+                        color: "gray",
+                        fontFamily: "Delicatessen Script",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      Prénom *
+                    </Typography>
+                    <Input
+                     onChange={handleInputChangeClientFuelOil2}
+                      placeholder="Entrer votre Prenom"
+                      name="first_name"
+                      className="input-email-mobile"
+                    />
+                  </Box>
+                  <Box
+                    display={{ xs: "block", sm: "flex" }}
+                    alignItems="center"
+                    justifyContent={"space-evenly"}
+                    gap={5}
+                  >
+                    <Typography
+                      style={{
+                        color: "gray",
+                        fontFamily: "Delicatessen Script",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      Nom *
+                    </Typography>
+                    <Input
+                     onChange={handleInputChangeClientFuelOil2}
+                      placeholder="Entrer votre Nom"
+                      name="last_name"
+                    />
+                  </Box>
+                  <Box
+                    display={{ xs: "block", sm: "flex" }}
+                    alignItems="center"
+                    justifyContent={"space-evenly"}
+                    gap={5}
+                  >
+                    <Typography
+                      style={{
+                        color: "gray",
+                        fontFamily: "Delicatessen Script",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      Email *
+                    </Typography>
+                    <Input
+                     onChange={handleInputChangeClientFuelOil2}
+                      placeholder="Entrer votre Email"
+                      name="email"
+                    />
+                  </Box>
+                  <Box
+                    display={{ xs: "block", sm: "flex" }}
+                    alignItems="center"
+                    justifyContent={"space-evenly"}
+                  >
+                    <Typography
+                      style={{
+                        color: "gray",
+                        fontFamily: "Delicatessen Script",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      Mot de Passe *
+                    </Typography>
+                    <Input.Password
+                      onChange={handleInputChangeClientFuelOil2}
+                      name="password"
+                      placeholder="Entrer votre Mot de passe"
+                      iconRender={(visible) =>
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                      }
+                    />
+                  </Box>
+                  <Box
+                    display={{ xs: "block", sm: "flex" }}
+                    alignItems="center"
+                    justifyContent={"space-evenly"}
+                  >
+                    <Typography
+                      style={{
+                        color: "gray",
+                        fontFamily: "Delicatessen Script",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      Confirmer le Mot de Passe *
+                    </Typography>
+                    <Input.Password
+                     onChange={handleInputChangeClientFuelOil2}
+                      name="confirmer_mot_de_passe"
+                      placeholder="Confirmer le mot de passe"
+                      iconRender={(visible) =>
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                      }
+                    />
+                  </Box>
+                  <div
+                    style={{
+                      justifyContent: "center",
+                      display: "flex",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    <Button
+                      sx={{
+                        bgcolor: "rgb(101, 154, 154)",
+                        ":hover": { bgcolor: "rgb(101, 174, 174)" },
+                      }}
+                      onClick={handleSubmitClientFuelOil2}
+                      variant="contained"
+                    >
+                      S'INCRIRE
+                    </Button>
+                  </div>
+                </Stack>
+              )}
+
+              {selectedOption === "ClientBoisChauffage" && (
+                 <Stack gap={2}>
                  <Box
                    display={{ xs: "block", sm: "flex" }}
                    alignItems="center"
-                   sx={{ gap: "6rem" }}
+                   justifyContent={"space-evenly"}
+                   gap={2}
                  >
                    <Typography
                      style={{
                        color: "gray",
                        fontFamily: "Delicatessen Script",
-                     }}
-                     sx={{
-                       marginLeft: { xs: "4rem", sm: "2.5rem" },
-                       marginTop: { xs: "3rem", sm: "3.5rem" },
-                       fontSize: { xs: "19px", sm: "20px" },
+                       whiteSpace: "nowrap",
                      }}
                    >
                      Prénom *
                    </Typography>
                    <Input
-                     onChange={handleInputChangeClientGranulesDeBois}
+                     onChange={handleInputChangeClientBoisChauffage}
                      placeholder="Entrer votre Prenom"
                      name="first_name"
-                     style={{
-                       width: "250px",
-                       height: "30px",
-                       marginLeft: "4rem",
-                     }}
                      className="input-email-mobile"
                    />
                  </Box>
                  <Box
                    display={{ xs: "block", sm: "flex" }}
                    alignItems="center"
-                   sx={{ gap: "6rem" }}
+                   justifyContent={"space-evenly"}
+                   gap={5}
                  >
                    <Typography
                      style={{
                        color: "gray",
                        fontFamily: "Delicatessen Script",
-                     }}
-                     sx={{
-                       marginLeft: { xs: "4rem", sm: "2.5rem" },
-                       marginTop: { xs: "3rem", sm: "1.5rem" },
-                       fontSize: { xs: "19px", sm: "20px" },
+                       whiteSpace: "nowrap",
                      }}
                    >
                      Nom *
                    </Typography>
                    <Input
-                     onChange={handleInputChangeClientGranulesDeBois}
+                     onChange={handleInputChangeClientBoisChauffage}
                      placeholder="Entrer votre Nom"
                      name="last_name"
-                     style={{
-                       width: "250px",
-                       height: "30px",
-                       marginLeft:
-                         window.innerWidth < 600 ? "3.9rem" : "5.6rem",
-                       marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
-                     }}
                    />
                  </Box>
                  <Box
                    display={{ xs: "block", sm: "flex" }}
                    alignItems="center"
-                   sx={{ gap: "6rem" }}
+                   justifyContent={"space-evenly"}
+                   gap={5}
                  >
                    <Typography
                      style={{
                        color: "gray",
                        fontFamily: "Delicatessen Script",
-                     }}
-                     sx={{
-                       marginLeft: { xs: "4rem", sm: "2.5rem" },
-                       marginTop: { xs: "3rem", sm: "1.5rem" },
-                       fontSize: { xs: "19px", sm: "20px" },
+                       whiteSpace: "nowrap",
                      }}
                    >
                      Email *
                    </Typography>
                    <Input
-                     onChange={handleInputChangeClientGranulesDeBois}
+                     onChange={handleInputChangeClientBoisChauffage}
                      placeholder="Entrer votre Email"
                      name="email"
-                     style={{
-                       width: "250px",
-                       height: "30px",
-                       marginLeft:
-                         window.innerWidth < 600 ? "3.9rem" : "5.3rem",
-                       marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
-                     }}
                    />
                  </Box>
                  <Box
                    display={{ xs: "block", sm: "flex" }}
                    alignItems="center"
-                   sx={{ gap: "5.5rem" }}
+                   justifyContent={"space-evenly"}
                  >
                    <Typography
                      style={{
                        color: "gray",
                        fontFamily: "Delicatessen Script",
-                     }}
-                     sx={{
-                       marginLeft: { xs: "4rem", sm: "2.5rem" },
-                       marginTop: { xs: "3rem", sm: "1.5rem" },
-                       fontSize: { xs: "19px", sm: "20px" },
+                       whiteSpace: "nowrap",
                      }}
                    >
                      Mot de Passe *
                    </Typography>
-                   <Space
-                     direction="vertical"
-                     style={{
-                       width: "250px",
-                       height: "30px",
-                       marginLeft: window.innerWidth < 600 ? "3.9rem" : "2rem",
-                       marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
-                     }}
-                   >
-                     <Input.Password
-                       onChange={handleInputChangeClientGranulesDeBois}
-                       name="password"
-                       placeholder="Entrer votre Mot de passe"
-                       iconRender={(visible) =>
-                         visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                       }
-                     />
-                   </Space>
+                   <Input.Password
+                     onChange={handleInputChangeClientBoisChauffage}
+                     name="password"
+                     placeholder="Entrer votre Mot de passe"
+                     iconRender={(visible) =>
+                       visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                     }
+                   />
                  </Box>
                  <Box
                    display={{ xs: "block", sm: "flex" }}
                    alignItems="center"
-                   sx={{ gap: "1rem" }}
+                   justifyContent={"space-evenly"}
                  >
                    <Typography
                      style={{
                        color: "gray",
                        fontFamily: "Delicatessen Script",
-                     }}
-                     sx={{
-                       marginLeft: { xs: "4rem", sm: "2.5rem" },
-                       marginTop: { xs: "3rem", sm: "3rem" },
-                       fontSize: { xs: "19px", sm: "20px" },
+                       whiteSpace: "nowrap",
                      }}
                    >
                      Confirmer le Mot de Passe *
                    </Typography>
-                   <Space
-                     direction="vertical"
-                     style={{
-                       width: "250px",
-                       height: "30px",
-                       marginLeft: window.innerWidth < 600 ? "3.9rem" : "0",
-                       marginTop: window.innerWidth < 600 ? "1rem" : "2rem",
-                     }}
-                   >
-                     <Input.Password
-                       onChange={handleInputChangeClientGranulesDeBois}
-                       name="confirmer_mot_de_passe"
-                       placeholder="Confirmer le mot de passe"
-                       iconRender={(visible) =>
-                         visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                       }
-                     />
-                   </Space>
-                 </Box>
-                 <Box
-                   display={"flex"}
-                   alignItems="center"
-                   marginTop={"2rem"}
-                   marginLeft={"2rem"}
-                   sx={{ gap: "1rem" }}
-                 >
-                   <Checkbox
-                     {...label}
-                     defaultChecked
-                     onChange={handleInputChangeClientGranulesDeBois}
+                   <Input.Password
+                    onChange={handleInputChangeClientBoisChauffage}
+                     name="confirmer_mot_de_passe"
+                     placeholder="Confirmer le mot de passe"
+                     iconRender={(visible) =>
+                       visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                     }
                    />
-                   <Typography
-                     style={{
-                       fontSize: window.innerWidth < 600 ? "13px" : "16px",
-                       color: theme.palette.grey[700],
-                       fontFamily: "Delicatessen Script",
-                     }}
-                   >
-                     Déclare avoir lu les conditions générales de vente, les
-                     conditions générales <br /> d'utilisation et la politique
-                     de confidentialité de ASF.
-                   </Typography>
-                 </Box>
-                 <Box
-                   display={"flex"}
-                   alignItems="center"
-                   marginTop={"2rem"}
-                   marginLeft={"2rem"}
-                   sx={{ gap: "1rem" }}
-                 >
-                   <Checkbox
-                     {...label}
-                     defaultChecked
-                     onChange={handleInputChangeClientGranulesDeBois}
-                   />
-                   <Typography
-                     style={{
-                       fontSize: window.innerWidth < 600 ? "13px" : "16px",
-                       color: theme.palette.grey[700],
-                       fontFamily: "Delicatessen Script",
-                     }}
-                   >
-                     Accepte de recevoir les promotions sur les produits et
-                     services proposés par ASF.
-                   </Typography>
                  </Box>
                  <div
                    style={{
@@ -966,181 +809,19 @@ function MonCompte() {
                    }}
                  >
                    <Button
-                     onClick={handleSubmitClientGranulesDeBois}
-                     type="primary"
-                     style={{
-                       backgroundColor: "#333",
-                       color: "#fff",
-                       borderRadius: "0",
-                       width: 200,
-                       height: 50,
-                       fontSize: 20,
-                       fontFamily: "Montserrat",
+                     sx={{
+                       bgcolor: "rgb(101, 154, 154)",
+                       ":hover": { bgcolor: "rgb(101, 174, 174)" },
                      }}
+                     onClick={handleSubmitClientBoisChauffage}
+                     variant="contained"
                    >
                      S'INCRIRE
                    </Button>
                  </div>
-               </Box>
+               </Stack>
               )}
-
-              {selectedOption === "ClientGaz&Èlectrecité" && (
-                <Box>
-                  <Box
-                    display={{ xs: "block", sm: "flex" }}
-                    alignItems="center"
-                    sx={{ gap: "2rem" }}
-                  >
-                    <Typography
-                      style={{
-                        color: "gray",
-                        fontFamily: "Delicatessen Script",
-                      }}
-                      sx={{
-                        marginLeft: { xs: "4rem", sm: "2.5rem" },
-                        marginTop: { xs: "3rem", sm: "3.5rem" },
-                        fontSize: { xs: "19px", sm: "20px" },
-                      }}
-                    >
-                      Reference Client *
-                    </Typography>
-                    <Input
-                    onChange={handleInputChangeClientGazElectrecite}
-                    name="referenceClient"
-                      placeholder="Reference"
-                      style={{
-                        width: "250px",
-                        height: "30px",
-                        marginLeft: "4rem",
-                        marginTop: window.innerWidth < 600 ? "1rem" : "3.8rem",
-                      }}
-                    />
-                  </Box>
-                  <Box
-                    display={{ xs: "block", sm: "flex" }}
-                    alignItems="center"
-                    sx={{ gap: "2rem" }}
-                  >
-                    <Typography
-                      style={{
-                        color: "gray",
-                        fontFamily: "Delicatessen Script",
-                      }}
-                      sx={{
-                        marginLeft: { xs: "4rem", sm: "2.5rem" },
-                        marginTop: { xs: "3rem", sm: "3.5rem" },
-                        fontSize: { xs: "19px", sm: "20px" },
-                      }}
-                    >
-                      N° PCE ou PDL *
-                    </Typography>
-                    <Input
-                     onChange={handleInputChangeClientGazElectrecite}
-                      placeholder=" N° PCE ou PDL"
-                      name="numeroPCEouPDL"
-                      style={{
-                        width: "250px",
-                        height: "30px",
-                        marginLeft:  window.innerWidth < 600 ? "4rem" : "5.2rem",
-                        marginTop: window.innerWidth < 600 ? "1rem" : "4.8rem",
-                      }}
-                    />
-                  </Box>
-                  <Box
-                    display={{ xs: "block", sm: "flex" }}
-                    alignItems="center"
-                    sx={{ gap: "7.6rem" }}
-                  >
-                    <Typography
-                      style={{
-                        color: "gray",
-                        fontFamily: "Delicatessen Script",
-                      }}
-                      sx={{
-                        marginLeft: { xs: "4rem", sm: "2.5rem" },
-                        marginTop: { xs: "3rem", sm: "3.5rem" },
-                        fontSize: { xs: "19px", sm: "20px" },
-                      }}
-                    >
-                      Email *
-                    </Typography>
-                    <Input
-                     onChange={handleInputChangeClientGazElectrecite}
-                      placeholder="Entrer votre Email"
-                      name="email"
-                      style={{
-                        width: "250px",
-                        height: "30px",
-                        marginLeft:window.innerWidth < 600 ? "4.2rem" : "4.8rem",
-                        marginTop: window.innerWidth < 600 ? "1rem" : "3.8rem",
-                      }}
-                    />
-                  </Box>
-                  <Box
-                    display={"flex"}
-                    alignItems="center"
-                    marginTop={"2rem"}
-                    marginLeft={"2rem"}
-                    sx={{ gap: "1rem" }}
-                  >
-                    <Checkbox {...label} defaultChecked />
-                    <Typography
-                      style={{
-                        fontSize: window.innerWidth < 600 ? "13px" : "16px",
-                        color: theme.palette.grey[700],
-                        fontFamily: "Delicatessen Script",
-                      }}
-                    >
-                      Déclare avoir lu les conditions générales de vente, les
-                      conditions générales <br /> d'utilisation et la politique
-                      de confidentialité de ASF.
-                    </Typography>
-                  </Box>
-                  <Box
-                    display={"flex"}
-                    alignItems="center"
-                    marginTop={"2rem"}
-                    marginLeft={"2rem"}
-                    sx={{ gap: "1rem" }}
-                  >
-                    <Checkbox {...label} defaultChecked />
-                    <Typography
-                      style={{
-                        fontSize: window.innerWidth < 600 ? "13px" : "16px",
-                        color: theme.palette.grey[700],
-                        fontFamily: "Delicatessen Script",
-                      }}
-                    >
-                      Accepte de recevoir les promotions sur les produits et
-                      services proposés par ASF.
-                    </Typography>
-                  </Box>
-                  <div
-                    style={{
-                      justifyContent: "center",
-                      display: "flex",
-                      marginTop: "2rem",
-                    }}
-                  >
-                    <Button
-                    onClick={handleSubmitClientGazElectrecite}
-                      type="primary"
-                      style={{
-                        backgroundColor: "#333",
-                        color: "#fff",
-                        borderRadius: "0",
-                        width: 200,
-                        height: 50,
-                        fontSize: 20,
-                        fontFamily: "Montserrat",
-                      }}
-                    >
-                      S'INCRIRE
-                    </Button>
-                  </div>
-                </Box>
-              )}
-            </Stack>
+            </Box>
           </Stack>
         </Grid>
       </Grid>

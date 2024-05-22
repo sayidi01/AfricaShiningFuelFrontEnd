@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import UserContext from "../context/userContext";
 import { axiosInstance } from "../src/api";
-import { toast } from "react-hot-toast";
 import { CircularProgress } from "@mui/material";
 import { Outlet } from "react-router-dom";
 

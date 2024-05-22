@@ -4,6 +4,7 @@ import { Box, Container, Grid, Typography, Button } from "@mui/material";
 import flameFioul from "../src/images/flame_fioul.png";
 import iconsBois from "../src/images/icons_bois.png";
 import iconsElectrecite from "../src/images/icons_electrecite.png";
+import iconsGazoil from "../src/images/gazoil-icons00.png"
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import CARNETADRESSE from "./CarnetAdresse"
@@ -82,7 +83,7 @@ function AccountCustomer() {
               }}
               endIcon={<img src={flameFioul} alt="icons fioul" width={50} />}
             >
-              ESPACE FIOUL
+              ESPACE Fuel oil n° 2
             </Button>
             <Button
               endIcon={<img src={iconsBois} alt="icons fioul" width={50} />}
@@ -98,11 +99,11 @@ function AccountCustomer() {
                 },
               }}
             >
-              ESPACE GRANULÉS DE BOIS
+              ESPACE BOIS CHAUFFAGE
             </Button>
             <Button
               endIcon={
-                <img src={iconsElectrecite} alt="icons fioul" width={50} />
+                <img src={iconsGazoil} alt="icons fioul" width={50} />
               }
               variant="contained"
               sx={{
@@ -113,7 +114,7 @@ function AccountCustomer() {
                 fontWeight: "bold",
               }}
             >
-              ESPACE GAZ & ÉLECTRICITÉ
+              ESPACE GAZOIL
             </Button>
           </Box>
           <Box

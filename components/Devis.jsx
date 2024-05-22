@@ -327,7 +327,7 @@ function Devis({ title, Volume, Société }) {
                   color: "gray",
                 }}
               >
-                contact@AfricaShiningFuel.ma
+               contact@asf.ma
               </Typography>
             </Box>
             <Box

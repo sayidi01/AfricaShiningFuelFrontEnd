@@ -1,5 +1,4 @@
 import Gazoil from "./Gazoil.jsx";
-
 import MonCompte from "./MonCompte.jsx";
 import MotDepasseOublier from "./MotDepasseOublier.jsx";
 import Fuel2 from "./Fuel2.jsx";
@@ -33,158 +32,164 @@ import AccountCustomer from "../private/AccountCustomer.jsx";
 import Dashbord from "../private/Dashbord.jsx";
 import PrivateRoute from "../private/PrivateRoute.jsx";
 import { createBrowserRouter } from "react-router-dom";
-import Orders from "../private/Orders.jsx"
+import PublicRoute from "./PublicRoute.jsx";
 
 export const PublicRoutes = [
   {
     id: 1,
-    path: "/gazoil",
-    element: <Gazoil />,
-  },
-  {
-    id: 2,
-    path: "/",
-    element: <LandingPage />,
-  },
-  {
-    id: 3,
-    path: "/compte",
-    element: <MonCompte />,
-  },
-  {
-    id: 4,
-    path: "/motdepasseoublier",
-    element: <MotDepasseOublier />,
-  },
-  {
-    id: 5,
-    path: "/Fuel2",
-    element: <Fuel2 />,
-  },
-  {
-    id: 6,
-    path: "/Lubrifiants",
-    element: <Lubrifiants />,
-  },
-  {
-    id: 7,
-    path: "/Citerne",
-    element: <Citerne />,
-  },
-  {
-    id: 8,
-    path: "/BornesRecharge",
-    element: <BorneDeRecharge />,
-  },
-  {
-    id: 9,
-    path: "/produitnettoyage",
-    element: <ProduitNettoyage />,
-  },
-  {
-    id: 10,
-    path: "/cartecarburant",
-    element: <CarteCarburant />,
-  },
-  {
-    id: 11,
-    path: "/hydrogenevert",
-    element: <HydrogeneVert />,
-  },
-  {
-    id: 12,
-    path: "/livraison",
-    element: <Livraison />,
-  },
-  {
-    id: 13,
-    path: "/boischauffage",
-    element: <BoisDeChauffage />,
-  },
-  {
-    id: 14,
-    path: "/nettoyagecuve",
-    element: <NettoyageCuve />,
-  },
-  {
-    id: 15,
-    path: "/nettoyagedomicile",
-    element: <NettoyageDomicile />,
-  },
-  {
-    id: 16,
-    path: "/jaugeconnecte",
-    element: <JaugeConnecte />,
-  },
-  {
-    id: 17,
-    path: "/collectelubrifiant",
-    element: <CollecteLubrifiant />,
-  },
-  {
-    id: 18,
-    path: "/pourquoichoisirASF",
-    element: <PourquoiChoisirASF />,
-  },
-  {
-    id: 19,
-    path: "/presentationgroupe",
-    element: <PresentationduGroupe />,
-  },
-  {
-    id: 20,
-    path: "/engagementrse",
-    element: <EngagementRSE />,
-  },
-  {
-    id: 21,
-    path: "/politiqueRH",
-    element: <PolitiqueRH />,
-  },
-  {
-    id: 22,
-    path: "/offrecompetitive",
-    element: <OffreCompetitive />,
-  },
-  {
-    id: 23,
-    path: "/equipedediees",
-    element: <EquipeDediees />,
-  },
-  {
-    id: 24,
-    path: "/abonnementtelepage",
-    element: <AbonnementTelepage />,
-  },
-  {
-    id: 25,
-    path: "/quisommesnous",
-    element: <QuisSommesNous />,
-  },
-  {
-    id: 26,
-    path: "/relationsinvestiseurs",
-    element: <RelationsInvestiseurs />,
-  },
-  {
-    id: 27,
-    path: "/ActualiteASF",
-    element: <ActualitéASF />,
-  },
-  {
-    id: 28,
-    path: "/contacteznous",
-    element: <ContactezNous />,
-  },
-  {
-    id: 29,
-    path: "/order",
-    element: <Maquette />,
-  },
-  {
-    id: 30,
-    path: "/shipping",
-    element: <Shipping />,
+    element: <PublicRoute />,
+    children: [
+      {
+        id: 1,
+        path: "/gazoil",
+        element: <Gazoil />,
+      },
+      {
+        id: 2,
+        path: "/",
+        element: <LandingPage />,
+      },
+      {
+        id: 3,
+        path: "/compte",
+        element: <MonCompte />,
+      },
+      {
+        id: 4,
+        path: "/motdepasseoublier",
+        element: <MotDepasseOublier />,
+      },
+      {
+        id: 5,
+        path: "/Fuel2",
+        element: <Fuel2 />,
+      },
+      {
+        id: 6,
+        path: "/Lubrifiants",
+        element: <Lubrifiants />,
+      },
+      {
+        id: 7,
+        path: "/Citerne",
+        element: <Citerne />,
+      },
+      {
+        id: 8,
+        path: "/BornesRecharge",
+        element: <BorneDeRecharge />,
+      },
+      {
+        id: 9,
+        path: "/produitnettoyage",
+        element: <ProduitNettoyage />,
+      },
+      {
+        id: 10,
+        path: "/cartecarburant",
+        element: <CarteCarburant />,
+      },
+      {
+        id: 11,
+        path: "/hydrogenevert",
+        element: <HydrogeneVert />,
+      },
+      {
+        id: 12,
+        path: "/livraison",
+        element: <Livraison />,
+      },
+      {
+        id: 13,
+        path: "/boischauffage",
+        element: <BoisDeChauffage />,
+      },
+      {
+        id: 14,
+        path: "/nettoyagecuve",
+        element: <NettoyageCuve />,
+      },
+      {
+        id: 15,
+        path: "/nettoyagedomicile",
+        element: <NettoyageDomicile />,
+      },
+      {
+        id: 16,
+        path: "/jaugeconnecte",
+        element: <JaugeConnecte />,
+      },
+      {
+        id: 17,
+        path: "/collectelubrifiant",
+        element: <CollecteLubrifiant />,
+      },
+      {
+        id: 18,
+        path: "/pourquoichoisirASF",
+        element: <PourquoiChoisirASF />,
+      },
+      {
+        id: 19,
+        path: "/presentationgroupe",
+        element: <PresentationduGroupe />,
+      },
+      {
+        id: 20,
+        path: "/engagementrse",
+        element: <EngagementRSE />,
+      },
+      {
+        id: 21,
+        path: "/politiqueRH",
+        element: <PolitiqueRH />,
+      },
+      {
+        id: 22,
+        path: "/offrecompetitive",
+        element: <OffreCompetitive />,
+      },
+      {
+        id: 23,
+        path: "/equipedediees",
+        element: <EquipeDediees />,
+      },
+      {
+        id: 24,
+        path: "/abonnementtelepage",
+        element: <AbonnementTelepage />,
+      },
+      {
+        id: 25,
+        path: "/quisommesnous",
+        element: <QuisSommesNous />,
+      },
+      {
+        id: 26,
+        path: "/relationsinvestiseurs",
+        element: <RelationsInvestiseurs />,
+      },
+      {
+        id: 27,
+        path: "/ActualiteASF",
+        element: <ActualitéASF />,
+      },
+      {
+        id: 28,
+        path: "/contacteznous",
+        element: <ContactezNous />,
+      },
+      {
+        id: 29,
+        path: "/order",
+        element: <Maquette />,
+      },
+      {
+        id: 30,
+        path: "/shipping",
+        element: <Shipping />,
+      },
+    ],
   },
 ];
 
@@ -205,14 +210,13 @@ export const router = createBrowserRouter([
   {
     id: 32,
     path: "/dashbord",
-    element: <PrivateRoute/>,
-    children:[
+    element: <PrivateRoute />,
+    children: [
       {
         id: 1,
         path: "",
-        element: <Dashbord/>
+        element: <Dashbord />,
       },
-     
-    ]
-  }
+    ],
+  },
 ]);

@@ -1,33 +1,29 @@
 import { Typography, Grid, Stack, Box } from "@mui/material";
 import React, { useCallback, useState } from "react";
-import NavBar from "./NavBar"
+import NavBar from "./NavBar";
 import { Button, Input } from "antd";
 import Footer from "./Footer";
 import { axiosInstance } from "../src/api";
 
-
 function MotDepasseOublié() {
-    const [email, setEmail] = useState("")
+  // const [email, setEmail] = useState("")
 
+  //  const handleInputemail = ((e) => {
+  //     setEmail(e.target.value)
+  //  })
 
-     const handleInputemail = ((e) => {
-        setEmail(e.target.value)
-     }) 
+  //  const handleSubmitEmail = useCallback(() => {
+  //   axiosInstance
+  //   .post("/customer/forgot-password", {email})
+  //   .then((data) => {
+  //     console.log(data)
+  //     console.log("response api", data)
+  //   })
+  //   .catch((err) => {
+  //     console.log(err,"Erreur lors de la requête")
+  //   })
 
-
-     const handleSubmitEmail = useCallback(() => {
-      axiosInstance
-      .post("/customer/forgot-password", {email})
-      .then((data) => {
-        console.log(data)
-        console.log("response api", data)
-      })
-      .catch((err) => {
-        console.log(err,"Erreur lors de la requête")
-      })
-
-     },[email])
-
+  //  },[email])
 
   return (
     <div>
@@ -49,17 +45,19 @@ function MotDepasseOublié() {
         sx={{
           backgroundColor: " rgba(235, 235, 235, 0.5) ",
           marginTop: { xs: "1rem", sm: "3.5rem" },
-          paddingY: {xs: 8, sm: 12},
-
-       
+          paddingY: { xs: 8, sm: 12 },
         }}
         container
       >
-        <Grid item xs={12} sm={12} sx={{
-        backgroundColor: "white",
-        paddingY: 10,
-        
-      }} >
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          sx={{
+            backgroundColor: "white",
+            paddingY: 10,
+          }}
+        >
           <Typography
             sx={{
               fontFamily: "Arial",
@@ -96,9 +94,7 @@ function MotDepasseOublié() {
               Email *
             </Typography>
             <Input
-            onChange={handleInputemail}
-             value={email}
-             name="email"
+              name="email"
               style={{
                 width: "350px",
                 height: "30px",
@@ -115,7 +111,6 @@ function MotDepasseOublié() {
             }}
           >
             <Button
-            onClick={handleSubmitEmail}
               type="primary"
               style={{
                 backgroundColor: "#333",
@@ -132,7 +127,7 @@ function MotDepasseOublié() {
           </div>
         </Grid>
       </Grid>
-      <Typography style={{border: '1px solid gray '}}></Typography>
+      <Typography style={{ border: "1px solid gray " }}></Typography>
       <Footer />
     </div>
   );

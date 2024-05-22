@@ -20,16 +20,16 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
     email: "",
     password: "",
   });
-  const [customerClientFioul, setCustomerClientFioul] = useState({
+  const [customerClientGazoil, setCustomerClientGazoil] = useState({
     first_name: "",
     last_name: "",
     email: "",
     password: "",
   });
 
-  const handleInputChangeClientFioul = (e) => {
+  const handleInputChangeClientGazoil = (e) => {
     const { name, value } = e.target;
-    setCustomerClientFioul((prev) => ({
+    setCustomerClientGazoil((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -95,11 +95,11 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
       });
   }, [loginCustomer, location]);
 
-  const handleSubmitClientFioul = useCallback(() => {
-    console.log(customerClientFioul);
+  const handleSubmitClientGazoil = useCallback(() => {
+    console.log(customerClientGazoil);
 
     axiosInstance
-      .post("/customer", { ...customerClientFioul, customerType: "ClientFioul" })
+      .post("/customer", { ...customerClientGazoil, customerType: "ClientGazoil" })
       .then((data) => {
         console.log(data);
         setData(data);
@@ -115,7 +115,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [customerClientFioul, location]);
+  }, [customerClientGazoil, location]);
 
   return (
     <div>
@@ -189,7 +189,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       Prénom *
                     </Typography>
                     <Input
-                      onChange={handleInputChangeClientFioul}
+                      onChange={handleInputChangeClientGazoil}
                       placeholder="Entrer votre Prenom"
                       name="first_name"
                       style={{
@@ -218,7 +218,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       Nom *
                     </Typography>
                     <Input
-                      onChange={handleInputChangeClientFioul}
+                      onChange={handleInputChangeClientGazoil}
                       placeholder="Entrer votre Nom"
                       name="last_name"
                       style={{
@@ -247,7 +247,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       Email *
                     </Typography>
                     <Input
-                      onChange={handleInputChangeClientFioul}
+                      onChange={handleInputChangeClientGazoil}
                       placeholder="Entrer votre Email"
                       name="email"
                       style={{
@@ -276,7 +276,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       Mot de passe *
                     </Typography>
                     <Input.Password
-                      onChange={handleInputChangeClientFioul}
+                      onChange={handleInputChangeClientGazoil}
                       name="password"
                       placeholder="Entrer votre Mot de passe"
                       iconRender={(visible) =>
@@ -291,7 +291,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
 
                   <Button
                     sx={{ backgroundColor: "#659a9a", color: "white" }}
-                    onClick={handleSubmitClientFioul}
+                    onClick={handleSubmitClientGazoil}
                   >
                     Créer un compte
                   </Button>

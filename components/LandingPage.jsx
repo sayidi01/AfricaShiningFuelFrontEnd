@@ -15,6 +15,7 @@ import globeTerestre from "../src/images/globe terrestre.png";
 import stations2 from "../src/images/globe terrestre.png";
 import maps from "../src/images/maps.png";
 import SliderNosServices from "./SliderNosServices";
+import { isProd } from "../src/config";
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -80,6 +81,7 @@ function LandingPage() {
                 </Typography>
               </div>
               <Button
+              onClick={() => navigate("/quisommesnous")}
                 variant="contained"
                 color="primary"
                 size="large"

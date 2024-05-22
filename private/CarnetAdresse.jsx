@@ -38,7 +38,7 @@ function CarnetAdresse() {
   const updateData = useCallback(() => {
     console.log(carnetDadresse);
     axiosInstance
-      .put("/customer/fioul/edit", { ...carnetDadresse })
+      .put("/customer/gazoil/edit", { ...carnetDadresse })
       .then(({ data }) => {
         console.log(data);
         toast.success("vos informations sont modifier et sauvgarder");

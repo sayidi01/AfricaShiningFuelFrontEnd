@@ -40,7 +40,7 @@ function InformationsCompte() {
       return;
     }
     axiosInstance.put(
-      `/customer/clientFioul/edit/${data.data._id}`,
+      `/customer/clientGazoil/edit/${data.data._id}`,
       { currentPassword, newPassword },
       ...data
     );

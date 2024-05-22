@@ -238,7 +238,7 @@ function Footer({ marginTop, width }) {
                   href="https://mail.google.com/mail/u/0/?hl=fr&hl=fr#inbox?compose=new"
                   style={{ fontSize: 16, fontFamily: "serif" }}
                 >
-                  contact@AfricaShiningFuel.ma
+                 contact@asf.ma
                 </a>
               </div>
             </div>
