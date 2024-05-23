@@ -33,7 +33,7 @@ function AccountCustomer() {
   return (
     <div>
       <NavBar />
-      <Container sx={{ my: 8 }} maxWidth={"lg"} style={{ padding: "none" }}>
+      <Container sx={{ my: 8}} maxWidth={"lg"} style={{padding: "none"}}>
         <Grid item xs={12} md={12}>
           <Typography
             sx={{

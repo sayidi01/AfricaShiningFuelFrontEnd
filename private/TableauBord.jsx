@@ -31,7 +31,7 @@ function TableauBord({ onEditClick }) {
 },[])
   return (
     <div>
-      <Container sx={{ my: 8 }} maxWidth={"lg"} style={{ padding: "none" }}>
+      <Container sx={{ my: 8 }} maxWidth={"lg"} style={{padding: "none"}}>
         <Grid
           container
           sx={{
