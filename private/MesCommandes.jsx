@@ -108,34 +108,7 @@ function MesCommandes() {
               COMMANDES RÉCENTES
             </Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            sx={{ display: { xs: "none", md: "block" }, paddingTop: 2 }}
-          >
-            {commandes.length === 0 ? (
-              <Typography
-                sx={{
-                  backgroundColor: "cornsilk",
-                  color: "#B99470",
-                  fontSize: { xs: 18, md: 20 },
-                  fontWeight: "bold",
-                }}
-              >
-                Vous n'avez jamais commandé.
-              </Typography>
-            ) : (
-              <Stack>
-                <Table
-                  rowKey="key"
-                  columns={columns}
-                  dataSource={commandes}
-                  style={{ width: "100%" }}
-                />
-              </Stack>
-            )}
-          </Grid>
+          
           <Grid item xs={12} sm={6}>
             {commandes.length === 0 ? (
               <Typography

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { isProd } from "./config";
+import { isProd } from "../src/config";
 
 const accessControlAllowOrigin = isProd
   ? "https://asf.ma"
