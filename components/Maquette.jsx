@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import { Container, Typography, Grid, Box, Stack } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Grid,
+  Box,
+  Stack,
+  CircularProgress,
+} from "@mui/material";
 import { Input, Select, Radio, Button, ConfigProvider, Space } from "antd";
 import { TinyColor } from "@ctrl/tinycolor";
 import iconsCamion from "../src/images/icons-camion-c1.png";
@@ -23,7 +30,7 @@ function Maquette() {
   const { isConnected } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const [cities, setCities] = useState([]); // State to store city data
+  const [cities, setCities] = useState("idle"); // State to store city data
   const [selectedCityId, setSelectedCityId] = useState(""); // State to store selected city ID
   const [selectedCityName, setSelectedCityName] = useState(""); // State to store selected city name
   const [quantity, setQuantity] = useState(0); // Set quantity to 0 by default
@@ -36,7 +43,7 @@ function Maquette() {
 
   const location = useLocation();
 
-console.log(quantity)
+  console.log(quantity);
 
   useEffect(() => {
     const getParamsFromURL = () => {
@@ -49,20 +56,22 @@ console.log(quantity)
     };
 
     const existingData = getParamsFromURL();
-    
-    if(Object.keys(existingData).length == 0) return
 
-    console.log(existingData.quantity)
-    if(existingData.codePostal) setCodePostal(existingData.codePostal)
-    if(existingData.quantity) setQuantity(existingData.quantity)
-    if(existingData.selectedProduct) setSelectedProduct(existingData.selectedProduct)
-    if(existingData.selectedDelivery) setSelectedDelivery(existingData.selectedDelivery)
-    if(existingData.city) setSelectedCityId(Number(existingData.city))
-    if(existingData.pricePerLitre) setPricePerLitre(Number(existingData.pricePerLitre))
+    if (Object.keys(existingData).length == 0) return;
 
-    console.log(existingData)
+    console.log(existingData.quantity);
+    if (existingData.codePostal) setCodePostal(existingData.codePostal);
+    if (existingData.quantity) setQuantity(existingData.quantity);
+    if (existingData.selectedProduct)
+      setSelectedProduct(existingData.selectedProduct);
+    if (existingData.selectedDelivery)
+      setSelectedDelivery(existingData.selectedDelivery);
+    if (existingData.city) setSelectedCityId(Number(existingData.city));
+    if (existingData.pricePerLitre)
+      setPricePerLitre(Number(existingData.pricePerLitre));
+
+    console.log(existingData);
   }, []);
-  
 
   const onSignIn = () => {
     if (
@@ -95,7 +104,7 @@ console.log(quantity)
     const total = calculateTotal();
     const price = calculatePrice();
 
-    const url = `/shipping?codePostal=${codePostal}&quantity=${quantity}&selectedProduct=${selectedProduct}&selectedDelivery=${selectedDelivery}&calculateTotal=${total}&calculatePrice=${price}&city=${selectedCityId}`;
+    const url = `/shipping?codePostal=${codePostal}&quantity=${quantity}&selectedProduct=${selectedProduct}&selectedDelivery=${selectedDelivery}&calculateTotal=${total}&calculatePrice=${price}&city=${selectedCityId}&pricePerLitre=${pricePerLitre}`;
     navigate(url);
   };
 
@@ -145,14 +154,14 @@ console.log(quantity)
     if (selectedCityId) {
       const selectedCity = cities.find((city) => city.id === selectedCityId);
       if (selectedCity) {
-        console.log(selectedCity.price)
+        console.log(selectedCity.price);
         pricePerLitre += parseFloat(selectedCity.price); // Add price per city to the default price per litre
         priceFioul += parseFloat(selectedCity.price);
       } else return "City not found";
     }
-    
+
     const selectedPrd = selectedProduct.trim().toLowerCase();
-    const isFuel = selectedPrd.includes('fuel');
+    const isFuel = selectedPrd.includes("fuel");
 
     let totalPrice = (isFuel ? priceFioul : pricePerLitre) * quantity;
 
@@ -168,6 +177,8 @@ console.log(quantity)
     const totalPrice = parseFloat(calculatePrice()); // Convert totalPrice to a number
     return totalPrice.toFixed(2); // Returning total price with 2 decimal places
   };
+
+  if (cities == "idle") return <CircularProgress />;
 
   return (
     <div>
@@ -453,7 +464,9 @@ console.log(quantity)
                       marginTop: 5,
                     }}
                   >
-                    {selectedProduct ? selectedProduct: "Sélectionner un produit"}
+                    {selectedProduct
+                      ? selectedProduct
+                      : "Sélectionner un produit"}
                   </Button>
                 </ConfigProvider>
               </Space>

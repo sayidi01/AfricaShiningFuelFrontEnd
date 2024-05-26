@@ -105,9 +105,9 @@ function MonCompte() {
         ...customerClientGazoil,
         customerType: selectedOption,
       })
-      .then((data) => {
-        console.log(data);
-        setData(data);
+      .then(({data}) => {
+        console.log(data.data);
+        setData(data.data);
         setisConnected(true);
         navigate("/AccountCustomer");
         toast.success(data.message ?? "votre compte se crée avec succès");
@@ -125,9 +125,9 @@ function MonCompte() {
         ...customerClientFuelOil2,
         customerType: selectedOption,
       })
-      .then((data) => {
-        console.log(data);
-        setData(data);
+      .then(({data}) => {
+        console.log(data.data);
+        setData(data.data);
         setisConnected(true);
         navigate("/AccountCustomer");
         toast.success(data.message ?? "votre compte se crée avec succès");
@@ -144,7 +144,7 @@ function MonCompte() {
         ...clientBoisChauffage,
         customerType: selectedOption,
       })
-      .then((response) => {
+      .then(({response}) => {
         console.log(response.data);
         setData(response.data);
         setisConnected(true);

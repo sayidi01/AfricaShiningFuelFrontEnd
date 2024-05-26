@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -16,12 +16,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { alpha } from '@mui/material/styles';
+import { alpha } from "@mui/material/styles";
 
-
-
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
 import Customers from "../src/images/customers-icons.png";
 import Products from "../src/images/products-icons.png";
 import Orders from "../src/images/orders-icons.png";
@@ -32,9 +30,9 @@ import NewsLetter from "../src/images/nwesletter-icons.png";
 import Logout from "../src/images/Logout-icons.png";
 import CantactezNous from "../src/images/cantactez-nous.png";
 import Logo from "../src/images/LOGO_AFRICA_SHINING.png";
-import Order from "../private/Orders";
-import Home from "../src/images/home-icons.png"
 
+import Home from "../src/images/home-icons.png";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -54,6 +52,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
       }),
       marginLeft: 0,
     }),
+    overflowX: 'auto'
   })
 );
 
@@ -82,55 +81,52 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.black, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.black, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  }));
-  
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }));
-  
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: theme.palette.common.black,
-    width: '100%',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
-          width: '20ch',
-        },
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.black, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.black, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: theme.palette.common.black,
+  width: "100%",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
       },
     },
-  }));
+  },
+}));
 
 function Dashbord() {
-    const [selectedItem, setSelectedItem] = useState(null);
+  const navigate = useNavigate();
 
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
-  };
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -158,14 +154,14 @@ function Dashbord() {
             <img src={Logo} alt="logo" width={180} />
           </div>
           <Search>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase
-        placeholder="Search…"
-        inputProps={{ 'aria-label': 'search' }}
-      />
-    </Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -203,10 +199,15 @@ function Dashbord() {
             "Newsletter",
             "Contactez-Nous",
           ].map((text, index) => (
-            
             <ListItem key={text} disablePadding>
-              <ListItemButton onClick={() => handleItemClick(text)}>
-              {text === "Home" && (
+              <ListItemButton
+                onClick={
+                  text === "Orders"
+                    ? () => navigate("/dashbord/orders")
+                    : undefined
+                }
+              >
+                {text === "Home" && (
                   <ListItemIcon>
                     <img src={Home} width={30} alt="Home" />
                   </ListItemIcon>
@@ -222,11 +223,9 @@ function Dashbord() {
                   </ListItemIcon>
                 )}
                 {text === "Orders" && (
-                   
                   <ListItemIcon>
                     <img src={Orders} alt="Orders" width={30} />
                   </ListItemIcon>
-                  
                 )}
                 {text === "Products" && (
                   <ListItemIcon>
@@ -262,7 +261,6 @@ function Dashbord() {
                 />
               </ListItemButton>
             </ListItem>
-            
           ))}
         </List>
         <Divider />
@@ -289,8 +287,7 @@ function Dashbord() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        {selectedItem === "Orders" && <Order />}
-                  
+        <Outlet />
       </Main>
     </Box>
   );

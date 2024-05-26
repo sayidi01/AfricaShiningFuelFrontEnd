@@ -1,5 +1,5 @@
 import { Container, Grid, Typography, Box } from "@mui/material";
-import React, { useState, useCallback, useContext, useEffect } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import { Button, Input } from "antd";
 import Footer from "../components/Footer";
 import { axiosInstance } from "../src/api";
@@ -7,11 +7,10 @@ import UserContext from "../context/userContext";
 import { toast } from "react-hot-toast";
 
 function CarnetAdresse() {
-  const { setData, setisConnected, data, isConnected } =
-    useContext(UserContext);
-  
+  const { setData, data } = useContext(UserContext);
 
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState({ status: false });
+  // {status: false} || {status: true, formType: "addresseLivraison" || "facturation"}
 
   const [carnetDadresse, setCarnetDadresse] = useState({
     first_name: "",
@@ -23,8 +22,9 @@ function CarnetAdresse() {
   });
   console.log(carnetDadresse);
 
-  const handleEdit = () => {
-    setIsEditMode(true);
+  const handleEdit = (formType) => () => {
+    console.log(formType);
+    setIsEditMode({ status: true, formType });
   };
 
   const handleInputChange = (e) => {
@@ -35,15 +35,21 @@ function CarnetAdresse() {
     }));
   };
 
+  console.log(data);
+
   const updateData = useCallback(() => {
     console.log(carnetDadresse);
+
+
     axiosInstance
-      .put("/customer/gazoil/edit", { ...carnetDadresse })
+      .put(`/customer/${data.customerType}/edit`, {
+        [isEditMode.formType]: { ...carnetDadresse },
+      }) // {addressLivraison: {telephone}}
       .then(({ data }) => {
         console.log(data);
         toast.success("vos informations sont modifier et sauvgarder");
-        setData(data.data);
-        setIsEditMode(false);
+        if(data.data._id) setData(data.data);
+        setIsEditMode({status: false});
       })
       .catch((err) => {
         console.log(err);
@@ -53,8 +59,8 @@ function CarnetAdresse() {
 
   return (
     <div>
-      <Container sx={{ my: 8}} maxWidth={"lg"} style={{padding: "none"}}>
-        {isEditMode ? (
+      <Container sx={{ my: 8 }} maxWidth={"lg"} style={{ padding: "none" }}>
+        {isEditMode.status ? (
           <Grid
             container
             sx={{
@@ -76,13 +82,10 @@ function CarnetAdresse() {
                   },
                 }}
               >
-                CARNET D'ADRESSES
+                Informations de {isEditMode.formType.split(/(?=[A-Z])/).join(" ")}
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography sx={{ fontSize: { xs: 18, md: 22 }, paddingTop: 3 }}>
-                informations de contact
-              </Typography>
               <Box
                 sx={{
                   display: { xs: "block", md: "flex" },
@@ -131,9 +134,6 @@ function CarnetAdresse() {
               </Box>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography sx={{ fontSize: { xs: 18, md: 22 }, paddingTop: 3 }}>
-                Adresse{" "}
-              </Typography>
               <Box
                 sx={{
                   display: { xs: "block", md: "flex" },
@@ -239,27 +239,27 @@ function CarnetAdresse() {
                 }}
               >
                 <Typography sx={{ fontSize: 20 }}>
-                  Prénom : {data.first_name}
+                  Prénom : {data?.addresseLivraison?.first_name}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Nom: {data.last_name}
+                  Nom: {data?.addresseLivraison?.last_name}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Téléphone: {data.telephone}
+                  Téléphone: {data?.addresseLivraison?.telephone}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Adresse: {data.adresse}
+                  Adresse: {data?.addresseLivraison?.adresse}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Ville: {data.ville}
+                  Ville: {data?.addresseLivraison?.ville}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Code Postal: {data.codePostal}
+                  Code Postal: {data?.addresseLivraison?.codePostal}
                 </Typography>
               </Box>
               <Grid item xs={12} md={12} sx={{ paddingY: 3 }}>
                 <Button
-                  onClick={handleEdit}
+                  onClick={handleEdit("addresseLivraison")}
                   style={{
                     backgroundColor: "gray",
                     fontWeight: "bold",
@@ -291,28 +291,28 @@ function CarnetAdresse() {
                 }}
               >
                 <Typography sx={{ fontSize: 20 }}>
-                  Prénom : {data.first_name}
+                  Prénom : {data?.addresseFacturation?.first_name}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Nom: {data.last_name}
+                  Nom: {data?.addresseFacturation?.last_name}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Téléphone: {data.telephone}
+                  Téléphone: {data?.addresseFacturation?.telephone}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Adresse: {data.adresse}
+                  Adresse: {data?.addresseFacturation?.adresse}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Ville: {data.ville}
+                  Ville: {data?.addresseFacturation?.ville}
                 </Typography>
                 <Typography sx={{ fontSize: 20, paddingTop: 2 }}>
-                  Code Postal: {data.codePostal}
+                  Code Postal: {data?.addresseFacturation?.codePostal}
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12} md={12} sx={{ paddingY: 3 }}>
               <Button
-                onClick={handleEdit}
+                onClick={handleEdit("addresseFacturation")}
                 style={{
                   backgroundColor: "gray",
                   fontWeight: "bold",

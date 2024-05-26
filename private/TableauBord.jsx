@@ -12,7 +12,7 @@ import CarnetAdresse from "../private/CarnetAdresse";
 function TableauBord({ onEditClick }) {
   const navigate = useNavigate();
     
-  const {setisConnected, data, isConnected} = useContext(UserContext)
+  const {setisConnected, data, isConnected, setData} = useContext(UserContext)
 
   
   const Logout = useCallback(() => {
@@ -21,6 +21,7 @@ function TableauBord({ onEditClick }) {
     .delete("/customer/logout")
     .then((data) => {
         setisConnected(false)
+        setData({})
         toast.success("vous êtes Deconnetè")
         navigate("/")
         console.log(data)

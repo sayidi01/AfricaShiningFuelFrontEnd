@@ -33,6 +33,7 @@ import Dashbord from "../private/Dashbord.jsx";
 import PrivateRoute from "../private/PrivateRoute.jsx";
 import { createBrowserRouter } from "react-router-dom";
 import PublicRoute from "./PublicRoute.jsx";
+import Orders from "../private/Orders.jsx";
 
 export const PublicRoutes = [
   {
@@ -216,6 +217,13 @@ export const router = createBrowserRouter([
         id: 1,
         path: "",
         element: <Dashbord />,
+        children: [
+          {
+            id: 2,
+            path: "orders",
+            element: <Orders />,
+          },
+        ],
       },
     ],
   },

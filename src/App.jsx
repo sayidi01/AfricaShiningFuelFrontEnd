@@ -4,6 +4,7 @@ import { router } from "../components/Routes.jsx";
 import UserContext from "../context/userContext.js";
 import { PrimeReactProvider } from "primereact/api";
 import { Toaster } from "react-hot-toast";
+console.log(import.meta.env)
 
 function App() {
   const [data, setData] = useState({});

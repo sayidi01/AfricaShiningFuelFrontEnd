@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Table, Button } from "antd";
+import { Table, Button, Input } from "antd";
 import { axiosInstance } from "../src/api";
 import { DeleteOutlined } from "@ant-design/icons";
 import { toast } from "react-hot-toast";
@@ -21,7 +21,7 @@ function Orders() {
       });
   }, []);
 
-  const DeleteOrder = useCallback(() => {
+  const DeleteOrder = useCallback((orderId) => {
     axiosInstance
       .delete(`/orders/${orderId}`)
       .then(({ data }) => {
@@ -111,14 +111,16 @@ function Orders() {
       key: "Action",
       title: "Action",
 
-      render: (text, record) => (
-        <Button
-          type="primary"
-          danger
-          icon={<DeleteOutlined />}
-          onClick={() => DeleteOrder(record.id)}
-        />
-      ),
+      render: (text, record) => {
+        return (
+          <Button
+            type="primary"
+            danger
+            icon={<DeleteOutlined />}
+            onClick={() => DeleteOrder(record._id)}
+          />
+        );
+      },
     },
   ];
 
