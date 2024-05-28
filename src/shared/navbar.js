@@ -10,7 +10,8 @@ export const navItems = [
         { key: 5, name: "Citernes", path: "/Citerne" },
         { key: 6, name: "Bornes de Recharge", path: "/BornesRecharge" },
         { key: 7, name: "Produits de Nettoyage", path: "/produitnettoyage" },
-        { key: 8, name: "Bois De Chauffage", path: "/boischauffage" }
+        { key: 8, name: "Bois De Chauffage", path: "/boischauffage" },
+        {key: 9, name: "Bitume", path: "/bitume"},
       ]
     },
     {
@@ -29,7 +30,9 @@ export const navItems = [
         { key: 1, name: "Nettoyage Sans Eau", path: "/nettoyagedomicile" },
         { key: 2, name: "Collecte Lubrifiant", path: "/collectelubrifiant" },
         { key: 3, name: "Nettoyage Cuve", path: "/nettoyagecuve" },
-        { key: 4, name: "Jauge Connectée", path: "/jaugeconnecte" }
+        { key: 4, name: "Jauge Connectée", path: "/jaugeconnecte" },
+        {key: 5, name: "Dépannage ", path: "/depannage"},
+        {key: 6, name: "Location Camion", path: "/locationCamion"}
       ]
     },
     {

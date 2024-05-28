@@ -34,7 +34,9 @@ import PrivateRoute from "../private/PrivateRoute.jsx";
 import { createBrowserRouter } from "react-router-dom";
 import PublicRoute from "./PublicRoute.jsx";
 import Orders from "../private/Orders.jsx";
-
+import Bitume from "./Bitume.jsx";
+import Depannage from "./Depannage.jsx"
+import LocationCamion from "./LocationCamion.jsx";
 export const PublicRoutes = [
   {
     id: 1,
@@ -190,6 +192,22 @@ export const PublicRoutes = [
         path: "/shipping",
         element: <Shipping />,
       },
+      {
+        id: 31,
+        path: "/bitume",
+        element: <Bitume/>
+
+      },
+      {
+        id: 32,
+        path: "/depannage",
+        element: <Depannage/>
+      },
+      {
+        id: 33,
+        path: "/locationCamion",
+        element: <LocationCamion/>
+      }
     ],
   },
 ];
@@ -197,7 +215,7 @@ export const PublicRoutes = [
 export const router = createBrowserRouter([
   ...PublicRoutes,
   {
-    id: 31,
+    id: 34,
     path: "/AccountCustomer",
     element: <PrivateRoute />,
     children: [
@@ -209,7 +227,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    id: 32,
+    id: 35,
     path: "/dashbord",
     element: <PrivateRoute />,
     children: [
