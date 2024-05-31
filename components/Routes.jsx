@@ -37,6 +37,11 @@ import Orders from "../private/Orders.jsx";
 import Bitume from "./Bitume.jsx";
 import Depannage from "./Depannage.jsx"
 import LocationCamion from "./LocationCamion.jsx";
+import DevisCustomers from "../private/DevisCustomers.jsx";
+import NewsLetterCustomers from "../private/NewsLetterCustomers.jsx";
+import ContactezNousCustomer from "../private/ContactezNousCustomer.jsx";
+
+
 export const PublicRoutes = [
   {
     id: 1,
@@ -241,6 +246,22 @@ export const router = createBrowserRouter([
             path: "orders",
             element: <Orders />,
           },
+          {
+            id: 3,
+            path: "devisCustomers",
+            element: <DevisCustomers/>,
+
+          },
+          {
+            id: 4,
+            path: "NewsLetter",
+            element: <NewsLetterCustomers/>,
+          },
+          {
+            id: 5,
+            path: "ContactezNous",
+            element: <ContactezNousCustomer/>
+          }
         ],
       },
     ],

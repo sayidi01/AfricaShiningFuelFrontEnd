@@ -201,11 +201,17 @@ function Dashbord() {
           ].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
-                onClick={
-                  text === "Orders"
-                    ? () => navigate("/dashbord/orders")
-                    : undefined
-                }
+                onClick={() => {
+                  if (text === "Orders") {
+                    navigate("/dashbord/orders");
+                  } else if (text === "Devis") {
+                    navigate("/dashbord/DevisCustomers");
+                  }else if(text ===  "Newsletter") {
+                    navigate("/dashbord/NewsLetter")
+                  }else if(text === "Contactez-Nous") {
+                    navigate("/dashbord/ContactezNous")
+                  }
+                }}
               >
                 {text === "Home" && (
                   <ListItemIcon>

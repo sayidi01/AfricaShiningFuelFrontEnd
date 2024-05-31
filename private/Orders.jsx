@@ -3,29 +3,85 @@ import { Table, Button, Input } from "antd";
 import { axiosInstance } from "../src/api";
 import { DeleteOutlined } from "@ant-design/icons";
 import { toast } from "react-hot-toast";
+import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
+import { styled, alpha } from "@mui/material/styles";
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.black, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.black, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  marginBottom: theme.spacing(2),
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: theme.palette.common.black,
+  width: "100%",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
 
 function Orders() {
   const [orders, setOrders] = useState([]);
-  useEffect(() => {
-    axiosInstance
-      .get("/orders")
-      .then(({ data }) => {
-        const mappedData = data.data.map((order) => ({
-          ...order,
-          key: order._id,
-        }));
-        setOrders(mappedData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const [searchOrder, setSearchOrder] = useState("");
 
+  const handleSearch = ({ target }) => {
+    setSearchOrder(target.value);
+  };
+
+  // get all orders
+  useEffect(() => {
+    if(!searchOrder) {
+      axiosInstance
+        .get("/orders")
+        .then(({ data }) => {
+          const mappedData = data.data.map((order) => ({
+            ...order,
+            key: order._id,
+          }));
+          setOrders(mappedData);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [searchOrder]);
+
+  // delete Order
   const DeleteOrder = useCallback((orderId) => {
     axiosInstance
       .delete(`/orders/${orderId}`)
       .then(({ data }) => {
         console.log(data.data);
+        setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
         toast.success("Delete Order Successfully ");
       })
       .catch((err) => {
@@ -33,6 +89,23 @@ function Orders() {
         toast.error("order is not suppressed");
       });
   }, []);
+
+  // Search Order data
+
+  useEffect(() => {
+    if(searchOrder) {
+      axiosInstance
+        .get(`/orders/search?query=` + searchOrder)
+        .then(({ data }) => {
+          console.log(data.data);
+          setOrders(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [searchOrder]);
+
 
   const columns = [
     {
@@ -126,6 +199,19 @@ function Orders() {
 
   return (
     <div>
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+        type="text"
+        name="text"
+          onChange={handleSearch}
+          value={searchOrder}
+          placeholder="Search…"
+          inputProps={{ "aria-label": "search" }}
+        />
+      </Search>
       <Table columns={columns} dataSource={orders} rowKey="key" />
     </div>
   );
