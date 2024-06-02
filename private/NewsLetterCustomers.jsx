@@ -78,7 +78,7 @@ function NewsLetterCustomers() {
           console.error("Error fetching newsletter data:", err);
         });
     }
-  }, []);
+  }, [search]);
 
   // DELETE email NewsLetter
 

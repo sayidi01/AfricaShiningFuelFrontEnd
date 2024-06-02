@@ -39,14 +39,16 @@ function InformationsCompte() {
       toast.error("New password and confirm password do not match");
       return;
     }
-    axiosInstance.put(
-      `/customer/clientGazoil/edit/${data.data._id}`,
-      { currentPassword, newPassword },
-      ...data
-    );
+
+    const {customerType, _id} = data.data;
+
+    axiosInstance.put(`/customer/${customerType}/edit/${_id}`, {
+      ...{ currentPassword, newPassword },
+      ...data,
+    });
     console
       .log(data.data)
-      .then((data) => {
+      .then(({ data }) => {
         console.log(data);
         // setData(data);
         toast.success("votre mot de passe est modifier");
@@ -59,14 +61,7 @@ function InformationsCompte() {
     setNewPassword("");
     setConfirmNewPassword("");
     setShowPasswordForm(false);
-  }, [
-    currentPassword,
-    newPassword,
-    confirmNewPassword,
-    data.data._id,
-    setData,
-    setisConnected,
-  ]);
+  }, [currentPassword, newPassword, confirmNewPassword, data]);
 
   return (
     <div>

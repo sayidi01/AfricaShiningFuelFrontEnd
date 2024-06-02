@@ -71,7 +71,7 @@ function DevisCustomers() {
             console.log(err);
           });
     }
-  }, []);
+  }, [searchDevis]);
 
   // delete devis customer
   const deleteDevisCustomer = useCallback(( devisId) => {

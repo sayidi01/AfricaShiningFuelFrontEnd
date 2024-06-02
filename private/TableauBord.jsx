@@ -8,31 +8,29 @@ import { toast } from "react-hot-toast";
 import Footer from "../components/Footer";
 import CarnetAdresse from "../private/CarnetAdresse";
 
-
 function TableauBord({ onEditClick }) {
   const navigate = useNavigate();
-    
-  const {setisConnected, data, isConnected, setData} = useContext(UserContext)
 
-  
+  const { setisConnected, data, isConnected, setData } =
+    useContext(UserContext);
+
   const Logout = useCallback(() => {
-  
     axiosInstance
-    .delete("/customer/logout")
-    .then((data) => {
-        setisConnected(false)
-        setData({})
-        toast.success("vous êtes Deconnetè")
-        navigate("/")
-        console.log(data)
-    })
-    .catch((err) => {
-        console.log(err, "err")
-    })
-},[])
+      .delete("/customer/logout")
+      .then((data) => {
+        setisConnected(false);
+        setData({});
+        toast.success("vous êtes Deconnetè");
+        navigate("/");
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err, "err");
+      });
+  }, []);
   return (
     <div>
-      <Container sx={{ my: 8 }} maxWidth={"lg"} style={{padding: "none"}}>
+      <Container sx={{ my: 8 }} maxWidth={"lg"} style={{ padding: "none" }}>
         <Grid
           container
           sx={{
@@ -47,10 +45,10 @@ function TableauBord({ onEditClick }) {
             item
             xs={12}
             md={12}
-            sx={{ justifyContent: "flex-end", display: "flex",  paddingTop: 3 }}
+            sx={{ justifyContent: "flex-end", display: "flex", paddingTop: 3 }}
           >
             <Button
-            onClick={Logout}
+              onClick={Logout}
               style={{
                 color: "white",
                 backgroundColor: "grey",
@@ -79,43 +77,46 @@ function TableauBord({ onEditClick }) {
             <CarnetAdresse data={data} onEditClick={onEditClick} />
           ) : (
             <>
-          <Grid item xs={12} md={6}>
-            <Typography sx={{ fontSize: { xs: 18, md: 20 }, paddingTop: 3 }}>
-              Adresse Livraison
-            </Typography>
-            <Typography sx={{ color: "grey", paddingTop: 2 }}>
-              Vous n'avez pas spécifié d'adresse de livraison.
-            </Typography>
-            <Box sx={{ paddingY: 2 }}>
-              <Button
-                onClick={onEditClick}
-                style={{ color: "white", backgroundColor: "grey" }}
-              >
-                Èditer
-              </Button>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Typography sx={{ fontSize: { xs: 18, md: 20 }, paddingTop: 3 }}>
-              ADRESSE DE FACTURATION
-            </Typography>
-            <Typography sx={{ color: "grey", paddingTop: 2 }}>
-              Vous n'avez pas spécifié d'adresse de livraison.
-            </Typography>
-            <Box sx={{ paddingY: 2 }}>
-              <Button
-                onClick={onEditClick}
-                style={{ color: "white", backgroundColor: "grey" }}
-              >
-                Èditer
-              </Button>
-            </Box>
-          </Grid>
-          </>
+              <Grid item xs={12} md={6}>
+                <Typography
+                  sx={{ fontSize: { xs: 18, md: 20 }, paddingTop: 3 }}
+                >
+                  Adresse Livraison
+                </Typography>
+                <Typography sx={{ color: "grey", paddingTop: 2 }}>
+                  Vous n'avez pas spécifié d'adresse de livraison.
+                </Typography>
+                <Box sx={{ paddingY: 2 }}>
+                  <Button
+                    onClick={onEditClick}
+                    style={{ color: "white", backgroundColor: "grey" }}
+                  >
+                    Èditer
+                  </Button>
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Typography
+                  sx={{ fontSize: { xs: 18, md: 20 }, paddingTop: 3 }}
+                >
+                  ADRESSE DE FACTURATION
+                </Typography>
+                <Typography sx={{ color: "grey", paddingTop: 2 }}>
+                  Vous n'avez pas spécifié d'adresse de livraison.
+                </Typography>
+                <Box sx={{ paddingY: 2 }}>
+                  <Button
+                    onClick={onEditClick}
+                    style={{ color: "white", backgroundColor: "grey" }}
+                  >
+                    Èditer
+                  </Button>
+                </Box>
+              </Grid>
+            </>
           )}
         </Grid>
       </Container>
-     
     </div>
   );
 }

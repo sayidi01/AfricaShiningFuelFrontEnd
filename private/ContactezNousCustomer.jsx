@@ -77,7 +77,7 @@ function ContactezNousCustomer() {
           });
 
     }
-  }, []);
+  }, [SearchForm]);
 
   // Delete Form Contactez-Nous
 

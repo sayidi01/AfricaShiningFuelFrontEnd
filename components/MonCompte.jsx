@@ -144,13 +144,13 @@ function MonCompte() {
         ...clientBoisChauffage,
         customerType: selectedOption,
       })
-      .then(({response}) => {
-        console.log(response.data);
-        setData(response.data);
+      .then(({data}) => {
+        console.log(data.data);
+        setData(data.data);
         setisConnected(true);
         navigate("/AccountCustomer");
         toast.success(
-          response.data.message ?? "Votre compte a été créé avec succès"
+          data.data.message ?? "Votre compte a été créé avec succès"
         );
       })
       .catch((error) => {
