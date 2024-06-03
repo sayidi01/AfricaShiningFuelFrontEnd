@@ -40,6 +40,9 @@ import LocationCamion from "./LocationCamion.jsx";
 import DevisCustomers from "../private/DevisCustomers.jsx";
 import NewsLetterCustomers from "../private/NewsLetterCustomers.jsx";
 import ContactezNousCustomer from "../private/ContactezNousCustomer.jsx";
+import CandidatureRHCustomer from "../private/CandidatureRHCustomer.jsx";
+import CustomersGasoil from "../private/CustomersGasoil.jsx";
+import CustomersFuelOil2 from "../private/CustomersFuelOil2.jsx";
 
 
 export const PublicRoutes = [
@@ -261,6 +264,21 @@ export const router = createBrowserRouter([
             id: 5,
             path: "ContactezNous",
             element: <ContactezNousCustomer/>
+          },
+          {
+            id: 6,
+            path: "CandidatureRH",
+            element: <CandidatureRHCustomer/>
+          },
+          {
+            id: 7,
+            path: "CustomersGasoil",
+            element: <CustomersGasoil/>
+          },
+          {
+            id: 8,
+            path: "CustomersFuelOil2",
+            element: <CustomersFuelOil2/>
           }
         ],
       },

@@ -20,7 +20,9 @@ import { alpha } from "@mui/material/styles";
 
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import Customers from "../src/images/customers-icons.png";
+import CustomersGasoil from "../src/images/gazoil-icons00.png";
+import CustomersFuel from "../src/images/flame_fioul.png"
+import CustomersBoisChauffage from "../src/images/icons_bois.png"
 import Products from "../src/images/products-icons.png";
 import Orders from "../src/images/orders-icons.png";
 import Devis from "../src/images/devis-icons.png";
@@ -34,7 +36,7 @@ import Logo from "../src/images/LOGO_AFRICA_SHINING.png";
 import Home from "../src/images/home-icons.png";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -190,7 +192,9 @@ function Dashbord() {
         <List>
           {[
             "Home",
-            "Customers",
+            "Customers Gasoil",
+            "Customers Fuel oil n° 2",
+            "Customers Bois Chauffage",
             "Users",
             "Orders",
             "Products",
@@ -210,6 +214,12 @@ function Dashbord() {
                     navigate("/dashbord/NewsLetter")
                   }else if(text === "Contactez-Nous") {
                     navigate("/dashbord/ContactezNous")
+                  }else if(text === "Candiature RH") {
+                    navigate("/dashbord/CandidatureRH")
+                  }else if(text === "Customers Gasoil" ) {
+                    navigate("/dashbord/CustomersGasoil")
+                  }else if(text === "Customers Fuel oil n° 2") {
+                    navigate("/dashbord/CustomersFuelOil2")
                   }
                 }}
               >
@@ -218,9 +228,19 @@ function Dashbord() {
                     <img src={Home} width={30} alt="Home" />
                   </ListItemIcon>
                 )}
-                {text === "Customers" && (
+                {text === "Customers Gasoil" && (
                   <ListItemIcon>
-                    <img src={Customers} width={30} alt="Customers" />
+                    <img src={CustomersGasoil} width={30} alt="Customers gasoil" />
+                  </ListItemIcon>
+                )}
+                {text === "Customers Fuel oil n° 2" && (
+                  <ListItemIcon>
+                    <img src={CustomersFuel} width={30} alt="Customers fuel" />
+                  </ListItemIcon>
+                )}
+                {text === "Customers Bois Chauffage" && (
+                  <ListItemIcon>
+                    <img src={CustomersBoisChauffage} width={30} alt="Customers bois chauffage" />
                   </ListItemIcon>
                 )}
                 {text === "Users" && (
@@ -271,7 +291,7 @@ function Dashbord() {
         </List>
         <Divider />
         <List>
-          {["Logout", "Trash", "Spam"].map((text, index) => (
+          {["Logout"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 {text === "Logout" && (

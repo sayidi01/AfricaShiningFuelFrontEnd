@@ -114,6 +114,19 @@ function ContactezNousCustomer() {
 
   return (
     <div>
+        <Typography
+        variant="h4"
+        sx={{
+          fontWeight: "bold",
+          display: "flex",
+          justifyContent: "center",
+          paddingY: 5,
+          color:"#659a9a"
+        }}
+      >
+        {" "}
+        Formulaire de Contact Support{" "}
+      </Typography>
       <Search>
         <SearchIconWrapper>
           <SearchIcon />

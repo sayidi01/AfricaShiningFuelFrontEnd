@@ -159,7 +159,7 @@ function MonCompte() {
           error
         );
         toast.error(
-          "Une erreur s'est produite lors de la création du client Gaz Electrecite"
+          "Une erreur s'est produite lors de la création du client Bois Chauffage"
         );
       });
   }, [clientBoisChauffage, selectedOption]);

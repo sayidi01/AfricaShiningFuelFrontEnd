@@ -125,7 +125,7 @@ function NewsLetterCustomers() {
           display: "flex",
           justifyContent: "center",
           paddingY: 5,
-          color:"GrayText"
+          color:"#659a9a"
         }}
       >
         {" "}

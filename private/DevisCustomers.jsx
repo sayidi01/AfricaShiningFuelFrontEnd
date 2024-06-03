@@ -59,6 +59,7 @@ function DevisCustomers() {
     setSearchDevis(target.value)
   }
 
+  // GET all Devis
   useEffect(() => {
     if(!searchDevis) {
         axiosInstance
@@ -80,7 +81,7 @@ function DevisCustomers() {
     .then(({data}) => {
         console.log(data)
         setDevisCustomers((prev) => prev.filter((devis) => devis._id !== devisId))
-        toast.success("Delete Devis Successfully ");
+        toast.success("Delete Devis Successfully ")
     })
     .catch((err) => {
         console.log(err)
@@ -106,6 +107,19 @@ function DevisCustomers() {
 
   return (
     <div>
+       <Typography
+        variant="h3"
+        sx={{
+          fontWeight: "bold",
+          display: "flex",
+          justifyContent: "center",
+          paddingY: 5,
+          color:"#659a9a"
+        }}
+      >
+        {" "}
+       Devis Client {" "}
+      </Typography>
          <Search>
         <SearchIconWrapper>
           <SearchIcon />
