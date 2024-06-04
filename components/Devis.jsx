@@ -49,7 +49,7 @@ function Devis({ title, Volume, Société }) {
   }
     console.log(devis);
     axiosInstance
-      .post("/devis", { ...devis })
+      .post("/devis", { ...devis , TypeDevis : title})
       .then((data) => {
         console.log(data);
         setData(data);

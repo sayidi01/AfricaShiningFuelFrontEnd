@@ -148,6 +148,12 @@ function DevisCustomers() {
           >
             <Box sx={{ '& > *': { marginBottom: 2 } }}>
             <Typography>
+              <span style={{ fontWeight: "bold" }}> Type Devis   </span> :{" "}
+              <span style={{ fontWeight: "bold", color: "gray" }}>
+                {devis.TypeDevis}
+              </span>
+            </Typography>
+            <Typography>
               <span style={{ fontWeight: "bold" }}> Civilité </span> :{" "}
               <span style={{ fontWeight: "bold", color: "gray" }}>
                 {devis.civilité}

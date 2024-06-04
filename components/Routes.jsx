@@ -43,6 +43,10 @@ import ContactezNousCustomer from "../private/ContactezNousCustomer.jsx";
 import CandidatureRHCustomer from "../private/CandidatureRHCustomer.jsx";
 import CustomersGasoil from "../private/CustomersGasoil.jsx";
 import CustomersFuelOil2 from "../private/CustomersFuelOil2.jsx";
+import CustomersBoisChauffage from "../private/CustomersBoisChauffage.jsx"
+
+
+
 
 
 export const PublicRoutes = [
@@ -279,6 +283,11 @@ export const router = createBrowserRouter([
             id: 8,
             path: "CustomersFuelOil2",
             element: <CustomersFuelOil2/>
+          },
+          {
+            id: 9,
+            path: "CustomersBoisChauffage",
+            element: <CustomersBoisChauffage/>
           }
         ],
       },

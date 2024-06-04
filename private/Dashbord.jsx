@@ -220,6 +220,8 @@ function Dashbord() {
                     navigate("/dashbord/CustomersGasoil")
                   }else if(text === "Customers Fuel oil n° 2") {
                     navigate("/dashbord/CustomersFuelOil2")
+                  }else if(text === "Customers Bois Chauffage") {
+                    navigate("/dashbord/CustomersBoisChauffage")
                   }
                 }}
               >
