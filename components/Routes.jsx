@@ -44,7 +44,9 @@ import CandidatureRHCustomer from "../private/CandidatureRHCustomer.jsx";
 import CustomersGasoil from "../private/CustomersGasoil.jsx";
 import CustomersFuelOil2 from "../private/CustomersFuelOil2.jsx";
 import CustomersBoisChauffage from "../private/CustomersBoisChauffage.jsx"
-
+import ProductsASF from "../private/ProductsASF.jsx";
+import Users from "../private/Users.jsx";
+import Signin from "../private/Signin.jsx";
 
 
 
@@ -240,6 +242,12 @@ export const router = createBrowserRouter([
   },
   {
     id: 35,
+    path: "/Signin",
+    element: <Signin/>
+
+  },
+  {
+    id: 36,
     path: "/dashbord",
     element: <PrivateRoute />,
     children: [
@@ -288,6 +296,16 @@ export const router = createBrowserRouter([
             id: 9,
             path: "CustomersBoisChauffage",
             element: <CustomersBoisChauffage/>
+          },
+          {
+            id: 10,
+            path: "ProductsASF",
+            element: <ProductsASF/>
+          },
+          {
+            id: 11,
+            path: "user",
+            element: <Users/>
           }
         ],
       },

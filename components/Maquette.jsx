@@ -31,6 +31,8 @@ function Maquette() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const [cities, setCities] = useState("idle"); // State to store city data
+  const [allProducts, setAllProducts] = useState([]);
+
   const [selectedCityId, setSelectedCityId] = useState(""); // State to store selected city ID
   const [selectedCityName, setSelectedCityName] = useState(""); // State to store selected city name
   const [quantity, setQuantity] = useState(0); // Set quantity to 0 by default
@@ -42,8 +44,6 @@ function Maquette() {
   const [fuelPrice, setFuelPrice] = useState(6.8);
 
   const location = useLocation();
-
-  console.log(quantity);
 
   useEffect(() => {
     const getParamsFromURL = () => {
@@ -123,6 +123,24 @@ function Maquette() {
       });
   }, []);
 
+  useEffect(() => {
+    // Fetch products data from the backend endpoint
+    axiosInstance
+      .get("/products")
+      .then(({ data }) => {
+        console.log(data);
+        const responseProducts = data.data;
+        if (Array.isArray(responseProducts)) {
+          setAllProducts(responseProducts);
+        } else {
+          toast.error("Failed to retrieve products, please try again");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching city data:", error);
+      });
+  }, []);
+
   // Function to fetch postal code based on selected city
   const fetchPostalCode = (cityId) => {
     const selectedCity = cities.find((city) => city.id === cityId);
@@ -136,34 +154,25 @@ function Maquette() {
   };
 
   const handleProductChange = (value, option) => {
+    console.log(value, option);
     setSelectedProduct(option.label);
-    if (option.label === " Fuel oil n° 2") {
-      setPricePerLitre(fuelPrice);
-    } else {
-      setPricePerLitre(11.05);
-    }
+    setPricePerLitre(option.solde);
   };
 
   const calculatePrice = () => {
     // Do not calculate price if product is not selected
     if (!selectedProduct) return 0;
 
-    let pricePerLitre = 11.05; // Default price per litre
-    let priceFioul = 6.8;
-
+    let finalPrice = pricePerLitre
     if (selectedCityId) {
       const selectedCity = cities.find((city) => city.id === selectedCityId);
       if (selectedCity) {
         console.log(selectedCity.price);
-        pricePerLitre += parseFloat(selectedCity.price); // Add price per city to the default price per litre
-        priceFioul += parseFloat(selectedCity.price);
+        finalPrice += parseFloat(selectedCity.price); // Add price per city to the default price per litre
       } else return "City not found";
     }
 
-    const selectedPrd = selectedProduct.trim().toLowerCase();
-    const isFuel = selectedPrd.includes("fuel");
-
-    let totalPrice = (isFuel ? priceFioul : pricePerLitre) * quantity;
+    let totalPrice = finalPrice * quantity;
 
     if (selectedDelivery === "rapide") {
       totalPrice += 1000;
@@ -296,18 +305,11 @@ function Maquette() {
                       .toLowerCase()
                       .localeCompare((optionB?.label ?? "").toLowerCase())
                   }
-                  options={[
-                    {
-                      value: "DIESEL EXTRA 10 PPM",
-                      label: "DIESEL EXTRA 10 PPM",
-                      solde: "11.05",
-                    },
-                    {
-                      value: "Fuel oil n° 2",
-                      label: "Fuel oil n° 2",
-                      solde: "6.80",
-                    },
-                  ]}
+                  options={allProducts.map((prod) => ({
+                    value: prod.name,
+                    label: prod.name,
+                    solde: prod.price,
+                  }))}
                   onChange={handleProductChange}
                   value={selectedProduct}
                 />

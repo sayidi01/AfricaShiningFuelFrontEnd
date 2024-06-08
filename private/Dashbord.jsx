@@ -222,6 +222,10 @@ function Dashbord() {
                     navigate("/dashbord/CustomersFuelOil2")
                   }else if(text === "Customers Bois Chauffage") {
                     navigate("/dashbord/CustomersBoisChauffage")
+                  }else if (text === "Products") {
+                    navigate("/dashbord/ProductsASF")
+                  }else if(text === "Users") {
+                    navigate("/dashbord/user")
                   }
                 }}
               >

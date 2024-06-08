@@ -2,10 +2,11 @@ import React, { useEffect, useContext } from "react";
 import UserContext from "../context/userContext";
 import { axiosInstance } from "../src/api";
 import { CircularProgress } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function PrivateRoute() {
   const { setData, setisConnected, isConnected } = useContext(UserContext);
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (!isConnected) {
@@ -18,6 +19,7 @@ export default function PrivateRoute() {
         })
         .catch((error) => {
           console.error("Customer not connected", error);
+          navigate("/Signin")
         });
     }
   }, []);

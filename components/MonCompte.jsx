@@ -155,7 +155,7 @@ function MonCompte() {
       })
       .catch((error) => {
         console.error(
-          "Erreur lors de la création du client Bois Chauffage :",
+          "Erreur lors de la création du client Bois Chauffage :", 
           error
         );
         toast.error(
