@@ -270,7 +270,7 @@ function LandingPage() {
             <Typography style={{ marginTop: "1rem" }} color={"gray"}>
               Chez <span style={{fontWeight: 'bold'}}> Africa Shining Fuel </span>, notre histoire est celle d'une
               entreprise familiale née de la passion pour l'innovation
-              énergétique et le service client de qualité. Fondée en 2019, notre
+              énergétique et le service client de qualité . d'un accompagnement personnalisée, notre
               entreprise s'est rapidement affirmée comme un acteur majeur du
               secteur de la distribution de carburants, en offrant des solutions
               énergétiques fiables et responsables à nos clients.
@@ -453,7 +453,7 @@ function LandingPage() {
                     fontFamily: "sans-serif",
                   }}
                 >
-                  3
+                  4
                 </Typography>
                 <Typography
                   style={{ fontFamily: "Montserrat", width: "max-content" }}

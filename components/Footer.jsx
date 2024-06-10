@@ -212,7 +212,16 @@ function Footer({ marginTop, width }) {
                   ADRESSE
                 </Typography>
                 <Typography style={{ fontSize: 13, fontFamily: "serif" }}>
-                  CFC Anfa, Casablanca
+                Casa Finance City Anfa, Casablanca ,
+                </Typography>
+                <Typography style={{ fontSize: 13, fontFamily: "serif" }}>
+                46 Blvd Zerktouni,Etg 5 n°17 Casablanca,
+                </Typography>
+                <Typography style={{ fontSize: 13, fontFamily: "serif" }}>
+                Appt 2,RDC, Diar Al Mansour, Ain Harouda, Mohammédia,
+                </Typography>
+                <Typography style={{ fontSize: 13, fontFamily: "serif" }}>
+                Appt n°20, Madina el jadida, Keznaya, Tanger
                 </Typography>
               </div>
             </div>
