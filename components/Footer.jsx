@@ -104,7 +104,7 @@ function Footer({ marginTop, width }) {
             <TextArea
             name="email"
             onChange={handleInputChangeNewsLetter}
-              placeholder="Enter votre email"
+              placeholder="Entrer votre email"
               style={{
                 width: 500,
                 height: 40,

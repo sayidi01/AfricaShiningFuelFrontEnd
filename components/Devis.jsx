@@ -55,6 +55,7 @@ function Devis({ title, Volume, Société }) {
         setData(data);
         setisConnected(true);
         toast.success(data.message ?? "votre Devis envoyé");
+        navigate("/")
       })
       .catch((err) => {
         console.log(err);

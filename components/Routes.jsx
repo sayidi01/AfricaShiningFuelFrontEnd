@@ -47,7 +47,7 @@ import CustomersBoisChauffage from "../private/CustomersBoisChauffage.jsx"
 import ProductsASF from "../private/ProductsASF.jsx";
 import Users from "../private/Users.jsx";
 import Signin from "../private/Signin.jsx";
-
+import Home from "../private/Home.jsx";
 
 
 
@@ -306,6 +306,11 @@ export const router = createBrowserRouter([
             id: 11,
             path: "user",
             element: <Users/>
+          },
+          {
+            id: 12,
+            path: "Home",
+            element: <Home/>
           }
         ],
       },

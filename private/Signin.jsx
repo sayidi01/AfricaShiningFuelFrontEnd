@@ -101,7 +101,7 @@ function Signin() {
         console.log(res);
         setData(res.data.data);
         setisConnected(true);
-        navigate("/dashbord");
+        navigate("/dashbord/Home");
         toast.success(res.data.message ?? "Vous êtes connecté");
       })
       .catch((err) => {

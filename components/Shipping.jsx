@@ -81,6 +81,7 @@ function Shipping() {
         setData(data);
         setisConnected(true);
         toast.success(data.message ?? "votre commande est envoyè");
+        navigate("/")
       })
       .catch((err) => {
         console.log(err);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -17,7 +17,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { alpha } from "@mui/material/styles";
-
+import { toast } from "react-hot-toast";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import CustomersGasoil from "../src/images/gazoil-icons00.png";
@@ -32,9 +32,10 @@ import NewsLetter from "../src/images/nwesletter-icons.png";
 import Logout from "../src/images/Logout-icons.png";
 import CantactezNous from "../src/images/cantactez-nous.png";
 import Logo from "../src/images/LOGO_AFRICA_SHINING.png";
-
+import UserContext from "../context/userContext";
 import Home from "../src/images/home-icons.png";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import { axiosInstance } from "../src/api";
 
 const drawerWidth = 300;
 
@@ -126,6 +127,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function Dashbord() {
   const navigate = useNavigate();
+  const { setisConnected, setData } =
+    useContext(UserContext);
 
   const theme = useTheme();
   const [open, setOpen] = useState(true);
@@ -137,6 +140,25 @@ function Dashbord() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+
+  // Logout Customer ASF 
+
+  const LogoutUserASF = useCallback(() => {
+    axiosInstance
+    .delete("/users/logout")
+    .then((data) => {
+      console.log(data)
+      setisConnected(false);
+      setData({});
+      toast.success("you've been disconnected");
+      navigate("/Signin");
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err, "err");
+    });
+  },[])
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -226,6 +248,8 @@ function Dashbord() {
                     navigate("/dashbord/ProductsASF")
                   }else if(text === "Users") {
                     navigate("/dashbord/user")
+                  }else if(text === "Home") {
+                    navigate("/dashbord/Home")
                   }
                 }}
               >
@@ -299,9 +323,9 @@ function Dashbord() {
         <List>
           {["Logout"].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={LogoutUserASF}>
                 {text === "Logout" && (
-                  <ListItemIcon>
+                  <ListItemIcon >
                     <img src={Logout} width={30} alt="Logout" />
                   </ListItemIcon>
                 )}

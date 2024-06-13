@@ -11,6 +11,7 @@ import Rh from "../src/images/RH1.png";
 import { toast } from "react-hot-toast";
 
 import { axiosInstance } from "../src/api";
+import { useNavigate } from "react-router-dom";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -25,6 +26,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 function PolitiqueRH() {
+  const navigate = useNavigate()
   const [candidatureRH, setCandidatureRH] = useState({
     prenom: "",
     nom: "",
@@ -70,6 +72,8 @@ function PolitiqueRH() {
       })
       .then(() => {
         toast.success("votre condidature envoyer");
+        navigate("/")
+        
       })
       .catch((err) => {
         console.error(err);
