@@ -152,7 +152,7 @@ function Dashbord() {
       setisConnected(false);
       setData({});
       toast.success("you've been disconnected");
-      navigate("/Signin");
+      navigate("/");
       console.log(data);
     })
     .catch((err) => {
