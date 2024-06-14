@@ -136,7 +136,12 @@ function MesCommandes() {
               </Stack>
             )}
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            sx={{ display: { xs: "block", md: "none" }, }}
+          >
             {commandes.length === 0 ? (
               <Typography
                 sx={{
@@ -149,7 +154,13 @@ function MesCommandes() {
                 Vous n'avez jamais commandé.
               </Typography>
             ) : (
-              <Stack sx={{ display: { lg: "none", md: "block" }, textAlign: "center", paddingTop: 3  }}>
+              <Stack
+                sx={{
+                  display: { lg: "none", md: "block" },
+                  textAlign: "center",
+                  paddingTop: 3,
+                }}
+              >
                 {commandes.map((order) => (
                   <div key={order.id}>
                     <Typography key={order.id}>
@@ -181,15 +192,20 @@ function MesCommandes() {
                       {" "}
                       Adresse : {order.adresse}
                     </Typography>
-                    <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <Typography
+                    <Box
                       sx={{
-                        borderBottom: "2px solid #659a9a",
-                        width: "70%",
-                        my: 5
-                        
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
                       }}
-                    ></Typography>
+                    >
+                      <Typography
+                        sx={{
+                          borderBottom: "2px solid #659a9a",
+                          width: "70%",
+                          my: 5,
+                        }}
+                      ></Typography>
                     </Box>
                   </div>
                 ))}
@@ -198,7 +214,7 @@ function MesCommandes() {
           </Grid>
         </Grid>
       </Container>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

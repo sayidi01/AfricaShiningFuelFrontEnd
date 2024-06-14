@@ -45,8 +45,6 @@ function ContactezNous() {
       .post("/contactezNous", { ...ContactezNous })
       .then((data) => {
         console.log(data);
-        setData(data);
-        setisConnected(true);
         toast.success(data.message ?? "votre Formulaire envoyé");
       })
       .catch((err) => {

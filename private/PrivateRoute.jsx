@@ -5,7 +5,7 @@ import { CircularProgress } from "@mui/material";
 import { Outlet, useNavigate } from "react-router-dom";
 
 export default function PrivateRoute() {
-  const { setData, setisConnected, isConnected } = useContext(UserContext);
+  const { setData, setisConnected, isConnected, data } = useContext(UserContext);
   const navigate = useNavigate()
 
   useEffect(() => {

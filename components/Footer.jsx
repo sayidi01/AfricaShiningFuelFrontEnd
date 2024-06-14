@@ -38,10 +38,8 @@ function Footer({ marginTop, width }) {
     console.log(NewsLetter);
     axiosInstance
     .post("/NewsLetter", {...NewsLetter})
-    .then((data) => {
+    .then(({data}) => {
       console.log(data)
-      setData(data)
-      setisConnected(true)
       toast.success(data.message ?? "votre NewsLetter envoyé");
     })
     .catch((err) => {

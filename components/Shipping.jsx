@@ -76,10 +76,8 @@ function Shipping() {
 
     axiosInstance
       .post("/orders", orderData)
-      .then((data) => {
+      .then(({data}) => {
         console.log(data);
-        setData(data);
-        setisConnected(true);
         toast.success(data.message ?? "votre commande est envoyè");
         navigate("/")
       })

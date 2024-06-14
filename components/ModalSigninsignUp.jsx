@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Input } from "antd";
 import { toast } from "react-hot-toast";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Stack } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useLocation, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../src/api";
@@ -60,6 +60,10 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
     setCreatingAccount(true);
   };
 
+  const handleLogin = () => {
+    setCreatingAccount(false);
+  };
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -73,17 +77,17 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
   const handleSubmitLoginCustomer = useCallback(() => {
     axiosInstance
       .post("/customer/login", { ...loginCustomer })
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
+      .then(({data}) => {
+        console.log(data.data);
+        setData(data.data);
         setisConnected(true);
-        toast.success(res.data.message ?? "Vous êtes connecté");
+        toast.success(data.message ?? "Vous êtes connecté");
 
         console.log(location.search);
         console.log(location.pathname);
         // Construct the new URL with existing query parameters
         const newUrl = `/shipping${location.search}`;
-        console.log(newUrl)
+        console.log(newUrl);
 
         navigate(newUrl);
       })
@@ -99,15 +103,18 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
     console.log(customerClientGazoil);
 
     axiosInstance
-      .post("/customer", { ...customerClientGazoil, customerType: "ClientGazoil" })
-      .then((data) => {
+      .post("/customer", {
+        ...customerClientGazoil,
+        customerType: "ClientGazoil",
+      })
+      .then(({data}) => {
         console.log(data);
-        setData(data);
+        setData(data.data);
         setisConnected(true);
         toast.success(data.message ?? "votre compte se crée avec succès");
 
         const newUrl = `/shipping${location.search}`;
-        console.log(newUrl)
+        console.log(newUrl);
 
         navigate(newUrl);
       })
@@ -149,26 +156,9 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <Box
-                    display={{ xs: "block", sm: "flex" }}
-                    alignItems="center"
-                    gap={5}
-                    justifyContent={"space-between"}
-                    marginBottom="3rem"
-                  >
-                    <Button
-                      sx={{ backgroundColor: "gray", color: "white" }}
-                      onClick={handleSignIn}
-                    >
-                      Oui, je me connecte
-                    </Button>
-                    <Button
-                      sx={{ backgroundColor: "gray", color: "white" }}
-                      onClick={handleCreateAccount}
-                    >
-                      Non, je crée un compte
-                    </Button>
-                  </Box>
+                  <Typography variant="h3" mb={3}>
+                    Créer votre compte
+                  </Typography>
 
                   <Box
                     display={{ xs: "block", sm: "flex" }}
@@ -270,7 +260,7 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                       }}
                       sx={{
                         fontSize: { xs: "19px", sm: "20px" },
-                        minWidth: "10rem"
+                        minWidth: "10rem",
                       }}
                     >
                       Mot de passe *
@@ -289,55 +279,40 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                     />
                   </Box>
 
-                  <Button
-                    sx={{ backgroundColor: "#659a9a", color: "white" }}
-                    onClick={handleSubmitClientGazoil}
-                  >
-                    Créer un compte
-                  </Button>
+                  <Stack gap={1}>
+                    <Button
+                      sx={{ backgroundColor: "#659a9a", color: "white" }}
+                      onClick={handleSubmitClientGazoil}
+                    >
+                      Créer un compte
+                    </Button>
+                    <Button
+                      onClick={handleLogin}
+                      variant="text"
+                      size="small"
+                    >
+                      Vous avez déjâ un compte ? Connectez-vous!
+                    </Button>
+                  </Stack>
                 </Grid>
               ) : (
-                <Grid
-                  container
-                  item
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <Box
-                    display={{ xs: "block", sm: "flex" }}
-                    alignItems="center"
-                    gap={5}
-                    justifyContent={"space-between"}
-                    marginBottom="3rem"
-                  >
-                    <Button
-                      sx={{ backgroundColor: "gray", color: "white" }}
-                      onClick={handleSignIn}
-                    >
-                      Oui, je me connecte
-                    </Button>
-                    <Button
-                      sx={{ backgroundColor: "gray", color: "white" }}
-                      onClick={handleCreateAccount}
-                    >
-                      Non, je crée un compte
-                    </Button>
-                  </Box>
-                  <Box
-                    display={{ xs: "block", sm: "flex" }}
+                <Box>
+                  <Typography variant="h4" mb={5} textAlign={"center"}>
+                    Connectez vous
+                  </Typography>
+                  <Stack
                     alignItems="center"
                     gap={11}
                     justifyContent={"space-between"}
-                    marginBottom="3rem"
+                    mb={2}
+                    direction={"row"}
                   >
                     <Typography
                       style={{
                         color: "gray",
                         fontFamily: "Delicatessen Script",
                       }}
-                      sx={{
-                        fontSize: { xs: "19px", sm: "20px" },
-                      }}
+                      variant="body1"
                     >
                       Email *
                     </Typography>
@@ -349,21 +324,19 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                         marginTop: 0,
                       }}
                     />
-                  </Box>
-                  <Box
-                    display={{ xs: "block", sm: "flex" }}
+                  </Stack>
+                  <Stack
                     alignItems="center"
                     gap={2}
                     justifyContent={"space-between"}
                     marginBottom="3rem"
+                    direction={"row"}
                   >
                     <Typography
+                      variant="body1"
                       style={{
                         color: "gray",
                         fontFamily: "Delicatessen Script",
-                      }}
-                      sx={{
-                        fontSize: { xs: "19px", sm: "20px" },
                       }}
                     >
                       Mot de passe *
@@ -380,14 +353,17 @@ function ModalSigninsignUp({ onClose, onSignIn }) {
                         marginTop: 0,
                       }}
                     />
-                  </Box>
-                  <Button
-                    sx={{ backgroundColor: "#659a9a", color: "white" }}
-                    onClick={handleSubmitLoginCustomer}
-                  >
-                    Je me connecte
-                  </Button>
-                </Grid>
+                  </Stack>
+                  <Stack gap={1} alignContent={"center"}>
+                    <Button
+                      sx={{ backgroundColor: "#659a9a", color: "white" }}
+                      onClick={handleSubmitLoginCustomer}
+                    >
+                      Je me connecte
+                    </Button>
+                    <Button variant="text" size="small" onClick={handleCreateAccount}>Créer un compte</Button>
+                  </Stack>
+                </Box>
               )}
             </Grid>
           </Container>

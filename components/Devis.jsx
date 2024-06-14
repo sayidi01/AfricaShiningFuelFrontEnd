@@ -52,8 +52,6 @@ function Devis({ title, Volume, Société }) {
       .post("/devis", { ...devis , TypeDevis : title})
       .then((data) => {
         console.log(data);
-        setData(data);
-        setisConnected(true);
         toast.success(data.message ?? "votre Devis envoyé");
         navigate("/")
       })

@@ -181,7 +181,7 @@ function CandidatureRHCustomer() {
                 </Typography>
                 <Typography>
                   <span style={{ fontWeight: "bold" }}> CV </span> :{" "}
-                  <a href={rh.cv} target="_blank">
+                  <a href={rh.cv} target="_blank" download={true}>
                     {" "}
                     {rh.cv}{" "}
                   </a>

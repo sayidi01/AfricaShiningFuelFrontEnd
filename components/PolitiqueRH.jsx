@@ -45,6 +45,14 @@ function PolitiqueRH() {
 
   const handleImageInputChange = useCallback((e) => {
     const file = e.target.files[0];
+    const fileType = file.type;
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp'];
+
+    if (!validImageTypes.includes(fileType)) {
+      toast.error("On approuve que les fichiers type photo");
+      return;
+    } 
+
     if (file.size > 2 * 1024 * 1024) {
       toast.error("File size exceeds 2MB");
       return;
