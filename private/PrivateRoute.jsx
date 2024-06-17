@@ -19,7 +19,6 @@ export default function PrivateRoute() {
         })
         .catch((error) => {
           console.error("Customer not connected", error);
-          navigate("/Signin")
         });
     }
   }, []);
