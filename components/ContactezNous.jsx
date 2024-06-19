@@ -14,9 +14,11 @@ import { Form, Select, Input } from "antd";
 import Footer from "./Footer";
 
 import UserContext from "../context/userContext";
+import { useNavigate } from "react-router-dom";
 
 function ContactezNous() {
   const { setData, setisConnected } = useContext(UserContext);
+  const navigate = useNavigate()
   const [ContactezNous, setContactezNous] = useState({
     contactType: "",
     lastName: "",
@@ -46,6 +48,8 @@ function ContactezNous() {
       .then((data) => {
         console.log(data);
         toast.success(data.message ?? "votre Formulaire envoyé");
+        navigate("/")
+        
       })
       .catch((err) => {
         console.log(err);
